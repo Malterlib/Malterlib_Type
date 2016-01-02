@@ -1,0 +1,271 @@
+﻿// Copyright © 2015 Hansoft AB 
+// Distributed under the MIT license, see license text in LICENSE.Malterlib
+
+#include "Test_TypeTraits_TestTypes.h"
+
+
+namespace NNothrow
+{
+
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsAssignment>::mc_Value						));
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsAssignmentInt>::mc_Value						));
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsAssignmentBoth>::mc_Value						));
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsAssignmentDerived>::mc_Value						));
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsAssignmentDerivedOverride>::mc_Value						));
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CNothrow>::mc_Value						));
+
+#ifndef DCompiler_MSVC
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopy>::mc_Value						));
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopyInt>::mc_Value						));
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopyBoth>::mc_Value						));
+#endif
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopyDerived>::mc_Value						));
+#ifndef DCompiler_MSVC
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopyDerivedOverride>::mc_Value						));
+#endif
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CNothrow>::mc_Value						));
+
+#ifndef DCompiler_MSVC
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CNothrowDefault>::mc_Value						));
+#endif
+
+	DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CThrowsConstruct>::mc_Value						));
+	DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CThrowsConstructDerived>::mc_Value						));
+#ifndef DCompiler_MSVC
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsConstructDerivedOverride>::mc_Value						));
+#endif
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CNothrow>::mc_Value						));
+
+	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestClassVirtual>::mc_Value						));
+
+}
+
+// Void
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestUnion>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestClass0>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestClass1>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestStruct0>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestStruct1>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<const CTestClass0>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<const CTestClass1>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<const CTestStruct0>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<const CTestStruct1>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<volatile CTestClass0>::mc_Value			));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<volatile CTestClass1>::mc_Value			));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<volatile CTestStruct0>::mc_Value			));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<volatile CTestStruct1>::mc_Value			));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<const volatile CTestClass0>::mc_Value		));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<const volatile CTestClass1>::mc_Value		));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<const volatile CTestStruct0>::mc_Value	));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<const volatile CTestStruct1>::mc_Value	));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<ETestEnum>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<int>::mc_Value							));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestClass>::mc_Value							));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestC>::mc_Value							));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestV>::mc_Value							));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestVPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestPtrC>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestPtrV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestVPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestCVPtrCV>::mc_Value					));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CTestRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CTestCRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CTestVRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CTestCVRef>::mc_Value					));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CTestRRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CTestCRRef>::mc_Value					));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CTestVRRef>::mc_Value					));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CTestCVRRef>::mc_Value					));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<PFFunc0>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<PFFunc1>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<PFFunc2>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc0Ref>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc1Ref>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc2Ref>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc0RRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc1RRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc2RRef>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc0Ptr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc1Ptr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc2Ptr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc0PtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc1PtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc2PtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc0PtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc1PtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc2PtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc0PtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc1PtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc2PtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0Ptr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1Ptr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2Ptr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0PtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1PtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2PtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0PtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1PtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2PtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0PtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1PtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2PtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0CPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1CPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2CPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0CPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1CPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2CPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0CPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1CPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2CPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0CPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1CPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2CPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0VPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1VPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2VPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0VPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1VPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2VPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0VPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1VPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2VPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0VPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1VPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2VPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0CVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1CVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2CVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0CVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1CVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2CVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0CVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1CVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2CVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0CVPtrCV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1CVPtrCV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2CVPtrCV>::mc_Value				));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<PFFunc0El>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<PFFunc1El>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<PFFunc2El>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc0ElRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc1ElRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc2ElRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc0ElRRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc1ElRRef>::mc_Value						));
+DMibStaticCheck((	!TCHasNothrowDefaultConstructor<FFunc2ElRRef>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc0ElPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc1ElPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc2ElPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc0ElPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc1ElPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc2ElPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc0ElPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc1ElPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc2ElPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc0ElPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc1ElPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FFunc2ElPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElCPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElCPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElCPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElCPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElCPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElCPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElCPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElCPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElCPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElCPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElCPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElCPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElVPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElVPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElVPtrCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElCVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElCVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElCVPtr>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElCVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElCVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElCVPtrC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElCVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElCVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElCVPtrV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc0ElCVPtrCV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc1ElCVPtrCV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<FMFunc2ElCVPtrCV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMPtr>::mc_Value							));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMCPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMVPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMCVPtr>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMPtrC>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMCPtrC>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMVPtrC>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMCVPtrC>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMPtrV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMCPtrV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMVPtrV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMCVPtrV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMPtrCV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMCPtrCV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMVPtrCV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CMCVPtrCV>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestArray2>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestArray2C>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestArray2V>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestArray2CV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestArray>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestArrayC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestArrayV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestArrayCV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest2DArray2>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest2DArray2C>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest2DArray2V>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest2DArray2CV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest2DArray>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest2DArrayC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest2DArrayV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest2DArrayCV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest3DArray2>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest3DArray2C>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest3DArray2V>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest3DArray2CV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest3DArray>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest3DArrayC>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest3DArrayV>::mc_Value					));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTest3DArrayCV>::mc_Value				));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<void *>::mc_Value						));
+DMibStaticCheck((	TCHasNothrowDefaultConstructor<void>::mc_Value							));
+
