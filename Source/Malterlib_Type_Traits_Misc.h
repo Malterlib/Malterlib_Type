@@ -64,10 +64,7 @@ namespace NMib
 		| Alignment																							|
 		|___________________________________________________________________________________________________|
 		\***************************************************************************************************/
-#ifdef DCompiler_MSVC
-	#pragma warning(push)
-	#pragma warning(disable:4624)
-#endif		
+		
 		namespace NPrivate
 		{
 			using CAlignmentHelperUnderlaying = int32;
@@ -75,10 +72,19 @@ namespace NMib
 			{
 				EAlignmentHelper_Normal,
 				EAlignmentHelper_Function,
+				EAlignmentHelper_FunctionRef,
 				EAlignmentHelper_Class,
 				EAlignmentHelper_Unbounded,
 				EAlignmentHelper_Void,
 			};
+		}
+#ifndef DMibPAlignmentOf
+#ifdef DCompiler_MSVC
+	#pragma warning(push)
+	#pragma warning(disable:4624)
+#endif	
+		namespace NPrivate
+		{
 			
 			template <typename t_CType, CAlignmentHelperUnderlaying t_Impl>
 			struct TCAlignmentOfHelper
@@ -136,28 +142,83 @@ namespace NMib
 				};
 			};
 		}
-#ifdef DCompiler_MSVC	
-	#pragma warning(pop)
-#endif
-
 		template <typename t_CType>
 		class TCAlignmentOf 
 			: public TCCompileTimeConstant
 			<
-				mint, 
-				NPrivate::TCAlignmentOfHelper
+				mint
+				, NPrivate::TCAlignmentOfHelper
 				<
 					t_CType, 
-					TCIsVoid<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Void :
-					TCIsFunction<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Function :
-					TCIsArrayUnbounded<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Unbounded :
-					NPrivate::EAlignmentHelper_Normal
+					TCIsVoid<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Void
+					: TCIsFunction<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Function
+					: TCIsArrayUnbounded<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Unbounded
+					: NPrivate::EAlignmentHelper_Normal
 				>::mc_Value
 			>
 		{
 		public:
 		};
+#ifdef DCompiler_MSVC	
+	#pragma warning(pop)
+#endif
+#else
+		namespace NPrivate
+		{
+			
+			template <typename t_CType, CAlignmentHelperUnderlaying t_Impl>
+			struct TCAlignmentOfHelper
+			{
+				enum
+				{
+					mc_Value = DMibPAlignmentOf(t_CType)
+				};
+			};
+			template <typename t_CType>
+			struct TCAlignmentOfHelper<t_CType, EAlignmentHelper_Void>
+			{
+				enum
+				{
+					mc_Value = 0
+				};
+			};
+			template <typename t_CType>
+			struct TCAlignmentOfHelper<t_CType, EAlignmentHelper_Function>
+			{
+				enum
+				{
+					mc_Value = 0
+				};
+			};
+			template <typename t_CType>
+			struct TCAlignmentOfHelper<t_CType, EAlignmentHelper_FunctionRef>
+			{
+				enum
+				{
+					mc_Value = sizeof(void *)
+				};
+			};
+		}
+		template <typename t_CType>
+		class TCAlignmentOf 
+			: public TCCompileTimeConstant
+			<
+				mint
+				, NPrivate::TCAlignmentOfHelper
+				<
+					t_CType
+					, TCIsVoid<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Void 
+					: TCIsFunction<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Function
+					: TCIsFunction<typename TCRemoveReference<t_CType>::CType>::mc_Value ? NPrivate::EAlignmentHelper_FunctionRef
+					: NPrivate::EAlignmentHelper_Normal
+				>::mc_Value
+			>
+		{
+		public:
+		};
+#endif
 
+		
 		namespace NPrivate
 		{
 			template <typename t_CData, mint t_Align, CAlignmentHelperUnderlaying t_Impl>
