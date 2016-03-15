@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <Mib/Core/Platform>
 #include <Mib/Core/EnableIf>
 
 namespace NMib
