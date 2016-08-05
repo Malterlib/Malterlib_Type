@@ -20,6 +20,10 @@ namespace NIsVirtualBaseOf
 	{
 		void f_Test();
 	};
+#ifdef DCompiler_MSVC
+#pragma warning(disable:4594)
+#pragma warning(disable:4624)
+#endif
 	class CInheritVirtualAbstract : private virtual CAbstract
 	{
 	};

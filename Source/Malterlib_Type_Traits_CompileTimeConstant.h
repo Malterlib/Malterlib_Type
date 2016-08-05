@@ -25,7 +25,7 @@ namespace NMib
 		{
 			typedef t_CType CType;
 
-			static const t_CType mc_Value = t_Value;
+			static constexpr t_CType mc_Value = t_Value;
 			operator bool ()
 			{
 				return mc_Value != 0;

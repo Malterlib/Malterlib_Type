@@ -1004,6 +1004,10 @@ namespace NMib
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winaccessible-base"
 #endif
+#ifdef DCompiler_MSVC
+#pragma warning(push)
+#pragma warning(disable:4594)
+#endif
 			template <typename t_CDerived, typename t_CBase>
 			class TCIsVirtualBaseOfHelper<t_CDerived, t_CBase, true>
 			{ 
@@ -1028,6 +1032,9 @@ namespace NMib
 				};
 			};
 
+#ifdef DCompiler_MSVC
+#pragma warning(pop)
+#endif
 #ifdef DCompiler_clang
 #pragma clang diagnostic pop
 #endif
@@ -2508,10 +2515,6 @@ namespace NMib
 		{\
 		};
 
-#ifdef DCompiler_clang
-		
-		
-
 #define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallableWith(_BaseName, _TraitName, _Mem, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl, _ExtraEvalExpression, _CallableParam0) \
 		template <typename t_CType, typename t_CFunctionCallType>\
 		struct TCIs##_BaseName##CallableWith_##_TraitName\
@@ -2587,119 +2590,6 @@ namespace NMib
 		{\
 		};
 
-#else
-		
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallableWith(_BaseName, _TraitName, _Mem, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl, _ExtraEvalExpression, _CallableParam0) \
-		template <typename t_CType, typename t_CFunctionCallType>\
-		struct TCIs##_BaseName##CallableWith_##_TraitName\
-		{\
-		private:\
-			template <typename t_CToGenerate>\
-			static t_CToGenerate G();\
-			class CDummy{};\
-			template <typename t_CFunction>\
-			struct TCEval2\
-			{\
-				typedef void CRet;\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR>\
-			struct TCEval2<tR ()>\
-			{\
-				typedef tR CRet;\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem());\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR, typename t0>\
-			struct TCEval2<tR (t0)>\
-			{\
-				typedef tR CRet;\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem(G<t0>()));\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR, typename t0, typename t1>\
-			struct TCEval2<tR (t0, t1)>\
-			{\
-				typedef tR CRet;\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem(G<t0>(), G<t1>()));\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR, typename t0, typename t1, typename t2>\
-			struct TCEval2<tR (t0, t1, t2)>\
-			{\
-				typedef tR CRet;\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem(G<t0>(), G<t1>(), G<t2>()));\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR, typename t0, typename t1, typename t2, typename t3>\
-			struct TCEval2<tR (t0, t1, t2, t3)>\
-			{\
-				typedef tR CRet;\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem(G<t0>(), G<t1>(), G<t2>(), G<t3>()));\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR, typename t0, typename t1, typename t2, typename t3, typename t4>\
-			struct TCEval2<tR (t0, t1, t2, t3, t4)>\
-			{\
-				typedef tR CRet;\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem(G<t0>(), G<t1>(), G<t2>(), G<t3>(), G<t4>()));\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR, typename t0, typename t1, typename t2, typename t3, typename t4, typename t5>\
-			struct TCEval2<tR (t0, t1, t2, t3, t4, t5)>\
-			{\
-				typedef tR CRet;\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem(G<t0>(), G<t1>(), G<t2>(), G<t3>(), G<t4>(), G<t5>()));\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR, typename t0, typename t1, typename t2, typename t3, typename t4, typename t5, typename t6>\
-			struct TCEval2<tR (t0, t1, t2, t3, t4, t5, t6)>\
-			{\
-				typedef tR CRet;\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem(G<t0>(), G<t1>(), G<t2>(), G<t3>(), G<t4>(), G<t5>(), G<t6>()));\
-				static CDummy fs_D(...);\
-			};\
-			template <typename tR, typename t0, typename t1, typename t2, typename t3, typename t4, typename t5, typename t6, typename t7>\
-			struct TCEval2<tR (t0, t1, t2, t3, t4, t5, t6, t7)>\
-			{\
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->_Mem(G<t0>(), G<t1>(), G<t2>(), G<t3>(), G<t4>(), G<t5>(), G<t6>(), G<t7>()));\
-				static CDummy fs_D(...);\
-			};\
-			template <bint t_bValid, typename t_CFunction>\
-			struct TCEval\
-			{\
-				enum\
-				{\
-					mc_Value = false\
-				};\
-				typedef void CReturnType;\
-			};\
-			template <typename t_CFunction>\
-			struct TCEval<true, t_CFunction>\
-			{\
-				typedef decltype(TCEval2<t_CFunction>::fs_D(((t_CType *)nullptr))) CRet;\
-				enum\
-				{\
-					mc_Value = NMib::NTraits::NPrivate::TCReturnConvertibleHelper<CRet, typename TCEval2<t_CFunction>::CRet>::mc_Value\
-					&& !NMib::NTraits::TCIsSame<CRet, CDummy>::mc_Value\
-				};\
-				typedef typename NMib::TCChooseType<mc_Value, CRet, void>::CType CReturnType;\
-			};\
-			typedef TCEval\
-					<\
-						(NMib::NTraits::TCIsClass<t_CType>::mc_Value || NMib::NTraits::TCIsUnion<t_CType>::mc_Value)\
-						&& _ExtraEvalExpression\
-						, t_CFunctionCallType\
-					> CEvalType;\
-		public:\
-			enum\
-			{\
-				mc_Value = CEvalType::mc_Value\
-			};\
-			typedef typename CEvalType::CReturnType CReturnType;\
-		};
-	
-#endif
 		namespace NPrivate
 		{
 			template <typename t_CType>
@@ -3045,7 +2935,6 @@ namespace NMib
 				typedef void CRet;
 				static CDummy fs_D(...);
 			};
-#ifdef DCompiler_clang
 			template <typename tR, typename... t_PCTypes>
 			struct TCEval2<tR (t_PCTypes...)>
 			{
@@ -3053,70 +2942,6 @@ namespace NMib
 				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t_PCTypes>()...));
 				static CDummy fs_D(...);
 			};
-#else
-			template <typename tR>
-			struct TCEval2<tR ()>
-			{
-				typedef tR CRet;
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC());
-				static CDummy fs_D(...);
-			};
-			template <typename tR, typename t0>
-			struct TCEval2<tR (t0)>
-			{
-				typedef tR CRet;
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t0>()));
-				static CDummy fs_D(...);
-			};
-			template <typename tR, typename t0, typename t1>
-			struct TCEval2<tR (t0, t1)>
-			{
-				typedef tR CRet;
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t0>(), G<t1>()));
-				static CDummy fs_D(...);
-			};
-			template <typename tR, typename t0, typename t1, typename t2>
-			struct TCEval2<tR (t0, t1, t2)>
-			{
-				typedef tR CRet;
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t0>(), G<t1>(), G<t2>()));
-				static CDummy fs_D(...);
-			};
-			template <typename tR, typename t0, typename t1, typename t2, typename t3>
-			struct TCEval2<tR (t0, t1, t2, t3)>
-			{
-				typedef tR CRet;
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t0>(), G<t1>(), G<t2>(), G<t3>()));
-				static CDummy fs_D(...);
-			};
-			template <typename tR, typename t0, typename t1, typename t2, typename t3, typename t4>
-			struct TCEval2<tR (t0, t1, t2, t3, t4)>
-			{
-				typedef tR CRet;
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t0>(), G<t1>(), G<t2>(), G<t3>(), G<t4>()));
-				static CDummy fs_D(...);
-			};
-			template <typename tR, typename t0, typename t1, typename t2, typename t3, typename t4, typename t5>
-			struct TCEval2<tR (t0, t1, t2, t3, t4, t5)>
-			{
-				typedef tR CRet;
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t0>(), G<t1>(), G<t2>(), G<t3>(), G<t4>(), G<t5>()));
-				static CDummy fs_D(...);
-			};
-			template <typename tR, typename t0, typename t1, typename t2, typename t3, typename t4, typename t5, typename t6>
-			struct TCEval2<tR (t0, t1, t2, t3, t4, t5, t6)>
-			{
-				typedef tR CRet;
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t0>(), G<t1>(), G<t2>(), G<t3>(), G<t4>(), G<t5>(), G<t6>()));
-				static CDummy fs_D(...);
-			};
-			template <typename tR, typename t0, typename t1, typename t2, typename t3, typename t4, typename t5, typename t6, typename t7>
-			struct TCEval2<tR (t0, t1, t2, t3, t4, t5, t6, t7)>
-			{
-				template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t0>(), G<t1>(), G<t2>(), G<t3>(), G<t4>(), G<t5>(), G<t6>(), G<t7>()));
-				static CDummy fs_D(...);
-			};
-#endif
 			template <bint t_bValid, typename t_CFunction>
 			struct TCEval
 			{
