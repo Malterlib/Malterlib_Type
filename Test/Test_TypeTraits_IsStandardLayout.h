@@ -7,7 +7,7 @@ namespace NStandardLayout
 {
 	class CAbstract
 	{
-		virtual void f_Test() pure;
+		virtual void f_Test() = 0;
 	};
 	class CInheritAbstract : private CAbstract
 	{

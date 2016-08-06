@@ -220,7 +220,7 @@ namespace NCallable
 		class CTestInner : public NMib::NPtr::TCSharedPointerIntrusiveBase<>
 		{
 			public:
-				virtual void f_GetDigest() const pure;
+				virtual void f_GetDigest() const = 0;
 
 				virtual ~CTestInner() 
 				{
