@@ -2101,6 +2101,40 @@ namespace NMib
 		};
 
 		
+		namespace NPrivate
+		{
+			
+			template <typename t_CType>
+			class TCDecayForwardHelper
+			{
+			public:
+				typedef typename TCRemoveReference<t_CType>::CType CWithoutReferenceType;
+
+				typedef 
+					typename TCChooseType
+					<
+						TCIsArray<CWithoutReferenceType>::mc_Value
+						, typename TCRemoveExtent<CWithoutReferenceType>::CType *
+						, typename TCChooseType
+						<
+							TCIsFunction<CWithoutReferenceType>::mc_Value
+							, typename TCAddPointer<CWithoutReferenceType>::CType
+							, t_CType
+						>::CType
+					>::CType CType
+				;
+			};
+
+		}
+
+		template <typename t_CType0>
+		class TCDecayForward
+		{ 
+		public:
+			typedef typename NPrivate::TCDecayForwardHelper<t_CType0>::CType CType;
+		};
+
+		
 		/***************************************************************************************************\
 		|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 		| Function Traits																					|
