@@ -108,6 +108,9 @@ namespace NMib
 #		if defined(DMibPCanDo_int256)
 			DMibTraitsImplementIsInteger(int256);
 #		endif
+#		if defined(DMibPCanDo_int320)
+			DMibTraitsImplementIsInteger(int320);
+#		endif
 #		if defined(DMibPCanDo_int512)
 			DMibTraitsImplementIsInteger(int512);
 #		endif
@@ -447,6 +450,9 @@ namespace NMib
 #		if defined(DMibPCanDo_int256)
 			DMibTraitsImplementIsFundamental(int256);
 #		endif
+#		if defined(DMibPCanDo_int320)
+			DMibTraitsImplementIsFundamental(int320);
+#		endif
 #		if defined(DMibPCanDo_int512)
 			DMibTraitsImplementIsFundamental(int512);
 #		endif
@@ -768,6 +774,9 @@ namespace NMib
 #		if defined(DMibPCanDo_int256) && defined(DMibPCanDo_uint256)
 			DMibTraitsImplementSignedPair(int256, uint256);
 #		endif
+#		if defined(DMibPCanDo_int320) && defined(DMibPCanDo_uint320)
+			DMibTraitsImplementSignedPair(int320, uint320);
+#		endif
 #		if defined(DMibPCanDo_int512) && defined(DMibPCanDo_uint512)
 			DMibTraitsImplementSignedPair(int512, uint512);
 #		endif
@@ -950,6 +959,9 @@ namespace NMib
 #		if defined(DMibPCanDo_int128) && defined(DMibPCanDo_int256)
 			DMibTraitsImplementSizePair(int128, int256);
 #		endif
+#		if defined(DMibPCanDo_int160) && defined(DMibPCanDo_int320)
+			DMibTraitsImplementSizePair(int160, int320);
+#		endif
 #		if defined(DMibPCanDo_int256) && defined(DMibPCanDo_int512)
 			DMibTraitsImplementSizePair(int256, int512);
 #		endif
@@ -1092,6 +1104,9 @@ namespace NMib
 #		endif
 #		if defined(DMibPCanDo_int256)
 			DMibTraitsImplementIntegerFromSizeFundamental(int256);
+#		endif
+#		if defined(DMibPCanDo_int320)
+			DMibTraitsImplementIntegerFromSizeFundamental(int320);
 #		endif
 #		if defined(DMibPCanDo_int512)
 			DMibTraitsImplementIntegerFromSizeFundamental(int512);
