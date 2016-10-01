@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include <Mib/Numeric/fp4096>
+
 class CTestClass0
 {
 };
