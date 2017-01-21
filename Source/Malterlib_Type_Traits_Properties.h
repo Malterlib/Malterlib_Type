@@ -955,6 +955,12 @@ namespace NMib
 		public:
 		};
 
+		template <typename t_CDerived, typename t_CBase>
+		class TCIsBaseOfOrSame : public TCCompileTimeConstant<bool, NPrivate::TCIsBaseOfHelper<t_CBase, t_CDerived>::EValue || TCIsSame<t_CBase, t_CDerived>::mc_Value>
+		{ 
+		public:
+		};
+
 		/***************************************************************************************************\
 		|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 		| Is Base Of																						|
