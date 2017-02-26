@@ -645,7 +645,7 @@ namespace NMib
 		class TCLargestType
 		{
 		public:
-			typedef typename TCChooseType<(constenum(TCSizeOf<t_CType0>::mc_Value) >= constenum(TCSizeOf<t_CType1>::mc_Value)), t_CType0, t_CType1>::CType CType;
+			typedef typename TCChooseType<(TCSizeOf<t_CType0>::mc_Value >= TCSizeOf<t_CType1>::mc_Value), t_CType0, t_CType1>::CType CType;
 		};
 
 		/***************************************************************************************************\
@@ -659,7 +659,7 @@ namespace NMib
 		{
 		public:
 		
-			typedef typename TCChooseType<(constenum(TCSizeOf<t_CType0>::mc_Value) <= constenum(TCSizeOf<t_CType1>::mc_Value)), t_CType0, t_CType1>::CType CType;
+			typedef typename TCChooseType<(TCSizeOf<t_CType0>::mc_Value <= TCSizeOf<t_CType1>::mc_Value), t_CType0, t_CType1>::CType CType;
 		};
 
 

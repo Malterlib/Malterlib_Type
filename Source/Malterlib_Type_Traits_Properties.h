@@ -1127,17 +1127,14 @@ namespace NMib
 				typedef void CClass;
 				typedef NMeta::TCTypeList<> CParams;
 
-				enum
-				{
-					mc_Arity = 0
-					, mc_IsEllipsis = false
-					, mc_IsConst = false
-					, mc_IsVolatile = false
+				static constexpr mint mc_Arity = 0;
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = false;
 #if DMib_NoexceptFunctionType
-					, mc_IsNoExecpt = false
+				static constexpr bool mc_IsNoExecpt = false;
 #endif
-					, mc_IsMemberFunctionPointer = false
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = false;
 			};
 
 			template <typename t_CType>
@@ -1154,15 +1151,12 @@ namespace NMib
 			class TCFunctionTraitsHelper
 			{
 			public:
-				enum
-				{
-					mc_IsFunction = false
-					, mc_Arity = 0
-					, mc_IsEllipsis = false
+				static constexpr bool mc_IsFunction = false;
+				static constexpr mint mc_Arity = 0;
+				static constexpr bool mc_IsEllipsis = false;
 #if DMib_NoexceptFunctionType
-					, mc_IsNoExecpt = false
+				static constexpr bool mc_IsNoExecpt = false;
 #endif
-				};
 
 				typedef void CReturn;
 				typedef NMeta::TCTypeList<> CParams;
@@ -1345,13 +1339,11 @@ namespace NMib
 			class TCFunctionTraitsHelper<t_CReturn (tp_CParams...), true>
 			{
 			public:
-				enum
-				{
-					mc_IsFunction = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = false
-				};
+				static constexpr bool mc_IsFunction = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = false;
+
 				typedef t_CReturn CReturn;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
@@ -1360,13 +1352,11 @@ namespace NMib
 			class TCFunctionTraitsHelper<t_CReturn (tp_CParams...) noexcept, true>
 			{
 			public:
-				enum
-				{
-					mc_IsFunction = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = true
-				};
+				static constexpr bool mc_IsFunction = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = true;
+
 				typedef t_CReturn CReturn;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
@@ -1376,13 +1366,11 @@ namespace NMib
 			class TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...), true>
 			{
 			public:
-				enum
-				{
-					mc_IsFunction = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = false
-				};
+				static constexpr bool mc_IsFunction = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = false;
+
 				typedef t_CReturn CReturn;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
@@ -1391,13 +1379,11 @@ namespace NMib
 			class TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...) noexcept, true>
 			{
 			public:
-				enum
-				{
-					mc_IsFunction = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = true
-				};
+				static constexpr bool mc_IsFunction = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = true;
+
 				typedef t_CReturn CReturn;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
@@ -1407,15 +1393,14 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...)>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = false
-					, mc_IsConst = false
-					, mc_IsVolatile = false
-				};
+
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = false;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = false;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams...);
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1426,15 +1411,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) noexcept>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = true
-					, mc_IsConst = false
-					, mc_IsVolatile = false
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = true;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = false;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams...) noexcept;
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1446,15 +1429,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) const>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = false
-					, mc_IsConst = true
-					, mc_IsVolatile = false
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = false;
+				static constexpr bool mc_IsConst = true;
+				static constexpr bool mc_IsVolatile = false;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams...);
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1465,15 +1446,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) const noexcept>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = true
-					, mc_IsConst = true
-					, mc_IsVolatile = false
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = true;
+				static constexpr bool mc_IsConst = true;
+				static constexpr bool mc_IsVolatile = false;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams...) noexcept;
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1485,15 +1464,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) volatile>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = false
-					, mc_IsConst = false
-					, mc_IsVolatile = true
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = false;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = true;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams...);
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1504,15 +1481,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) volatile noexcept>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = true
-					, mc_IsConst = false
-					, mc_IsVolatile = true
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = true;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = true;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams...) noexcept;
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1524,15 +1499,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) const volatile>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = false
-					, mc_IsConst = true
-					, mc_IsVolatile = true
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = false;
+				static constexpr bool mc_IsConst = true;
+				static constexpr bool mc_IsVolatile = true;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams...);
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1543,15 +1516,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) const volatile noexcept>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = false
-					, mc_IsNoExcept = true
-					, mc_IsConst = true
-					, mc_IsVolatile = true
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = false;
+				static constexpr bool mc_IsNoExcept = true;
+				static constexpr bool mc_IsConst = true;
+				static constexpr bool mc_IsVolatile = true;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams...) noexcept;
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1563,15 +1534,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...)>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = false
-					, mc_IsConst = false
-					, mc_IsVolatile = false
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = false;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = false;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams..., ...);
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1582,15 +1551,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) noexcept>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = true
-					, mc_IsConst = false
-					, mc_IsVolatile = false
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = true;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = false;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams..., ...) noexcept;
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1602,15 +1569,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) const>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = false
-					, mc_IsConst = true
-					, mc_IsVolatile = false
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = false;
+				static constexpr bool mc_IsConst = true;
+				static constexpr bool mc_IsVolatile = false;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams..., ...);
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1621,15 +1586,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) const noexcept>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = true
-					, mc_IsConst = true
-					, mc_IsVolatile = false
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = true;
+				static constexpr bool c_IsConst = true;
+				static constexpr bool mc_IsVolatile = false;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams..., ...) noexcept;
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1641,15 +1604,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) volatile>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = false
-					, mc_IsConst = false
-					, mc_IsVolatile = true
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = false;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = true;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams..., ...);
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1660,15 +1621,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) volatile noexcept>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = true
-					, mc_IsConst = false
-					, mc_IsVolatile = true
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = true;
+				static constexpr bool mc_IsConst = false;
+				static constexpr bool mc_IsVolatile = true;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams..., ...) noexcept;
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1680,15 +1639,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) const volatile>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = false
-					, mc_IsConst = true
-					, mc_IsVolatile = true
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = false;
+				static constexpr bool mc_IsConst = true;
+				static constexpr bool mc_IsVolatile = true;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams..., ...);
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -1699,15 +1656,13 @@ namespace NMib
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) const volatile noexcept>
 			{
 			public:
-				enum
-				{
-					mc_IsMemberFunctionPointer = true
-					, mc_Arity = sizeof...(tp_CParams)
-					, mc_IsEllipsis = true
-					, mc_IsNoExcept = true
-					, mc_IsConst = true
-					, mc_IsVolatile = true
-				};
+				static constexpr bool mc_IsMemberFunctionPointer = true;
+				static constexpr mint mc_Arity = sizeof...(tp_CParams);
+				static constexpr bool mc_IsEllipsis = true;
+				static constexpr bool mc_IsNoExcept = true;
+				static constexpr bool mc_IsConst = true;
+				static constexpr bool mc_IsVolatile = true;
+
 				typedef t_CReturn (CFunctionType)(tp_CParams..., ...) noexcept;
 				typedef t_CReturn CReturn;
 				typedef t_CClass CClass;
@@ -2635,7 +2590,7 @@ namespace NMib
 					enum
 					{
 						mc_Value = 
-						constenum(t_CTraitsCallWith::mc_Arity) == constenum(t_CTraitsToCall::mc_Arity)
+						t_CTraitsCallWith::mc_Arity == t_CTraitsToCall::mc_Arity
 						&& TCReturnConvertibleHelper<typename t_CTraitsToCall::CReturn, typename t_CTraitsCallWith::CReturn>::mc_Value
 						&& TCEvaulateForTypeHelper<t_CTraitsToCall, t_CTraitsCallWith, smint(t_CTraitsCallWith::mc_Arity) - 1>::mc_Value
 					};
@@ -2647,7 +2602,7 @@ namespace NMib
 					enum
 					{
 						mc_Value = 
-						constenum(t_CTraitsCallWith::mc_Arity) >= constenum(t_CTraitsToCall::mc_Arity)
+						t_CTraitsCallWith::mc_Arity >= t_CTraitsToCall::mc_Arity
 						&& TCReturnConvertibleHelper<typename t_CTraitsToCall::CReturn, typename t_CTraitsCallWith::CReturn>::mc_Value
 						&& TCEvaulateForTypeHelper<t_CTraitsToCall, t_CTraitsCallWith, smint(t_CTraitsToCall::mc_Arity) - 1>::mc_Value
 					};
@@ -3444,8 +3399,10 @@ namespace NMib
 		class TCOperatorFullType_NewArray;
 		template <typename t_CType>
 		class TCOperatorType_NewArray;
+#ifndef DCompiler_MSVC
 		template <typename t_CType>
 		class TCHasOperator_NewArray;
+#endif
 		template <typename t_CType>
 		class TCIsOperatorCallable_NewArray;
 		template <typename t_CType, typename t_CFunctionCallType>
@@ -3474,8 +3431,10 @@ namespace NMib
 		class TCOperatorFullType_DeleteArray;
 		template <typename t_CType>
 		class TCOperatorType_DeleteArray;
+#ifndef DCompiler_MSVC
 		template <typename t_CType>
 		class TCHasOperator_DeleteArray;
+#endif
 		template <typename t_CType>
 		class TCIsOperatorCallable_DeleteArray;
 		template <typename t_CType, typename t_CFunctionCallType>
@@ -3484,15 +3443,33 @@ namespace NMib
 		class TCOperatorTraits_DeleteArray;
 
 		template <typename t_CType>
-		class TCHasOperatorNew : public TCCompileTimeConstant<bool, (TCHasOperator_New<t_CType>::mc_Value
-			|| TCHasOperator_NewArray<t_CType>::mc_Value)>
+		class TCHasOperatorNew : public TCCompileTimeConstant
+			<
+				bool
+				, 
+				(
+					TCHasOperator_New<t_CType>::mc_Value
+#ifndef DCompiler_MSVC
+					|| TCHasOperator_NewArray<t_CType>::mc_Value
+#endif
+				)
+			>
 		{ 
 		public:
 		};
 
 		template <typename t_CType>
-		class TCHasOperatorDelete : public TCCompileTimeConstant<bool, (TCHasOperator_Delete<t_CType>::mc_Value
-			|| TCHasOperator_DeleteArray<t_CType>::mc_Value)>
+		class TCHasOperatorDelete : public TCCompileTimeConstant
+			<
+				bool
+				, 
+				(
+					TCHasOperator_Delete<t_CType>::mc_Value
+#ifndef DCompiler_MSVC
+				|| TCHasOperator_DeleteArray<t_CType>::mc_Value
+#endif
+				)
+			>
 		{ 
 		public:
 		};
@@ -3574,9 +3551,13 @@ namespace NMib
 		}
 
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, New, operator new, 0, (mint) noexcept, void *, return nullptr;, *, Safe, true,,,void*);
+#ifndef DCompiler_MSVC
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, NewArray, operator new [], 0, (mint) noexcept, void *, return nullptr;, *, Safe, true,,,void*);
+#endif
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, Delete, operator delete, 0, (void *), void, ;, *, Safe, true,,,void);
+#ifndef DCompiler_MSVC
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, DeleteArray, operator delete [], 0, (void *), void, ;, *, Safe, true,,,void);
+#endif
 
 #define DMibTypeTraitsImplement_MemberTraits_BinaryOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,BinaryOperator,_Operator,bool);
 #define DMibTypeTraitsImplement_MemberTraits_PrefixOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,PrefixOperator,_Operator,bool);

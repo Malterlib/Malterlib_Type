@@ -14,12 +14,6 @@ namespace NMib
 			<
 				typename t_CType
 				, t_CType t_Value
-				, bool t_bValidForEnum
-				= t_CType(int(t_Value)) == t_Value
-				&&
-				(
-					(int(t_Value) >= 0 && t_Value >= t_CType(0)) || (int(t_Value) < 0 && t_Value < t_CType(0))
-				)
 			>
 		struct TCCompileTimeConstant
 		{
@@ -32,22 +26,6 @@ namespace NMib
 			}
 		};
 
-		template <typename t_CType, t_CType t_Value>
-		struct TCCompileTimeConstant<t_CType, t_Value, true>
-		{
-		public:
-			typedef t_CType CType;
-
-			enum
-			{
-				mc_Value = int(t_Value)
-			};
-
-			operator bool ()
-			{
-				return mc_Value != 0;
-			}
-		};
 
 		typedef TCCompileTimeConstant<bool, true> CCompileTimeTrue;
 		typedef TCCompileTimeConstant<bool, false> CCompileTimeFalse;
