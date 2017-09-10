@@ -353,14 +353,14 @@ typedef CTestBase volatile && CTestVRRef;
 typedef CTestBase const volatile && CTestCVRRef;
 
 
-static void fsg_FFunc0(void)
+[[maybe_unused]] static void fsg_FFunc0(void)
 {
 }
-static CTestBase fsg_FFunc1(void)
+[[maybe_unused]] static CTestBase fsg_FFunc1(void)
 {
 	return CTestBase();
 }
-static CTestBase fsg_FFunc2(int)
+[[maybe_unused]] static CTestBase fsg_FFunc2(int)
 {
 	return CTestBase();
 }
@@ -388,14 +388,14 @@ typedef FFunc0Ptr const volatile FFunc0PtrCV;
 typedef FFunc1Ptr const volatile FFunc1PtrCV;
 typedef FFunc2Ptr const volatile FFunc2PtrCV;
 
-static void fsg_FFunc0El(...)
+[[maybe_unused]] static void fsg_FFunc0El(...)
 {
 }
-static CTestBase fsg_FFunc1El(...)
+[[maybe_unused]] static CTestBase fsg_FFunc1El(...)
 {
 	return CTestBase();
 }
-static CTestBase fsg_FFunc2El(CTestBase, ...)
+[[maybe_unused]] static CTestBase fsg_FFunc2El(CTestBase, ...)
 {
 	return CTestBase();
 }

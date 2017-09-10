@@ -23,8 +23,8 @@ void blaha()
 
 	CTestInherit Test3;
 //	CTestClass &Test2 = NMib::fg_Move(Test3);
-	CTestClass &Test4 = Test3;
-	CTestClass &&Test5 = NMib::fg_Move(Test3);
+	[[maybe_unused]] CTestClass &Test4 = Test3;
+	[[maybe_unused]] CTestClass &&Test5 = NMib::fg_Move(Test3);
 }
 
 #include <type_traits>
