@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -41,14 +41,12 @@ DMibStaticCheck((	TCSizeOf<CTestCVRRef>::mc_Value == sizeof(CTestCVRRef)		));
 DMibStaticCheck((	TCSizeOf<PFFunc0>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<PFFunc1>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<PFFunc2>::mc_Value == 0			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCSizeOf<FFunc0Ref>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc1Ref>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc2Ref>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc0RRef>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc1RRef>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc2RRef>::mc_Value == 0			));
-#endif
 DMibStaticCheck((	TCSizeOf<FFunc0Ptr>::mc_Value == sizeof(FFunc0Ptr)			));
 DMibStaticCheck((	TCSizeOf<FFunc1Ptr>::mc_Value == sizeof(FFunc1Ptr)			));
 DMibStaticCheck((	TCSizeOf<FFunc2Ptr>::mc_Value == sizeof(FFunc2Ptr)			));
@@ -112,14 +110,12 @@ DMibStaticCheck((	TCSizeOf<FMFunc2CVPtrCV>::mc_Value == sizeof(FMFunc2CVPtrCV)	)
 DMibStaticCheck((	TCSizeOf<PFFunc0El>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<PFFunc1El>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<PFFunc2El>::mc_Value == 0			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCSizeOf<FFunc0ElRef>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc1ElRef>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc2ElRef>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc0ElRRef>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc1ElRRef>::mc_Value == 0			));
 DMibStaticCheck((	TCSizeOf<FFunc2ElRRef>::mc_Value == 0			));
-#endif
 DMibStaticCheck((	TCSizeOf<FFunc0ElPtr>::mc_Value == sizeof(FFunc0ElPtr)			));
 DMibStaticCheck((	TCSizeOf<FFunc1ElPtr>::mc_Value == sizeof(FFunc1ElPtr)			));
 DMibStaticCheck((	TCSizeOf<FFunc2ElPtr>::mc_Value == sizeof(FFunc2ElPtr)			));

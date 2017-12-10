@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #pragma once
@@ -1131,9 +1131,7 @@ namespace NMib
 				static constexpr bool mc_IsEllipsis = false;
 				static constexpr bool mc_IsConst = false;
 				static constexpr bool mc_IsVolatile = false;
-#if DMib_NoexceptFunctionType
 				static constexpr bool mc_IsNoExecpt = false;
-#endif
 				static constexpr bool mc_IsMemberFunctionPointer = false;
 			};
 
@@ -1154,9 +1152,7 @@ namespace NMib
 				static constexpr bool mc_IsFunction = false;
 				static constexpr mint mc_Arity = 0;
 				static constexpr bool mc_IsEllipsis = false;
-#if DMib_NoexceptFunctionType
 				static constexpr bool mc_IsNoExecpt = false;
-#endif
 
 				typedef void CReturn;
 				typedef NMeta::TCTypeList<> CParams;
@@ -1173,7 +1169,6 @@ namespace NMib
 				};
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams...) noexcept>
 			{
@@ -1183,7 +1178,6 @@ namespace NMib
 					EValue = true
 				};
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams..., ...)>
@@ -1195,7 +1189,6 @@ namespace NMib
 				};
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams..., ...) noexcept>
 			{
@@ -1205,7 +1198,6 @@ namespace NMib
 					EValue = true
 				};
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (*)(tp_CParams...)>
@@ -1214,14 +1206,12 @@ namespace NMib
 				typedef t_CReturn (CType)(tp_CParams...);
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (*)(tp_CParams...) noexcept>
 			{
 			public:
 				typedef t_CReturn (CType)(tp_CParams...) noexcept;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (*)(tp_CParams..., ...)>
@@ -1230,14 +1220,12 @@ namespace NMib
 				typedef t_CReturn (CType)(tp_CParams..., ...);
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (*)(tp_CParams..., ...) noexcept>
 			{
 			public:
 				typedef t_CReturn (CType)(tp_CParams..., ...) noexcept;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* const)(tp_CParams...)>
@@ -1246,14 +1234,12 @@ namespace NMib
 				typedef t_CReturn (CType)(tp_CParams...);
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* const)(tp_CParams...) noexcept>
 			{
 			public:
 				typedef t_CReturn (CType)(tp_CParams...) noexcept;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* const)(tp_CParams..., ...)>
@@ -1262,14 +1248,12 @@ namespace NMib
 				typedef t_CReturn (CType)(tp_CParams..., ...);
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* const)(tp_CParams..., ...) noexcept>
 			{
 			public:
 				typedef t_CReturn (CType)(tp_CParams..., ...) noexcept;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* volatile)(tp_CParams...)>
@@ -1278,14 +1262,12 @@ namespace NMib
 				typedef t_CReturn (CType)(tp_CParams...);
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* volatile)(tp_CParams...) noexcept>
 			{
 			public:
 				typedef t_CReturn (CType)(tp_CParams...) noexcept;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* volatile)(tp_CParams..., ...)>
@@ -1294,14 +1276,12 @@ namespace NMib
 				typedef t_CReturn (CType)(tp_CParams..., ...);
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* volatile)(tp_CParams..., ...) noexcept>
 			{
 			public:
 				typedef t_CReturn (CType)(tp_CParams..., ...) noexcept;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* const volatile)(tp_CParams...)>
@@ -1310,14 +1290,12 @@ namespace NMib
 				typedef t_CReturn (CType)(tp_CParams...);
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* const volatile)(tp_CParams...) noexcept>
 			{
 			public:
 				typedef t_CReturn (CType)(tp_CParams...) noexcept;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* const volatile)(tp_CParams..., ...)>
@@ -1326,14 +1304,12 @@ namespace NMib
 				typedef t_CReturn (CType)(tp_CParams..., ...);
 			};
 
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCRemovePointerHelper<t_CReturn (* const volatile)(tp_CParams..., ...) noexcept>
 			{
 			public:
 				typedef t_CReturn (CType)(tp_CParams..., ...) noexcept;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCFunctionTraitsHelper<t_CReturn (tp_CParams...), true>
@@ -1347,7 +1323,6 @@ namespace NMib
 				typedef t_CReturn CReturn;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCFunctionTraitsHelper<t_CReturn (tp_CParams...) noexcept, true>
 			{
@@ -1360,7 +1335,6 @@ namespace NMib
 				typedef t_CReturn CReturn;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...), true>
@@ -1374,7 +1348,6 @@ namespace NMib
 				typedef t_CReturn CReturn;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename... tp_CParams>
 			class TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...) noexcept, true>
 			{
@@ -1387,7 +1360,6 @@ namespace NMib
 				typedef t_CReturn CReturn;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename t_CClass , typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...)>
@@ -1406,7 +1378,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename t_CClass , typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) noexcept>
 			{
@@ -1423,7 +1394,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) const>
@@ -1441,7 +1411,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) const noexcept>
 			{
@@ -1458,7 +1427,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) volatile>
@@ -1476,7 +1444,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) volatile noexcept>
 			{
@@ -1493,7 +1460,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) const volatile>
@@ -1511,7 +1477,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams...) const volatile noexcept>
 			{
@@ -1528,7 +1493,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams...> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...)>
@@ -1546,7 +1510,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) noexcept>
 			{
@@ -1563,7 +1526,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) const>
@@ -1581,7 +1543,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) const noexcept>
 			{
@@ -1598,7 +1559,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) volatile>
@@ -1616,7 +1576,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) volatile noexcept>
 			{
@@ -1633,7 +1592,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#endif
 
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) const volatile>
@@ -1651,7 +1609,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#if DMib_NoexceptFunctionType
 			template <typename t_CReturn, typename t_CClass, typename... tp_CParams>
 			class TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass ::*)(tp_CParams..., ...) const volatile noexcept>
 			{
@@ -1668,7 +1625,6 @@ namespace NMib
 				typedef t_CClass CClass;
 				typedef NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis> CParams;
 			};
-#endif
 		}
 
 		template <typename t_CType0>
@@ -2226,7 +2182,6 @@ namespace NMib
 	namespace NTraits
 	{
 
-#ifdef DCompiler_clang
 		/***************************************************************************************************\
 		|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 		| Is nothrow constructible with																		|
@@ -2276,8 +2231,6 @@ namespace NMib
 			: NPrivate::TCIsConstructorNothrowCallableWithImp2<t_CType, t_PCArguments...>
 		{
 		};
-#endif
-
 		
 		/***************************************************************************************************\
 		|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
@@ -3399,10 +3352,8 @@ namespace NMib
 		class TCOperatorFullType_NewArray;
 		template <typename t_CType>
 		class TCOperatorType_NewArray;
-#ifndef DCompiler_MSVC
 		template <typename t_CType>
 		class TCHasOperator_NewArray;
-#endif
 		template <typename t_CType>
 		class TCIsOperatorCallable_NewArray;
 		template <typename t_CType, typename t_CFunctionCallType>
@@ -3431,10 +3382,8 @@ namespace NMib
 		class TCOperatorFullType_DeleteArray;
 		template <typename t_CType>
 		class TCOperatorType_DeleteArray;
-#ifndef DCompiler_MSVC
 		template <typename t_CType>
 		class TCHasOperator_DeleteArray;
-#endif
 		template <typename t_CType>
 		class TCIsOperatorCallable_DeleteArray;
 		template <typename t_CType, typename t_CFunctionCallType>
@@ -3449,9 +3398,7 @@ namespace NMib
 				, 
 				(
 					TCHasOperator_New<t_CType>::mc_Value
-#ifndef DCompiler_MSVC
 					|| TCHasOperator_NewArray<t_CType>::mc_Value
-#endif
 				)
 			>
 		{ 
@@ -3465,9 +3412,7 @@ namespace NMib
 				, 
 				(
 					TCHasOperator_Delete<t_CType>::mc_Value
-#ifndef DCompiler_MSVC
-				|| TCHasOperator_DeleteArray<t_CType>::mc_Value
-#endif
+					|| TCHasOperator_DeleteArray<t_CType>::mc_Value
 				)
 			>
 		{ 
@@ -3551,13 +3496,9 @@ namespace NMib
 		}
 
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, New, operator new, 0, (mint) noexcept, void *, return nullptr;, *, Safe, true,,,void*);
-#ifndef DCompiler_MSVC
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, NewArray, operator new [], 0, (mint) noexcept, void *, return nullptr;, *, Safe, true,,,void*);
-#endif
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, Delete, operator delete, 0, (void *), void, ;, *, Safe, true,,,void);
-#ifndef DCompiler_MSVC
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, DeleteArray, operator delete [], 0, (void *), void, ;, *, Safe, true,,,void);
-#endif
 
 #define DMibTypeTraitsImplement_MemberTraits_BinaryOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,BinaryOperator,_Operator,bool);
 #define DMibTypeTraitsImplement_MemberTraits_PrefixOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,PrefixOperator,_Operator,bool);

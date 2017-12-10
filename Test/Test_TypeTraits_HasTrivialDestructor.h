@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -81,14 +81,12 @@ DMibStaticCheck((	TCHasTrivialDestructor<CTestCVRRef>::mc_Value					));
 DMibStaticCheck((	!TCHasTrivialDestructor<PFFunc0>::mc_Value						));
 DMibStaticCheck((	!TCHasTrivialDestructor<PFFunc1>::mc_Value						));
 DMibStaticCheck((	!TCHasTrivialDestructor<PFFunc2>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc0Ref>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc1Ref>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc2Ref>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc0RRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc1RRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc2RRef>::mc_Value						));
-#endif
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc0Ptr>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc1Ptr>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc2Ptr>::mc_Value						));
@@ -152,14 +150,12 @@ DMibStaticCheck((	TCHasTrivialDestructor<FMFunc2CVPtrCV>::mc_Value				));
 DMibStaticCheck((	!TCHasTrivialDestructor<PFFunc0El>::mc_Value						));
 DMibStaticCheck((	!TCHasTrivialDestructor<PFFunc1El>::mc_Value						));
 DMibStaticCheck((	!TCHasTrivialDestructor<PFFunc2El>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc0ElRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc1ElRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc2ElRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc0ElRRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc1ElRRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc2ElRRef>::mc_Value						));
-#endif
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc0ElPtr>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc1ElPtr>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialDestructor<FFunc2ElPtr>::mc_Value						));

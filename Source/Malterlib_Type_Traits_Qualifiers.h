@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 
@@ -101,39 +101,6 @@ namespace NMib
 #pragma warning(pop)
 #endif
 			};
-
-#ifdef DCompiler_MSVC
-			// Once again we are working around bugs in the MSVC compiler
-
-			template <typename t_CType>
-			class TCConstQualifier<t_CType const []>
-			{
-			public:
-				enum
-				{
-					EValue = true,
-				};
-				typedef t_CType CUnqualified [];
-				typedef t_CType const CQualified [];
-			};
-
-			template <typename t_CType>
-			class TCVolatileQualifier<t_CType volatile []>
-			{
-			public:
-				enum
-				{
-					EValue = true,
-				};
-				typedef t_CType CUnqualified [];
-				typedef t_CType volatile CQualified [];
-			};
-
-
-#			define DMibPreFileToIterate "Malterlib/Type/Source/Private/Malterlib_Type_Traits_Private_Qualifiers.h"
-#			include DMibPreIterate(32)
-
-#endif
 
 		}
 

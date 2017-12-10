@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -40,10 +40,7 @@ namespace NConvertible
 	DMibStaticCheck((	!TCIsConvertible<char *, CTestConvert2>::mc_Value					));
 
 	DMibStaticCheck((	TCIsConvertible<CTestInherit, CTestClass>::mc_Value					));
-#ifndef DCompiler_MSVC
 	DMibStaticCheck((	TCIsConvertible<CTestInherit &&, CTestClass &&>::mc_Value					));
-#endif
-	
 }
 
 // Void
@@ -97,14 +94,12 @@ DMibStaticCheck((	!TCIsConvertible<CTestCVRRef, int>::mc_Value					));
 DMibStaticCheck((	!TCIsConvertible<PFFunc0, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<PFFunc1, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<PFFunc2, int>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsConvertible<FFunc0Ref, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc1Ref, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc2Ref, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc0RRef, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc1RRef, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc2RRef, int>::mc_Value						));
-#endif
 DMibStaticCheck((	!TCIsConvertible<FFunc0Ptr, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc1Ptr, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc2Ptr, int>::mc_Value						));
@@ -168,14 +163,12 @@ DMibStaticCheck((	!TCIsConvertible<FMFunc2CVPtrCV, int>::mc_Value				));
 DMibStaticCheck((	!TCIsConvertible<PFFunc0El, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<PFFunc1El, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<PFFunc2El, int>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsConvertible<FFunc0ElRef, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc1ElRef, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc2ElRef, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc0ElRRef, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc1ElRRef, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc2ElRRef, int>::mc_Value						));
-#endif
 DMibStaticCheck((	!TCIsConvertible<FFunc0ElPtr, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc1ElPtr, int>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc2ElPtr, int>::mc_Value						));
@@ -323,16 +316,13 @@ DMibStaticCheck((	TCIsConvertible<CTestRef, CTestRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<CTestCRef, CTestCRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<CTestVRef, CTestVRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<CTestCVRef, CTestCVRef>::mc_Value					));
-#ifndef DCompiler_MSVC
 DMibStaticCheck((	TCIsConvertible<CTestRRef, CTestRRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<CTestCRRef, CTestCRRef>::mc_Value					));
 DMibStaticCheck((	TCIsConvertible<CTestVRRef, CTestVRRef>::mc_Value					));
 DMibStaticCheck((	TCIsConvertible<CTestCVRRef, CTestCVRRef>::mc_Value					));
-#endif
 DMibStaticCheck((	!TCIsConvertible<PFFunc0, PFFunc0>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<PFFunc1, PFFunc1>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<PFFunc2, PFFunc2>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsConvertible<FFunc0Ref, FFunc0Ref>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc1Ref, FFunc1Ref>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc2Ref, FFunc2Ref>::mc_Value						));
@@ -357,7 +347,6 @@ DMibStaticCheck((	!TCIsConvertible<FFunc2Ptr, FFunc2Ref>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc0Ptr, FFunc0RRef>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc1Ptr, FFunc1RRef>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<FFunc2Ptr, FFunc2RRef>::mc_Value						));
-#endif
 DMibStaticCheck((	TCIsConvertible<FFunc0PtrC, FFunc0PtrC>::mc_Value					));
 DMibStaticCheck((	TCIsConvertible<FFunc1PtrC, FFunc1PtrC>::mc_Value					));
 DMibStaticCheck((	TCIsConvertible<FFunc2PtrC, FFunc2PtrC>::mc_Value					));
@@ -418,14 +407,12 @@ DMibStaticCheck((	TCIsConvertible<FMFunc2CVPtrCV, FMFunc2CVPtrCV>::mc_Value				)
 DMibStaticCheck((	!TCIsConvertible<PFFunc0El, PFFunc0El>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<PFFunc1El, PFFunc1El>::mc_Value						));
 DMibStaticCheck((	!TCIsConvertible<PFFunc2El, PFFunc2El>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsConvertible<FFunc0ElRef, FFunc0ElRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc1ElRef, FFunc1ElRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc2ElRef, FFunc2ElRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc0ElRRef, FFunc0ElRRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc1ElRRef, FFunc1ElRRef>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc2ElRRef, FFunc2ElRRef>::mc_Value						));
-#endif
 DMibStaticCheck((	TCIsConvertible<FFunc0ElPtr, FFunc0ElPtr>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc1ElPtr, FFunc1ElPtr>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<FFunc2ElPtr, FFunc2ElPtr>::mc_Value						));
@@ -529,7 +516,6 @@ DMibStaticCheck((	TCIsConvertible<CTest3DArrayV, TCDecay<CTest3DArrayV>::CType>:
 DMibStaticCheck((	TCIsConvertible<CTest3DArrayCV, TCDecay<CTest3DArrayCV>::CType>::mc_Value				));
 
 
-#ifndef DCompiler_MSVC
 DMibStaticCheck((	!TCIsConvertible<CTestArray2, CTestArray2>::mc_Value					));
 DMibStaticCheck((	!TCIsConvertible<CTestArray2C, CTestArray2C>::mc_Value					));
 DMibStaticCheck((	!TCIsConvertible<CTestArray2V, CTestArray2V>::mc_Value					));
@@ -554,7 +540,6 @@ DMibStaticCheck((	!TCIsConvertible<CTest3DArray, CTest3DArray>::mc_Value					));
 DMibStaticCheck((	!TCIsConvertible<CTest3DArrayC, CTest3DArrayC>::mc_Value					));
 DMibStaticCheck((	!TCIsConvertible<CTest3DArrayV, CTest3DArrayV>::mc_Value					));
 DMibStaticCheck((	!TCIsConvertible<CTest3DArrayCV, CTest3DArrayCV>::mc_Value				));
-#endif
 
 DMibStaticCheck((	TCIsConvertible<void *, void *>::mc_Value						));
 DMibStaticCheck((	TCIsConvertible<void, void>::mc_Value							));

@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -78,14 +78,12 @@ DMibStaticCheck((	!TCIsStateless<CTestCVRRef>::mc_Value					));
 DMibStaticCheck((	!TCIsStateless<PFFunc0>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<PFFunc1>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<PFFunc2>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsStateless<FFunc0Ref>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc1Ref>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc2Ref>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc0RRef>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc1RRef>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc2RRef>::mc_Value						));
-#endif
 DMibStaticCheck((	!TCIsStateless<FFunc0Ptr>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc1Ptr>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc2Ptr>::mc_Value						));
@@ -149,14 +147,12 @@ DMibStaticCheck((	!TCIsStateless<FMFunc2CVPtrCV>::mc_Value				));
 DMibStaticCheck((	!TCIsStateless<PFFunc0El>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<PFFunc1El>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<PFFunc2El>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsStateless<FFunc0ElRef>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc1ElRef>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc2ElRef>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc0ElRRef>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc1ElRRef>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc2ElRRef>::mc_Value						));
-#endif
 DMibStaticCheck((	!TCIsStateless<FFunc0ElPtr>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc1ElPtr>::mc_Value						));
 DMibStaticCheck((	!TCIsStateless<FFunc2ElPtr>::mc_Value						));

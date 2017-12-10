@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -459,14 +459,12 @@ DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestCVPtrCV>::CType, CTestCVPtr>:
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc0>::CType, PFFunc0>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc1>::CType, PFFunc1>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc2>::CType, PFFunc2>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0Ref>::CType, FFunc0Ref>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1Ref>::CType, FFunc1Ref>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2Ref>::CType, FFunc2Ref>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0RRef>::CType, FFunc0RRef>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1RRef>::CType, FFunc1RRef>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2RRef>::CType, FFunc2RRef>::mc_Value				));
-#endif
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0Ptr>::CType, FFunc0Ptr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1Ptr>::CType, FFunc1Ptr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2Ptr>::CType, FFunc2Ptr>::mc_Value				));
@@ -530,14 +528,12 @@ DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2CVPtrCV>::CType, FMFunc2CVP
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc0El>::CType, PFFunc0El>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc1El>::CType, PFFunc1El>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc2El>::CType, PFFunc2El>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0ElRef>::CType, FFunc0ElRef>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1ElRef>::CType, FFunc1ElRef>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2ElRef>::CType, FFunc2ElRef>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0ElRRef>::CType, FFunc0ElRRef>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1ElRRef>::CType, FFunc1ElRRef>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2ElRRef>::CType, FFunc2ElRRef>::mc_Value				));
-#endif
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0ElPtr>::CType, FFunc0ElPtr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1ElPtr>::CType, FFunc1ElPtr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2ElPtr>::CType, FFunc2ElPtr>::mc_Value				));

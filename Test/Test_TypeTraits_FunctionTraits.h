@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -48,14 +48,12 @@ DMibStaticCheck((	!TCFunctionTraits<CTestCVRRef>::mc_IsFunction		));
 DMibStaticCheck((	TCFunctionTraits<PFFunc0>::mc_IsFunction				));
 DMibStaticCheck((	TCFunctionTraits<PFFunc1>::mc_IsFunction				));
 DMibStaticCheck((	TCFunctionTraits<PFFunc2>::mc_IsFunction				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCFunctionTraits<FFunc0Ref>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1Ref>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2Ref>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc0RRef>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1RRef>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2RRef>::mc_IsFunction		));
-#endif
 DMibStaticCheck((	!TCFunctionTraits<FFunc0Ptr>::mc_IsFunction			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1Ptr>::mc_IsFunction			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2Ptr>::mc_IsFunction			));
@@ -119,14 +117,12 @@ DMibStaticCheck((	!TCFunctionTraits<FMFunc2CVPtrCV>::mc_IsFunction		));
 DMibStaticCheck((	TCFunctionTraits<PFFunc0El>::mc_IsFunction				));
 DMibStaticCheck((	TCFunctionTraits<PFFunc1El>::mc_IsFunction				));
 DMibStaticCheck((	TCFunctionTraits<PFFunc2El>::mc_IsFunction				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElRef>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElRef>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElRef>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElRRef>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElRRef>::mc_IsFunction		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElRRef>::mc_IsFunction		));
-#endif
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElPtr>::mc_IsFunction			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElPtr>::mc_IsFunction			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElPtr>::mc_IsFunction			));
@@ -269,14 +265,12 @@ DMibStaticCheck((	!TCMemberFunctionPointerTraits<CTestCVRRef>::mc_IsMemberFuncti
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc0>::mc_IsMemberFunctionPointer				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc1>::mc_IsMemberFunctionPointer				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc2>::mc_IsMemberFunctionPointer				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0Ref>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1Ref>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2Ref>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0RRef>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1RRef>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2RRef>::mc_IsMemberFunctionPointer		));
-#endif
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0Ptr>::mc_IsMemberFunctionPointer			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1Ptr>::mc_IsMemberFunctionPointer			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2Ptr>::mc_IsMemberFunctionPointer			));
@@ -340,14 +334,12 @@ DMibStaticCheck((	TCMemberFunctionPointerTraits<FMFunc2CVPtrCV>::mc_IsMemberFunc
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc0El>::mc_IsMemberFunctionPointer				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc1El>::mc_IsMemberFunctionPointer				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc2El>::mc_IsMemberFunctionPointer				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElRef>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElRef>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElRef>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElRRef>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElRRef>::mc_IsMemberFunctionPointer		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElRRef>::mc_IsMemberFunctionPointer		));
-#endif
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElPtr>::mc_IsMemberFunctionPointer			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElPtr>::mc_IsMemberFunctionPointer			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElPtr>::mc_IsMemberFunctionPointer			));
@@ -498,14 +490,12 @@ DMibStaticCheck((	!TCFunctionTraits<CTestCVRRef>::mc_Arity		));
 DMibStaticCheck((	TCFunctionTraits<PFFunc0>::mc_Arity == 0		));
 DMibStaticCheck((	TCFunctionTraits<PFFunc1>::mc_Arity == 0		));
 DMibStaticCheck((	TCFunctionTraits<PFFunc2>::mc_Arity == 1		));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCFunctionTraits<FFunc0Ref>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1Ref>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2Ref>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc0RRef>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1RRef>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2RRef>::mc_Arity		));
-#endif
 DMibStaticCheck((	!TCFunctionTraits<FFunc0Ptr>::mc_Arity			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1Ptr>::mc_Arity			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2Ptr>::mc_Arity			));
@@ -569,14 +559,12 @@ DMibStaticCheck((	!TCFunctionTraits<FMFunc2CVPtrCV>::mc_Arity		));
 DMibStaticCheck((	TCFunctionTraits<PFFunc0El>::mc_Arity == 0			));
 DMibStaticCheck((	TCFunctionTraits<PFFunc1El>::mc_Arity == 0			));
 DMibStaticCheck((	TCFunctionTraits<PFFunc2El>::mc_Arity == 1			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElRef>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElRef>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElRef>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElRRef>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElRRef>::mc_Arity		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElRRef>::mc_Arity		));
-#endif
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElPtr>::mc_Arity			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElPtr>::mc_Arity			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElPtr>::mc_Arity			));
@@ -719,14 +707,12 @@ DMibStaticCheck((	!TCMemberFunctionPointerTraits<CTestCVRRef>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc0>::mc_Arity				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc1>::mc_Arity				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc2>::mc_Arity				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0Ref>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1Ref>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2Ref>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0RRef>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1RRef>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2RRef>::mc_Arity		));
-#endif
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0Ptr>::mc_Arity			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1Ptr>::mc_Arity			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2Ptr>::mc_Arity			));
@@ -790,14 +776,12 @@ DMibStaticCheck((	TCMemberFunctionPointerTraits<FMFunc2CVPtrCV>::mc_Arity == 1		
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc0El>::mc_Arity				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc1El>::mc_Arity				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc2El>::mc_Arity				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElRef>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElRef>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElRef>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElRRef>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElRRef>::mc_Arity		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElRRef>::mc_Arity		));
-#endif
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElPtr>::mc_Arity			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElPtr>::mc_Arity			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElPtr>::mc_Arity			));
@@ -948,14 +932,12 @@ DMibStaticCheck((	!TCFunctionTraits<CTestCVRRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<PFFunc0>::mc_IsEllipsis				));
 DMibStaticCheck((	!TCFunctionTraits<PFFunc1>::mc_IsEllipsis				));
 DMibStaticCheck((	!TCFunctionTraits<PFFunc2>::mc_IsEllipsis				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCFunctionTraits<FFunc0Ref>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1Ref>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2Ref>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc0RRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1RRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2RRef>::mc_IsEllipsis		));
-#endif
 DMibStaticCheck((	!TCFunctionTraits<FFunc0Ptr>::mc_IsEllipsis			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1Ptr>::mc_IsEllipsis			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2Ptr>::mc_IsEllipsis			));
@@ -1019,14 +1001,12 @@ DMibStaticCheck((	!TCFunctionTraits<FMFunc2CVPtrCV>::mc_IsEllipsis		));
 DMibStaticCheck((	TCFunctionTraits<PFFunc0El>::mc_IsEllipsis				));
 DMibStaticCheck((	TCFunctionTraits<PFFunc1El>::mc_IsEllipsis				));
 DMibStaticCheck((	TCFunctionTraits<PFFunc2El>::mc_IsEllipsis				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElRRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElRRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElRRef>::mc_IsEllipsis		));
-#endif
 DMibStaticCheck((	!TCFunctionTraits<FFunc0ElPtr>::mc_IsEllipsis			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc1ElPtr>::mc_IsEllipsis			));
 DMibStaticCheck((	!TCFunctionTraits<FFunc2ElPtr>::mc_IsEllipsis			));
@@ -1169,14 +1149,12 @@ DMibStaticCheck((	!TCMemberFunctionPointerTraits<CTestCVRRef>::mc_IsEllipsis		))
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc0>::mc_IsEllipsis				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc1>::mc_IsEllipsis				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc2>::mc_IsEllipsis				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0Ref>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1Ref>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2Ref>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0RRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1RRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2RRef>::mc_IsEllipsis		));
-#endif
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0Ptr>::mc_IsEllipsis			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1Ptr>::mc_IsEllipsis			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2Ptr>::mc_IsEllipsis			));
@@ -1240,14 +1218,12 @@ DMibStaticCheck((	!TCMemberFunctionPointerTraits<FMFunc2CVPtrCV>::mc_IsEllipsis	
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc0El>::mc_IsEllipsis				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc1El>::mc_IsEllipsis				));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<PFFunc2El>::mc_IsEllipsis				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElRRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElRRef>::mc_IsEllipsis		));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElRRef>::mc_IsEllipsis		));
-#endif
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc0ElPtr>::mc_IsEllipsis			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc1ElPtr>::mc_IsEllipsis			));
 DMibStaticCheck((	!TCMemberFunctionPointerTraits<FFunc2ElPtr>::mc_IsEllipsis			));
@@ -1397,14 +1373,12 @@ DMibStaticCheck((	TCIsSame<TCFunctionTraits<CTestCVRRef>::CReturn, void>::mc_Val
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<PFFunc0>::CReturn, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<PFFunc1>::CReturn, CTestBase>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<PFFunc2>::CReturn, CTestBase>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc0Ref>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc1Ref>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc2Ref>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc0RRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc1RRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc2RRef>::CReturn, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc0Ptr>::CReturn, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc1Ptr>::CReturn, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc2Ptr>::CReturn, void>::mc_Value			));
@@ -1468,14 +1442,12 @@ DMibStaticCheck((	TCIsSame<TCFunctionTraits<FMFunc2CVPtrCV>::CReturn, void>::mc_
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<PFFunc0El>::CReturn, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<PFFunc1El>::CReturn, CTestBase>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<PFFunc2El>::CReturn, CTestBase>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc0ElRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc1ElRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc2ElRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc0ElRRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc1ElRRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc2ElRRef>::CReturn, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc0ElPtr>::CReturn, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc1ElPtr>::CReturn, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits<FFunc2ElPtr>::CReturn, void>::mc_Value			));
@@ -1616,14 +1588,12 @@ DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<CTestCVRRef>::CReturn, 
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc0>::CReturn, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc1>::CReturn, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc2>::CReturn, void>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0Ref>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1Ref>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2Ref>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0RRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1RRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2RRef>::CReturn, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0Ptr>::CReturn, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1Ptr>::CReturn, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2Ptr>::CReturn, void>::mc_Value			));
@@ -1687,14 +1657,12 @@ DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FMFunc2CVPtrCV>::CRetur
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc0El>::CReturn, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc1El>::CReturn, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc2El>::CReturn, void>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElRRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElRRef>::CReturn, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElRRef>::CReturn, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElPtr>::CReturn, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElPtr>::CReturn, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElPtr>::CReturn, void>::mc_Value			));
@@ -1842,14 +1810,12 @@ DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<CTestCVRRef, 0>::CType,
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<PFFunc0, 0>::CType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<PFFunc1, 0>::CType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<PFFunc2, 0>::CType, int>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc0Ref, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc1Ref, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc2Ref, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc0RRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc1RRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc2RRef, 0>::CType, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc0Ptr, 0>::CType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc1Ptr, 0>::CType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc2Ptr, 0>::CType, void>::mc_Value			));
@@ -1913,14 +1879,12 @@ DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FMFunc2CVPtrCV, 0>::CTy
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<PFFunc0El, 0>::CType, CFunctionTraitTag_Ellipsis>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<PFFunc1El, 0>::CType, CFunctionTraitTag_Ellipsis>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<PFFunc2El, 0>::CType, CTestBase>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc0ElRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc1ElRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc2ElRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc0ElRRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc1ElRRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc2ElRRef, 0>::CType, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc0ElPtr, 0>::CType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc1ElPtr, 0>::CType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCFunctionTraits_ArgumentType<FFunc2ElPtr, 0>::CType, void>::mc_Value			));
@@ -2061,14 +2025,12 @@ DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<CTestCVRRe
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<PFFunc0, 0>::CType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<PFFunc1, 0>::CType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<PFFunc2, 0>::CType, void>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc0Ref, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc1Ref, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc2Ref, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc0RRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc1RRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc2RRef, 0>::CType, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc0Ptr, 0>::CType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc1Ptr, 0>::CType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc2Ptr, 0>::CType, void>::mc_Value			));
@@ -2132,14 +2094,12 @@ DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FMFunc2CVP
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<PFFunc0El, 0>::CType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<PFFunc1El, 0>::CType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<PFFunc2El, 0>::CType, void>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc0ElRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc1ElRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc2ElRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc0ElRRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc1ElRRef, 0>::CType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc2ElRRef, 0>::CType, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc0ElPtr, 0>::CType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc1ElPtr, 0>::CType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits_ArgumentType<FFunc2ElPtr, 0>::CType, void>::mc_Value			));
@@ -2286,14 +2246,12 @@ DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<CTestCVRRef>::CClass, v
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc0>::CClass, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc1>::CClass, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc2>::CClass, void>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0Ref>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1Ref>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2Ref>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0RRef>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1RRef>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2RRef>::CClass, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0Ptr>::CClass, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1Ptr>::CClass, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2Ptr>::CClass, void>::mc_Value			));
@@ -2357,14 +2315,12 @@ DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FMFunc2CVPtrCV>::CClass
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc0El>::CClass, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc1El>::CClass, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc2El>::CClass, void>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElRef>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElRef>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElRef>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElRRef>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElRRef>::CClass, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElRRef>::CClass, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElPtr>::CClass, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElPtr>::CClass, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElPtr>::CClass, void>::mc_Value			));
@@ -2513,14 +2469,12 @@ DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<CTestCVRRef>::CFunction
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc0>::CFunctionType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc1>::CFunctionType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc2>::CFunctionType, void>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0Ref>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1Ref>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2Ref>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0RRef>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1RRef>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2RRef>::CFunctionType, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0Ptr>::CFunctionType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1Ptr>::CFunctionType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2Ptr>::CFunctionType, void>::mc_Value			));
@@ -2584,14 +2538,12 @@ DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FMFunc2CVPtrCV>::CFunct
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc0El>::CFunctionType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc1El>::CFunctionType, void>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<PFFunc2El>::CFunctionType, void>::mc_Value				));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElRef>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElRef>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElRef>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElRRef>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElRRef>::CFunctionType, void>::mc_Value		));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElRRef>::CFunctionType, void>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc0ElPtr>::CFunctionType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc1ElPtr>::CFunctionType, void>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCMemberFunctionPointerTraits<FFunc2ElPtr>::CFunctionType, void>::mc_Value			));

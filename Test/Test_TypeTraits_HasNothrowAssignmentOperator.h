@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -75,13 +75,13 @@ DMibStaticCheck((	TCHasNothrowAssignmentOperator<CTestCVPtrCV>::mc_Value					));
 DMibStaticCheck((	TCHasNothrowAssignmentOperator<CTestBase>::mc_Value						));
 DMibStaticCheck((	TCHasNothrowAssignmentOperator<CTestRef>::mc_Value						));
 DMibStaticCheck((	!TCHasNothrowAssignmentOperator<CTestCRef>::mc_Value						));
-#ifndef DCompiler_MSVC
+#ifndef DCompiler_MSVC_Workaround
 DMibStaticCheck((	TCHasNothrowAssignmentOperator<CTestVRef>::mc_Value						));
 #endif
 DMibStaticCheck((	!TCHasNothrowAssignmentOperator<CTestCVRef>::mc_Value					));
 DMibStaticCheck((	TCHasNothrowAssignmentOperator<CTestRRef>::mc_Value						));
 DMibStaticCheck((	!TCHasNothrowAssignmentOperator<CTestCRRef>::mc_Value					));
-#ifndef DCompiler_MSVC
+#ifndef DCompiler_MSVC_Workaround
 DMibStaticCheck((	TCHasNothrowAssignmentOperator<CTestVRRef>::mc_Value					));
 #endif
 DMibStaticCheck((	!TCHasNothrowAssignmentOperator<CTestCVRRef>::mc_Value					));

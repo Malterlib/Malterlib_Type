@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -40,14 +40,12 @@ DMibStaticCheck((	TCIsReference<CTestCVRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsReference<PFFunc0>::mc_Value			));
 DMibStaticCheck((	!TCIsReference<PFFunc1>::mc_Value			));
 DMibStaticCheck((	!TCIsReference<PFFunc2>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsReference<FFunc0Ref>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc1Ref>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc2Ref>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc0RRef>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc1RRef>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc2RRef>::mc_Value		));
-#endif
 DMibStaticCheck((	!TCIsReference<FFunc0Ptr>::mc_Value			));
 DMibStaticCheck((	!TCIsReference<FFunc1Ptr>::mc_Value			));
 DMibStaticCheck((	!TCIsReference<FFunc2Ptr>::mc_Value			));
@@ -111,14 +109,12 @@ DMibStaticCheck((	!TCIsReference<FMFunc2CVPtrCV>::mc_Value	));
 DMibStaticCheck((	!TCIsReference<PFFunc0El>::mc_Value			));
 DMibStaticCheck((	!TCIsReference<PFFunc1El>::mc_Value			));
 DMibStaticCheck((	!TCIsReference<PFFunc2El>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsReference<FFunc0ElRef>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc1ElRef>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc2ElRef>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc0ElRRef>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc1ElRRef>::mc_Value		));
 DMibStaticCheck((	TCIsReference<FFunc2ElRRef>::mc_Value		));
-#endif
 DMibStaticCheck((	!TCIsReference<FFunc0ElPtr>::mc_Value			));
 DMibStaticCheck((	!TCIsReference<FFunc1ElPtr>::mc_Value			));
 DMibStaticCheck((	!TCIsReference<FFunc2ElPtr>::mc_Value			));
@@ -261,14 +257,12 @@ DMibStaticCheck((	TCIsSame<TCAddReference<CTestCVRRef>::CType, CTestCVRRef>::mc_
 DMibStaticCheck((	TCIsSame<TCAddReference<PFFunc0>::CType, PFFunc0 &>::mc_Value						));
 DMibStaticCheck((	TCIsSame<TCAddReference<PFFunc1>::CType, PFFunc1 &>::mc_Value						));
 DMibStaticCheck((	TCIsSame<TCAddReference<PFFunc2>::CType, PFFunc2 &>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc0Ref>::CType, FFunc0Ref>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc1Ref>::CType, FFunc1Ref>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc2Ref>::CType, FFunc2Ref>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc0RRef>::CType, FFunc0RRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc1RRef>::CType, FFunc1RRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc2RRef>::CType, FFunc2RRef>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc0Ptr>::CType, FFunc0Ptr &>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc1Ptr>::CType, FFunc1Ptr &>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc2Ptr>::CType, FFunc2Ptr &>::mc_Value				));
@@ -332,14 +326,12 @@ DMibStaticCheck((	TCIsSame<TCAddReference<FMFunc2CVPtrCV>::CType, FMFunc2CVPtrCV
 DMibStaticCheck((	TCIsSame<TCAddReference<PFFunc0El>::CType, PFFunc0El &>::mc_Value						));
 DMibStaticCheck((	TCIsSame<TCAddReference<PFFunc1El>::CType, PFFunc1El &>::mc_Value						));
 DMibStaticCheck((	TCIsSame<TCAddReference<PFFunc2El>::CType, PFFunc2El &>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc0ElRef>::CType, FFunc0ElRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc1ElRef>::CType, FFunc1ElRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc2ElRef>::CType, FFunc2ElRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc0ElRRef>::CType, FFunc0ElRRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc1ElRRef>::CType, FFunc1ElRRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc2ElRRef>::CType, FFunc2ElRRef>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc0ElPtr>::CType, FFunc0ElPtr &>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc1ElPtr>::CType, FFunc1ElPtr &>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCAddReference<FFunc2ElPtr>::CType, FFunc2ElPtr &>::mc_Value				));
@@ -481,14 +473,12 @@ DMibStaticCheck((	TCIsSame<TCRemoveReference<CTestCVRRef>::CType, CTestCV>::mc_V
 DMibStaticCheck((	TCIsSame<TCRemoveReference<PFFunc0>::CType, PFFunc0>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<PFFunc1>::CType, PFFunc1>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<PFFunc2>::CType, PFFunc2>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc0Ref>::CType, PFFunc0>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc1Ref>::CType, PFFunc1>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc2Ref>::CType, PFFunc2>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc0RRef>::CType, PFFunc0>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc1RRef>::CType, PFFunc1>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc2RRef>::CType, PFFunc2>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc0Ptr>::CType, FFunc0Ptr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc1Ptr>::CType, FFunc1Ptr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc2Ptr>::CType, FFunc2Ptr>::mc_Value				));
@@ -552,14 +542,12 @@ DMibStaticCheck((	TCIsSame<TCRemoveReference<FMFunc2CVPtrCV>::CType, FMFunc2CVPt
 DMibStaticCheck((	TCIsSame<TCRemoveReference<PFFunc0El>::CType, PFFunc0El>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<PFFunc1El>::CType, PFFunc1El>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<PFFunc2El>::CType, PFFunc2El>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc0ElRef>::CType, PFFunc0El>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc1ElRef>::CType, PFFunc1El>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc2ElRef>::CType, PFFunc2El>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc0ElRRef>::CType, PFFunc0El>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc1ElRRef>::CType, PFFunc1El>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc2ElRRef>::CType, PFFunc2El>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc0ElPtr>::CType, FFunc0ElPtr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc1ElPtr>::CType, FFunc1ElPtr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveReference<FFunc2ElPtr>::CType, FFunc2ElPtr>::mc_Value				));
@@ -703,14 +691,12 @@ DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<CTestCVRRef>::CType, CTestC
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<PFFunc0>::CType, PFFunc0>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<PFFunc1>::CType, PFFunc1>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<PFFunc2>::CType, PFFunc2>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc0Ref>::CType, FFunc0Ref>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc1Ref>::CType, FFunc1Ref>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc2Ref>::CType, FFunc2Ref>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc0RRef>::CType, FFunc0RRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc1RRef>::CType, FFunc1RRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc2RRef>::CType, FFunc2RRef>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc0Ptr>::CType, FFunc0Ptr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc1Ptr>::CType, FFunc1Ptr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc2Ptr>::CType, FFunc2Ptr>::mc_Value				));
@@ -774,14 +760,12 @@ DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FMFunc2CVPtrCV>::CType, FMF
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<PFFunc0El>::CType, PFFunc0El>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<PFFunc1El>::CType, PFFunc1El>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<PFFunc2El>::CType, PFFunc2El>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc0ElRef>::CType, FFunc0ElRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc1ElRef>::CType, FFunc1ElRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc2ElRef>::CType, FFunc2ElRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc0ElRRef>::CType, FFunc0ElRRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc1ElRRef>::CType, FFunc1ElRRef>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc2ElRRef>::CType, FFunc2ElRRef>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc0ElPtr>::CType, FFunc0ElPtr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc1ElPtr>::CType, FFunc1ElPtr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCRemoveReferenceStorable<FFunc2ElPtr>::CType, FFunc2ElPtr>::mc_Value				));
@@ -937,14 +921,12 @@ DMibStaticCheck((	TCIsSame<TCCopyReference<CTestCVRRef, int>::CType, int &&>::mc
 DMibStaticCheck((	TCIsSame<TCCopyReference<PFFunc0, int>::CType, int>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCCopyReference<PFFunc1, int>::CType, int>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCCopyReference<PFFunc2, int>::CType, int>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc0Ref, int>::CType, int &>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc1Ref, int>::CType, int &>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc2Ref, int>::CType, int &>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc0RRef, int>::CType, int &&>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc1RRef, int>::CType, int &&>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc2RRef, int>::CType, int &&>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc0Ptr, int>::CType, int>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc1Ptr, int>::CType, int>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc2Ptr, int>::CType, int>::mc_Value				));
@@ -1008,14 +990,12 @@ DMibStaticCheck((	TCIsSame<TCCopyReference<FMFunc2CVPtrCV, int>::CType, int>::mc
 DMibStaticCheck((	TCIsSame<TCCopyReference<PFFunc0El, int>::CType, int>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCCopyReference<PFFunc1El, int>::CType, int>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCCopyReference<PFFunc2El, int>::CType, int>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc0ElRef, int>::CType, int &>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc1ElRef, int>::CType, int &>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc2ElRef, int>::CType, int &>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc0ElRRef, int>::CType, int &&>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc1ElRRef, int>::CType, int &&>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc2ElRRef, int>::CType, int &&>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc0ElPtr, int>::CType, int>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc1ElPtr, int>::CType, int>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCCopyReference<FFunc2ElPtr, int>::CType, int>::mc_Value				));

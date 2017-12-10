@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -821,14 +821,12 @@ DMibStaticCheck((	TCIsCompound<CTestCVRRef>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<PFFunc0>::mc_Value			));
 DMibStaticCheck((	TCIsCompound<PFFunc1>::mc_Value			));
 DMibStaticCheck((	TCIsCompound<PFFunc2>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsCompound<FFunc0Ref>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc1Ref>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc2Ref>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc0RRef>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc1RRef>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc2RRef>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsCompound<FFunc0Ptr>::mc_Value			));
 DMibStaticCheck((	TCIsCompound<FFunc1Ptr>::mc_Value			));
 DMibStaticCheck((	TCIsCompound<FFunc2Ptr>::mc_Value			));
@@ -892,14 +890,12 @@ DMibStaticCheck((	TCIsCompound<FMFunc2CVPtrCV>::mc_Value	));
 DMibStaticCheck((	TCIsCompound<PFFunc0El>::mc_Value			));
 DMibStaticCheck((	TCIsCompound<PFFunc1El>::mc_Value			));
 DMibStaticCheck((	TCIsCompound<PFFunc2El>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsCompound<FFunc0ElRef>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc1ElRef>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc2ElRef>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc0ElRRef>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc1ElRRef>::mc_Value		));
 DMibStaticCheck((	TCIsCompound<FFunc2ElRRef>::mc_Value		));
-#endif
 DMibStaticCheck((	TCIsCompound<FFunc0ElPtr>::mc_Value			));
 DMibStaticCheck((	TCIsCompound<FFunc1ElPtr>::mc_Value			));
 DMibStaticCheck((	TCIsCompound<FFunc2ElPtr>::mc_Value			));

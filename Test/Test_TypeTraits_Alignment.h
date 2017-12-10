@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -60,14 +60,12 @@ DMibStaticCheck((	TCAlignmentOf<CTestCVRRef>::mc_Value != 0					));
 DMibStaticCheck((	TCAlignmentOf<PFFunc0>::mc_Value == 0						));
 DMibStaticCheck((	TCAlignmentOf<PFFunc1>::mc_Value == 0						));
 DMibStaticCheck((	TCAlignmentOf<PFFunc2>::mc_Value == 0						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCAlignmentOf<FFunc0Ref>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc1Ref>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc2Ref>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc0RRef>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc1RRef>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc2RRef>::mc_Value != 0						));
-#endif
 DMibStaticCheck((	TCAlignmentOf<FFunc0Ptr>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc1Ptr>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc2Ptr>::mc_Value != 0						));
@@ -131,14 +129,12 @@ DMibStaticCheck((	TCAlignmentOf<FMFunc2CVPtrCV>::mc_Value != 0				));
 DMibStaticCheck((	TCAlignmentOf<PFFunc0El>::mc_Value == 0						));
 DMibStaticCheck((	TCAlignmentOf<PFFunc1El>::mc_Value == 0						));
 DMibStaticCheck((	TCAlignmentOf<PFFunc2El>::mc_Value == 0						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCAlignmentOf<FFunc0ElRef>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc1ElRef>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc2ElRef>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc0ElRRef>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc1ElRRef>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc2ElRRef>::mc_Value != 0						));
-#endif
 DMibStaticCheck((	TCAlignmentOf<FFunc0ElPtr>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc1ElPtr>::mc_Value != 0						));
 DMibStaticCheck((	TCAlignmentOf<FFunc2ElPtr>::mc_Value != 0						));
@@ -293,14 +289,12 @@ DMibStaticCheck((	TCAlignmentOf<TCAlign<CTestCVRRef, 128>::CType>::mc_Value == 1
 DMibStaticCheck((	TCAlignmentOf<TCAlign<PFFunc0, 128>::CType>::mc_Value != 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<PFFunc1, 128>::CType>::mc_Value != 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<PFFunc2, 128>::CType>::mc_Value != 128						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc0Ref, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc1Ref, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc2Ref, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc0RRef, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc1RRef, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc2RRef, 128>::CType>::mc_Value == 128						));
-#endif
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc0Ptr, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc1Ptr, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc2Ptr, 128>::CType>::mc_Value == 128						));
@@ -364,14 +358,12 @@ DMibStaticCheck((	TCAlignmentOf<TCAlign<FMFunc2CVPtrCV, 128>::CType>::mc_Value =
 DMibStaticCheck((	TCAlignmentOf<TCAlign<PFFunc0El, 128>::CType>::mc_Value != 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<PFFunc1El, 128>::CType>::mc_Value != 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<PFFunc2El, 128>::CType>::mc_Value != 128						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc0ElRef, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc1ElRef, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc2ElRef, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc0ElRRef, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc1ElRRef, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc2ElRRef, 128>::CType>::mc_Value == 128						));
-#endif
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc0ElPtr, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc1ElPtr, 128>::CType>::mc_Value == 128						));
 DMibStaticCheck((	TCAlignmentOf<TCAlign<FFunc2ElPtr, 128>::CType>::mc_Value == 128						));

@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -204,14 +204,12 @@ DMibStaticCheck((	!TCIsInteger<CTestCVRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<PFFunc0>::mc_Value			));
 DMibStaticCheck((	!TCIsInteger<PFFunc1>::mc_Value			));
 DMibStaticCheck((	!TCIsInteger<PFFunc2>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsInteger<FFunc0Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc1Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc2Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc0RRef>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc1RRef>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc2RRef>::mc_Value		));
-#endif
 DMibStaticCheck((	!TCIsInteger<FFunc0Ptr>::mc_Value			));
 DMibStaticCheck((	!TCIsInteger<FFunc1Ptr>::mc_Value			));
 DMibStaticCheck((	!TCIsInteger<FFunc2Ptr>::mc_Value			));
@@ -275,14 +273,12 @@ DMibStaticCheck((	!TCIsInteger<FMFunc2CVPtrCV>::mc_Value	));
 DMibStaticCheck((	!TCIsInteger<PFFunc0El>::mc_Value			));
 DMibStaticCheck((	!TCIsInteger<PFFunc1El>::mc_Value			));
 DMibStaticCheck((	!TCIsInteger<PFFunc2El>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsInteger<FFunc0ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc1ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc2ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc0ElRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc1ElRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsInteger<FFunc2ElRRef>::mc_Value		));
-#endif
 DMibStaticCheck((	!TCIsInteger<FFunc0ElPtr>::mc_Value			));
 DMibStaticCheck((	!TCIsInteger<FFunc1ElPtr>::mc_Value			));
 DMibStaticCheck((	!TCIsInteger<FFunc2ElPtr>::mc_Value			));
@@ -587,14 +583,12 @@ DMibStaticCheck((	!TCIsFloat<CTestCVRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<PFFunc0>::mc_Value			));
 DMibStaticCheck((	!TCIsFloat<PFFunc1>::mc_Value			));
 DMibStaticCheck((	!TCIsFloat<PFFunc2>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsFloat<FFunc0Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc1Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc2Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc0RRef>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc1RRef>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc2RRef>::mc_Value		));
-#endif
 DMibStaticCheck((	!TCIsFloat<FFunc0Ptr>::mc_Value			));
 DMibStaticCheck((	!TCIsFloat<FFunc1Ptr>::mc_Value			));
 DMibStaticCheck((	!TCIsFloat<FFunc2Ptr>::mc_Value			));
@@ -658,14 +652,12 @@ DMibStaticCheck((	!TCIsFloat<FMFunc2CVPtrCV>::mc_Value	));
 DMibStaticCheck((	!TCIsFloat<PFFunc0El>::mc_Value			));
 DMibStaticCheck((	!TCIsFloat<PFFunc1El>::mc_Value			));
 DMibStaticCheck((	!TCIsFloat<PFFunc2El>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsFloat<FFunc0ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc1ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc2ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc0ElRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc1ElRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsFloat<FFunc2ElRRef>::mc_Value		));
-#endif
 DMibStaticCheck((	!TCIsFloat<FFunc0ElPtr>::mc_Value			));
 DMibStaticCheck((	!TCIsFloat<FFunc1ElPtr>::mc_Value			));
 DMibStaticCheck((	!TCIsFloat<FFunc2ElPtr>::mc_Value			));
@@ -971,14 +963,12 @@ DMibStaticCheck((	!TCIsArithmetic<CTestCVRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<PFFunc0>::mc_Value			));
 DMibStaticCheck((	!TCIsArithmetic<PFFunc1>::mc_Value			));
 DMibStaticCheck((	!TCIsArithmetic<PFFunc2>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsArithmetic<FFunc0Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc1Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc2Ref>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc0RRef>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc1RRef>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc2RRef>::mc_Value		));
-#endif
 DMibStaticCheck((	!TCIsArithmetic<FFunc0Ptr>::mc_Value			));
 DMibStaticCheck((	!TCIsArithmetic<FFunc1Ptr>::mc_Value			));
 DMibStaticCheck((	!TCIsArithmetic<FFunc2Ptr>::mc_Value			));
@@ -1042,14 +1032,12 @@ DMibStaticCheck((	!TCIsArithmetic<FMFunc2CVPtrCV>::mc_Value	));
 DMibStaticCheck((	!TCIsArithmetic<PFFunc0El>::mc_Value			));
 DMibStaticCheck((	!TCIsArithmetic<PFFunc1El>::mc_Value			));
 DMibStaticCheck((	!TCIsArithmetic<PFFunc2El>::mc_Value			));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsArithmetic<FFunc0ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc1ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc2ElRef>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc0ElRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc1ElRRef>::mc_Value		));
 DMibStaticCheck((	!TCIsArithmetic<FFunc2ElRRef>::mc_Value		));
-#endif
 DMibStaticCheck((	!TCIsArithmetic<FFunc0ElPtr>::mc_Value			));
 DMibStaticCheck((	!TCIsArithmetic<FFunc1ElPtr>::mc_Value			));
 DMibStaticCheck((	!TCIsArithmetic<FFunc2ElPtr>::mc_Value			));

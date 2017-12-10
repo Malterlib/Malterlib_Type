@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -906,14 +906,12 @@ DMibStaticCheck((	TCIsSame<TCDecay<CTestCVRRef>::CType, CTestClass>::mc_Value			
 DMibStaticCheck((	TCIsSame<TCDecay<PFFunc0>::CType, FFunc0Ptr>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCDecay<PFFunc1>::CType, FFunc1Ptr>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCDecay<PFFunc2>::CType, FFunc2Ptr>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc0Ref>::CType, FFunc0Ptr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc1Ref>::CType, FFunc1Ptr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc2Ref>::CType, FFunc2Ptr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc0RRef>::CType, FFunc0Ptr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc1RRef>::CType, FFunc1Ptr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc2RRef>::CType, FFunc2Ptr>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc0Ptr>::CType, FFunc0Ptr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc1Ptr>::CType, FFunc1Ptr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc2Ptr>::CType, FFunc2Ptr>::mc_Value				));
@@ -977,14 +975,12 @@ DMibStaticCheck((	TCIsSame<TCDecay<FMFunc2CVPtrCV>::CType, FMFunc2CVPtr>::mc_Val
 DMibStaticCheck((	TCIsSame<TCDecay<PFFunc0El>::CType, FFunc0ElPtr>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCDecay<PFFunc1El>::CType, FFunc1ElPtr>::mc_Value					));
 DMibStaticCheck((	TCIsSame<TCDecay<PFFunc2El>::CType, FFunc2ElPtr>::mc_Value					));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc0ElRef>::CType, FFunc0ElPtr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc1ElRef>::CType, FFunc1ElPtr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc2ElRef>::CType, FFunc2ElPtr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc0ElRRef>::CType, FFunc0ElPtr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc1ElRRef>::CType, FFunc1ElPtr>::mc_Value			));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc2ElRRef>::CType, FFunc2ElPtr>::mc_Value			));
-#endif
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc0ElPtr>::CType, FFunc0ElPtr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc1ElPtr>::CType, FFunc1ElPtr>::mc_Value				));
 DMibStaticCheck((	TCIsSame<TCDecay<FFunc2ElPtr>::CType, FFunc2ElPtr>::mc_Value				));

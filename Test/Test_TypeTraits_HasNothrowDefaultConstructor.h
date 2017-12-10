@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -14,26 +14,18 @@ namespace NNothrow
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsAssignmentDerivedOverride>::mc_Value						));
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CNothrow>::mc_Value						));
 
-#ifndef DCompiler_MSVC
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopy>::mc_Value						));
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopyInt>::mc_Value						));
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopyBoth>::mc_Value						));
-#endif
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopyDerived>::mc_Value						));
-#ifndef DCompiler_MSVC
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsCopyDerivedOverride>::mc_Value						));
-#endif
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CNothrow>::mc_Value						));
 
-#ifndef DCompiler_MSVC
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CNothrowDefault>::mc_Value						));
-#endif
 
 	DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CThrowsConstruct>::mc_Value						));
 	DMibStaticCheck((	!TCHasNothrowDefaultConstructor<CThrowsConstructDerived>::mc_Value						));
-#ifndef DCompiler_MSVC
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CThrowsConstructDerivedOverride>::mc_Value						));
-#endif
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CNothrow>::mc_Value						));
 
 	DMibStaticCheck((	TCHasNothrowDefaultConstructor<CTestClassVirtual>::mc_Value						));

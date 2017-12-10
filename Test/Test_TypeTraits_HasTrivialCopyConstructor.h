@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -80,14 +80,12 @@ DMibStaticCheck((	TCHasTrivialCopyConstructor<CTestCVRRef>::mc_Value					));
 DMibStaticCheck((	!TCHasTrivialCopyConstructor<PFFunc0>::mc_Value						));
 DMibStaticCheck((	!TCHasTrivialCopyConstructor<PFFunc1>::mc_Value						));
 DMibStaticCheck((	!TCHasTrivialCopyConstructor<PFFunc2>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc0Ref>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc1Ref>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc2Ref>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc0RRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc1RRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc2RRef>::mc_Value						));
-#endif
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc0Ptr>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc1Ptr>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc2Ptr>::mc_Value						));
@@ -151,14 +149,12 @@ DMibStaticCheck((	TCHasTrivialCopyConstructor<FMFunc2CVPtrCV>::mc_Value				));
 DMibStaticCheck((	!TCHasTrivialCopyConstructor<PFFunc0El>::mc_Value						));
 DMibStaticCheck((	!TCHasTrivialCopyConstructor<PFFunc1El>::mc_Value						));
 DMibStaticCheck((	!TCHasTrivialCopyConstructor<PFFunc2El>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc0ElRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc1ElRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc2ElRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc0ElRRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc1ElRRef>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc2ElRRef>::mc_Value						));
-#endif
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc0ElPtr>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc1ElPtr>::mc_Value						));
 DMibStaticCheck((	TCHasTrivialCopyConstructor<FFunc2ElPtr>::mc_Value						));

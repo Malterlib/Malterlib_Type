@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -480,14 +480,12 @@ DMibStaticCheck((	!TCIsCallable<CTestCVRRef>::mc_Value					));
 DMibStaticCheck((	!TCIsCallable<PFFunc0>::mc_Value						));
 DMibStaticCheck((	!TCIsCallable<PFFunc1>::mc_Value						));
 DMibStaticCheck((	!TCIsCallable<PFFunc2>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsCallable<FFunc0Ref>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc1Ref>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc2Ref>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc0RRef>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc1RRef>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc2RRef>::mc_Value						));
-#endif
 DMibStaticCheck((	TCIsCallable<FFunc0Ptr>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc1Ptr>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc2Ptr>::mc_Value						));
@@ -551,14 +549,12 @@ DMibStaticCheck((	!TCIsCallable<FMFunc2CVPtrCV>::mc_Value				));
 DMibStaticCheck((	!TCIsCallable<PFFunc0El>::mc_Value						));
 DMibStaticCheck((	!TCIsCallable<PFFunc1El>::mc_Value						));
 DMibStaticCheck((	!TCIsCallable<PFFunc2El>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsCallable<FFunc0ElRef>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc1ElRef>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc2ElRef>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc0ElRRef>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc1ElRRef>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc2ElRRef>::mc_Value						));
-#endif
 DMibStaticCheck((	TCIsCallable<FFunc0ElPtr>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc1ElPtr>::mc_Value						));
 DMibStaticCheck((	TCIsCallable<FFunc2ElPtr>::mc_Value						));
@@ -713,14 +709,12 @@ DMibStaticCheck((	!TCIsCallableWith<CTestCVRRef, void ()>::mc_Value					));
 DMibStaticCheck((	!TCIsCallableWith<PFFunc0, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<PFFunc1, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<PFFunc2, void ()>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsCallableWith<FFunc0Ref, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsCallableWith<FFunc1Ref, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<FFunc2Ref, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsCallableWith<FFunc0RRef, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsCallableWith<FFunc1RRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<FFunc2RRef, void ()>::mc_Value						));
-#endif
 DMibStaticCheck((	TCIsCallableWith<FFunc0Ptr, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsCallableWith<FFunc1Ptr, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<FFunc2Ptr, void ()>::mc_Value						));
@@ -784,14 +778,12 @@ DMibStaticCheck((	!TCIsCallableWith<FMFunc2CVPtrCV, void ()>::mc_Value				));
 DMibStaticCheck((	!TCIsCallableWith<PFFunc0El, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<PFFunc1El, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<PFFunc2El, void ()>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	TCIsCallableWith<FFunc0ElRef, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsCallableWith<FFunc1ElRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<FFunc2ElRef, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsCallableWith<FFunc0ElRRef, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsCallableWith<FFunc1ElRRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<FFunc2ElRRef, void ()>::mc_Value						));
-#endif
 DMibStaticCheck((	TCIsCallableWith<FFunc0ElPtr, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsCallableWith<FFunc1ElPtr, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsCallableWith<FFunc2ElPtr, void ()>::mc_Value						));
@@ -949,14 +941,12 @@ DMibStaticCheck((	!TCIsFunctionCallable<CTestCVRRef, void ()>::mc_Value					));
 DMibStaticCheck((	TCIsFunctionCallable<PFFunc0, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsFunctionCallable<PFFunc1, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<PFFunc2, void ()>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc0Ref, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc1Ref, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc2Ref, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc0RRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc1RRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc2RRef, void ()>::mc_Value						));
-#endif
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc0Ptr, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc1Ptr, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc2Ptr, void ()>::mc_Value						));
@@ -1020,14 +1010,12 @@ DMibStaticCheck((	!TCIsFunctionCallable<FMFunc2CVPtrCV, void ()>::mc_Value				))
 DMibStaticCheck((	TCIsFunctionCallable<PFFunc0El, void ()>::mc_Value						));
 DMibStaticCheck((	TCIsFunctionCallable<PFFunc1El, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<PFFunc2El, void ()>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc0ElRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc1ElRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc2ElRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc0ElRRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc1ElRRef, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc2ElRRef, void ()>::mc_Value						));
-#endif
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc0ElPtr, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc1ElPtr, void ()>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionCallable<FFunc2ElPtr, void ()>::mc_Value						));
@@ -1182,14 +1170,12 @@ DMibStaticCheck((	!TCIsFunctionObject<CTestCVRRef>::mc_Value					));
 DMibStaticCheck((	!TCIsFunctionObject<PFFunc0>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<PFFunc1>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<PFFunc2>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsFunctionObject<FFunc0Ref>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc1Ref>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc2Ref>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc0RRef>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc1RRef>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc2RRef>::mc_Value						));
-#endif
 DMibStaticCheck((	!TCIsFunctionObject<FFunc0Ptr>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc1Ptr>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc2Ptr>::mc_Value						));
@@ -1253,14 +1239,12 @@ DMibStaticCheck((	!TCIsFunctionObject<FMFunc2CVPtrCV>::mc_Value				));
 DMibStaticCheck((	!TCIsFunctionObject<PFFunc0El>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<PFFunc1El>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<PFFunc2El>::mc_Value						));
-#if !defined(DCompiler_MSVC) || DMibCompilerVersion >= 1700
 DMibStaticCheck((	!TCIsFunctionObject<FFunc0ElRef>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc1ElRef>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc2ElRef>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc0ElRRef>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc1ElRRef>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc2ElRRef>::mc_Value						));
-#endif
 DMibStaticCheck((	!TCIsFunctionObject<FFunc0ElPtr>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc1ElPtr>::mc_Value						));
 DMibStaticCheck((	!TCIsFunctionObject<FFunc2ElPtr>::mc_Value						));
