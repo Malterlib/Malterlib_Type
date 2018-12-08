@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -30,6 +30,6 @@ DMibStaticCheck((	TCIsComparableLessThan<CComparableTest1, CComparableTest0>::mc
 DMibStaticCheck((	TCIsComparableLessThan<CComparableTest0, CComparableTest1>::mc_Value											));
 DMibStaticCheck((	TCIsComparableLessThan<CComparableTest1, CComparableTest1>::mc_Value											));
 DMibStaticCheck((	!TCIsComparableLessThan<CComparableTest2, CComparableTest2>::mc_Value											));
-DMibStaticCheck((	TCIsComparableLessThan<NMib::NContainer::TCVector<uint8>, NMib::NContainer::TCVector<uint8>>::mc_Value			));
+DMibStaticCheck((	TCIsComparableLessThan<NMib::NContainer::CByteVector, NMib::NContainer::CByteVector>::mc_Value			));
 
 

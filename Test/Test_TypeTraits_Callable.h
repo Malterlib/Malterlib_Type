@@ -217,7 +217,7 @@ namespace NCallable
 
 	struct CTestInnerInherit
 	{
-		class CTestInner : public NMib::NPtr::TCSharedPointerIntrusiveBase<>
+		class CTestInner : public NMib::NStorage::TCSharedPointerIntrusiveBase<>
 		{
 			public:
 				virtual void f_GetDigest() const = 0;
@@ -227,9 +227,9 @@ namespace NCallable
 				}
 		};
 
- 		static_assert(NMib::NPtr::NPrivate::TCIsMemberCallableWith_f_RefCountIncrease<CTestInner, void ()>::mc_Value, "TCIsMemberCallableWith_f_RefCountIncrease broke.");
+ 		static_assert(NMib::NStorage::NPrivate::TCIsMemberCallableWith_f_RefCountIncrease<CTestInner, void ()>::mc_Value, "TCIsMemberCallableWith_f_RefCountIncrease broke.");
 
-		static_assert(NMib::NPtr::TCHasIntrusiveRefcount<CTestInner>::mc_Value, "TCHasIntrusiveRefcount broke.");
+		static_assert(NMib::NStorage::TCHasIntrusiveRefcount<CTestInner>::mc_Value, "TCHasIntrusiveRefcount broke.");
 
 	};
 

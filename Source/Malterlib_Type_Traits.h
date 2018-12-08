@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #pragma once
@@ -18,26 +18,23 @@ namespace NMib
 #include "Malterlib_Type_Traits_Comparable.h"
 #include "Malterlib_Type_Traits_IntFloat.h"
 
-namespace NMib
+namespace NMib::NTraits
 {
-	namespace NTraits
+	template <typename t_CType>
+	class TCIsString : public TCCompileTimeConstant<bool, false>
 	{
-		template <typename t_CType>
-		class TCIsString : public TCCompileTimeConstant<bool, false>
-		{
-		public:
-		};
+	public:
+	};
 
-		template <>	class TCIsString<const ch8 *> : public TCCompileTimeConstant<bool, true>{};
-		template <>	class TCIsString<ch8 *> : public TCCompileTimeConstant<bool, true>{};
-		template <>	class TCIsString<const ch16 *> : public TCCompileTimeConstant<bool, true>{};
-		template <>	class TCIsString<ch16 *> : public TCCompileTimeConstant<bool, true>{};
-		template <>	class TCIsString<const ch32 *> : public TCCompileTimeConstant<bool, true>{};
-		template <>	class TCIsString<ch32 *> : public TCCompileTimeConstant<bool, true>{};
-	}
+	template <>	class TCIsString<const ch8 *> : public TCCompileTimeConstant<bool, true>{};
+	template <>	class TCIsString<ch8 *> : public TCCompileTimeConstant<bool, true>{};
+	template <>	class TCIsString<const ch16 *> : public TCCompileTimeConstant<bool, true>{};
+	template <>	class TCIsString<ch16 *> : public TCCompileTimeConstant<bool, true>{};
+	template <>	class TCIsString<const ch32 *> : public TCCompileTimeConstant<bool, true>{};
+	template <>	class TCIsString<ch32 *> : public TCCompileTimeConstant<bool, true>{};
 }
 
 #ifndef DMibPNoShortCuts
-using namespace NMib::NTraits;
+	using namespace NMib::NTraits;
 #endif
 

@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #pragma once
@@ -69,7 +69,7 @@ DMibTypeID(int, DMibCurrentTypeID + 28);
 DMibTypeID(unsigned int, DMibCurrentTypeID + 29);
 #endif
 
-DMibTypeID(NMib::NContainer::TCVector<uint8>, DMibCurrentTypeID + 30);
+DMibTypeID(NMib::NContainer::CByteVector, DMibCurrentTypeID + 30);
 DMibTypeID(NMib::NTime::CTime, DMibCurrentTypeID + 31);
 
 #undef DMibCurrentTypeID
