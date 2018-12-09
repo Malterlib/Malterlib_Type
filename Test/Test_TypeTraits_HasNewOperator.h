@@ -239,7 +239,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	TCIsOperatorCallable_DeleteArray<CWithDeleteDerived>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallable_DeleteArray<CWithBothDerived>::mc_Value						));
 
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	TCIsOperatorCallableWith_New<CWithNew, void *(mint)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_New<CWithNewArray, void *(mint)>::mc_Value						));
 #endif
@@ -251,7 +251,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	!TCIsOperatorCallableWith_New<CWithDeleteDerived, void *(mint)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_New<CWithBothDerived, void *(mint)>::mc_Value						));
 
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	!TCIsOperatorCallableWith_NewArray<CWithNew, void *(mint)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_NewArray<CWithNewArray, void *(mint)>::mc_Value						));
 #endif
@@ -277,7 +277,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithNewArray, void (void *)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithNewBoth, void (void *)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithNewDerived, void (void *)>::mc_Value						));
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDelete, void (void *)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_DeleteArray<CWithDeleteArray, void (void *)>::mc_Value						));
 #endif
@@ -445,7 +445,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	!TCIsOperatorCallableWith_New<CWithSpecialDeleteDerived, void *(mint, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_New<CWithSpecialBothDerived, void *(mint, CTestClass0)>::mc_Value						));
 
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	!TCIsOperatorCallableWith_NewArray<CWithSpecialNew, void *(mint, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_NewArray<CWithSpecialNewArray, void *(mint, CTestClass0)>::mc_Value						));
 #endif
@@ -471,7 +471,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithSpecialNewArray, void (void *, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithSpecialNewBoth, void (void *, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithSpecialNewDerived, void (void *, CTestClass0)>::mc_Value						));
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithSpecialDelete, void (void *, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_DeleteArray<CWithSpecialDeleteArray, void (void *, CTestClass0)>::mc_Value						));
 #endif
@@ -557,7 +557,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	!TCIsOperatorCallableWith_New<CWithDualDeleteDerived, void *(mint)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_New<CWithDualBothDerived, void *(mint)>::mc_Value						));
 
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	!TCIsOperatorCallableWith_NewArray<CWithDualNew, void *(mint)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_NewArray<CWithDualNewArray, void *(mint)>::mc_Value						));
 #endif
@@ -583,7 +583,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDualNewArray, void (void *)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDualNewBoth, void (void *)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDualNewDerived, void (void *)>::mc_Value						));
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDualDelete, void (void *)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_DeleteArray<CWithDualDeleteArray, void (void *)>::mc_Value						));
 #endif
@@ -601,7 +601,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	!TCIsOperatorCallableWith_New<CWithDualDeleteDerived, void *(mint, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_New<CWithDualBothDerived, void *(mint, CTestClass0)>::mc_Value						));
 
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	!TCIsOperatorCallableWith_NewArray<CWithDualNew, void *(mint, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_NewArray<CWithDualNewArray, void *(mint, CTestClass0)>::mc_Value						));
 #endif
@@ -627,7 +627,7 @@ namespace NHasNewOperator
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDualNewArray, void (void *, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDualNewBoth, void (void *, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDualNewDerived, void (void *, CTestClass0)>::mc_Value						));
-#if _MSC_FULL_VER != 191526730
+#if _MSC_FULL_VER != 191627024
 	DMibStaticCheck((	!TCIsOperatorCallableWith_DeleteArray<CWithDualDelete, void (void *, CTestClass0)>::mc_Value						));
 	DMibStaticCheck((	TCIsOperatorCallableWith_DeleteArray<CWithDualDeleteArray, void (void *, CTestClass0)>::mc_Value						));
 #endif
