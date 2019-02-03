@@ -1138,7 +1138,7 @@ namespace NMib::NTraits
 
 #	define DMibTraitsImplementFloatFromSize(_Type) \
 		template <>	\
-		class TCFloatFromSize<sizeof(_Type)>\
+		class TCFloatFromSize<sizeof(typename _Type::CUnsignedInteger)>\
 		{\
 		public:\
 			typedef _Type CType;\
