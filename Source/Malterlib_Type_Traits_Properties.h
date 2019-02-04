@@ -1010,6 +1010,7 @@ namespace NMib::NTraits
 #ifdef DCompiler_MSVC
 #pragma warning(push)
 #pragma warning(disable:4594)
+#pragma warning(disable:4250)
 #endif
 		template <typename t_CDerived, typename t_CBase>
 		class TCIsVirtualBaseOfHelper<t_CDerived, t_CBase, true>
