@@ -24,9 +24,11 @@ namespace NMib::NTraits
 		}
 	};
 
+	template <bool t_bTrue>
+	using TCCompileTimeTrue = TCCompileTimeConstant<bool, t_bTrue>;
 
-	typedef TCCompileTimeConstant<bool, true> CCompileTimeTrue;
-	typedef TCCompileTimeConstant<bool, false> CCompileTimeFalse;
+	using CCompileTimeTrue = TCCompileTimeTrue<true>;
+	using CCompileTimeFalse = TCCompileTimeTrue<false>;
 
 	class CFalseBySize : public CCompileTimeFalse
 	{
