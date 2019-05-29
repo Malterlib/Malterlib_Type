@@ -163,7 +163,7 @@ namespace NMib::NTraits
 	};
 
 
-	template <typename t_CType, bint t_bSetTo>
+	template <typename t_CType, bool t_bSetTo>
 	class TCSetConst
 	{
 	public:
@@ -177,7 +177,7 @@ namespace NMib::NTraits
 		typedef typename TCAddConst<t_CType>::CType CType;
 	};
 
-	template <typename t_CType, bint t_bSetTo>
+	template <typename t_CType, bool t_bSetTo>
 	class TCSetVolatile
 	{
 	public:

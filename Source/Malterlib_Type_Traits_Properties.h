@@ -55,7 +55,7 @@ namespace NMib::NTraits
 			<
 				typename t_CTypeFrom,
 				typename t_CTypeTo,
-				bint t_bDisableCheck = NTraits::TCIsVoid<t_CTypeFrom>::mc_Value || NTraits::TCIsVoid<t_CTypeTo>::mc_Value || NTraits::TCIsFunction<t_CTypeTo>::mc_Value || NTraits::TCIsArray<t_CTypeTo>::mc_Value
+				bool t_bDisableCheck = NTraits::TCIsVoid<t_CTypeFrom>::mc_Value || NTraits::TCIsVoid<t_CTypeTo>::mc_Value || NTraits::TCIsFunction<t_CTypeTo>::mc_Value || NTraits::TCIsArray<t_CTypeTo>::mc_Value
 			>
 			class TCIsConvertibleHelper
 			{
@@ -989,7 +989,7 @@ namespace NMib::NTraits
 
 	namespace NPrivate
 	{
-		template <typename t_CDerived, typename t_CBase, bint t_bEval>
+		template <typename t_CDerived, typename t_CBase, bool t_bEval>
 		class TCIsVirtualBaseOfHelper
 		{
 		public:
@@ -1049,7 +1049,7 @@ namespace NMib::NTraits
 	class TCIsVirtualBaseOf
 		: public TCCompileTimeConstant
 		<
-			bint
+			bool
 			, NPrivate::TCIsVirtualBaseOfHelper
 			<
 				t_CDerived,
@@ -1143,7 +1143,7 @@ namespace NMib::NTraits
 			};
 		};
 
-		template <typename t_CFunction, bint t_bIsFunction>
+		template <typename t_CFunction, bool t_bIsFunction>
 		class TCFunctionTraitsHelper
 		{
 		public:
@@ -1628,7 +1628,7 @@ namespace NMib::NTraits
 	template <typename t_CType0>
 	class TCIsMemberFunctionPointer : public TCCompileTimeConstant
 	<
-		bint,
+		bool,
 		NPrivate::TCMemberFunctionPointerTraitsHelper<typename TCRemoveQualifiers<t_CType0>::CType>::mc_IsMemberFunctionPointer
 	>
 	{
@@ -1686,7 +1686,7 @@ namespace NMib::NTraits
 
 	namespace NPrivate
 	{
-		template <typename t_CType, typename t_COriginalType, bint t_bMemberFunctionPtr>
+		template <typename t_CType, typename t_COriginalType, bool t_bMemberFunctionPtr>
 		class TCRemoveMemberObjectPointerHelper
 		{
 		public:
@@ -2537,7 +2537,7 @@ namespace NMib::NTraits
 				};
 			};
 
-			template <typename t_CTraitsToCall, typename t_CTraitsCallWith, bint t_bEllipsis>
+			template <typename t_CTraitsToCall, typename t_CTraitsCallWith, bool t_bEllipsis>
 			struct TCEvaulateForType
 			{
 				enum
@@ -2579,7 +2579,7 @@ namespace NMib::NTraits
 	template <typename t_CFunctionType, typename t_CFunctionCallType>
 	class TCIsFunctionCallable : public TCCompileTimeConstant
 		<
-			bint,
+			bool,
 			NPrivate::TCIsFunctionCallableWithHelper<t_CFunctionType, t_CFunctionCallType>::mc_Value
 		>
 	{
@@ -2663,7 +2663,7 @@ namespace NMib::NTraits
 	class TC##_BaseName##Traits_##_TraitName\
 	{ \
 		typedef typename NMib::NTraits::TCRemoveReference<t_CType>::CType CTypeToCheck;\
-		template <typename t_CType2, bint t_bEnable>\
+		template <typename t_CType2, bool t_bEnable>\
 		struct TCImplementationSingleMember\
 		{\
 			enum\
@@ -2728,7 +2728,7 @@ namespace NMib::NTraits
 			NMib::NTraits::TCIsClass<CTypeToCheck>::mc_Value ? NMib::NTraits::NPrivate::EHasMemberImplementation_Class \
 			: NMib::NTraits::TCIsUnion<CTypeToCheck>::mc_Value ? NMib::NTraits::NPrivate::EHasMemberImplementation_Union \
 			: NMib::NTraits::NPrivate::EHasMemberImplementation_Other> CImplementation;\
-		template <typename t_CType2, bint t_bHasMember>\
+		template <typename t_CType2, bool t_bHasMember>\
 		struct TCImplementationTypeOf\
 		{\
 			typedef void CType;\
@@ -2818,7 +2818,7 @@ namespace NMib::NTraits
 			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(NMib::fg_GetReference<t_CC>()._Mem(NMib::fg_GetType<t_PCParams>()...));\
 			static CDummy fs_D(...);\
 		};\
-		template <bint t_bValid, typename t_CFunction>\
+		template <bool t_bValid, typename t_CFunction>\
 		struct TCEval\
 		{\
 			enum\
@@ -2902,7 +2902,7 @@ namespace NMib::NTraits
 			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->m_Member _Operator NMib::fg_GetType<t_CParam>());\
 			static CDummy fs_D(...);\
 		};\
-		template <bint t_bValid, typename t_CFunction>\
+		template <bool t_bValid, typename t_CFunction>\
 		struct TCEval\
 		{\
 			enum\
@@ -2974,7 +2974,7 @@ namespace NMib::NTraits
 			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_Operator _pM->m_Member);\
 			static CDummy fs_D(...);\
 		};\
-		template <bint t_bValid, typename t_CFunction>\
+		template <bool t_bValid, typename t_CFunction>\
 		struct TCEval\
 		{\
 			enum\
@@ -3046,7 +3046,7 @@ namespace NMib::NTraits
 			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->m_Member _Operator);\
 			static CDummy fs_D(...);\
 		};\
-		template <bint t_bValid, typename t_CFunction>\
+		template <bool t_bValid, typename t_CFunction>\
 		struct TCEval\
 		{\
 			enum\
@@ -3226,7 +3226,7 @@ namespace NMib::NTraits
 			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t_PCTypes>()...));
 			static CDummy fs_D(...);
 		};
-		template <bint t_bValid, typename t_CFunction>
+		template <bool t_bValid, typename t_CFunction>
 		struct TCEval
 		{
 			enum
@@ -3260,7 +3260,7 @@ namespace NMib::NTraits
 		{
 		};
 
-		template <bint t_bValid, typename t_CFunction>
+		template <bool t_bValid, typename t_CFunction>
 		struct TCEvalOther
 		{
 			enum
@@ -3319,7 +3319,7 @@ namespace NMib::NTraits
 		|___________________________________________________________________________________________________|
 		\***************************************************************************************************/
 
-		template <bint t_bValid, typename t_CFunction>
+		template <bool t_bValid, typename t_CFunction>
 		struct TCEvalArray
 		{
 			enum
@@ -3491,7 +3491,7 @@ namespace NMib::NTraits
 	template <typename t_CType>
 	class TCIsStateless : public TCCompileTimeConstant
 		<
-			bint
+			bool
 			,	TCHasTrivialDefaultConstructor<t_CType>::mc_Value
 				&& TCHasTrivialCopyConstructor<t_CType>::mc_Value
 				&& TCHasTrivialDestructor<t_CType>::mc_Value

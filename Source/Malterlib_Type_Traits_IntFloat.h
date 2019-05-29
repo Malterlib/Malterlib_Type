@@ -16,7 +16,7 @@ namespace NMib::NTraits
 
 	namespace NPrivate
 	{
-		template <typename t_CType0, bint t_bZeroSize>
+		template <typename t_CType0, bool t_bZeroSize>
 		class TCSizeOfHelper : public TCCompileTimeConstant<mint, sizeof(t_CType0)>
 		{
 		public:
@@ -1000,21 +1000,21 @@ namespace NMib::NTraits
 	|___________________________________________________________________________________________________|
 	\***************************************************************************************************/
 
-	template <mint t_VariableSize, bint t_bFundamental = false>
+	template <mint t_VariableSize, bool t_bFundamental = false>
 	class TCIntFromSize
 	{
 	public:
 		typedef void CType;
 	};
 
-	template <mint t_VariableSize, bint t_bFundamental = false>
+	template <mint t_VariableSize, bool t_bFundamental = false>
 	class TCIntFromSizeLarger
 	{
 	public:
 		typedef typename TCIntFromSizeLarger<t_VariableSize + 1, t_bFundamental>::CType CType;
 	};
 
-	template <mint t_VariableSize, bint t_bFundamental = false>
+	template <mint t_VariableSize, bool t_bFundamental = false>
 	class TCIntFromSizeSmaller
 	{
 	public:

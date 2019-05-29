@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+﻿// Copyright © 2015 Hansoft AB
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -18,7 +18,7 @@ public:
 struct CTesting
 {
 public:
-bint operator < (int) const
+bool operator < (int) const
 {
 	return 0;
 }
@@ -43,20 +43,20 @@ public:
 	}
 };
 
-bint operator < (int ,const CTesting&)
+bool operator < (int ,const CTesting&)
 {
 	return 0;
 }
-bint operator < (float ,const CTesting&)
+bool operator < (float ,const CTesting&)
 {
 	return 0;
 }
-bint operator < (const CTesting&, float)
+bool operator < (const CTesting&, float)
 {
 	return 0;
 }
 /*
-bint operator < (const CTesting&, int)
+bool operator < (const CTesting&, int)
 {
 	return 0;
 }*/
@@ -121,7 +121,7 @@ DMibStaticCheck((TCIsComparable<int, int>::mc_Value));
 DMibStaticCheck((!TCIsComparable<CTesting3, double>::mc_Value));
 
 DMibStaticCheck((TCIsComparableLessThan<int, int>::mc_Value));
-			
+
 
 DMibStaticCheck((!TCIsComparableLessThan<CTesting, CTesting>::mc_Value));
 DMibStaticCheck((!TCIsComparableLessThan<CTesting, CTesting2>::mc_Value));
