@@ -130,6 +130,20 @@ namespace NMib::NTraits
 	public:
 	};
 
+	template <typename t_CType>
+	class TCRemoveReferenceAndQualifiers;
+
+	template <typename t_CType0, typename t_CType1>
+	class TCIsSameDereferencedUnqualified : public TCCompileTimeConstant
+		<
+			bool
+			, NPrivate::TCIsSameHelper<typename TCRemoveReferenceAndQualifiers<t_CType0>::CType
+			, typename TCRemoveReferenceAndQualifiers<t_CType1>::CType>::EValue
+		>
+	{
+	public:
+	};
+
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Reference																							|
