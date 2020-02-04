@@ -2185,6 +2185,28 @@ namespace NMib::NTraits
 		;
 	};
 
+	/***************************************************************************************************\
+	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
+	| Remove qualifiers and add RValueReference															|
+	|___________________________________________________________________________________________________|
+	\***************************************************************************************************/
+
+	template <typename t_CType>
+	class TCRemoveQualifiersAndAddRValueReference
+	{
+	public:
+		typedef typename TCAddRValueReference
+			<
+				typename TCRemoveQualifiers
+				<
+					typename TCRemoveReference
+					<
+						t_CType
+					>::CType
+				>::CType
+			>::CType CType
+		;
+	};
 }
 
 namespace NMib
