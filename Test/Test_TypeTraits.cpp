@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB
+// Copyright © 2015 Hansoft AB
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -61,6 +61,51 @@ bool operator < (const CTesting&, int)
 	return 0;
 }*/
 
+#ifdef DMibPUniqueType_int
+	static_assert(!NMib::NTraits::TCIsSame<int, int32>::mc_Value);
+#else
+	static_assert(NMib::NTraits::TCIsSame<int, int32>::mc_Value || NMib::NTraits::TCIsSame<int, smint>::mc_Value);
+#endif
+
+#ifdef DMibPUniqueType_uint
+	static_assert(!NMib::NTraits::TCIsSame<unsigned int, uint32>::mc_Value);
+	static_assert(!NMib::NTraits::TCIsSame<unsigned int, mint>::mc_Value);
+#else
+	static_assert(NMib::NTraits::TCIsSame<unsigned int, uint32>::mc_Value || NMib::NTraits::TCIsSame<unsigned int, mint>::mc_Value);
+#endif
+
+#ifdef DMibPUniqueType_mint
+	static_assert(!NMib::NTraits::TCIsSame<mint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>::CType>::CType>::mc_Value);
+#else
+	static_assert(NMib::NTraits::TCIsSame<mint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>::CType>::CType>::mc_Value);
+#endif
+
+#ifdef DMibPUniqueType_smint
+	static_assert(!NMib::NTraits::TCIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>::CType>::mc_Value);
+#else
+	static_assert(NMib::NTraits::TCIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>::CType>::mc_Value);
+#endif
+
+#ifdef DMibPUniqueType_ch8
+	static_assert(!NMib::NTraits::TCIsSame<ch8, int8>::mc_Value);
+	static_assert(!NMib::NTraits::TCIsSame<ch8, uint8>::mc_Value);
+#else
+	static_assert(NMib::NTraits::TCIsSame<ch8, int8>::mc_Value || NMib::NTraits::TCIsSame<ch8, uint8>::mc_Value);
+#endif
+
+#ifdef DMibPUniqueType_ch16
+	static_assert(!NMib::NTraits::TCIsSame<ch16, int16>::mc_Value);
+	static_assert(!NMib::NTraits::TCIsSame<ch16, uint16>::mc_Value);
+#else
+	static_assert(NMib::NTraits::TCIsSame<ch16, int16>::mc_Value || NMib::NTraits::TCIsSame<ch16, uint16>::mc_Value);
+#endif
+
+#ifdef DMibPUniqueType_ch32
+	static_assert(!NMib::NTraits::TCIsSame<ch32, int32>::mc_Value);
+	static_assert(!NMib::NTraits::TCIsSame<ch32, uint32>::mc_Value);
+#else
+	static_assert(NMib::NTraits::TCIsSame<ch32, int32>::mc_Value || NMib::NTraits::TCIsSame<ch32, uint32>::mc_Value);
+#endif
 
 template <typename t_CLeft, typename t_CRight>
 class TCIsComparable
