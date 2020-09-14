@@ -63,7 +63,7 @@ namespace NMib::NTraits
 
 	namespace NPrivate
 	{
-		using CAlignmentHelperUnderlaying = int32;
+		using CAlignmentHelperUnderlying = int32;
 		enum EAlignmentHelper
 		{
 			EAlignmentHelper_Normal,
@@ -82,7 +82,7 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 
-		template <typename t_CType, CAlignmentHelperUnderlaying t_Impl>
+		template <typename t_CType, CAlignmentHelperUnderlying t_Impl>
 		struct TCAlignmentOfHelper
 		{
 			struct CFirst
@@ -162,7 +162,7 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 
-		template <typename t_CType, CAlignmentHelperUnderlaying t_Impl>
+		template <typename t_CType, CAlignmentHelperUnderlying t_Impl>
 		struct TCAlignmentOfHelper
 		{
 			enum
@@ -217,7 +217,7 @@ namespace NMib::NTraits
 
 	namespace NPrivate
 	{
-		template <typename t_CData, mint t_Align, CAlignmentHelperUnderlaying t_Impl>
+		template <typename t_CData, mint t_Align, CAlignmentHelperUnderlying t_Impl>
 		class TCAlignHelper
 		{
 		public:

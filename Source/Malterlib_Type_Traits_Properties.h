@@ -646,6 +646,33 @@ namespace NMib::NTraits
 
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
+	| Underlying Type																					|
+	|___________________________________________________________________________________________________|
+	\***************************************************************************************************/
+
+	namespace NPrivate
+	{
+#		ifdef DMibPUnderlyingType
+			template <typename t_CType, bool t_bIsEnum>
+			struct TCUnderlyingTypeHelper
+			{
+			};
+
+			template <typename t_CType>
+			struct TCUnderlyingTypeHelper<t_CType, true>
+			{
+				using CType = DMibPUnderlyingType(t_CType);
+			};
+#		else
+#			error "Implement this"
+#		endif
+	}
+
+	template <typename t_CType>
+	using TCEnumUnderlyingType = typename NPrivate::TCUnderlyingTypeHelper<t_CType, TCIsEnum<t_CType>::mc_Value>::CType;
+
+	/***************************************************************************************************\
+	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Is Abstract																						|
 	|___________________________________________________________________________________________________|
 	\***************************************************************************************************/
@@ -2668,7 +2695,7 @@ namespace NMib::NTraits
 
 	namespace NPrivate
 	{
-		using CHasMemberImplementationUnderlaying = int32;
+		using CHasMemberImplementationUnderlying = int32;
 		enum EHasMemberImplementation
 		{
 			EHasMemberImplementation_Class,
@@ -2719,7 +2746,7 @@ namespace NMib::NTraits
 		};\
 		typedef TCImplementationSingleMember<CTypeToCheck, \
 			NMib::NTraits::TCIsClass<CTypeToCheck>::mc_Value || NMib::NTraits::TCIsUnion<CTypeToCheck>::mc_Value> CImplementationSingleMember;\
-		template <typename t_CType2, NMib::NTraits::NPrivate::CHasMemberImplementationUnderlaying t_Implementation>\
+		template <typename t_CType2, NMib::NTraits::NPrivate::CHasMemberImplementationUnderlying t_Implementation>\
 		struct TCImplementation\
 		{\
 			enum\
