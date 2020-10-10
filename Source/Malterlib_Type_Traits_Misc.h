@@ -241,7 +241,6 @@ namespace NMib::NTraits
 	{
 	};
 
-#ifndef DMibNoAggregateConstexpr
 #define DMibImplementAlignNewTypeInit \
 		{\
 			CNewType(EAggregateInitialization _Init)\
@@ -252,9 +251,6 @@ namespace NMib::NTraits
 			{\
 			}\
 		}
-#else
-#define DMibImplementAlignNewTypeInit {}
-#endif
 
 #define DMibImplementAlign(_Align)\
 	template <typename t_CData>\
