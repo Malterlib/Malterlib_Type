@@ -3,6 +3,8 @@
 
 #include "Test_TypeTraits_TestTypes.h"
 
+#include <Mib/Storage/SharedPointer>
+
 #ifdef DMibCompiler_GCC
 #pragma GCC system_header
 #endif
@@ -217,7 +219,7 @@ namespace NCallable
 				}
 		};
 
- 		static_assert(NMib::NStorage::NPrivate::TCIsMemberCallableWith_f_RefCountIncrease<CTestInner, void ()>::mc_Value, "TCIsMemberCallableWith_f_RefCountIncrease broke.");
+ 		static_assert(NMib::NStorage::NPrivate::TCIsMemberCallableWith_f_RefCountIncrease<CTestInner, void (DMibRefcountDebuggingOnly(NMib::NStorage::CRefCountDebugReference &o_DebugRef))>::mc_Value, "TCIsMemberCallableWith_f_RefCountIncrease broke.");
 
 		static_assert(NMib::NStorage::TCHasIntrusiveRefcount<CTestInner>::mc_Value, "TCHasIntrusiveRefcount broke.");
 

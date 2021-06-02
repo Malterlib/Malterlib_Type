@@ -9,7 +9,7 @@ namespace NTrivial
 	DMibStaticCheck((	!TCHasTrivialAssignmentOperator<CNonTrivialAssignment>::mc_Value						));
 	DMibStaticCheck((	TCHasTrivialAssignmentOperator<CNonTrivialAssignmentInt>::mc_Value						));
 	DMibStaticCheck((	!TCHasTrivialAssignmentOperator<CNonTrivialAssignmentBoth>::mc_Value						));
-#if _MSC_VER != 1928
+#if _MSC_VER != 1929
 	DMibStaticCheck((	!TCHasTrivialAssignmentOperator<CNonTrivialAssignmentDerived>::mc_Value						));
 #endif
 	DMibStaticCheck((	!TCHasTrivialAssignmentOperator<CNonTrivialAssignmentDerivedOverride>::mc_Value						));
