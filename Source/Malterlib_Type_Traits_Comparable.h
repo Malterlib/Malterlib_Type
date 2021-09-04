@@ -9,20 +9,22 @@
 
 namespace NMib::NPrivate::NTraits
 {
-	struct CAny
-	{
-		template <class T>
-		CAny(const T&) ;
-	};
-
 	// when operator< is not available, this one is used
 	class CNoConvertible
 	{
 	};
 
+	struct CAny
+	{
+		template <class T>
+		CAny(const T&) ;
+
+	};
+
 	CNoConvertible operator == (const CAny&, const CAny&);
 	CNoConvertible operator != (const CAny&, const CAny&);
 	CNoConvertible operator < (const CAny&, const CAny&);
+	CNoConvertible operator <=> (const CAny&, const CAny&);
 	CNoConvertible operator <= (const CAny&, const CAny&);
 	CNoConvertible operator > (const CAny&, const CAny&);
 	CNoConvertible operator >= (const CAny&, const CAny&);

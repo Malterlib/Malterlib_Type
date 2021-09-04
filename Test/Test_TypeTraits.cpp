@@ -18,9 +18,9 @@ public:
 struct CTesting
 {
 public:
-bool operator < (int) const
+NMib::COrdering_Weak operator <=> (int) const
 {
-	return 0;
+	return NMib::COrdering_Weak::equivalent;
 }
 };
 
@@ -43,22 +43,22 @@ public:
 	}
 };
 
-bool operator < (int ,const CTesting&)
+NMib::COrdering_Weak operator <=> (int ,const CTesting&)
 {
-	return 0;
+	return NMib::COrdering_Weak::equivalent;
 }
-bool operator < (float ,const CTesting&)
+NMib::COrdering_Weak operator <=> (float ,const CTesting&)
 {
-	return 0;
+	return NMib::COrdering_Weak::equivalent;
 }
-bool operator < (const CTesting&, float)
+NMib::COrdering_Weak operator <=> (const CTesting&, float)
 {
-	return 0;
+	return NMib::COrdering_Weak::equivalent;
 }
 /*
-bool operator < (const CTesting&, int)
+COrdering_Weak operator <=> (const CTesting&, int)
 {
-	return 0;
+	return COrdering_Weak::equivalent;
 }*/
 
 #ifdef DMibPUniqueType_int

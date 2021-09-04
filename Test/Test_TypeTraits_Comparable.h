@@ -6,9 +6,9 @@
 class CComparableTest0
 {
 public:
-	bool operator < (CComparableTest0 const &_Other) const
+	NMib::COrdering_Weak operator <=> (CComparableTest0 const &_Other) const
 	{
-		return true;
+		return NMib::COrdering_Weak::equivalent;
 	}
 
 
