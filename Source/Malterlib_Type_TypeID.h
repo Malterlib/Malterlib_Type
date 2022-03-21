@@ -54,8 +54,8 @@ DMibTypeID(NMib::NStr::CStr, DMibCurrentTypeID + 21);
 DMibTypeID(NMib::NStr::CWStr, DMibCurrentTypeID + 22);
 DMibTypeID(NMib::NStr::CUStr, DMibCurrentTypeID + 23);
 DMibTypeID(NMib::NStr::CFStr256, DMibCurrentTypeID + 24);
-#ifndef DDocumentation_Doxygen
 DMibTypeID(NMib::NStr::CFUStr256, DMibCurrentTypeID + 25);
+#ifndef DDocumentation_Doxygen
 DMibTypeID(NMib::NStr::CFWStr256, DMibCurrentTypeID + 26);
 #endif
 
