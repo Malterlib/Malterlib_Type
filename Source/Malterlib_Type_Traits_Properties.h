@@ -1008,6 +1008,9 @@ namespace NMib::NTraits
 	public:
 	};
 
+	template <typename t_CDerived, typename t_CBase>
+	concept cIsBaseOfOrSame = TCIsBaseOfOrSame<t_CDerived, t_CBase>::mc_Value;
+
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Is Base Of																						|
@@ -3263,6 +3266,8 @@ namespace NMib::NTraits
 		>::CType CReturnType;
 	};
 
+	template <typename t_CType, typename t_CFunctionCallType>
+	concept cIsCallableWith = TCIsCallableWith<t_CType, t_CFunctionCallType>::mc_Value;
 
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
