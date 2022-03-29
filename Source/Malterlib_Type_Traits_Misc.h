@@ -74,91 +74,6 @@ namespace NMib::NTraits
 			EAlignmentHelper_Void,
 		};
 	}
-#ifndef DMibPAlignmentOf
-#ifdef DCompiler_MSVC
-#pragma warning(push)
-#pragma warning(disable:4624)
-#endif	
-	namespace NPrivate
-	{
-
-		template <typename t_CType, CAlignmentHelperUnderlying t_Impl>
-		struct TCAlignmentOfHelper
-		{
-			struct CFirst
-			{
-				int8 m_Padding;
-				t_CType m_First;
-				t_CType m_Second;
-			};
-			struct CSecond
-			{
-				t_CType m_First;
-				t_CType m_Second;
-			};
-			enum
-			{
-				mc_Value = sizeof(CFirst) - sizeof(CSecond)
-			};
-		};
-		template <typename t_CType>
-		struct TCAlignmentOfHelper<t_CType, EAlignmentHelper_Unbounded>
-		{
-			typedef typename TCRemoveExtent<t_CType>::CType CType;
-			struct CFirst
-			{
-				int8 m_Padding;
-				CType m_First;
-				CType m_Second;
-			};
-			struct CSecond
-			{
-				CType m_First;
-				CType m_Second;
-			};
-			enum
-			{
-				mc_Value = sizeof(CFirst) - sizeof(CSecond)
-			};
-		};
-		template <typename t_CType>
-		struct TCAlignmentOfHelper<t_CType, EAlignmentHelper_Void>
-		{
-			enum
-			{
-				mc_Value = 0
-			};
-		};
-		template <typename t_CType>
-		struct TCAlignmentOfHelper<t_CType, EAlignmentHelper_Function>
-		{
-			enum
-			{
-				mc_Value = 0
-			};
-		};
-	}
-	template <typename t_CType>
-	class TCAlignmentOf
-		: public TCCompileTimeConstant
-		<
-			mint
-			, NPrivate::TCAlignmentOfHelper
-			<
-				t_CType,
-				TCIsVoid<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Void
-				: TCIsFunction<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Function
-				: TCIsArrayUnbounded<t_CType>::mc_Value ? NPrivate::EAlignmentHelper_Unbounded
-				: NPrivate::EAlignmentHelper_Normal
-			>::mc_Value
-		>
-	{
-	public:
-	};
-#ifdef DCompiler_MSVC	
-#pragma warning(pop)
-#endif
-#else
 	namespace NPrivate
 	{
 
@@ -167,7 +82,7 @@ namespace NMib::NTraits
 		{
 			enum
 			{
-				mc_Value = DMibPAlignmentOf(t_CType)
+				mc_Value = alignof(t_CType)
 			};
 		};
 		template <typename t_CType>
@@ -195,6 +110,7 @@ namespace NMib::NTraits
 			};
 		};
 	}
+
 	template <typename t_CType>
 	class TCAlignmentOf
 		: public TCCompileTimeConstant
@@ -212,8 +128,6 @@ namespace NMib::NTraits
 	{
 	public:
 	};
-#endif
-
 
 	namespace NPrivate
 	{

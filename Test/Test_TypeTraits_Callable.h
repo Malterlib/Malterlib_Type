@@ -204,9 +204,6 @@ namespace NCallable
 
 	};
 
-#ifndef DCompiler_clang
-	// Disabled due to possible clang bug with SINFAE and private member access.
-
 	struct CTestInnerInherit
 	{
 		class CTestInner : public NMib::NStorage::TCSharedPointerIntrusiveBase<>
@@ -224,8 +221,6 @@ namespace NCallable
 		static_assert(NMib::NStorage::TCHasIntrusiveRefcount<CTestInner>::mc_Value, "TCHasIntrusiveRefcount broke.");
 
 	};
-
-#endif // DCompiler_clang
 
 	DMibStaticCheck((!TCIsFunctionObject<CTestClass>::mc_Value));
 	DMibStaticCheck((TCIsFunctionObject<CTestInt>::mc_Value));
