@@ -15,7 +15,6 @@ namespace NMib
 
 #include "Malterlib_Type_Traits_Properties.h"
 #include "Malterlib_Type_Traits_Misc.h"
-#include "Malterlib_Type_Traits_Comparable.h"
 #include "Malterlib_Type_Traits_IntFloat.h"
 
 namespace NMib::NTraits
