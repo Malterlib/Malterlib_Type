@@ -3433,12 +3433,15 @@ namespace NMib::NTraits
 
 
 	public:
-		enum
-		{
-			mc_Value = CEvalClass::mc_Value || CEvalOther::mc_Value || CEvalArray::mc_Value
-		};
+		constexpr static bool mc_Value = CEvalClass::mc_Value || CEvalOther::mc_Value || CEvalArray::mc_Value;
 	};
 
+	template <typename t_CType, typename... tp_CParams>
+	concept cConstructibleWith = requires (tp_CParams && ... p_Params)
+		{
+			new t_CType(static_cast<tp_CParams &&>(p_Params)...);
+		}
+	;
 
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
