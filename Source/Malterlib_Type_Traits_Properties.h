@@ -3370,6 +3370,11 @@ namespace NMib::NTraits
 				)
 			};
 		};
+		template <typename t_CReturn, typename t_CArgument>
+		struct TCEvalOther<true, t_CReturn (t_CArgument) noexcept> : public TCEvalOther<true, t_CReturn (t_CArgument)>
+		{
+		};
+
 		template <typename t_CReturn>
 		struct TCEvalOther<true, t_CReturn ()>
 		{
@@ -3378,6 +3383,11 @@ namespace NMib::NTraits
 				mc_Value = !NTraits::TCIsReference<CType>::mc_Value
 			};
 		};
+		template <typename t_CReturn>
+		struct TCEvalOther<true, t_CReturn () noexcept> : public TCEvalOther<true, t_CReturn ()>
+		{
+		};
+
 		typedef TCEvalOther
 				<
 					!NMib::NTraits::TCIsFunction<CType>::mc_Value
@@ -3424,6 +3434,11 @@ namespace NMib::NTraits
 				mc_Value = TCIsConstructorCallableWith<typename TCRemoveAllExtents<CType>::CType, t_CFunctionCallType>::mc_Value
 			};
 		};
+		template <typename t_CReturn>
+		struct TCEvalArray<true, t_CReturn () noexcept> : public TCEvalArray<true, t_CReturn ()>
+		{
+		};
+
 		typedef TCEvalArray
 				<
 					NMib::NTraits::TCIsArray<CType>::mc_Value && !NMib::NTraits::TCIsArrayUnbounded<CType>::mc_Value
