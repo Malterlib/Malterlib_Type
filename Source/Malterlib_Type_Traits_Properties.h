@@ -8,6 +8,8 @@
 #include <Mib/Preprocessor/Preprocessor>
 #include <Mib/Meta/Meta>
 
+#include <type_traits>
+
 namespace NMib::NTraits
 {
 	template <typename t_CFunction>
@@ -3268,6 +3270,33 @@ namespace NMib::NTraits
 
 	template <typename t_CType, typename t_CFunctionCallType>
 	concept cIsCallableWith = TCIsCallableWith<t_CType, t_CFunctionCallType>::mc_Value;
+
+	namespace NPrivate
+	{
+		template <typename t_CType, typename t_CFunctionCallType>
+		struct TCIsNoExceptCallableWith;
+
+		template <typename t_CType, typename t_CReturn, typename... tp_CParams>
+		struct TCIsNoExceptCallableWith<t_CType, t_CReturn (tp_CParams...)> : TCCompileTimeConstant
+			<
+				bool
+				, std::is_nothrow_invocable_r_v<t_CReturn, t_CType, tp_CParams...>
+			>
+		{
+		};
+
+		template <typename t_CType, typename t_CReturn, typename... tp_CParams>
+		struct TCIsNoExceptCallableWith<t_CType, t_CReturn (tp_CParams...) noexcept> : TCCompileTimeConstant
+			<
+				bool
+				, std::is_nothrow_invocable_r_v<t_CReturn, t_CType, tp_CParams...>
+			>
+		{
+		};
+	}
+
+	template <typename t_CType, typename t_CFunctionCallType>
+	concept cIsNoThrowCallableWith = NPrivate::TCIsNoExceptCallableWith<t_CType, t_CFunctionCallType>::mc_Value;
 
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
