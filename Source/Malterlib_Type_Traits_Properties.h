@@ -8,6 +8,22 @@
 #include <Mib/Preprocessor/Preprocessor>
 #include <Mib/Meta/Meta>
 
+#if defined(DMalterlibUseStaticLibCxx)
+#	define DMibNewVisibility _LIBCPP_OVERRIDABLE_FUNC_VIS
+#	include <stddef.h>
+
+	namespace std
+	{
+		using ::nullptr_t;
+		using ::ptrdiff_t _LIBCPP_USING_IF_EXISTS;
+		using ::size_t _LIBCPP_USING_IF_EXISTS;
+	}
+#	include <__new/new.h>
+#else
+#	define DMibNewVisibility
+#	include <new>
+#endif
+
 #include <type_traits>
 
 namespace NMib::NTraits
@@ -3493,90 +3509,162 @@ namespace NMib::NTraits
 	|___________________________________________________________________________________________________|
 	\***************************************************************************************************/
 
-	template <typename t_CType>
-	class TCOperatorTraits_New;
-	template <typename t_CType>
-	class TCOperatorFullType_New;
-	template <typename t_CType>
-	class TCOperatorType_New;
-	template <typename t_CType>
-	class TCHasOperator_New;
-	template <typename t_CType>
-	class TCIsOperatorCallable_New;
-	template <typename t_CType, typename t_CFunctionCallType>
-	struct TCIsOperatorCallableWith_New;
-	template <typename t_CType>
-	class TCOperatorTraits_New;
+	namespace NPrivate
+	{
+		template <typename t_CType>
+		concept cHasOperator_New_0 = requires (std::size_t _Size)
+			{
+				t_CType::operator new(_Size);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_New_1 = requires (std::size_t _Size, std::align_val_t _Align)
+			{
+				t_CType::operator new(_Size, _Align);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_New_2 = requires (std::size_t _Size)
+			{
+				&t_CType::operator new;
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_NewArray_0 = requires (std::size_t _Size)
+			{
+				t_CType::operator new [](_Size);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_NewArray_1 = requires (std::size_t _Size, std::align_val_t _Align)
+			{
+				t_CType::operator new [](_Size, _Align);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_NewArray_2 = requires (void *_pMemory, std::size_t _Size)
+			{
+				&t_CType::operator new [];
+			}
+		;
+	}
 
 	template <typename t_CType>
-	class TCOperatorTraits_NewArray;
-	template <typename t_CType>
-	class TCOperatorFullType_NewArray;
-	template <typename t_CType>
-	class TCOperatorType_NewArray;
-	template <typename t_CType>
-	class TCHasOperator_NewArray;
-	template <typename t_CType>
-	class TCIsOperatorCallable_NewArray;
-	template <typename t_CType, typename t_CFunctionCallType>
-	struct TCIsOperatorCallableWith_NewArray;
-	template <typename t_CType>
-	class TCOperatorTraits_NewArray;
+	concept cHasOperatorNewArray
+		= NPrivate::cHasOperator_NewArray_0<t_CType>
+		|| NPrivate::cHasOperator_NewArray_1<t_CType>
+		|| NPrivate::cHasOperator_NewArray_2<t_CType>
+	;
 
 	template <typename t_CType>
-	class TCOperatorTraits_Delete;
-	template <typename t_CType>
-	class TCOperatorFullType_Delete;
-	template <typename t_CType>
-	class TCOperatorType_Delete;
-	template <typename t_CType>
-	class TCHasOperator_Delete;
-	template <typename t_CType>
-	class TCIsOperatorCallable_Delete;
-	template <typename t_CType, typename t_CFunctionCallType>
-	struct TCIsOperatorCallableWith_Delete;
-	template <typename t_CType>
-	class TCOperatorTraits_Delete;
+	concept cHasOperatorNew
+		= NPrivate::cHasOperator_New_0<t_CType>
+		|| NPrivate::cHasOperator_New_1<t_CType>
+		|| NPrivate::cHasOperator_New_2<t_CType>
+	;
 
 	template <typename t_CType>
-	class TCOperatorTraits_DeleteArray;
-	template <typename t_CType>
-	class TCOperatorFullType_DeleteArray;
-	template <typename t_CType>
-	class TCOperatorType_DeleteArray;
-	template <typename t_CType>
-	class TCHasOperator_DeleteArray;
-	template <typename t_CType>
-	class TCIsOperatorCallable_DeleteArray;
-	template <typename t_CType, typename t_CFunctionCallType>
-	struct TCIsOperatorCallableWith_DeleteArray;
-	template <typename t_CType>
-	class TCOperatorTraits_DeleteArray;
+	concept cHasOperatorNewAny = cHasOperatorNew<t_CType> || cHasOperatorNewArray<t_CType>;
 
 	template <typename t_CType>
-	class TCHasOperatorNew : public TCCompileTimeConstant
-		<
-			bool
-			,
-			(
-				TCHasOperator_New<t_CType>::mc_Value
-				|| TCHasOperator_NewArray<t_CType>::mc_Value
-			)
-		>
+	struct TCHasOperator_New: public TCCompileTimeConstant<bool, cHasOperatorNew<t_CType>>
+	{
+	};
+
+	template <typename t_CType>
+	struct TCHasOperator_NewArray: public TCCompileTimeConstant<bool, cHasOperatorNewArray<t_CType>>
+	{
+	};
+
+	template <typename t_CType>
+	class TCHasOperatorNew : public TCCompileTimeConstant<bool, cHasOperatorNewAny<t_CType>>
 	{
 	public:
 	};
 
+	namespace NPrivate
+	{
+		template <typename t_CType>
+		concept cHasOperator_Delete_0 = requires (void *_pMemory)
+			{
+				t_CType::operator delete(_pMemory);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_Delete_1 = requires (void *_pMemory, std::size_t _Size)
+			{
+				t_CType::operator delete(_pMemory, _Size);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_Delete_2 = requires (t_CType *_pMemory, std::destroying_delete_t)
+			{
+				t_CType::operator delete(_pMemory, std::destroying_delete);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_Delete_3 = requires (t_CType *_pMemory, std::destroying_delete_t, std::size_t _Size)
+			{
+				t_CType::operator delete(_pMemory, std::destroying_delete, _Size);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_Delete_4 = requires (void *_pMemory)
+			{
+				&t_CType::operator delete;
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_DeleteArray_0 = requires (void *_pMemory)
+			{
+				t_CType::operator delete [](_pMemory);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_DeleteArray_1 = requires (void *_pMemory, std::size_t _Size)
+			{
+				t_CType::operator delete [](_pMemory, _Size);
+			}
+		;
+		template <typename t_CType>
+		concept cHasOperator_DeleteArray_2 = requires (void *_pMemory, std::size_t _Size)
+			{
+				&t_CType::operator delete [];
+			}
+		;
+	}
+
 	template <typename t_CType>
-	class TCHasOperatorDelete : public TCCompileTimeConstant
-		<
-			bool
-			,
-			(
-				TCHasOperator_Delete<t_CType>::mc_Value
-				|| TCHasOperator_DeleteArray<t_CType>::mc_Value
-			)
-		>
+	concept cHasOperatorDeleteArray
+		= NPrivate::cHasOperator_DeleteArray_0<t_CType>
+		|| NPrivate::cHasOperator_DeleteArray_1<t_CType>
+		|| NPrivate::cHasOperator_DeleteArray_2<t_CType>
+	;
+
+	template <typename t_CType>
+	concept cHasOperatorDelete
+		= NPrivate::cHasOperator_Delete_0<t_CType>
+		|| NPrivate::cHasOperator_Delete_1<t_CType>
+		|| NPrivate::cHasOperator_Delete_2<t_CType>
+		|| NPrivate::cHasOperator_Delete_3<t_CType>
+		|| NPrivate::cHasOperator_Delete_4<t_CType>
+	;
+
+	template <typename t_CType>
+	concept cHasOperatorDeleteAny = cHasOperatorDelete<t_CType> || cHasOperatorDeleteArray<t_CType>;
+
+	template <typename t_CType>
+	struct TCHasOperator_Delete: public TCCompileTimeConstant<bool, cHasOperatorDelete<t_CType>>
+	{
+	};
+
+	template <typename t_CType>
+	struct TCHasOperator_DeleteArray: public TCCompileTimeConstant<bool, cHasOperatorDeleteArray<t_CType>>
+	{
+	};
+
+	template <typename t_CType>
+	class TCHasOperatorDelete : public TCCompileTimeConstant<bool, cHasOperatorDeleteAny<t_CType>>
 	{
 	public:
 	};
@@ -3650,11 +3738,6 @@ namespace NMib::NTraits
 	{
 		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(FunctionObject, Helper, operator(), 0, (), void, ;, CBaseMixin::*, Normal, true,,,void);
 	}
-
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, New, operator new, 0, (mint) noexcept, void *, return nullptr;, *, Safe, true,,,void*);
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, NewArray, operator new [], 0, (mint) noexcept, void *, return nullptr;, *, Safe, true,,,void*);
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, Delete, operator delete, 0, (void *), void, ;, *, Safe, true,,,void);
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, DeleteArray, operator delete [], 0, (void *), void, ;, *, Safe, true,,,void);
 
 #define DMibTypeTraitsImplement_MemberTraits_BinaryOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,BinaryOperator,_Operator,bool);
 #define DMibTypeTraitsImplement_MemberTraits_PrefixOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,PrefixOperator,_Operator,bool);

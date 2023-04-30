@@ -117,6 +117,10 @@ struct CTestStruct13 : public CTestStruct3
 {
 };
 
+struct CTestStructFinal final : public CTestStruct0
+{
+};
+
 using namespace NMib::NTraits;
 
 enum ETestEnum
