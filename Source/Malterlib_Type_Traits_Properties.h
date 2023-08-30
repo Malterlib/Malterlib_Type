@@ -677,26 +677,8 @@ namespace NMib::NTraits
 	|___________________________________________________________________________________________________|
 	\***************************************************************************************************/
 
-	namespace NPrivate
-	{
-#		ifdef DMibPUnderlyingType
-			template <typename t_CType, bool t_bIsEnum>
-			struct TCUnderlyingTypeHelper
-			{
-			};
-
-			template <typename t_CType>
-			struct TCUnderlyingTypeHelper<t_CType, true>
-			{
-				using CType = DMibPUnderlyingType(t_CType);
-			};
-#		else
-#			error "Implement this"
-#		endif
-	}
-
 	template <typename t_CType>
-	using TCEnumUnderlyingType = typename NPrivate::TCUnderlyingTypeHelper<t_CType, TCIsEnum<t_CType>::mc_Value>::CType;
+	using TCEnumUnderlyingType = typename std::underlying_type<t_CType>::type;
 
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
