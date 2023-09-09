@@ -680,6 +680,9 @@ namespace NMib::NTraits
 	template <typename t_CType>
 	using TCEnumUnderlyingType = typename std::underlying_type<t_CType>::type;
 
+	template <typename t_CType>
+	concept cIsScopedEnum = std::is_scoped_enum_v<t_CType>;
+
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Is Abstract																						|
