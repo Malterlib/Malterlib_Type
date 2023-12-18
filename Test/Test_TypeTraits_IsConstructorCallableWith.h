@@ -46,7 +46,7 @@ DMibStaticCheck((	!TCIsConstructorCallableWith<CTestClass &, void (CTestClass)>:
 #endif
 DMibStaticCheck((	TCIsConstructorCallableWith<CTestBase, void (CTestBase&&)>::mc_Value	));
 DMibStaticCheck((	!TCIsConstructorCallableWith<CTestNoDefaultConstruct, void ()>::mc_Value	));
-DMibStaticCheck((	TCIsConstructorCallableWith<CTestBase, void (int &)>::mc_Value	));
+DMibStaticCheck((	cConstructibleWithBrace<CTestBase, int &>	));
 DMibStaticCheck((	TCIsConstructorCallableWith<CTestNoDefaultConstruct, void (int &&)>::mc_Value	));
 
 

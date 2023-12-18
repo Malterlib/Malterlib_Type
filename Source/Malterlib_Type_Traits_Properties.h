@@ -3314,189 +3314,28 @@ namespace NMib::NTraits
 	|___________________________________________________________________________________________________|
 	\***************************************************************************************************/
 
-	template <typename t_CType, typename t_CFunctionCallType>
-	struct TCIsConstructorCallableWith
-	{
-	private:
-		typedef typename TCRemoveQualifiers<t_CType>::CType CType;
-		template <typename t_CToGenerate>
-		static t_CToGenerate G();
-		class CDummy{};
-
-		/***************************************************************************************************\
-		|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
-		| Class																								|
-		|___________________________________________________________________________________________________|
-		\***************************************************************************************************/
-
-		template <typename t_CFunction>
-		struct TCEval2
-		{
-			typedef void CRet;
-			static CDummy fs_D(...);
-		};
-		template <typename tR, typename... t_PCTypes>
-		struct TCEval2<tR (t_PCTypes...)>
-		{
-			typedef tR CRet;
-			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(new(G<void *>()) t_CC(G<t_PCTypes>()...));
-			static CDummy fs_D(...);
-		};
-		template <bool t_bValid, typename t_CFunction>
-		struct TCEval
-		{
-			enum
-			{
-				mc_Value = false
-			};
-		};
-		template <typename t_CFunction>
-		struct TCEval<true, t_CFunction>
-		{
-			typedef decltype(TCEval2<t_CFunction>::fs_D(((CType *)nullptr))) CRet;
-			enum
-			{
-				mc_Value = !NMib::NTraits::TCIsSame<CRet, CDummy>::mc_Value
-			};
-		};
-		typedef TCEval
-			<
-				(NMib::NTraits::TCIsClass<CType>::mc_Value || NMib::NTraits::TCIsUnion<CType>::mc_Value)
-				, t_CFunctionCallType
-			> CEvalClass
-		;
-
-		/***************************************************************************************************\
-		|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
-		| Other																								|
-		|___________________________________________________________________________________________________|
-		\***************************************************************************************************/
-
-		struct CDummy2
-		{
-		};
-
-		template <bool t_bValid, typename t_CFunction>
-		struct TCEvalOther
-		{
-			enum
-			{
-				mc_Value = false
-			};
-		};
-		template <typename t_CReturn, typename t_CArgument>
-		struct TCEvalOther<true, t_CReturn (t_CArgument)>
-		{
-			//static CDummy2 fs_D(CType);
-			//static CDummy fs_D(...);
-
-			//typedef decltype(fs_D(G<t_CArgument>())) CRet;
-			enum
-			{
-				mc_Value = NMib::NTraits::TCIsConvertible<t_CArgument, CType>::mc_Value
-				||
-				(
-					(
-						NMib::NTraits::TCIsRValueReference<t_CArgument>::mc_Value
-						|| !NMib::NTraits::TCIsReference<t_CArgument>::mc_Value
-					)
-					&& NMib::NTraits::TCIsRValueReference<CType>::mc_Value
-					&&
-					(
-						NMib::NTraits::TCIsSame<typename TCRemoveQualifiers<typename TCRemoveReference<t_CArgument>::CType>::CType, typename TCRemoveQualifiers<typename TCRemoveReference<CType>::CType>::CType>::mc_Value
-						|| NMib::NTraits::TCIsBaseOf<typename TCRemoveQualifiers<typename TCRemoveReference<t_CArgument>::CType>::CType, typename TCRemoveQualifiers<typename TCRemoveReference<CType>::CType>::CType>::mc_Value
-					)
-				)
-			};
-		};
-		template <typename t_CReturn, typename t_CArgument>
-		struct TCEvalOther<true, t_CReturn (t_CArgument) noexcept> : public TCEvalOther<true, t_CReturn (t_CArgument)>
-		{
-		};
-
-		template <typename t_CReturn>
-		struct TCEvalOther<true, t_CReturn ()>
-		{
-			enum
-			{
-				mc_Value = !NTraits::TCIsReference<CType>::mc_Value
-			};
-		};
-		template <typename t_CReturn>
-		struct TCEvalOther<true, t_CReturn () noexcept> : public TCEvalOther<true, t_CReturn ()>
-		{
-		};
-
-		typedef TCEvalOther
-				<
-					!NMib::NTraits::TCIsFunction<CType>::mc_Value
-					&& !NMib::NTraits::TCIsVoid<CType>::mc_Value
-					&& !(
-							NMib::NTraits::TCIsClass<CType>::mc_Value
-							|| NMib::NTraits::TCIsUnion<CType>::mc_Value
-						)
-					&& !NTraits::TCIsArray<CType>::mc_Value
-					, t_CFunctionCallType
-				> CEvalOther;
-
-		/***************************************************************************************************\
-		|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
-		| Array																								|
-		|___________________________________________________________________________________________________|
-		\***************************************************************************************************/
-
-		template <bool t_bValid, typename t_CFunction>
-		struct TCEvalArray
-		{
-			enum
-			{
-				mc_Value = false
-			};
-		};
-/*			template <typename t_CReturn, typename t_CArgument>
-		struct TCEvalArray<true, t_CReturn (t_CArgument)>
-		{
-			static CDummy2 fs_D(CType);
-			static CDummy fs_D(...);
-
-			typedef decltype(fs_D(G<t_CArgument>())) CRet;
-			enum
-			{
-				mc_Value = !NMib::NTraits::TCIsSame<CRet, CDummy>::mc_Value
-			};
-		};*/
-		template <typename t_CReturn>
-		struct TCEvalArray<true, t_CReturn ()>
-		{
-			enum
-			{
-				mc_Value = TCIsConstructorCallableWith<typename TCRemoveAllExtents<CType>::CType, t_CFunctionCallType>::mc_Value
-			};
-		};
-		template <typename t_CReturn>
-		struct TCEvalArray<true, t_CReturn () noexcept> : public TCEvalArray<true, t_CReturn ()>
-		{
-		};
-
-		typedef TCEvalArray
-				<
-					NMib::NTraits::TCIsArray<CType>::mc_Value && !NMib::NTraits::TCIsArrayUnbounded<CType>::mc_Value
-					, t_CFunctionCallType
-				> CEvalArray;
-
-
-
-	public:
-		constexpr static bool mc_Value = CEvalClass::mc_Value || CEvalOther::mc_Value || CEvalArray::mc_Value;
-	};
-
 	template <typename t_CType, typename... tp_CParams>
-	concept cConstructibleWith = requires (tp_CParams && ... p_Params)
+	concept cConstructibleWithBrace = requires (void *_pMemory, tp_CParams && ... p_Params)
 		{
-			new t_CType(static_cast<tp_CParams &&>(p_Params)...);
+			new(_pMemory) t_CType{static_cast<tp_CParams &&>(p_Params)...};
+		}
+	;
+	
+	template <typename t_CType, typename... tp_CParams>
+	concept cConstructibleWith = requires (void *_pMemory, tp_CParams && ... p_Params)
+		{
+			new(_pMemory) t_CType(static_cast<tp_CParams &&>(p_Params)...);
 		}
 	;
 
+	template <typename t_CType, typename t_CFunctionCallType>
+	struct TCIsConstructorCallableWith;
+
+	template <typename t_CType, typename ...tp_CParams>
+	struct TCIsConstructorCallableWith<t_CType, void (tp_CParams...)> : public TCCompileTimeConstant<bool, std::is_constructible_v<t_CType, tp_CParams...>>
+	{
+	};
+	
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Has New Operator																					|
