@@ -825,6 +825,13 @@ namespace NMib::NTraits
 	public:
 	};
 
+
+	template <typename t_CType>
+	concept cHasNothrowCopyConstructor = std::is_nothrow_copy_constructible_v<t_CType>;
+
+	template <typename t_CType>
+	concept cHasNothrowMoveConstructor = std::is_nothrow_move_constructible_v<t_CType>;
+
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Has Nothrow Default Constructor																	|
@@ -854,6 +861,9 @@ namespace NMib::NTraits
 	{
 	public:
 	};
+
+	template <typename t_CType>
+	concept cHasNothrowDefaultConstructor = std::is_nothrow_default_constructible_v<t_CType>;
 
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
@@ -913,6 +923,10 @@ namespace NMib::NTraits
 	public:
 	};
 
+
+	template <typename t_CType>
+	concept cHasTrivialMoveConstructor = std::is_trivially_move_constructible_v<t_CType>;
+
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Has Trivial Default Constructor																	|
@@ -925,6 +939,9 @@ namespace NMib::NTraits
 	{
 	public:
 	};
+
+	template <typename t_CType>
+	concept cHasTrivialDefaultConstructor = std::is_trivially_default_constructible_v<t_CType>;
 
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
