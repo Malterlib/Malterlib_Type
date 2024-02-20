@@ -306,6 +306,8 @@ namespace NMib::NTraits
 		typedef t_CType CType;
 	};
 
+	template <typename t_CType>
+	using TCRemoveReferenceType = typename TCRemoveReference<t_CType>::CType;
 
 	template <typename t_CType>
 	class TCRemoveReferenceStorable
@@ -2258,6 +2260,9 @@ namespace NMib::NTraits
 			>::CType CType
 		;
 	};
+
+	template <typename t_CType>
+	using TCRemoveQualifiersAndAddRValueReferenceType = typename TCRemoveQualifiersAndAddRValueReference<t_CType>::CType;
 }
 
 namespace NMib
@@ -2717,569 +2722,82 @@ namespace NMib::NTraits
 	|___________________________________________________________________________________________________|
 	\***************************************************************************************************/
 
-	namespace NPrivate
-	{
-		using CHasMemberImplementationUnderlying = int32;
-		enum EHasMemberImplementation
-		{
-			EHasMemberImplementation_Class,
-			EHasMemberImplementation_Union,
-			EHasMemberImplementation_Other
-		};
-
-	}
-	template <typename t_CType>
-	class TCIsFunctionObject;
-
-	// Flaw: HasMember/IsCallable does not work for overloaded functions on unions on GCC
-
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameSingleMemeberImplNormal(_Type, _MemberName) \
-	template <typename t_CClass>\
-	static auto fs_Deduce(t_CClass *_pMember) -> decltype(&t_CClass::_MemberName);\
-	static CDummy fs_Deduce(...);\
-	enum {\
-		mc_Value = !NMib::NTraits::TCIsSame<decltype(fs_Deduce((_Type*)0)), CDummy>::mc_Value\
-		, ms_MultiValue = mc_Value\
-	};
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameSingleMemeberImplSafe(_Type, _MemberName) DMibPrivateTypeTraitsImplement_MemberTraitsWithNameSingleMemeberImplNormal(_Type, _MemberName)
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameTraits(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRet2, _OperatorRetVal, _FunctionType, _SafeImpl) \
-	template <typename t_CType>\
-	class TC##_BaseName##Traits_##_TraitName\
-	{ \
-		typedef typename NMib::NTraits::TCRemoveReference<t_CType>::CType CTypeToCheck;\
-		template <typename t_CType2, bool t_bEnable>\
-		struct TCImplementationSingleMember\
-		{\
-			enum\
-			{\
-				mc_Value = false\
-			};\
-		};\
-		template <mint t_Value>\
-		struct TCDummy\
-		{\
-		};\
-		struct CDummy{};\
-		template <typename t_CType2>\
-		struct TCImplementationSingleMember<t_CType2, true>\
-		{\
-		DMibPrivateTypeTraitsImplement_MemberTraitsWithNameSingleMemeberImpl##_SafeImpl(t_CType2, _MemberName)\
-		};\
-		typedef TCImplementationSingleMember<CTypeToCheck, \
-			NMib::NTraits::TCIsClass<CTypeToCheck>::mc_Value || NMib::NTraits::TCIsUnion<CTypeToCheck>::mc_Value> CImplementationSingleMember;\
-		template <typename t_CType2, NMib::NTraits::NPrivate::CHasMemberImplementationUnderlying t_Implementation>\
-		struct TCImplementation\
-		{\
-			enum\
-			{\
-				mc_Value = false\
-			};\
-		};\
-		template <typename t_CType2>\
-		struct TCImplementation<t_CType2, NMib::NTraits::NPrivate::EHasMemberImplementation_Class>\
-		{\
-			struct CBaseMixin\
-			{ \
-				_OperatorRet _MemberName _OperatorParams\
-				{\
-					_OperatorRetVal;\
-				}\
-			};\
-			struct CDerived : public t_CType2, public CBaseMixin \
-			{\
-			};\
-			template <typename t_CType3, t_CType3 t_Value>\
-			class TCHelper\
-			{\
-			};\
-			template <typename t_CClass> \
-			static NMib::NTraits::CFalseBySize fs_Deduce(t_CClass *, TCHelper<_OperatorRet2 (_FunctionType) _OperatorParams, &t_CClass::_MemberName>* = 0); \
-			static NMib::NTraits::CTrueBySize fs_Deduce(...); \
-			enum\
-			{\
-				mc_Value = sizeof(fs_Deduce((CDerived*)0)) == sizeof(NMib::NTraits::CTrueBySize) \
-			};\
-		};\
-		template <typename t_CType2>\
-		struct TCImplementation<t_CType2, NMib::NTraits::NPrivate::EHasMemberImplementation_Union>\
-		{\
-			enum\
-			{\
-				mc_Value = TCImplementationSingleMember<t_CType2, true>::ms_MultiValue\
-			};\
-		};\
-		typedef TCImplementation<CTypeToCheck, \
-			NMib::NTraits::TCIsClass<CTypeToCheck>::mc_Value ? NMib::NTraits::NPrivate::EHasMemberImplementation_Class \
-			: NMib::NTraits::TCIsUnion<CTypeToCheck>::mc_Value ? NMib::NTraits::NPrivate::EHasMemberImplementation_Union \
-			: NMib::NTraits::NPrivate::EHasMemberImplementation_Other> CImplementation;\
-		template <typename t_CType2, bool t_bHasMember>\
-		struct TCImplementationTypeOf\
-		{\
-			typedef void CType;\
-		};\
-		template <typename t_CType2>\
-		struct TCImplementationTypeOf<t_CType2, true>\
-		{\
-			typedef decltype(&t_CType2::_MemberName) CType;\
-		};\
-		typedef typename TCImplementationTypeOf\
-		<\
-			CTypeToCheck, CImplementationSingleMember::mc_Value\
-		>::CType CRawType;\
-	public: \
-		typedef typename NMib::NTraits::TCRemoveMemberObjectPointer\
-			<\
-				typename NMib::NTraits::TCRemoveMemberFunctionPointer\
-				<\
-					typename NMib::NTraits::TCRemovePointer\
-					<\
-						CRawType\
-					>::CType\
-				>::CType\
-			>::CType CMemberType;\
-		typedef typename NMib::NTraits::TCRemovePointer\
-			<\
-				CRawType\
-			>::CType CFullMemberType;\
-		enum\
-		{\
-			mc_HasMember = CImplementation::mc_Value \
-			, mc_IsCallable = mc_HasMember && \
-			(\
-				NMib::NTraits::TCIsMemberFunctionPointer<CMemberType>::mc_Value\
-				|| NMib::NTraits::TCIsFunction<CMemberType>::mc_Value\
-				|| !CImplementationSingleMember::mc_Value\
-				|| _FunctionObject\
-			)\
-		};\
-	};
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameFullType(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl) \
-	template <typename t_CType>\
-	class TC##_BaseName##FullType_##_TraitName\
-	{\
-	public:\
-		typedef typename TC##_BaseName##Traits_##_TraitName<t_CType>::CFullMemberType CType;\
-	};
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameType(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl) \
-	template <typename t_CType>\
-	class TC##_BaseName##Type_##_TraitName\
-	{\
-	public:\
-		typedef typename TC##_BaseName##Traits_##_TraitName<t_CType>::CMemberType CType;\
-	};
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameHas(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl) \
-	template <typename t_CType>\
-	class TCHas##_BaseName##_##_TraitName \
-		: public NMib::NTraits::TCCompileTimeConstant<bool, TC##_BaseName##Traits_##_TraitName<t_CType>::mc_HasMember>\
-	{\
-	};
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallable(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl) \
-	template <typename t_CType>\
-	class TCIs##_BaseName##Callable_##_TraitName : public NMib::NTraits::TCCompileTimeConstant<bool, TC##_BaseName##Traits_##_TraitName<t_CType>::mc_IsCallable>\
-	{\
-	};
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallableWith(_BaseName, _TraitName, _Mem, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl, _ExtraEvalExpression, _CallableParam0) \
-	template <typename t_CType, typename t_CFunctionCallType>\
-	struct TCIs##_BaseName##CallableWith_##_TraitName\
-	{\
-	private:\
-		class CDummy{};\
-		template <typename t_CFunction>\
-		struct TCEval2\
-		{\
-			typedef void CRet;\
-			static CDummy fs_D(...);\
-		};\
-		template <typename tR, typename... t_PCParams>\
-		struct TCEval2<tR (t_PCParams...)>\
-		{\
-			typedef tR CRet;\
-			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(NMib::fg_GetReference<t_CC>()._Mem(NMib::fg_GetType<t_PCParams>()...));\
-			static CDummy fs_D(...);\
-		};\
-		template <bool t_bValid, typename t_CFunction>\
-		struct TCEval\
-		{\
-			enum\
-			{\
-				mc_Value = false\
-			};\
-			typedef void CReturnType;\
-		};\
-		template <typename t_CFunction>\
-		struct TCEval<true, t_CFunction>\
-		{\
-			typedef decltype(TCEval2<t_CFunction>::fs_D(((t_CType *)nullptr))) CRet;\
-			enum\
-			{\
-				mc_Value = NMib::NTraits::NPrivate::TCReturnConvertibleHelper<CRet, typename TCEval2<t_CFunction>::CRet>::mc_Value\
-				&& !NMib::NTraits::TCIsSame<CRet, CDummy>::mc_Value\
-			};\
-			typedef typename NMib::TCChooseType<mc_Value, CRet, void>::CType CReturnType;\
-		};\
-		typedef TCEval\
-				<\
-					(NMib::NTraits::TCIsClass<t_CType>::mc_Value || NMib::NTraits::TCIsUnion<t_CType>::mc_Value)\
-					&& _ExtraEvalExpression\
-					, t_CFunctionCallType\
-				> CEvalType;\
-	public:\
-		enum\
-		{\
-			mc_Value = CEvalType::mc_Value\
-		};\
-		typedef typename CEvalType::CReturnType CReturnType;\
-	};\
-	template <typename t_CType, typename t_CFunctionCallType, bool t_bIsCallableWith = TCIs##_BaseName##CallableWith_##_TraitName<t_CType, t_CFunctionCallType>::mc_Value>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp\
-	{\
-		enum\
-		{\
-			mc_Value = false\
-		};\
-	};\
-	template <typename t_CType, typename t_CRet, typename... t_PCParams>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp<t_CType, t_CRet (t_PCParams...), true>\
-	{\
-		template <typename t_CToGenerate>\
-		static t_CToGenerate G();\
-		enum\
-		{\
-			mc_Value = noexcept(NMib::fg_GetReference<t_CType>()._Mem(G<t_PCParams>()...))\
-		};\
-	};\
-	template <typename t_CType, typename t_CFunctionCallType>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName : public TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp<t_CType, t_CFunctionCallType>\
-	{\
-	};
-
-	namespace NPrivate
-	{
-		template <typename t_CType>
-		struct TCTypeWithMember
-		{
-			t_CType m_Member;
-		};
-	}
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallableWithBinaryOperator(_BaseName, _TraitName, _Mem, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl, _ExtraEvalExpression, _Operator) \
-	template <typename t_CType, typename t_CFunctionCallType>\
-	struct TCIs##_BaseName##CallableWith_##_TraitName\
-	{\
-	private:\
-		class CDummy{};\
-		template <typename t_CFunction>\
-		struct TCEval2\
-		{\
-			typedef void CRet;\
-			static CDummy fs_D(...);\
-		};\
-		template <typename tR, typename t_CParam>\
-		struct TCEval2<tR (t_CParam)>\
-		{\
-			typedef tR CRet;\
-			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->m_Member _Operator NMib::fg_GetType<t_CParam>());\
-			static CDummy fs_D(...);\
-		};\
-		template <bool t_bValid, typename t_CFunction>\
-		struct TCEval\
-		{\
-			enum\
-			{\
-				mc_Value = false\
-			};\
-			typedef void CReturnType;\
-		};\
-		template <typename t_CFunction>\
-		struct TCEval<true, t_CFunction>\
-		{\
-			typedef decltype(TCEval2<t_CFunction>::fs_D(((NMib::NTraits::NPrivate::TCTypeWithMember<t_CType> *)nullptr))) CRet;\
-			enum\
-			{\
-				mc_Value = NMib::NTraits::NPrivate::TCReturnConvertibleHelper<CRet, typename TCEval2<t_CFunction>::CRet>::mc_Value\
-				&& !NMib::NTraits::TCIsSame<CRet, CDummy>::mc_Value\
-			};\
-			typedef typename NMib::TCChooseType<mc_Value, CRet, void>::CType CReturnType;\
-		};\
-		typedef TCEval\
-				<\
-					true\
-					, t_CFunctionCallType\
-				> CEvalType;\
-	public:\
-		enum\
-		{\
-			mc_Value = CEvalType::mc_Value\
-		};\
-		typedef typename CEvalType::CReturnType CReturnType;\
-	};\
-	template <typename t_CType, typename t_CFunctionCallType, bool t_bIsCallableWith = TCIs##_BaseName##CallableWith_##_TraitName<t_CType, t_CFunctionCallType>::mc_Value>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp\
-	{\
-		enum\
-		{\
-			mc_Value = false\
-		};\
-	};\
-	template <typename t_CType, typename t_CRet, typename t_CParam>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp<t_CType, t_CRet (t_CParam), true>\
-	{\
-		enum\
-		{\
-			mc_Value = noexcept(NMib::fg_GetReference<t_CType>() _Operator NMib::fg_GetType<t_CParam>())\
-		};\
-	};\
-	template <typename t_CType, typename t_CFunctionCallType>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName : public TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp<t_CType, t_CFunctionCallType>\
-	{\
-	};
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallableWithPrefixOperator(_BaseName, _TraitName, _Mem, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl, _ExtraEvalExpression, _Operator) \
-	template <typename t_CType, typename t_CFunctionCallType>\
-	struct TCIs##_BaseName##CallableWith_##_TraitName\
-	{\
-	private:\
-		class CDummy{};\
-		template <typename t_CFunction>\
-		struct TCEval2\
-		{\
-			typedef void CRet;\
-			static CDummy fs_D(...);\
-		};\
-		template <typename tR>\
-		struct TCEval2<tR ()>\
-		{\
-			typedef tR CRet;\
-			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_Operator _pM->m_Member);\
-			static CDummy fs_D(...);\
-		};\
-		template <bool t_bValid, typename t_CFunction>\
-		struct TCEval\
-		{\
-			enum\
-			{\
-				mc_Value = false\
-			};\
-			typedef void CReturnType;\
-		};\
-		template <typename t_CFunction>\
-		struct TCEval<true, t_CFunction>\
-		{\
-			typedef decltype(TCEval2<t_CFunction>::fs_D(((NMib::NTraits::NPrivate::TCTypeWithMember<t_CType> *)nullptr))) CRet;\
-			enum\
-			{\
-				mc_Value = NMib::NTraits::NPrivate::TCReturnConvertibleHelper<CRet, typename TCEval2<t_CFunction>::CRet>::mc_Value\
-				&& !NMib::NTraits::TCIsSame<CRet, CDummy>::mc_Value\
-			};\
-			typedef typename NMib::TCChooseType<mc_Value, CRet, void>::CType CReturnType;\
-		};\
-		typedef TCEval\
-				<\
-					true\
-					, t_CFunctionCallType\
-				> CEvalType;\
-	public:\
-		enum\
-		{\
-			mc_Value = CEvalType::mc_Value\
-		};\
-		typedef typename CEvalType::CReturnType CReturnType;\
-	};\
-	template <typename t_CType, typename t_CFunctionCallType, bool t_bIsCallableWith = TCIs##_BaseName##CallableWith_##_TraitName<t_CType, t_CFunctionCallType>::mc_Value>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp\
-	{\
-		enum\
-		{\
-			mc_Value = false\
-		};\
-	};\
-	template <typename t_CType, typename t_CRet>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp<t_CType, t_CRet (), true>\
-	{\
-		enum\
-		{\
-			mc_Value = noexcept(_Operator NMib::fg_GetReference<t_CType>())\
-		};\
-	};\
-	template <typename t_CType, typename t_CFunctionCallType>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName : public TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp<t_CType, t_CFunctionCallType>\
-	{\
-	};
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallableWithPostfixOperator(_BaseName, _TraitName, _Mem, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl, _ExtraEvalExpression, _Operator) \
-	template <typename t_CType, typename t_CFunctionCallType>\
-	struct TCIs##_BaseName##CallableWith_##_TraitName\
-	{\
-	private:\
-		class CDummy{};\
-		template <typename t_CFunction>\
-		struct TCEval2\
-		{\
-			typedef void CRet;\
-			static CDummy fs_D(...);\
-		};\
-		template <typename tR>\
-		struct TCEval2<tR ()>\
-		{\
-			typedef tR CRet;\
-			template <typename t_CC> static auto fs_D(t_CC *_pM) -> decltype(_pM->m_Member _Operator);\
-			static CDummy fs_D(...);\
-		};\
-		template <bool t_bValid, typename t_CFunction>\
-		struct TCEval\
-		{\
-			enum\
-			{\
-				mc_Value = false\
-			};\
-			typedef void CReturnType;\
-		};\
-		template <typename t_CFunction>\
-		struct TCEval<true, t_CFunction>\
-		{\
-			typedef decltype(TCEval2<t_CFunction>::fs_D(((NMib::NTraits::NPrivate::TCTypeWithMember<t_CType> *)nullptr))) CRet;\
-			enum\
-			{\
-				mc_Value = NMib::NTraits::NPrivate::TCReturnConvertibleHelper<CRet, typename TCEval2<t_CFunction>::CRet>::mc_Value\
-				&& !NMib::NTraits::TCIsSame<CRet, CDummy>::mc_Value\
-			};\
-			typedef typename NMib::TCChooseType<mc_Value, CRet, void>::CType CReturnType;\
-		};\
-		typedef TCEval\
-				<\
-					true\
-					, t_CFunctionCallType\
-				> CEvalType;\
-	public:\
-		enum\
-		{\
-			mc_Value = CEvalType::mc_Value\
-		};\
-		typedef typename CEvalType::CReturnType CReturnType;\
-	};\
-	template <typename t_CType, typename t_CFunctionCallType, bool t_bIsCallableWith = TCIs##_BaseName##CallableWith_##_TraitName<t_CType, t_CFunctionCallType>::mc_Value>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp\
-	{\
-		enum\
-		{\
-			mc_Value = false\
-		};\
-	};\
-	template <typename t_CType, typename t_CRet>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp<t_CType, t_CRet (), true>\
-	{\
-		enum\
-		{\
-			mc_Value = noexcept(NMib::fg_GetReference<t_CType>() _Operator)\
-		};\
-	};\
-	template <typename t_CType, typename t_CFunctionCallType>\
-	struct TCIs##_BaseName##NothrowCallableWith_##_TraitName : public TCIs##_BaseName##NothrowCallableWith_##_TraitName##Imp<t_CType, t_CFunctionCallType>\
-	{\
-	};
-
-
-
-#define DMibPrivateTypeTraitsImplement_MemberTraitsWithName(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl, _ExtraFunctionEvalExpression, _CallableSuffix, _CallableParam0, _OperatorRet2) \
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithNameTraits(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRet2, _OperatorRetVal, _FunctionType, _SafeImpl); \
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithNameFullType(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl); \
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithNameType(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl); \
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithNameHas(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl); \
-	DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallable(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl); \
-	DMibConcatenate(DMibPrivateTypeTraitsImplement_MemberTraitsWithNameCallableWith, _CallableSuffix)(_BaseName, _TraitName, _MemberName, _FunctionObject, _OperatorParams, _OperatorRet, _OperatorRetVal, _FunctionType, _SafeImpl, _ExtraFunctionEvalExpression, _CallableParam0);
-
-#define DMibTypeTraitsImplement_MemberTraitsWithName(_BaseName, _TraitName, _MemberName) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(_BaseName, _TraitName, _MemberName, NMib::NTraits::TCIsFunctionObject<CMemberType>::mc_Value, (), void, ;, CBaseMixin::*, Normal, true,,,void)
-#define DMibTypeTraitsImplement_MemberTraits(_MemberName) DMibTypeTraitsImplement_MemberTraitsWithName(Member, _MemberName, _MemberName)
-
-	/***************************************************************************************************\
-	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
-	| Is Function Object																				|
-	|___________________________________________________________________________________________________|
-	\***************************************************************************************************/
-
-	namespace NPrivate
-	{
-		template <typename t_CType>
-		class TCFunctionObjectTraits_Helper;
-		template <typename t_CType>
-		class TCFunctionObjectFullType_Helper;
-		template <typename t_CType>
-		class TCFunctionObjectType_Helper;
-		template <typename t_CType>
-		class TCHasFunctionObject_Helper;
-		template <typename t_CType>
-		class TCIsFunctionObjectCallable_Helper;
-		template <typename t_CType, typename t_CFunctionCallType>
-		struct TCIsFunctionObjectCallableWith_Helper;
-		template <typename t_CType>
-		class TCFunctionObjectTraits_Helper;
-	}
-
-	template <typename t_CType>
-	class TCIsFunctionObject : public TCCompileTimeConstant<bool, NPrivate::TCHasFunctionObject_Helper<t_CType>::mc_Value>
-	{
-	public:
-	};
-
-	/***************************************************************************************************\
-	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
-	| Is Callable																						|
-	|___________________________________________________________________________________________________|
-	\***************************************************************************************************/
-
-	template <typename t_CType>
-	class TCIsCallable : public TCCompileTimeConstant
-		<
-			bool
-			, TCIsFunctionObject<t_CType>::mc_Value
-			|| (TCIsFunction<typename TCRemovePointer<typename TCRemoveReference<t_CType>::CType>::CType>::mc_Value && !TCIsFunction<t_CType>::mc_Value)
-		>
-	{
-	public:
-	};
-
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Is Callable With																					|
 	|___________________________________________________________________________________________________|
 	\***************************************************************************************************/
 
+//	template <typename t_CType, typename t_CFunctionCallType>
+//	class TCIsCallableWith;
+
 	template <typename t_CType, typename t_CFunctionCallType>
-	class TCIsCallableWith
-		: public TCCompileTimeConstant
-		<
-			bool
-			, TCIsFunctionObject<t_CType>::mc_Value
-			? NPrivate::TCIsFunctionObjectCallableWith_Helper<t_CType, t_CFunctionCallType>::mc_Value
-			: (TCIsFunction<typename TCRemovePointer<typename TCRemoveReference<t_CType>::CType>::CType>::mc_Value && !TCIsFunction<t_CType>::mc_Value)
-			? NPrivate::TCIsFunctionCallableWithHelper<typename TCRemovePointer<typename TCRemoveReference<t_CType>::CType>::CType, t_CFunctionCallType>::mc_Value
-			: false
-		>
+	struct TCIsCallableWith;
+
+	template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
+	struct TCIsCallableWith<t_CType, t_CReturn (tp_CParams...)>
 	{
-	public:
-		typedef typename TCChooseType
-		<
-			TCIsFunctionObject<t_CType>::mc_Value
-			, typename NPrivate::TCIsFunctionObjectCallableWith_Helper<t_CType, t_CFunctionCallType>::CReturnType
-			, typename TCChooseType
-			<
-				(TCIsFunction<typename TCRemovePointer<typename TCRemoveReference<t_CType>::CType>::CType>::mc_Value && !TCIsFunction<t_CType>::mc_Value)
-				, typename NMib::NTraits::TCFunctionTraits<t_CType>::CReturn
-				, void
-			>::CType
-		>::CType CReturnType;
+		static constexpr bool mc_Value = std::is_invocable_r_v<t_CReturn, t_CType, tp_CParams...>;
+
+		using CType = bool;
+		operator bool ()
+		{
+			return mc_Value != 0;
+		}
+	};
+
+	template <typename t_CType, typename ...tp_CParams>
+	struct TCIsCallableWith<t_CType, void (tp_CParams...)>
+	{
+		static constexpr bool mc_Value = std::is_invocable_v<t_CType, tp_CParams...>;
+
+		using CType = bool;
+		operator bool ()
+		{
+			return mc_Value != 0;
+		}
 	};
 
 	template <typename t_CType, typename t_CFunctionCallType>
 	concept cIsCallableWith = TCIsCallableWith<t_CType, t_CFunctionCallType>::mc_Value;
+
+
+	namespace NPrivate
+	{
+		template <bool t_bCallable, typename t_CType, typename ...tp_CParams>
+		struct TCGetCallableReturnType
+		{
+			using CType = void;
+		};
+
+		template <typename t_CType, typename ...tp_CParams>
+		struct TCGetCallableReturnType<true, t_CType, tp_CParams...>
+		{
+			using CType = std::invoke_result_t<t_CType, tp_CParams...>;
+		};
+
+		template <typename t_CType, typename t_CFunctionCallType>
+		struct TCCallableReturnTypeForImp;
+
+		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
+		struct TCCallableReturnTypeForImp<t_CType, t_CReturn (tp_CParams...)>
+		{
+			static constexpr bool mc_Value = std::is_invocable_r_v<t_CReturn, t_CType, tp_CParams...>;
+
+			using CType = typename TCGetCallableReturnType<mc_Value, t_CType, tp_CParams...>::CType;
+		};
+
+		template <typename t_CType, typename ...tp_CParams>
+		struct TCCallableReturnTypeForImp<t_CType, void (tp_CParams...)>
+		{
+			static constexpr bool mc_Value = std::is_invocable_v<t_CType, tp_CParams...>;
+
+			using CType = typename TCGetCallableReturnType<mc_Value, t_CType, tp_CParams...>::CType;
+		};
+	}
+
+	template <typename t_CType, typename t_CFunctionCallType>
+	using TCCallableReturnTypeFor = typename NPrivate::TCCallableReturnTypeForImp<t_CType, t_CFunctionCallType>::CType;
 
 	namespace NPrivate
 	{
@@ -3335,6 +2853,15 @@ namespace NMib::NTraits
 	struct TCIsConstructorCallableWith<t_CType, void (tp_CParams...)> : public TCCompileTimeConstant<bool, std::is_constructible_v<t_CType, tp_CParams...>>
 	{
 	};
+
+	template <typename t_CType, typename t_COther>
+	concept cIsAssignable = std::is_assignable_v<t_CType, t_COther>;
+
+	template <typename t_CType, typename t_COther>
+	concept cIsNoThrowAssignable = std::is_nothrow_assignable_v<t_CType, t_COther>;
+
+	template <typename t_CType, typename t_COther>
+	concept cIsTriviallyAssignable = std::is_trivially_assignable_v<t_CType, t_COther>;
 	
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
@@ -3563,19 +3090,4 @@ namespace NMib::NTraits
 	{
 	public:
 	};
-}
-
-namespace NMib::NTraits
-{
-	namespace NPrivate
-	{
-		DMibPrivateTypeTraitsImplement_MemberTraitsWithName(FunctionObject, Helper, operator(), 0, (), void, ;, CBaseMixin::*, Normal, true,,,void);
-	}
-
-#define DMibTypeTraitsImplement_MemberTraits_BinaryOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,BinaryOperator,_Operator,bool);
-#define DMibTypeTraitsImplement_MemberTraits_PrefixOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,PrefixOperator,_Operator,bool);
-#define DMibTypeTraitsImplement_MemberTraits_PostfixOperator(_OperatorName, _Operator) DMibPrivateTypeTraitsImplement_MemberTraitsWithName(Operator, _OperatorName, operator _Operator, 0, (CBaseMixin const &), bool, return false;, CBaseMixin::*, Safe, true,PostfixOperator,_Operator,bool);
-
-	DMibTypeTraitsImplement_MemberTraits_BinaryOperator(LessThan, <);
-	DMibTypeTraitsImplement_MemberTraits_BinaryOperator(Assign, =);
 }
