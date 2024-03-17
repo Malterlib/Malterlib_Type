@@ -2255,6 +2255,9 @@ namespace NMib::NTraits
 		;
 	};
 
+	template <typename t_CType>
+	using TCRemoveReferenceAndQualifiersType = typename TCRemoveReferenceAndQualifiers<t_CType>::CType;
+
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Remove qualifiers and add RValueReference															|
