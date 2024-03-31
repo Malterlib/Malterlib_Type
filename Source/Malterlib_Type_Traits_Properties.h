@@ -116,34 +116,33 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename t_CType0, typename t_CType1>
-		class TCIsSameHelper
+		struct TCIsSameHelper
 		{
-		public:
-			enum
-			{
-				EValue = false
-			};
+			static constexpr bool mc_Value = false;
 		};
 
 		template <typename t_CType>
-		class TCIsSameHelper<t_CType, t_CType>
+		struct TCIsSameHelper<t_CType, t_CType>
 		{
-		public:
-			enum
-			{
-				EValue = true
-			};
+			static constexpr bool mc_Value = true;
 		};
 	}
 
 	template <typename t_CType0, typename t_CType1>
-	class TCIsSame : public TCCompileTimeConstant<bool, NPrivate::TCIsSameHelper<t_CType0, t_CType1>::EValue>
+	class TCIsSame : public TCCompileTimeConstant<bool, NPrivate::TCIsSameHelper<t_CType0, t_CType1>::mc_Value>
 	{
 	public:
 	};
 
 	template <typename t_CType0, typename t_CType1>
-	class TCIsSameUnqualified : public TCCompileTimeConstant<bool, NPrivate::TCIsSameHelper<typename TCRemoveQualifiers<t_CType0>::CType, typename TCRemoveQualifiers<t_CType1>::CType>::EValue>
+	concept cIsSame = NPrivate::TCIsSameHelper<t_CType0, t_CType1>::mc_Value;
+
+	template <typename t_CType0, typename t_CType1>
+	class TCIsSameUnqualified : public TCCompileTimeConstant
+		<
+			bool
+			, NPrivate::TCIsSameHelper<typename TCRemoveQualifiers<t_CType0>::CType, typename TCRemoveQualifiers<t_CType1>::CType>::mc_Value
+		>
 	{
 	public:
 	};
@@ -156,7 +155,7 @@ namespace NMib::NTraits
 		<
 			bool
 			, NPrivate::TCIsSameHelper<typename TCRemoveReferenceAndQualifiers<t_CType0>::CType
-			, typename TCRemoveReferenceAndQualifiers<t_CType1>::CType>::EValue
+			, typename TCRemoveReferenceAndQualifiers<t_CType1>::CType>::mc_Value
 		>
 	{
 	public:
