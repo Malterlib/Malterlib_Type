@@ -10,41 +10,6 @@ namespace NMib::NTraits
 {
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
-	| Size Of																							|
-	|___________________________________________________________________________________________________|
-	\***************************************************************************************************/
-
-	namespace NPrivate
-	{
-		template <typename t_CType0, bool t_bZeroSize>
-		class TCSizeOfHelper : public TCCompileTimeConstant<mint, sizeof(t_CType0)>
-		{
-		public:
-
-		};
-
-		template <typename t_CType0>
-		class TCSizeOfHelper<t_CType0, 1> : public TCCompileTimeConstant<mint, 0>
-		{
-		public:
-
-		};
-
-		template <typename t_CType0>
-		struct TCSizeOfHelper2 : public TCCompileTimeConstant<mint, TCSizeOfHelper<t_CType0, NTraits::TCIsFunction<typename NTraits::TCRemoveReference<t_CType0>::CType>::mc_Value || NTraits::TCIsVoid<t_CType0>::mc_Value || NTraits::TCIsArrayUnbounded<t_CType0>::mc_Value >::mc_Value>
-		{
-		};
-	}
-
-	template <typename t_CType0>
-	class TCSizeOf : public TCCompileTimeConstant<mint, NPrivate::TCSizeOfHelper2<t_CType0>::mc_Value>
-	{
-	public:
-
-	};
-
-	/***************************************************************************************************\
-	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| IsInteger																							|
 	|___________________________________________________________________________________________________|
 	\***************************************************************************************************/
@@ -643,7 +608,7 @@ namespace NMib::NTraits
 	class TCLargestType
 	{
 	public:
-		typedef typename TCChooseType<(TCSizeOf<t_CType0>::mc_Value >= TCSizeOf<t_CType1>::mc_Value), t_CType0, t_CType1>::CType CType;
+		typedef typename TCChooseType<(sizeof(t_CType0) >= sizeof(t_CType1)), t_CType0, t_CType1>::CType CType;
 	};
 
 	/***************************************************************************************************\
@@ -657,7 +622,7 @@ namespace NMib::NTraits
 	{
 	public:
 
-		typedef typename TCChooseType<(TCSizeOf<t_CType0>::mc_Value <= TCSizeOf<t_CType1>::mc_Value), t_CType0, t_CType1>::CType CType;
+		typedef typename TCChooseType<(sizeof(t_CType0) <= sizeof(t_CType1)), t_CType0, t_CType1>::CType CType;
 	};
 
 
