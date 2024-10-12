@@ -1145,6 +1145,22 @@ namespace NMib::NTraits
 	public:
 	};
 
+#ifdef DCompiler_clang
+
+#define DMibCanDetectVirtualMemberFunctions_Constexpr
+
+	template <auto t_pMemberFunctionPointer>
+	concept cIsNonVirtualMemberFunction =
+		requires()
+		{
+			NTraits::TCCompileTimeConstant<bool, t_pMemberFunctionPointer == t_pMemberFunctionPointer>();
+		}
+	;
+
+	template <auto t_pMemberFunctionPointer>
+	concept cIsVirtualMemberFunction = !cIsNonVirtualMemberFunction<t_pMemberFunctionPointer>;
+
+#endif
 
 	namespace NPrivate
 	{
