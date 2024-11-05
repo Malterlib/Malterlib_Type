@@ -2442,6 +2442,8 @@ namespace NMib::NTraits
 		typedef typename NPrivate::TCDecayHelper<t_CType0>::CType CType;
 	};
 
+	template <typename t_CType0>
+	using TCDecayType = typename TCDecay<t_CType0>::CType;
 
 	namespace NPrivate
 	{
