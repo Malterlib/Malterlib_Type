@@ -1735,6 +1735,9 @@ namespace NMib::NTraits
 	};
 
 	template <typename t_CType0>
+	concept cIsMemberFunctionPointer = TCIsMemberFunctionPointer<t_CType0>::mc_Value;
+
+	template <typename t_CType0>
 	class TCRemoveMemberFunctionPointer
 	{
 	public:
