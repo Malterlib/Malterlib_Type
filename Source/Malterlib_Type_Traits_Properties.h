@@ -107,6 +107,9 @@ namespace NMib::NTraits
 
 	};
 
+	template <typename t_CType0, typename t_CType1>
+	concept cIsConvertible = std::is_convertible_v<t_CType0, t_CType1>;
+
 	/***************************************************************************************************\
 	|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 	| Is Same																							|
