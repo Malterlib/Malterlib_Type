@@ -205,3 +205,20 @@ namespace
 	DMibTestRegister(CTypeTraits_Tests, Malterlib::TypeTraits);
 }
 
+#ifndef DCompiler_MSVC
+static constexpr ch8 const *gc_Tags[] =
+	{
+	}
+;
+#endif
+
+static constexpr ch8 const *gc_Tags2[] =
+	{
+		"Test"
+	}
+;
+
+#ifndef DCompiler_MSVC
+static_assert(NMib::fg_ArraySize(gc_Tags) == 0);
+#endif
+static_assert(NMib::fg_ArraySize(gc_Tags2) == 1);
