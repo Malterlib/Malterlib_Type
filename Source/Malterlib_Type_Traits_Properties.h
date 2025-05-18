@@ -18,7 +18,8 @@
 		using ::ptrdiff_t _LIBCPP_USING_IF_EXISTS;
 		using ::size_t _LIBCPP_USING_IF_EXISTS;
 	}
-#	include <__new/new.h>
+#	include <__new/align_val_t.h>
+#	include <__new/destroying_delete_t.h>
 #else
 #	define DMibNewVisibility
 #	include <new>
