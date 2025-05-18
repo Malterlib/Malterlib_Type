@@ -4,7 +4,9 @@
 #pragma once
 
 #include <Mib/Numeric/fp80>
+#include <Mib/Numeric/ufp80>
 #include <Mib/Numeric/fp4096>
+#include <Mib/Numeric/ufp4096>
 
 class CTestClass0
 {

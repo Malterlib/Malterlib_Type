@@ -5,263 +5,254 @@
 
 // Test const qualifiers
 
-DMibStaticCheck((	!TCIsConst<CTestClass>::mc_Value			));
-DMibStaticCheck((	TCIsConst<CTestC>::mc_Value			));
+static_assert(!cIsConst<CTestClass>);
+static_assert(cIsConst<CTestC>);
 
-DMibStaticCheck((	!TCIsConst<CTestRef>::mc_Value		));
-DMibStaticCheck((	!TCIsConst<CTestCRef>::mc_Value		));
+static_assert(!cIsConst<CTestRef>);
+static_assert(!cIsConst<CTestCRef>);
 
-DMibStaticCheck((	!TCIsConst<CTestRRef>::mc_Value		));
-DMibStaticCheck((	!TCIsConst<CTestCRRef>::mc_Value	));
+static_assert(!cIsConst<CTestRRef>);
+static_assert(!cIsConst<CTestCRRef>);
 
-DMibStaticCheck((	!TCIsConst<CTestPtr>::mc_Value		));
-DMibStaticCheck((	TCIsConst<CTestPtrC>::mc_Value		));
-DMibStaticCheck((	!TCIsConst<CTestCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsConst<CTestCPtrC>::mc_Value		));
+static_assert(!cIsConst<CTestPtr>);
+static_assert(cIsConst<CTestPtrC>);
+static_assert(!cIsConst<CTestCPtr>);
+static_assert(cIsConst<CTestCPtrC>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestClass>::CType, CTestClass>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestC>::CType, CTestClass>::mc_Value				));
+static_assert(cIsSame<TCRemoveConst<CTestClass>, CTestClass>);
+static_assert(cIsSame<TCRemoveConst<CTestC>, CTestClass>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestRef>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestCRef>::CType, CTestCRef>::mc_Value		));
+static_assert(cIsSame<TCRemoveConst<CTestRef>, CTestRef>);
+static_assert(cIsSame<TCRemoveConst<CTestCRef>, CTestCRef>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestRRef>::CType, CTestRRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestCRRef>::CType, CTestCRRef>::mc_Value	));
+static_assert(cIsSame<TCRemoveConst<CTestRRef>, CTestRRef>);
+static_assert(cIsSame<TCRemoveConst<CTestCRRef>, CTestCRRef>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestPtr>::CType, CTestPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestPtrC>::CType, CTestPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestCPtr>::CType, CTestCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveConst<CTestCPtrC>::CType, CTestCPtr>::mc_Value		));
+static_assert(cIsSame<TCRemoveConst<CTestPtr>, CTestPtr>);
+static_assert(cIsSame<TCRemoveConst<CTestPtrC>, CTestPtr>);
+static_assert(cIsSame<TCRemoveConst<CTestCPtr>, CTestCPtr>);
+static_assert(cIsSame<TCRemoveConst<CTestCPtrC>, CTestCPtr>);
 
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestClass>::CType, CTestC>::mc_Value	));
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestC>::CType, CTestC>::mc_Value	));
+static_assert(cIsSame<TCAddConst<CTestClass>, CTestC>);
+static_assert(cIsSame<TCAddConst<CTestC>, CTestC>);
 
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestRef>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestCRef>::CType, CTestCRef>::mc_Value		));
+static_assert(cIsSame<TCAddConst<CTestRef>, CTestRef>);
+static_assert(cIsSame<TCAddConst<CTestCRef>, CTestCRef>);
 
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestRRef>::CType, CTestRRef>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestCRRef>::CType, CTestCRRef>::mc_Value		));
+static_assert(cIsSame<TCAddConst<CTestRRef>, CTestRRef>);
+static_assert(cIsSame<TCAddConst<CTestCRRef>, CTestCRRef>);
 
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestPtr>::CType, CTestPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestPtrC>::CType, CTestPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestCPtr>::CType, CTestCPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCAddConst<CTestCPtrC>::CType, CTestCPtrC>::mc_Value		));
-	
-
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestClass, 1>::CType, CTestC>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestC, 1>::CType, CTestC>::mc_Value	));
-
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestRef, 1>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestCRef, 1>::CType, CTestCRef>::mc_Value		));
-
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestPtr, 1>::CType, CTestPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestPtrC, 1>::CType, CTestPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestCPtr, 1>::CType, CTestCPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestCPtrC, 1>::CType, CTestCPtrC>::mc_Value		));
+static_assert(cIsSame<TCAddConst<CTestPtr>, CTestPtrC>);
+static_assert(cIsSame<TCAddConst<CTestPtrC>, CTestPtrC>);
+static_assert(cIsSame<TCAddConst<CTestCPtr>, CTestCPtrC>);
+static_assert(cIsSame<TCAddConst<CTestCPtrC>, CTestCPtrC>);
 
 
+static_assert(cIsSame<TCSetConst<CTestClass, 1>, CTestC>);
+static_assert(cIsSame<TCSetConst<CTestC, 1>, CTestC>);
 
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestClass, 0>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestC, 0>::CType, CTestClass>::mc_Value		));
+static_assert(cIsSame<TCSetConst<CTestRef, 1>, CTestRef>);
+static_assert(cIsSame<TCSetConst<CTestCRef, 1>, CTestCRef>);
 
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestRef, 0>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestCRef, 0>::CType, CTestCRef>::mc_Value		));
+static_assert(cIsSame<TCSetConst<CTestPtr, 1>, CTestPtrC>);
+static_assert(cIsSame<TCSetConst<CTestPtrC, 1>, CTestPtrC>);
+static_assert(cIsSame<TCSetConst<CTestCPtr, 1>, CTestCPtrC>);
+static_assert(cIsSame<TCSetConst<CTestCPtrC, 1>, CTestCPtrC>);
 
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestRRef, 0>::CType, CTestRRef>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestCRRef, 0>::CType, CTestCRRef>::mc_Value		));
+static_assert(cIsSame<TCSetConst<CTestClass, 0>, CTestClass>);
+static_assert(cIsSame<TCSetConst<CTestC, 0>, CTestClass>);
 
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestPtr, 0>::CType, CTestPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestPtrC, 0>::CType, CTestPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestCPtr, 0>::CType, CTestCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetConst<CTestCPtrC, 0>::CType, CTestCPtr>::mc_Value		));
+static_assert(cIsSame<TCSetConst<CTestRef, 0>, CTestRef>);
+static_assert(cIsSame<TCSetConst<CTestCRef, 0>, CTestCRef>);
+
+static_assert(cIsSame<TCSetConst<CTestRRef, 0>, CTestRRef>);
+static_assert(cIsSame<TCSetConst<CTestCRRef, 0>, CTestCRRef>);
+
+static_assert(cIsSame<TCSetConst<CTestPtr, 0>, CTestPtr>);
+static_assert(cIsSame<TCSetConst<CTestPtrC, 0>, CTestPtr>);
+static_assert(cIsSame<TCSetConst<CTestCPtr, 0>, CTestCPtr>);
+static_assert(cIsSame<TCSetConst<CTestCPtrC, 0>, CTestCPtr>);
 
 
-DMibStaticCheck((	TCIsSame<TCCopyConst<CTestClass, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyConst<CTestC, CTestClass>::CType, CTestC>::mc_Value	));
+static_assert(cIsSame<TCCopyConst<CTestClass, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyConst<CTestC, CTestClass>, CTestC>);
 
-DMibStaticCheck((	TCIsSame<TCCopyConst<CTestRef, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyConst<CTestCRef, CTestClass>::CType, CTestClass>::mc_Value		));
+static_assert(cIsSame<TCCopyConst<CTestRef, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyConst<CTestCRef, CTestClass>, CTestClass>);
 
-DMibStaticCheck((	TCIsSame<TCCopyConst<CTestPtr, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyConst<CTestPtrC, CTestClass>::CType, CTestC>::mc_Value	));
-DMibStaticCheck((	TCIsSame<TCCopyConst<CTestCPtr, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyConst<CTestCPtrC, CTestClass>::CType, CTestC>::mc_Value	));
+static_assert(cIsSame<TCCopyConst<CTestPtr, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyConst<CTestPtrC, CTestClass>, CTestC>);
+static_assert(cIsSame<TCCopyConst<CTestCPtr, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyConst<CTestCPtrC, CTestClass>, CTestC>);
 
 // Test volatile qualifiers
 
-DMibStaticCheck((	!TCIsVolatile<CTestClass>::mc_Value	));
-DMibStaticCheck((	!TCIsVolatile<CTestC>::mc_Value	));
+static_assert(!cIsVolatile<CTestClass>);
+static_assert(!cIsVolatile<CTestC>);
 
-DMibStaticCheck((	!TCIsVolatile<CTestRef>::mc_Value	));
-DMibStaticCheck((	!TCIsVolatile<CTestCRef>::mc_Value	));
+static_assert(!cIsVolatile<CTestRef>);
+static_assert(!cIsVolatile<CTestCRef>);
 
-DMibStaticCheck((	!TCIsVolatile<CTestRRef>::mc_Value		));
-DMibStaticCheck((	!TCIsVolatile<CTestCRRef>::mc_Value		));
+static_assert(!cIsVolatile<CTestRRef>);
+static_assert(!cIsVolatile<CTestCRRef>);
 
-DMibStaticCheck((	!TCIsVolatile<CTestPtr>::mc_Value		));
-DMibStaticCheck((	!TCIsVolatile<CTestPtrC>::mc_Value		));
-DMibStaticCheck((	!TCIsVolatile<CTestCPtr>::mc_Value		));
-DMibStaticCheck((	!TCIsVolatile<CTestCPtrC>::mc_Value		));
+static_assert(!cIsVolatile<CTestPtr>);
+static_assert(!cIsVolatile<CTestPtrC>);
+static_assert(!cIsVolatile<CTestCPtr>);
+static_assert(!cIsVolatile<CTestCPtrC>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestC>::CType, CTestC>::mc_Value		));
+static_assert(cIsSame<TCRemoveVolatile<CTestClass>, CTestClass>);
+static_assert(cIsSame<TCRemoveVolatile<CTestC>, CTestC>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestRef>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestCRef>::CType, CTestCRef>::mc_Value	));
+static_assert(cIsSame<TCRemoveVolatile<CTestRef>, CTestRef>);
+static_assert(cIsSame<TCRemoveVolatile<CTestCRef>, CTestCRef>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestRRef>::CType, CTestRRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestCRRef>::CType, CTestCRRef>::mc_Value		));
+static_assert(cIsSame<TCRemoveVolatile<CTestRRef>, CTestRRef>);
+static_assert(cIsSame<TCRemoveVolatile<CTestCRRef>, CTestCRRef>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestPtr>::CType, CTestPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestPtrC>::CType, CTestPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestCPtr>::CType, CTestCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveVolatile<CTestCPtrC>::CType, CTestCPtrC>::mc_Value		));
+static_assert(cIsSame<TCRemoveVolatile<CTestPtr>, CTestPtr>);
+static_assert(cIsSame<TCRemoveVolatile<CTestPtrC>, CTestPtrC>);
+static_assert(cIsSame<TCRemoveVolatile<CTestCPtr>, CTestCPtr>);
+static_assert(cIsSame<TCRemoveVolatile<CTestCPtrC>, CTestCPtrC>);
 
+static_assert(cIsSame<TCAddVolatile<CTestRef>, CTestRef>);
+static_assert(cIsSame<TCAddVolatile<CTestCRef>, CTestCRef>);
 
+static_assert(cIsSame<TCAddVolatile<CTestRRef>, CTestRRef>);
+static_assert(cIsSame<TCAddVolatile<CTestCRRef>, CTestCRRef>);
 
-DMibStaticCheck((	TCIsSame<TCAddVolatile<CTestRef>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCAddVolatile<CTestCRef>::CType, CTestCRef>::mc_Value		));
+static_assert(cIsSame<TCSetVolatile<CTestRef, 1>, CTestRef>);
+static_assert(cIsSame<TCSetVolatile<CTestCRef, 1>, CTestCRef>);
 
-DMibStaticCheck((	TCIsSame<TCAddVolatile<CTestRRef>::CType, CTestRRef>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCAddVolatile<CTestCRRef>::CType, CTestCRRef>::mc_Value		));
+static_assert(cIsSame<TCSetVolatile<CTestRRef, 1>, CTestRRef>);
+static_assert(cIsSame<TCSetVolatile<CTestCRRef, 1>, CTestCRRef>);
 
+static_assert(cIsSame<TCSetVolatile<CTestClass, 0>, CTestClass>);
+static_assert(cIsSame<TCSetVolatile<CTestC, 0>, CTestC>);
 
+static_assert(cIsSame<TCSetVolatile<CTestRef, 0>, CTestRef>);
+static_assert(cIsSame<TCSetVolatile<CTestCRef, 0>, CTestCRef>);
 
+static_assert(cIsSame<TCSetVolatile<CTestRRef, 0>, CTestRRef>);
+static_assert(cIsSame<TCSetVolatile<CTestCRRef, 0>, CTestCRRef>);
 
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestRef, 1>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestCRef, 1>::CType, CTestCRef>::mc_Value	));
+static_assert(cIsSame<TCSetVolatile<CTestPtr, 0>, CTestPtr>);
+static_assert(cIsSame<TCSetVolatile<CTestPtrC, 0>, CTestPtrC>);
+static_assert(cIsSame<TCSetVolatile<CTestCPtr, 0>, CTestCPtr>);
+static_assert(cIsSame<TCSetVolatile<CTestCPtrC, 0>, CTestCPtrC>);
 
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestRRef, 1>::CType, CTestRRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestCRRef, 1>::CType, CTestCRRef>::mc_Value		));
+static_assert(cIsSame<TCCopyVolatile<CTestClass, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyVolatile<CTestC, CTestClass>, CTestClass>);
 
+static_assert(cIsSame<TCCopyVolatile<CTestRef, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyVolatile<CTestCRef, CTestClass>, CTestClass>);
 
+static_assert(cIsSame<TCCopyVolatile<CTestRRef, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyVolatile<CTestCRRef, CTestClass>, CTestClass>);
 
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestClass, 0>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestC, 0>::CType, CTestC>::mc_Value		));
-
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestRef, 0>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestCRef, 0>::CType, CTestCRef>::mc_Value	));
-
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestRRef, 0>::CType, CTestRRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestCRRef, 0>::CType, CTestCRRef>::mc_Value		));
-
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestPtr, 0>::CType, CTestPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestPtrC, 0>::CType, CTestPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestCPtr, 0>::CType, CTestCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCSetVolatile<CTestCPtrC, 0>::CType, CTestCPtrC>::mc_Value		));
-
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestClass, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestC, CTestClass>::CType, CTestClass>::mc_Value		));
-
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestRef, CTestClass>::CType, CTestClass>::mc_Value	));
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestCRef, CTestClass>::CType, CTestClass>::mc_Value	));
-
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestRRef, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestCRRef, CTestClass>::CType, CTestClass>::mc_Value		));
-
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestPtr, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestPtrC, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestCPtr, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyVolatile<CTestCPtrC, CTestClass>::CType, CTestClass>::mc_Value		));
+static_assert(cIsSame<TCCopyVolatile<CTestPtr, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyVolatile<CTestPtrC, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyVolatile<CTestCPtr, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyVolatile<CTestCPtrC, CTestClass>, CTestClass>);
 
 // Test dual qualifier operations
 
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestClass, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestC, CTestClass>::CType, CTestC>::mc_Value		));
+static_assert(cIsSame<TCCopyQualifiers<CTestClass, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyQualifiers<CTestC, CTestClass>, CTestC>);
 
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestRef, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestCRef, CTestClass>::CType, CTestClass>::mc_Value	));
+static_assert(cIsSame<TCCopyQualifiers<CTestRef, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyQualifiers<CTestCRef, CTestClass>, CTestClass>);
 
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestRRef, CTestClass>::CType, CTestClass>::mc_Value	));
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestCRRef, CTestClass>::CType, CTestClass>::mc_Value	));
+static_assert(cIsSame<TCCopyQualifiers<CTestRRef, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyQualifiers<CTestCRRef, CTestClass>, CTestClass>);
 
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestPtr, CTestClass>::CType, CTestClass>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestPtrC, CTestClass>::CType, CTestC>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestCPtr, CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCCopyQualifiers<CTestCPtrC, CTestClass>::CType, CTestC>::mc_Value		));
+static_assert(cIsSame<TCCopyQualifiers<CTestPtr, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyQualifiers<CTestPtrC, CTestClass>, CTestC>);
+static_assert(cIsSame<TCCopyQualifiers<CTestCPtr, CTestClass>, CTestClass>);
+static_assert(cIsSame<TCCopyQualifiers<CTestCPtrC, CTestClass>, CTestC>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestClass>::CType, CTestClass>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestC>::CType, CTestClass>::mc_Value	));
+static_assert(cIsSame<TCRemoveQualifiers<CTestClass>, CTestClass>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestC>, CTestClass>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestRef>::CType, CTestRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestCRef>::CType, CTestCRef>::mc_Value		));
+static_assert(cIsSame<TCRemoveQualifiers<CTestRef>, CTestRef>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestCRef>, CTestCRef>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestRRef>::CType, CTestRRef>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestCRRef>::CType, CTestCRRef>::mc_Value	));
+static_assert(cIsSame<TCRemoveQualifiers<CTestRRef>, CTestRRef>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestCRRef>, CTestCRRef>);
 
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestPtr>::CType, CTestPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestPtrC>::CType, CTestPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestCPtr>::CType, CTestCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestCPtrC>::CType, CTestCPtr>::mc_Value	));
+static_assert(cIsSame<TCRemoveQualifiers<CTestPtr>, CTestPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestPtrC>, CTestPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestCPtr>, CTestCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestCPtrC>, CTestCPtr>);
 
 
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc0>::CType, PFFunc0>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc1>::CType, PFFunc1>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc2>::CType, PFFunc2>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0Ref>::CType, FFunc0Ref>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1Ref>::CType, FFunc1Ref>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2Ref>::CType, FFunc2Ref>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0RRef>::CType, FFunc0RRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1RRef>::CType, FFunc1RRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2RRef>::CType, FFunc2RRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0Ptr>::CType, FFunc0Ptr>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1Ptr>::CType, FFunc1Ptr>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2Ptr>::CType, FFunc2Ptr>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0PtrC>::CType, FFunc0Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1PtrC>::CType, FFunc1Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2PtrC>::CType, FFunc2Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc0Ptr>::CType, FMFunc0Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc1Ptr>::CType, FMFunc1Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2Ptr>::CType, FMFunc2Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc0PtrC>::CType, FMFunc0Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc1PtrC>::CType, FMFunc1Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2PtrC>::CType, FMFunc2Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc0CPtr>::CType, FMFunc0CPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc1CPtr>::CType, FMFunc1CPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2CPtr>::CType, FMFunc2CPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc0CPtrC>::CType, FMFunc0CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc1CPtrC>::CType, FMFunc1CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2CPtrC>::CType, FMFunc2CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc0El>::CType, PFFunc0El>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc1El>::CType, PFFunc1El>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<PFFunc2El>::CType, PFFunc2El>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0ElRef>::CType, FFunc0ElRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1ElRef>::CType, FFunc1ElRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2ElRef>::CType, FFunc2ElRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0ElRRef>::CType, FFunc0ElRRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1ElRRef>::CType, FFunc1ElRRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2ElRRef>::CType, FFunc2ElRRef>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0ElPtr>::CType, FFunc0ElPtr>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1ElPtr>::CType, FFunc1ElPtr>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2ElPtr>::CType, FFunc2ElPtr>::mc_Value				));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc0ElPtrC>::CType, FFunc0ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc1ElPtrC>::CType, FFunc1ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FFunc2ElPtrC>::CType, FFunc2ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc0ElPtr>::CType, FMFunc0ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc1ElPtr>::CType, FMFunc1ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2ElPtr>::CType, FMFunc2ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc0ElPtrC>::CType, FMFunc0ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc1ElPtrC>::CType, FMFunc1ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2ElPtrC>::CType, FMFunc2ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc0ElCPtr>::CType, FMFunc0ElCPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc1ElCPtr>::CType, FMFunc1ElCPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2ElCPtr>::CType, FMFunc2ElCPtr>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc0ElCPtrC>::CType, FMFunc0ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc1ElCPtrC>::CType, FMFunc1ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<FMFunc2ElCPtrC>::CType, FMFunc2ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CMPtr>::CType, CMPtr>::mc_Value						));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CMCPtr>::CType, CMCPtr>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CMPtrC>::CType, CMPtr>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CMCPtrC>::CType, CMCPtr>::mc_Value					));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestArray2>::CType, CTestArray2>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestArray2C>::CType, CTestArray2>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestArray>::CType, CTestArray>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTestArrayC>::CType, CTestArray>::mc_Value			));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTest2DArray2>::CType, CTest2DArray2>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTest2DArray2C>::CType, CTest2DArray2>::mc_Value	));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTest2DArray>::CType, CTest2DArray>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTest2DArrayC>::CType, CTest2DArray>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTest3DArray2>::CType, CTest3DArray2>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTest3DArray2C>::CType, CTest3DArray2>::mc_Value	));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTest3DArray>::CType, CTest3DArray>::mc_Value		));
-DMibStaticCheck((	TCIsSame<TCRemoveQualifiers<CTest3DArrayC>::CType, CTest3DArray>::mc_Value		));
+static_assert(cIsSame<TCRemoveQualifiers<PFFunc0>, PFFunc0>);
+static_assert(cIsSame<TCRemoveQualifiers<PFFunc1>, PFFunc1>);
+static_assert(cIsSame<TCRemoveQualifiers<PFFunc2>, PFFunc2>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc0Ref>, FFunc0Ref>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc1Ref>, FFunc1Ref>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc2Ref>, FFunc2Ref>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc0RRef>, FFunc0RRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc1RRef>, FFunc1RRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc2RRef>, FFunc2RRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc0Ptr>, FFunc0Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc1Ptr>, FFunc1Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc2Ptr>, FFunc2Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc0PtrC>, FFunc0Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc1PtrC>, FFunc1Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc2PtrC>, FFunc2Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc0Ptr>, FMFunc0Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc1Ptr>, FMFunc1Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc2Ptr>, FMFunc2Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc0PtrC>, FMFunc0Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc1PtrC>, FMFunc1Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc2PtrC>, FMFunc2Ptr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc0CPtr>, FMFunc0CPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc1CPtr>, FMFunc1CPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc2CPtr>, FMFunc2CPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc0CPtrC>, FMFunc0CPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc1CPtrC>, FMFunc1CPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc2CPtrC>, FMFunc2CPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<PFFunc0El>, PFFunc0El>);
+static_assert(cIsSame<TCRemoveQualifiers<PFFunc1El>, PFFunc1El>);
+static_assert(cIsSame<TCRemoveQualifiers<PFFunc2El>, PFFunc2El>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc0ElRef>, FFunc0ElRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc1ElRef>, FFunc1ElRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc2ElRef>, FFunc2ElRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc0ElRRef>, FFunc0ElRRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc1ElRRef>, FFunc1ElRRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc2ElRRef>, FFunc2ElRRef>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc0ElPtr>, FFunc0ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc1ElPtr>, FFunc1ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc2ElPtr>, FFunc2ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc0ElPtrC>, FFunc0ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc1ElPtrC>, FFunc1ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FFunc2ElPtrC>, FFunc2ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc0ElPtr>, FMFunc0ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc1ElPtr>, FMFunc1ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc2ElPtr>, FMFunc2ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc0ElPtrC>, FMFunc0ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc1ElPtrC>, FMFunc1ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc2ElPtrC>, FMFunc2ElPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc0ElCPtr>, FMFunc0ElCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc1ElCPtr>, FMFunc1ElCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc2ElCPtr>, FMFunc2ElCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc0ElCPtrC>, FMFunc0ElCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc1ElCPtrC>, FMFunc1ElCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<FMFunc2ElCPtrC>, FMFunc2ElCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<CMPtr>, CMPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<CMCPtr>, CMCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<CMPtrC>, CMPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<CMCPtrC>, CMCPtr>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestArray2>, CTestArray2>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestArray2C>, CTestArray2>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestArray>, CTestArray>);
+static_assert(cIsSame<TCRemoveQualifiers<CTestArrayC>, CTestArray>);
+static_assert(cIsSame<TCRemoveQualifiers<CTest2DArray2>, CTest2DArray2>);
+static_assert(cIsSame<TCRemoveQualifiers<CTest2DArray2C>, CTest2DArray2>);
+static_assert(cIsSame<TCRemoveQualifiers<CTest2DArray>, CTest2DArray>);
+static_assert(cIsSame<TCRemoveQualifiers<CTest2DArrayC>, CTest2DArray>);
+static_assert(cIsSame<TCRemoveQualifiers<CTest3DArray2>, CTest3DArray2>);
+static_assert(cIsSame<TCRemoveQualifiers<CTest3DArray2C>, CTest3DArray2>);
+static_assert(cIsSame<TCRemoveQualifiers<CTest3DArray>, CTest3DArray>);
+static_assert(cIsSame<TCRemoveQualifiers<CTest3DArrayC>, CTest3DArray>);

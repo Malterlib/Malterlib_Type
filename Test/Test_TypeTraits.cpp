@@ -62,53 +62,53 @@ COrdering_Weak operator <=> (const CTesting&, int)
 }*/
 
 #ifdef DMibPUniqueType_int
-	static_assert(!NMib::NTraits::TCIsSame<int, int32>::mc_Value);
+	static_assert(!NMib::NTraits::cIsSame<int, int32>);
 #else
-	static_assert(NMib::NTraits::TCIsSame<int, int32>::mc_Value || NMib::NTraits::TCIsSame<int, smint>::mc_Value);
+	static_assert(NMib::NTraits::cIsSame<int, int32> || NMib::NTraits::cIsSame<int, smint>);
 #endif
 
 #ifdef DMibPUniqueType_uint
-	static_assert(!NMib::NTraits::TCIsSame<unsigned int, uint32>::mc_Value);
-	static_assert(!NMib::NTraits::TCIsSame<unsigned int, mint>::mc_Value);
+	static_assert(!NMib::NTraits::cIsSame<unsigned int, uint32>);
+	static_assert(!NMib::NTraits::cIsSame<unsigned int, mint>);
 #else
-	static_assert(NMib::NTraits::TCIsSame<unsigned int, uint32>::mc_Value || NMib::NTraits::TCIsSame<unsigned int, mint>::mc_Value);
+	static_assert(NMib::NTraits::cIsSame<unsigned int, uint32> || NMib::NTraits::cIsSame<unsigned int, mint>);
 #endif
 
 #ifdef DMibPUniqueType_mint
-	static_assert(!NMib::NTraits::TCIsSame<mint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>::CType>::CType>::mc_Value);
+	static_assert(!NMib::NTraits::cIsSame<mint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
 #else
-	static_assert(NMib::NTraits::TCIsSame<mint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>::CType>::CType>::mc_Value);
+	static_assert(NMib::NTraits::cIsSame<mint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
 #endif
 
 #ifdef DMibPUniqueType_smint
-	static_assert(!NMib::NTraits::TCIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>::CType>::mc_Value);
+	static_assert(!NMib::NTraits::cIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>>);
 #else
-	static_assert(NMib::NTraits::TCIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>::CType>::mc_Value);
+	static_assert(NMib::NTraits::cIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>>);
 #endif
 
 #ifdef DMibPUniqueType_ch8
-	static_assert(!NMib::NTraits::TCIsSame<ch8, int8>::mc_Value);
-	static_assert(!NMib::NTraits::TCIsSame<ch8, uint8>::mc_Value);
+	static_assert(!NMib::NTraits::cIsSame<ch8, int8>);
+	static_assert(!NMib::NTraits::cIsSame<ch8, uint8>);
 #else
-	static_assert(NMib::NTraits::TCIsSame<ch8, int8>::mc_Value || NMib::NTraits::TCIsSame<ch8, uint8>::mc_Value);
+	static_assert(NMib::NTraits::cIsSame<ch8, int8> || NMib::NTraits::cIsSame<ch8, uint8>);
 #endif
 
 #ifdef DMibPUniqueType_ch16
-	static_assert(!NMib::NTraits::TCIsSame<ch16, int16>::mc_Value);
-	static_assert(!NMib::NTraits::TCIsSame<ch16, uint16>::mc_Value);
+	static_assert(!NMib::NTraits::cIsSame<ch16, int16>);
+	static_assert(!NMib::NTraits::cIsSame<ch16, uint16>);
 #else
-	static_assert(NMib::NTraits::TCIsSame<ch16, int16>::mc_Value || NMib::NTraits::TCIsSame<ch16, uint16>::mc_Value);
+	static_assert(NMib::NTraits::cIsSame<ch16, int16> || NMib::NTraits::cIsSame<ch16, uint16>);
 #endif
 
 #ifdef DMibPUniqueType_ch32
-	static_assert(!NMib::NTraits::TCIsSame<ch32, int32>::mc_Value);
-	static_assert(!NMib::NTraits::TCIsSame<ch32, uint32>::mc_Value);
+	static_assert(!NMib::NTraits::cIsSame<ch32, int32>);
+	static_assert(!NMib::NTraits::cIsSame<ch32, uint32>);
 #else
-	static_assert(NMib::NTraits::TCIsSame<ch32, int32>::mc_Value || NMib::NTraits::TCIsSame<ch32, uint32>::mc_Value);
+	static_assert(NMib::NTraits::cIsSame<ch32, int32> || NMib::NTraits::cIsSame<ch32, uint32>);
 #endif
 
 template <typename t_CLeft, typename t_CRight>
-class TCIsComparable
+class cIsComparable
 {
 public:
 	class CDummy {};
@@ -130,54 +130,54 @@ public:
 	typedef decltype(fg_Both(fs_Left(), fs_Right())) CType;
 	enum
 	{
-		ms_Both = !TCIsSame<CType, CDummy>::mc_Value
-		, ms_Global = !TCIsSame<decltype(fg_Global(fs_Left(), fs_Right())), CDummy>::mc_Value
-		, ms_Local = !TCIsSame<decltype(fg_Local(fs_Left(), fs_Right())), CDummy>::mc_Value
+		ms_Both = !cIsSame<CType, CDummy>
+		, ms_Global = !cIsSame<decltype(fg_Global(fs_Left(), fs_Right())), CDummy>
+		, ms_Local = !cIsSame<decltype(fg_Local(fs_Left(), fs_Right())), CDummy>
 		, mc_Value = ms_Both
 	};
 };
 #if 0
-DMibStaticCheck((!TCIsComparable<CTesting, CTesting>::mc_Value));
-DMibStaticCheck((!TCIsComparable<CTesting, CTesting2>::mc_Value));
-DMibStaticCheck((!TCIsComparable<CTesting2, CTesting>::mc_Value));
-DMibStaticCheck((TCIsComparable<CTesting, int>::mc_Value));
-DMibStaticCheck((TCIsComparable<CTesting, int>::ms_Local));
-DMibStaticCheck((TCIsComparable<CTesting, int>::ms_Both));
-DMibStaticCheck((TCIsComparable<CTesting, int>::ms_Global));
-DMibStaticCheck((TCIsComparable<int, CTesting>::mc_Value));
-DMibStaticCheck((TCIsComparable<CTesting, float>::mc_Value));
-DMibStaticCheck((TCIsComparable<float, CTesting>::mc_Value));
-DMibStaticCheck((TCIsComparable<CTesting, float>::mc_Value));
-DMibStaticCheck((!TCIsComparable<double, CTesting>::mc_Value));
+static_assert(!cIsComparable<CTesting, CTesting>);
+static_assert(!cIsComparable<CTesting, CTesting2>);
+static_assert(!cIsComparable<CTesting2, CTesting>);
+static_assert(cIsComparable<CTesting, int>);
+static_assert(cIsComparable<CTesting, int>::ms_Local);
+static_assert(cIsComparable<CTesting, int>::ms_Both);
+static_assert(cIsComparable<CTesting, int>::ms_Global);
+static_assert(cIsComparable<int, CTesting>);
+static_assert(cIsComparable<CTesting, float>);
+static_assert(cIsComparable<float, CTesting>);
+static_assert(cIsComparable<CTesting, float>);
+static_assert(!cIsComparable<double, CTesting>);
 
-DMibStaticCheck((TCIsComparable<int, CTesting4>::mc_Value));
-DMibStaticCheck((TCIsComparable<CTesting4, int>::mc_Value));
-DMibStaticCheck((TCIsComparable<CTesting4, float>::mc_Value));
-DMibStaticCheck((TCIsComparable<float, CTesting4>::mc_Value));
+static_assert(cIsComparable<int, CTesting4>);
+static_assert(cIsComparable<CTesting4, int>);
+static_assert(cIsComparable<CTesting4, float>);
+static_assert(cIsComparable<float, CTesting4>);
 
-//DMibStaticCheck((TCIsComparableLessThan<int, CTesting4>::mc_Value));
-//DMibStaticCheck((TCIsComparableLessThan<CTesting4, int>::mc_Value));
-//DMibStaticCheck((TCIsComparableLessThan<CTesting4, float>::mc_Value));
-//DMibStaticCheck((TCIsComparableLessThan<float, CTesting4>::mc_Value));
+//static_assert(cIsComparableLessThan<int, CTesting4>);
+//static_assert(cIsComparableLessThan<CTesting4, int>);
+//static_assert(cIsComparableLessThan<CTesting4, float>);
+//static_assert(cIsComparableLessThan<float, CTesting4>);
 
-DMibStaticCheck((TCIsComparable<int, CTesting3>::mc_Value));
-DMibStaticCheck((TCIsComparable<CTesting3, int>::mc_Value));
-DMibStaticCheck((TCIsComparable<int, int>::mc_Value));
-DMibStaticCheck((!TCIsComparable<CTesting3, double>::mc_Value));
+static_assert(cIsComparable<int, CTesting3>);
+static_assert(cIsComparable<CTesting3, int>);
+static_assert(cIsComparable<int, int>);
+static_assert(!cIsComparable<CTesting3, double>);
 
-DMibStaticCheck((TCIsComparableLessThan<int, int>::mc_Value));
+static_assert(cIsComparableLessThan<int, int>);
 
 
-DMibStaticCheck((!TCIsComparableLessThan<CTesting, CTesting>::mc_Value));
-DMibStaticCheck((!TCIsComparableLessThan<CTesting, CTesting2>::mc_Value));
-DMibStaticCheck((!TCIsComparableLessThan<CTesting2, CTesting>::mc_Value));
-DMibStaticCheck((TCIsComparableLessThan<CTesting, int>::mc_Value));
-//DMibStaticCheck((TCIsComparableLessThan<int, CTesting>::mc_Value));
-DMibStaticCheck((TCIsComparableLessThan<CTesting, float>::mc_Value));
-//DMibStaticCheck((TCIsComparableLessThan<float, CTesting>::mc_Value));
-DMibStaticCheck((TCIsComparableLessThan<CTesting, float>::mc_Value));
-DMibStaticCheck((!TCIsComparableLessThan<double, CTesting>::mc_Value));
-//DMibStaticCheck((!TCIsComparableLessThan<float, char *>::mc_Value));
+static_assert(!cIsComparableLessThan<CTesting, CTesting>);
+static_assert(!cIsComparableLessThan<CTesting, CTesting2>);
+static_assert(!cIsComparableLessThan<CTesting2, CTesting>);
+static_assert(cIsComparableLessThan<CTesting, int>);
+//static_assert(cIsComparableLessThan<int, CTesting>);
+static_assert(cIsComparableLessThan<CTesting, float>);
+//static_assert(cIsComparableLessThan<float, CTesting>);
+static_assert(cIsComparableLessThan<CTesting, float>);
+static_assert(!cIsComparableLessThan<double, CTesting>);
+//static_assert(!cIsComparableLessThan<float, char *>);
 #endif
 
 namespace
@@ -189,9 +189,9 @@ namespace
 		void f_DoTests()
 		{
 
-//			TCIsComparable<int, int>::CType Typeee;Typeee;
-	//		TCIsComparable<float, char *>::CType Typeee5;Typeee5;
-		//	TCIsComparable<CTesting, int>::CType Typeee6;Typeee6;
+//			cIsComparable<int, int>::CType Typeee;Typeee;
+	//		cIsComparable<float, char *>::CType Typeee5;Typeee5;
+		//	cIsComparable<CTesting, int>::CType Typeee6;Typeee6;
 			//auto Test = operator < (0, 0);
 //			int x = 0;
 			//DMibPDebugBreak;

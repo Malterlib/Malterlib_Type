@@ -4,484 +4,484 @@
 #include "Test_TypeTraits_TestTypes.h"
 
 // Is Int
-	
+
 #ifdef DMibPCanDo_int8192
-DMibStaticCheck((	!TCIsCompound<int8192>::mc_Value	));
+static_assert(!cIsCompound<int8192>);
 #else
-DMibStaticCheck((	TCIsCompound<int8192>::mc_Value	));
+static_assert(cIsCompound<int8192>);
 #endif
 #ifdef DMibPCanDo_int4096
-DMibStaticCheck((	!TCIsCompound<int4096>::mc_Value	));
+static_assert(!cIsCompound<int4096>);
 #else
-DMibStaticCheck((	TCIsCompound<int4096>::mc_Value	));
+static_assert(cIsCompound<int4096>);
 #endif
 #ifdef DMibPCanDo_int2048
-DMibStaticCheck((	!TCIsCompound<int2048>::mc_Value	));
+static_assert(!cIsCompound<int2048>);
 #else
-DMibStaticCheck((	TCIsCompound<int2048>::mc_Value	));
+static_assert(cIsCompound<int2048>);
 #endif
 #ifdef DMibPCanDo_int1024
-DMibStaticCheck((	!TCIsCompound<int1024>::mc_Value	));
+static_assert(!cIsCompound<int1024>);
 #else
-DMibStaticCheck((	TCIsCompound<int1024>::mc_Value	));
+static_assert(cIsCompound<int1024>);
 #endif
 #ifdef DMibPCanDo_int512
-DMibStaticCheck((	!TCIsCompound<int512>::mc_Value	));
+static_assert(!cIsCompound<int512>);
 #else
-DMibStaticCheck((	TCIsCompound<int512>::mc_Value	));
+static_assert(cIsCompound<int512>);
 #endif
 #ifdef DMibPCanDo_int256
-DMibStaticCheck((	!TCIsCompound<int256>::mc_Value	));
+static_assert(!cIsCompound<int256>);
 #else
-DMibStaticCheck((	TCIsCompound<int256>::mc_Value	));
+static_assert(cIsCompound<int256>);
 #endif
 #ifdef DMibPCanDo_int160
-DMibStaticCheck((	!TCIsCompound<int160>::mc_Value	));
+static_assert(!cIsCompound<int160>);
 #else
-DMibStaticCheck((	TCIsCompound<int160>::mc_Value	));
+static_assert(cIsCompound<int160>);
 #endif
 #ifdef DMibPCanDo_int128
-DMibStaticCheck((	!TCIsCompound<int128>::mc_Value	));
+static_assert(!cIsCompound<int128>);
 #else
-DMibStaticCheck((	TCIsCompound<int128>::mc_Value	));
+static_assert(cIsCompound<int128>);
 #endif
 #ifdef DMibPCanDo_int80
-DMibStaticCheck((	!TCIsCompound<int80>::mc_Value	));
+static_assert(!cIsCompound<int80>);
 #else
-DMibStaticCheck((	TCIsCompound<int80>::mc_Value	));
+static_assert(cIsCompound<int80>);
 #endif
 #ifdef DMibPCanDo_int64
-DMibStaticCheck((	!TCIsCompound<int64>::mc_Value	));
+static_assert(!cIsCompound<int64>);
 #else
-DMibStaticCheck((	TCIsCompound<int64>::mc_Value	));
+static_assert(cIsCompound<int64>);
 #endif
 #ifdef DMibPCanDo_int32
-DMibStaticCheck((	!TCIsCompound<int32>::mc_Value	));
+static_assert(!cIsCompound<int32>);
 #else
-DMibStaticCheck((	TCIsCompound<int32>::mc_Value	));
+static_assert(cIsCompound<int32>);
 #endif
 #ifdef DMibPCanDo_int16
-DMibStaticCheck((	!TCIsCompound<int16>::mc_Value	));
+static_assert(!cIsCompound<int16>);
 #else
-DMibStaticCheck((	TCIsCompound<int16>::mc_Value	));
+static_assert(cIsCompound<int16>);
 #endif
 #ifdef DMibPCanDo_int8
-DMibStaticCheck((	!TCIsCompound<int8>::mc_Value	));
+static_assert(!cIsCompound<int8>);
 #else
-DMibStaticCheck((	TCIsCompound<int8>::mc_Value	));
+static_assert(cIsCompound<int8>);
 #endif
 
 // These must always be fundamental
-DMibStaticCheck((	!TCIsCompound<aint>::mc_Value	));
-DMibStaticCheck((	!TCIsCompound<uaint>::mc_Value	));
-DMibStaticCheck((	!TCIsCompound<smint>::mc_Value	));
-DMibStaticCheck((	!TCIsCompound<mint>::mc_Value	));
+static_assert(!cIsCompound<aint>);
+static_assert(!cIsCompound<uaint>);
+static_assert(!cIsCompound<smint>);
+static_assert(!cIsCompound<mint>);
 
 #ifdef DMibPCanDo_uint8192
-DMibStaticCheck((	!TCIsCompound<uint8192>::mc_Value	));
+static_assert(!cIsCompound<uint8192>);
 #else
-DMibStaticCheck((	TCIsCompound<uint8192>::mc_Value	));
+static_assert(cIsCompound<uint8192>);
 #endif
 #ifdef DMibPCanDo_uint4096
-DMibStaticCheck((	!TCIsCompound<uint4096>::mc_Value	));
+static_assert(!cIsCompound<uint4096>);
 #else
-DMibStaticCheck((	TCIsCompound<uint4096>::mc_Value	));
+static_assert(cIsCompound<uint4096>);
 #endif
 #ifdef DMibPCanDo_uint2048
-DMibStaticCheck((	!TCIsCompound<uint2048>::mc_Value	));
+static_assert(!cIsCompound<uint2048>);
 #else
-DMibStaticCheck((	TCIsCompound<uint2048>::mc_Value	));
+static_assert(cIsCompound<uint2048>);
 #endif
 #ifdef DMibPCanDo_uint1024
-DMibStaticCheck((	!TCIsCompound<uint1024>::mc_Value	));
+static_assert(!cIsCompound<uint1024>);
 #else
-DMibStaticCheck((	TCIsCompound<uint1024>::mc_Value	));
+static_assert(cIsCompound<uint1024>);
 #endif
 #ifdef DMibPCanDo_uint512
-DMibStaticCheck((	!TCIsCompound<uint512>::mc_Value	));
+static_assert(!cIsCompound<uint512>);
 #else
-DMibStaticCheck((	TCIsCompound<uint512>::mc_Value	));
+static_assert(cIsCompound<uint512>);
 #endif
 #ifdef DMibPCanDo_uint256
-DMibStaticCheck((	!TCIsCompound<uint256>::mc_Value	));
+static_assert(!cIsCompound<uint256>);
 #else
-DMibStaticCheck((	TCIsCompound<uint256>::mc_Value	));
+static_assert(cIsCompound<uint256>);
 #endif
 #ifdef DMibPCanDo_uint160
-DMibStaticCheck((	!TCIsCompound<uint160>::mc_Value	));
+static_assert(!cIsCompound<uint160>);
 #else
-DMibStaticCheck((	TCIsCompound<uint160>::mc_Value	));
+static_assert(cIsCompound<uint160>);
 #endif
 #ifdef DMibPCanDo_uint128
-DMibStaticCheck((	!TCIsCompound<uint128>::mc_Value	));
+static_assert(!cIsCompound<uint128>);
 #else
-DMibStaticCheck((	TCIsCompound<uint128>::mc_Value	));
+static_assert(cIsCompound<uint128>);
 #endif
 #ifdef DMibPCanDo_uint80
-DMibStaticCheck((	!TCIsCompound<uint80>::mc_Value	));
+static_assert(!cIsCompound<uint80>);
 #else
-DMibStaticCheck((	TCIsCompound<uint80>::mc_Value	));
+static_assert(cIsCompound<uint80>);
 #endif
 #ifdef DMibPCanDo_uint64
-DMibStaticCheck((	!TCIsCompound<uint64>::mc_Value	));
+static_assert(!cIsCompound<uint64>);
 #else
-DMibStaticCheck((	TCIsCompound<uint64>::mc_Value	));
+static_assert(cIsCompound<uint64>);
 #endif
 #ifdef DMibPCanDo_uint32
-DMibStaticCheck((	!TCIsCompound<uint32>::mc_Value	));
+static_assert(!cIsCompound<uint32>);
 #else
-DMibStaticCheck((	TCIsCompound<uint32>::mc_Value	));
+static_assert(cIsCompound<uint32>);
 #endif
 #ifdef DMibPCanDo_uint16
-DMibStaticCheck((	!TCIsCompound<uint16>::mc_Value	));
+static_assert(!cIsCompound<uint16>);
 #else
-DMibStaticCheck((	TCIsCompound<uint16>::mc_Value	));
+static_assert(cIsCompound<uint16>);
 #endif
 #ifdef DMibPCanDo_uint8
-DMibStaticCheck((	!TCIsCompound<uint8>::mc_Value	));
+static_assert(!cIsCompound<uint8>);
 #else
-DMibStaticCheck((	TCIsCompound<uint8>::mc_Value	));
+static_assert(cIsCompound<uint8>);
 #endif
 
 #ifdef DMibPCanDo_fp4096
-DMibStaticCheck((	!TCIsCompound<pfp4096>::mc_Value	));
+static_assert(!cIsCompound<pfp4096>);
 #else
-DMibStaticCheck((	TCIsCompound<fp4096>::mc_Value	));
+static_assert(cIsCompound<fp4096>);
 #endif
 #ifdef DMibPCanDo_fp2048
-DMibStaticCheck((	!TCIsCompound<pfp2048>::mc_Value	));
+static_assert(!cIsCompound<pfp2048>);
 #else
-DMibStaticCheck((	TCIsCompound<fp2048>::mc_Value	));
+static_assert(cIsCompound<fp2048>);
 #endif
 #ifdef DMibPCanDo_fp1024
-DMibStaticCheck((	!TCIsCompound<pfp1024>::mc_Value	));
+static_assert(!cIsCompound<pfp1024>);
 #else
-DMibStaticCheck((	TCIsCompound<fp1024>::mc_Value	));
+static_assert(cIsCompound<fp1024>);
 #endif
 #ifdef DMibPCanDo_fp512
-DMibStaticCheck((	!TCIsCompound<pfp512>::mc_Value	));
+static_assert(!cIsCompound<pfp512>);
 #else
-DMibStaticCheck((	TCIsCompound<fp512>::mc_Value	));
+static_assert(cIsCompound<fp512>);
 #endif
 #ifdef DMibPCanDo_fp256
-DMibStaticCheck((	!TCIsCompound<pfp256>::mc_Value	));
+static_assert(!cIsCompound<pfp256>);
 #else
-DMibStaticCheck((	TCIsCompound<fp256>::mc_Value	));
+static_assert(cIsCompound<fp256>);
 #endif
 #ifdef DMibPCanDo_fp128
-DMibStaticCheck((	!TCIsCompound<pfp128>::mc_Value	));
+static_assert(!cIsCompound<pfp128>);
 #else
-DMibStaticCheck((	TCIsCompound<fp128>::mc_Value	));
+static_assert(cIsCompound<fp128>);
 #endif
 #ifdef DMibPCanDo_fp80
-DMibStaticCheck((	!TCIsCompound<pfp80>::mc_Value	));
+static_assert(!cIsCompound<pfp80>);
 #else
-DMibStaticCheck((	TCIsCompound<fp80>::mc_Value	));
+static_assert(cIsCompound<fp80>);
 #endif
 #ifdef DMibPCanDo_fp64
-DMibStaticCheck((	!TCIsCompound<pfp64>::mc_Value	));
+static_assert(!cIsCompound<pfp64>);
 #else
-DMibStaticCheck((	TCIsCompound<fp64>::mc_Value	));
+static_assert(cIsCompound<fp64>);
 #endif
 #ifdef DMibPCanDo_fp32
-DMibStaticCheck((	!TCIsCompound<pfp32>::mc_Value	));
+static_assert(!cIsCompound<pfp32>);
 #else
-DMibStaticCheck((	TCIsCompound<fp32>::mc_Value	));
+static_assert(cIsCompound<fp32>);
 #endif
 #ifdef DMibPCanDo_fp16
-DMibStaticCheck((	!TCIsCompound<pfp16>::mc_Value	));
+static_assert(!cIsCompound<pfp16>);
 #else
-DMibStaticCheck((	TCIsCompound<fp16>::mc_Value	));
+static_assert(cIsCompound<fp16>);
 #endif
 #ifdef DMibPCanDo_fp8
-DMibStaticCheck((	!TCIsCompound<pfp8>::mc_Value	));
+static_assert(!cIsCompound<pfp8>);
 #else
-DMibStaticCheck((	TCIsCompound<fp8>::mc_Value	));
+static_assert(cIsCompound<fp8>);
 #endif
 
 #ifdef DMibPCanDo_int8192
-DMibStaticCheck((	!TCIsCompound<const int8192>::mc_Value	));
+static_assert(!cIsCompound<const int8192>);
 #else
-DMibStaticCheck((	TCIsCompound<const int8192>::mc_Value	));
+static_assert(cIsCompound<const int8192>);
 #endif
 #ifdef DMibPCanDo_int4096
-DMibStaticCheck((	!TCIsCompound<const int4096>::mc_Value	));
+static_assert(!cIsCompound<const int4096>);
 #else
-DMibStaticCheck((	TCIsCompound<const int4096>::mc_Value	));
+static_assert(cIsCompound<const int4096>);
 #endif
 #ifdef DMibPCanDo_int2048
-DMibStaticCheck((	!TCIsCompound<const int2048>::mc_Value	));
+static_assert(!cIsCompound<const int2048>);
 #else
-DMibStaticCheck((	TCIsCompound<const int2048>::mc_Value	));
+static_assert(cIsCompound<const int2048>);
 #endif
 #ifdef DMibPCanDo_int1024
-DMibStaticCheck((	!TCIsCompound<const int1024>::mc_Value	));
+static_assert(!cIsCompound<const int1024>);
 #else
-DMibStaticCheck((	TCIsCompound<const int1024>::mc_Value	));
+static_assert(cIsCompound<const int1024>);
 #endif
 #ifdef DMibPCanDo_int512
-DMibStaticCheck((	!TCIsCompound<const int512>::mc_Value	));
+static_assert(!cIsCompound<const int512>);
 #else
-DMibStaticCheck((	TCIsCompound<const int512>::mc_Value	));
+static_assert(cIsCompound<const int512>);
 #endif
 #ifdef DMibPCanDo_int256
-DMibStaticCheck((	!TCIsCompound<const int256>::mc_Value	));
+static_assert(!cIsCompound<const int256>);
 #else
-DMibStaticCheck((	TCIsCompound<const int256>::mc_Value	));
+static_assert(cIsCompound<const int256>);
 #endif
 #ifdef DMibPCanDo_int160
-DMibStaticCheck((	!TCIsCompound<const int160>::mc_Value	));
+static_assert(!cIsCompound<const int160>);
 #else
-DMibStaticCheck((	TCIsCompound<const int160>::mc_Value	));
+static_assert(cIsCompound<const int160>);
 #endif
 #ifdef DMibPCanDo_int128
-DMibStaticCheck((	!TCIsCompound<const int128>::mc_Value	));
+static_assert(!cIsCompound<const int128>);
 #else
-DMibStaticCheck((	TCIsCompound<const int128>::mc_Value	));
+static_assert(cIsCompound<const int128>);
 #endif
 #ifdef DMibPCanDo_int80
-DMibStaticCheck((	!TCIsCompound<const int80>::mc_Value	));
+static_assert(!cIsCompound<const int80>);
 #else
-DMibStaticCheck((	TCIsCompound<const int80>::mc_Value	));
+static_assert(cIsCompound<const int80>);
 #endif
 #ifdef DMibPCanDo_int64
-DMibStaticCheck((	!TCIsCompound<const int64>::mc_Value	));
+static_assert(!cIsCompound<const int64>);
 #else
-DMibStaticCheck((	TCIsCompound<const int64>::mc_Value	));
+static_assert(cIsCompound<const int64>);
 #endif
 #ifdef DMibPCanDo_int32
-DMibStaticCheck((	!TCIsCompound<const int32>::mc_Value	));
+static_assert(!cIsCompound<const int32>);
 #else
-DMibStaticCheck((	TCIsCompound<const int32>::mc_Value	));
+static_assert(cIsCompound<const int32>);
 #endif
 #ifdef DMibPCanDo_int16
-DMibStaticCheck((	!TCIsCompound<const int16>::mc_Value	));
+static_assert(!cIsCompound<const int16>);
 #else
-DMibStaticCheck((	TCIsCompound<const int16>::mc_Value	));
+static_assert(cIsCompound<const int16>);
 #endif
 #ifdef DMibPCanDo_int8
-DMibStaticCheck((	!TCIsCompound<const int8>::mc_Value	));
+static_assert(!cIsCompound<const int8>);
 #else
-DMibStaticCheck((	TCIsCompound<const int8>::mc_Value	));
+static_assert(cIsCompound<const int8>);
 #endif
 
 // These must always be fundamental
-DMibStaticCheck((	!TCIsCompound<const aint>::mc_Value	));
-DMibStaticCheck((	!TCIsCompound<const uaint>::mc_Value	));
-DMibStaticCheck((	!TCIsCompound<const smint>::mc_Value	));
-DMibStaticCheck((	!TCIsCompound<const mint>::mc_Value	));
+static_assert(!cIsCompound<const aint>);
+static_assert(!cIsCompound<const uaint>);
+static_assert(!cIsCompound<const smint>);
+static_assert(!cIsCompound<const mint>);
 
 #ifdef DMibPCanDo_uint8192
-DMibStaticCheck((	!TCIsCompound<const uint8192>::mc_Value	));
+static_assert(!cIsCompound<const uint8192>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint8192>::mc_Value	));
+static_assert(cIsCompound<const uint8192>);
 #endif
 #ifdef DMibPCanDo_uint4096
-DMibStaticCheck((	!TCIsCompound<const uint4096>::mc_Value	));
+static_assert(!cIsCompound<const uint4096>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint4096>::mc_Value	));
+static_assert(cIsCompound<const uint4096>);
 #endif
 #ifdef DMibPCanDo_uint2048
-DMibStaticCheck((	!TCIsCompound<const uint2048>::mc_Value	));
+static_assert(!cIsCompound<const uint2048>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint2048>::mc_Value	));
+static_assert(cIsCompound<const uint2048>);
 #endif
 #ifdef DMibPCanDo_uint1024
-DMibStaticCheck((	!TCIsCompound<const uint1024>::mc_Value	));
+static_assert(!cIsCompound<const uint1024>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint1024>::mc_Value	));
+static_assert(cIsCompound<const uint1024>);
 #endif
 #ifdef DMibPCanDo_uint512
-DMibStaticCheck((	!TCIsCompound<const uint512>::mc_Value	));
+static_assert(!cIsCompound<const uint512>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint512>::mc_Value	));
+static_assert(cIsCompound<const uint512>);
 #endif
 #ifdef DMibPCanDo_uint256
-DMibStaticCheck((	!TCIsCompound<const uint256>::mc_Value	));
+static_assert(!cIsCompound<const uint256>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint256>::mc_Value	));
+static_assert(cIsCompound<const uint256>);
 #endif
 #ifdef DMibPCanDo_uint160
-DMibStaticCheck((	!TCIsCompound<const uint160>::mc_Value	));
+static_assert(!cIsCompound<const uint160>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint160>::mc_Value	));
+static_assert(cIsCompound<const uint160>);
 #endif
 #ifdef DMibPCanDo_uint128
-DMibStaticCheck((	!TCIsCompound<const uint128>::mc_Value	));
+static_assert(!cIsCompound<const uint128>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint128>::mc_Value	));
+static_assert(cIsCompound<const uint128>);
 #endif
 #ifdef DMibPCanDo_uint80
-DMibStaticCheck((	!TCIsCompound<const uint80>::mc_Value	));
+static_assert(!cIsCompound<const uint80>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint80>::mc_Value	));
+static_assert(cIsCompound<const uint80>);
 #endif
 #ifdef DMibPCanDo_uint64
-DMibStaticCheck((	!TCIsCompound<const uint64>::mc_Value	));
+static_assert(!cIsCompound<const uint64>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint64>::mc_Value	));
+static_assert(cIsCompound<const uint64>);
 #endif
 #ifdef DMibPCanDo_uint32
-DMibStaticCheck((	!TCIsCompound<const uint32>::mc_Value	));
+static_assert(!cIsCompound<const uint32>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint32>::mc_Value	));
+static_assert(cIsCompound<const uint32>);
 #endif
 #ifdef DMibPCanDo_uint16
-DMibStaticCheck((	!TCIsCompound<const uint16>::mc_Value	));
+static_assert(!cIsCompound<const uint16>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint16>::mc_Value	));
+static_assert(cIsCompound<const uint16>);
 #endif
 #ifdef DMibPCanDo_uint8
-DMibStaticCheck((	!TCIsCompound<const uint8>::mc_Value	));
+static_assert(!cIsCompound<const uint8>);
 #else
-DMibStaticCheck((	TCIsCompound<const uint8>::mc_Value	));
+static_assert(cIsCompound<const uint8>);
 #endif
 
 #ifdef DMibPCanDo_fp4096
-DMibStaticCheck((	!TCIsCompound<const pfp4096>::mc_Value	));
+static_assert(!cIsCompound<const pfp4096>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp4096>::mc_Value	));
+static_assert(cIsCompound<const fp4096>);
 #endif
 #ifdef DMibPCanDo_fp2048
-DMibStaticCheck((	!TCIsCompound<const pfp2048>::mc_Value	));
+static_assert(!cIsCompound<const pfp2048>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp2048>::mc_Value	));
+static_assert(cIsCompound<const fp2048>);
 #endif
 #ifdef DMibPCanDo_fp1024
-DMibStaticCheck((	!TCIsCompound<const pfp1024>::mc_Value	));
+static_assert(!cIsCompound<const pfp1024>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp1024>::mc_Value	));
+static_assert(cIsCompound<const fp1024>);
 #endif
 #ifdef DMibPCanDo_fp512
-DMibStaticCheck((	!TCIsCompound<const pfp512>::mc_Value	));
+static_assert(!cIsCompound<const pfp512>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp512>::mc_Value	));
+static_assert(cIsCompound<const fp512>);
 #endif
 #ifdef DMibPCanDo_fp256
-DMibStaticCheck((	!TCIsCompound<const pfp256>::mc_Value	));
+static_assert(!cIsCompound<const pfp256>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp256>::mc_Value	));
+static_assert(cIsCompound<const fp256>);
 #endif
 #ifdef DMibPCanDo_fp128
-DMibStaticCheck((	!TCIsCompound<const pfp128>::mc_Value	));
+static_assert(!cIsCompound<const pfp128>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp128>::mc_Value	));
+static_assert(cIsCompound<const fp128>);
 #endif
 #ifdef DMibPCanDo_fp80
-DMibStaticCheck((	!TCIsCompound<const pfp80>::mc_Value	));
+static_assert(!cIsCompound<const pfp80>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp80>::mc_Value	));
+static_assert(cIsCompound<const fp80>);
 #endif
 #ifdef DMibPCanDo_fp64
-DMibStaticCheck((	!TCIsCompound<const pfp64>::mc_Value	));
+static_assert(!cIsCompound<const pfp64>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp64>::mc_Value	));
+static_assert(cIsCompound<const fp64>);
 #endif
 #ifdef DMibPCanDo_fp32
-DMibStaticCheck((	!TCIsCompound<const pfp32>::mc_Value	));
+static_assert(!cIsCompound<const pfp32>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp32>::mc_Value	));
+static_assert(cIsCompound<const fp32>);
 #endif
 #ifdef DMibPCanDo_fp16
-DMibStaticCheck((	!TCIsCompound<const pfp16>::mc_Value	));
+static_assert(!cIsCompound<const pfp16>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp16>::mc_Value	));
+static_assert(cIsCompound<const fp16>);
 #endif
 #ifdef DMibPCanDo_fp8
-DMibStaticCheck((	!TCIsCompound<const pfp8>::mc_Value	));
+static_assert(!cIsCompound<const pfp8>);
 #else
-DMibStaticCheck((	TCIsCompound<const fp8>::mc_Value	));
+static_assert(cIsCompound<const fp8>);
 #endif
 
 // These must always be fundamental
-DMibStaticCheck((	!TCIsCompound<int>::mc_Value	));
-DMibStaticCheck((	!TCIsCompound<unsigned int>::mc_Value	));
+static_assert(!cIsCompound<int>);
+static_assert(!cIsCompound<unsigned int>);
 
-DMibStaticCheck((	TCIsCompound<CTestUnion>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestClass0>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestClass1>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestStruct0>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestStruct1>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<ETestEnum>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CTestClass>::mc_Value				));
-DMibStaticCheck((	TCIsCompound<CTestC>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CTestPtr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CTestCPtr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CTestPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CTestCPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestRef>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CTestCRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestRRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestCRRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<PFFunc0>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<PFFunc1>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<PFFunc2>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<FFunc0Ref>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc1Ref>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc2Ref>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc0RRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc1RRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc2RRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc0Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<FFunc1Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<FFunc2Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<FFunc0PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc1PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc2PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc0Ptr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc1Ptr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc2Ptr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc0PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc1PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc2PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc0CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc1CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc2CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc0CPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc1CPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc2CPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<PFFunc0El>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<PFFunc1El>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<PFFunc2El>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<FFunc0ElRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc1ElRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc2ElRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc0ElRRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc1ElRRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc2ElRRef>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc0ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<FFunc1ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<FFunc2ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<FFunc0ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc1ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FFunc2ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc0ElPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc1ElPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc2ElPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc0ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc1ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc2ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc0ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc1ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc2ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc0ElCPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc1ElCPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<FMFunc2ElCPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CMPtr>::mc_Value				));
-DMibStaticCheck((	TCIsCompound<CMCPtr>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CMPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CMCPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<CTestArray2>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestArray2C>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestArray>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTestArrayC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTest2DArray2>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTest2DArray2C>::mc_Value	));
-DMibStaticCheck((	TCIsCompound<CTest2DArray>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTest2DArrayC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTest3DArray2>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTest3DArray2C>::mc_Value	));
-DMibStaticCheck((	TCIsCompound<CTest3DArray>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<CTest3DArrayC>::mc_Value		));
-DMibStaticCheck((	TCIsCompound<void *>::mc_Value			));
-DMibStaticCheck((	TCIsCompound<void>::mc_Value				));
+static_assert(cIsCompound<CTestUnion>);
+static_assert(cIsCompound<CTestClass0>);
+static_assert(cIsCompound<CTestClass1>);
+static_assert(cIsCompound<CTestStruct0>);
+static_assert(cIsCompound<CTestStruct1>);
+static_assert(cIsCompound<ETestEnum>);
+static_assert(cIsCompound<CTestClass>);
+static_assert(cIsCompound<CTestC>);
+static_assert(cIsCompound<CTestPtr>);
+static_assert(cIsCompound<CTestCPtr>);
+static_assert(cIsCompound<CTestPtrC>);
+static_assert(cIsCompound<CTestCPtrC>);
+static_assert(cIsCompound<CTestRef>);
+static_assert(cIsCompound<CTestCRef>);
+static_assert(cIsCompound<CTestRRef>);
+static_assert(cIsCompound<CTestCRRef>);
+static_assert(cIsCompound<PFFunc0>);
+static_assert(cIsCompound<PFFunc1>);
+static_assert(cIsCompound<PFFunc2>);
+static_assert(cIsCompound<FFunc0Ref>);
+static_assert(cIsCompound<FFunc1Ref>);
+static_assert(cIsCompound<FFunc2Ref>);
+static_assert(cIsCompound<FFunc0RRef>);
+static_assert(cIsCompound<FFunc1RRef>);
+static_assert(cIsCompound<FFunc2RRef>);
+static_assert(cIsCompound<FFunc0Ptr>);
+static_assert(cIsCompound<FFunc1Ptr>);
+static_assert(cIsCompound<FFunc2Ptr>);
+static_assert(cIsCompound<FFunc0PtrC>);
+static_assert(cIsCompound<FFunc1PtrC>);
+static_assert(cIsCompound<FFunc2PtrC>);
+static_assert(cIsCompound<FMFunc0Ptr>);
+static_assert(cIsCompound<FMFunc1Ptr>);
+static_assert(cIsCompound<FMFunc2Ptr>);
+static_assert(cIsCompound<FMFunc0PtrC>);
+static_assert(cIsCompound<FMFunc1PtrC>);
+static_assert(cIsCompound<FMFunc2PtrC>);
+static_assert(cIsCompound<FMFunc0CPtr>);
+static_assert(cIsCompound<FMFunc1CPtr>);
+static_assert(cIsCompound<FMFunc2CPtr>);
+static_assert(cIsCompound<FMFunc0CPtrC>);
+static_assert(cIsCompound<FMFunc1CPtrC>);
+static_assert(cIsCompound<FMFunc2CPtrC>);
+static_assert(cIsCompound<PFFunc0El>);
+static_assert(cIsCompound<PFFunc1El>);
+static_assert(cIsCompound<PFFunc2El>);
+static_assert(cIsCompound<FFunc0ElRef>);
+static_assert(cIsCompound<FFunc1ElRef>);
+static_assert(cIsCompound<FFunc2ElRef>);
+static_assert(cIsCompound<FFunc0ElRRef>);
+static_assert(cIsCompound<FFunc1ElRRef>);
+static_assert(cIsCompound<FFunc2ElRRef>);
+static_assert(cIsCompound<FFunc0ElPtr>);
+static_assert(cIsCompound<FFunc1ElPtr>);
+static_assert(cIsCompound<FFunc2ElPtr>);
+static_assert(cIsCompound<FFunc0ElPtrC>);
+static_assert(cIsCompound<FFunc1ElPtrC>);
+static_assert(cIsCompound<FFunc2ElPtrC>);
+static_assert(cIsCompound<FMFunc0ElPtr>);
+static_assert(cIsCompound<FMFunc1ElPtr>);
+static_assert(cIsCompound<FMFunc2ElPtr>);
+static_assert(cIsCompound<FMFunc0ElPtrC>);
+static_assert(cIsCompound<FMFunc1ElPtrC>);
+static_assert(cIsCompound<FMFunc2ElPtrC>);
+static_assert(cIsCompound<FMFunc0ElCPtr>);
+static_assert(cIsCompound<FMFunc1ElCPtr>);
+static_assert(cIsCompound<FMFunc2ElCPtr>);
+static_assert(cIsCompound<FMFunc0ElCPtrC>);
+static_assert(cIsCompound<FMFunc1ElCPtrC>);
+static_assert(cIsCompound<FMFunc2ElCPtrC>);
+static_assert(cIsCompound<CMPtr>);
+static_assert(cIsCompound<CMCPtr>);
+static_assert(cIsCompound<CMPtrC>);
+static_assert(cIsCompound<CMCPtrC>);
+static_assert(cIsCompound<CTestArray2>);
+static_assert(cIsCompound<CTestArray2C>);
+static_assert(cIsCompound<CTestArray>);
+static_assert(cIsCompound<CTestArrayC>);
+static_assert(cIsCompound<CTest2DArray2>);
+static_assert(cIsCompound<CTest2DArray2C>);
+static_assert(cIsCompound<CTest2DArray>);
+static_assert(cIsCompound<CTest2DArrayC>);
+static_assert(cIsCompound<CTest3DArray2>);
+static_assert(cIsCompound<CTest3DArray2C>);
+static_assert(cIsCompound<CTest3DArray>);
+static_assert(cIsCompound<CTest3DArrayC>);
+static_assert(cIsCompound<void *>);
+static_assert(!cIsCompound<void>);

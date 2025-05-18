@@ -1,238 +1,55 @@
 // Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
-
 #pragma once
 
 namespace NMib::NTraits
 {
 	template <typename t_CType>
-	class TCIsFunction;
-	template <typename t_CType>
-	class TCIsVoid;
-	template <typename t_CType>
-	class TCIsArray;
-	template <typename t_CType>
-	class TCRemoveReference;
-	template <typename t_CType>
-	class TCIsArrayUnbounded;
-	template <typename t_CType>
-	class TCIsEnum;
-	template <typename t_CType>
-	class TCIsPointer;
-	template <typename t_CType>
-	class TCIsMemberPointer;
-
-	namespace NPrivate
-	{
-		template <typename t_CType>
-		class TCConstQualifier
-		{
-		public:
-			enum
-			{
-				EValue = false,
-			};
-
-			typedef t_CType CUnqualified;
-#ifdef DCompiler_MSVC
-#pragma warning(push)
-#pragma warning(disable:4180)
-#endif
-			typedef t_CType const CQualified;
-#ifdef DCompiler_MSVC
-#pragma warning(pop)
-#endif
-		};
-		template <typename t_CType>
-		class TCConstQualifier<t_CType const>
-		{
-		public:
-			enum
-			{
-				EValue = true,
-			};
-			typedef t_CType CUnqualified;
-#ifdef DCompiler_MSVC
-#pragma warning(push)
-#pragma warning(disable:4180)
-#endif
-			typedef t_CType const CQualified;
-#ifdef DCompiler_MSVC
-#pragma warning(pop)
-#endif
-		};
-		template <typename t_CType>
-		class TCVolatileQualifier
-		{
-		public:
-			enum
-			{
-				EValue = false,
-			};
-
-			typedef t_CType CUnqualified;
-#ifdef DCompiler_MSVC
-#pragma warning(push)
-#pragma warning(disable:4180)
-#endif
-			typedef t_CType volatile CQualified;
-#ifdef DCompiler_MSVC
-#pragma warning(pop)
-#endif
-		};
-		template <typename t_CType>
-		class TCVolatileQualifier<volatile t_CType>
-		{
-		public:
-			enum
-			{
-				EValue = true,
-			};
-			typedef t_CType CUnqualified;
-#ifdef DCompiler_MSVC
-#pragma warning(push)
-#pragma warning(disable:4180)
-#endif
-			typedef t_CType volatile CQualified;
-#ifdef DCompiler_MSVC
-#pragma warning(pop)
-#endif
-		};
-
-	}
+	concept cIsVolatile = std::is_volatile_v<t_CType>;
 
 	template <typename t_CType>
-	class TCIsVolatile : public TCCompileTimeConstant<bool, NPrivate::TCVolatileQualifier<t_CType>::EValue>
-	{
-	};
+	concept cIsConst = std::is_const_v<t_CType>;
 
 	template <typename t_CType>
-	class TCIsConst : public TCCompileTimeConstant<bool, NPrivate::TCConstQualifier<t_CType>::EValue>
-	{
-	};
+	using TCRemoveConst = std::remove_const_t<t_CType>;
 
 	template <typename t_CType>
-	class TCRemoveConst
-	{
-	public:
-		typedef typename NPrivate::TCConstQualifier<t_CType>::CUnqualified CType;
-	};
+	using TCRemoveVolatile = std::remove_volatile_t<t_CType>;
 
 	template <typename t_CType>
-	class TCRemoveVolatile
-	{
-	public:
-		typedef typename NPrivate::TCVolatileQualifier<t_CType>::CUnqualified CType;
-	};
-
-	template <typename t_CType, bool t_bDoAdd = true>
-	class TCAddConst
-	{
-	public:
-		typedef typename NPrivate::TCConstQualifier<t_CType>::CQualified CType;
-	};
+	using TCRemoveQualifiers = std::remove_cv_t<t_CType>;
 
 	template <typename t_CType>
-	class TCAddConst<t_CType, false>
-	{
-	public:
-		typedef t_CType CType;
-	};
-
-	template <typename t_CType, bool t_bDoAdd = true>
-	class TCAddVolatile
-	{
-	public:
-		typedef typename NPrivate::TCVolatileQualifier<t_CType>::CQualified CType;
-	};
+	using TCAddConst = std::add_const_t<t_CType>;
 
 	template <typename t_CType>
-	class TCAddVolatile<t_CType, false>
-	{
-	public:
-		typedef t_CType CType;
-	};
-
+	using TCAddVolatile = std::add_volatile_t<t_CType>;
 
 	template <typename t_CType>
-	class TCAddConstVolatile
-	{
-	public:
-		typedef typename TCAddConst<typename TCAddVolatile<t_CType>::CType>::CType CType;
-	};
-
+	using TCAddConstVolatile = std::add_cv_t<t_CType>;
 
 	template <typename t_CType, bool t_bSetTo>
-	class TCSetConst
-	{
-	public:
-		typedef typename TCRemoveConst<t_CType>::CType CType;
-	};
-
-	template <typename t_CType>
-	class TCSetConst<t_CType, 1>
-	{
-	public:
-		typedef typename TCAddConst<t_CType>::CType CType;
-	};
+	using TCSetConst = TCConditional<t_bSetTo, TCAddConst<t_CType>, TCRemoveConst<t_CType>>;
 
 	template <typename t_CType, bool t_bSetTo>
-	class TCSetVolatile
-	{
-	public:
-		typedef typename TCRemoveVolatile<t_CType>::CType CType;
-	};
-
-	template <typename t_CType>
-	class TCSetVolatile<t_CType, 1>
-	{
-	public:
-		typedef typename TCAddVolatile<t_CType>::CType CType;
-	};
+	using TCSetVolatile = TCConditional<t_bSetTo, TCAddVolatile<t_CType>, TCRemoveVolatile<t_CType>>;
 
 	template <typename t_CCopyFrom, typename t_CCopyTo>
-	class TCCopyConst
-	{
-	public:
-		typedef typename TCSetConst<t_CCopyTo, TCIsConst<t_CCopyFrom>::mc_Value>::CType CType;
-	};
+	using TCCopyConst = TCSetConst<t_CCopyTo, cIsConst<t_CCopyFrom>>;
 
 	template <typename t_CCopyFrom, typename t_CCopyTo>
-	class TCCopyVolatile
-	{
-	public:
-		typedef typename TCSetVolatile<t_CCopyTo, TCIsVolatile<t_CCopyFrom>::mc_Value>::CType CType;
-	};
+	using TCCopyVolatile = TCSetVolatile<t_CCopyTo, cIsVolatile<t_CCopyFrom>>;
 
 	template <typename t_CCopyFrom, typename t_CCopyTo>
-	class TCCopyQualifiers
-	{
-	public:
-		typedef typename TCSetConst<typename TCSetVolatile<t_CCopyTo ,TCIsVolatile<t_CCopyFrom>::mc_Value>::CType, TCIsConst<t_CCopyFrom>::mc_Value>::CType CType;
-	};
+	using TCCopyQualifiers = TCSetConst<TCSetVolatile<t_CCopyTo, cIsVolatile<t_CCopyFrom>>, cIsConst<t_CCopyFrom>>;
 
 	template <typename t_CCopyFrom, typename t_CCopyTo>
-	class TCAddQualifiersFrom
-	{
-	public:
-		typedef typename TCAddConst
-			<
-				typename TCAddVolatile
-				<
-					t_CCopyTo
-					, TCIsVolatile<t_CCopyFrom>::mc_Value
-				>::CType
-				, TCIsConst<t_CCopyFrom>::mc_Value
-			>::CType CType
-		;
-	};
-
-
-	template <typename t_CType>
-	class TCRemoveQualifiers
-	{
-	public:
-		typedef typename TCRemoveVolatile<typename TCRemoveConst<t_CType>::CType>::CType CType;
-	};
+	using TCAddQualifiersFrom = TCConditional
+		<
+			cIsVolatile<t_CCopyFrom>
+			, TCAddVolatile<TCConditional<cIsConst<t_CCopyFrom>, TCAddConst<t_CCopyTo>, t_CCopyTo>>
+			, TCConditional<cIsConst<t_CCopyFrom>, TCAddConst<t_CCopyTo>, t_CCopyTo>
+		>
+	;
 }

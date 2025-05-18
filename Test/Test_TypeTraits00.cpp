@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #include "Test_TypeTraits_TestTypes.h"
@@ -9,7 +9,7 @@
 |___________________________________________________________________________________________________|
 \***************************************************************************************************/
 
-DMibStaticCheck((sizeof(NMib::NTraits::CFalseBySize) != sizeof(NMib::NTraits::CTrueBySize)));
+static_assert(sizeof(NMib::NTraits::CFalseBySize) != sizeof(NMib::NTraits::CTrueBySize));
 
 /***************************************************************************************************\
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|

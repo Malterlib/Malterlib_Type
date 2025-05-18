@@ -3,182 +3,278 @@
 
 #include "Test_TypeTraits_TestTypes.h"
 
-DMibStaticCheck((	TCIsScalar<int8192>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int4096>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int2048>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int1024>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int512>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int256>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int160>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int128>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int80>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int64>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int32>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int16>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<int8>::mc_Value	));
+static_assert(!cIsScalar<int8192>);
+static_assert(!cIsScalar<int4096>);
+static_assert(!cIsScalar<int2048>);
+static_assert(!cIsScalar<int1024>);
+static_assert(!cIsScalar<int512>);
+static_assert(!cIsScalar<int256>);
+static_assert(!cIsScalar<int160>);
+#ifdef DMibPCanDo_int128
+static_assert(cIsScalar<int128>);
+#else
+static_assert(!cIsScalar<int128>);
+#endif
+#ifdef DMibPCanDo_int80
+static_assert(cIsScalar<int80>);
+#else
+static_assert(!cIsScalar<int80>);
+#endif
+#ifdef DMibPCanDo_int64
+static_assert(cIsScalar<int64>);
+#else
+static_assert(!cIsScalar<int64>);
+#endif
+#ifdef DMibPCanDo_int32
+static_assert(cIsScalar<int32>);
+#else
+static_assert(!cIsScalar<int32>);
+#endif
+#ifdef DMibPCanDo_int16
+static_assert(cIsScalar<int16>);
+#else
+static_assert(!cIsScalar<int16>);
+#endif
+#ifdef DMibPCanDo_int8
+static_assert(cIsScalar<int8>);
+#else
+static_assert(!cIsScalar<int8>);
+#endif
 
-DMibStaticCheck((	TCIsScalar<aint>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uaint>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<smint>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<mint>::mc_Value	));
+static_assert(cIsScalar<aint>);
+static_assert(cIsScalar<uaint>);
+static_assert(cIsScalar<smint>);
+static_assert(cIsScalar<mint>);
 
-DMibStaticCheck((	TCIsScalar<uint8192>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint4096>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint2048>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint1024>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint512>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint256>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint160>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint128>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint80>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint64>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint32>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint16>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<uint8>::mc_Value	));
+static_assert(!cIsScalar<uint8192>);
+static_assert(!cIsScalar<uint4096>);
+static_assert(!cIsScalar<uint2048>);
+static_assert(!cIsScalar<uint1024>);
+static_assert(!cIsScalar<uint512>);
+static_assert(!cIsScalar<uint256>);
+static_assert(!cIsScalar<uint160>);
+#ifdef DMibPCanDo_uint128
+static_assert(cIsScalar<uint128>);
+#else
+static_assert(!cIsScalar<uint128>);
+#endif
+#ifdef DMibPCanDo_uint80
+static_assert(cIsScalar<uint80>);
+#else
+static_assert(!cIsScalar<uint80>);
+#endif
+#ifdef DMibPCanDo_uint64
+static_assert(cIsScalar<uint64>);
+#else
+static_assert(!cIsScalar<uint64>);
+#endif
+#ifdef DMibPCanDo_uint32
+static_assert(cIsScalar<uint32>);
+#else
+static_assert(!cIsScalar<uint32>);
+#endif
+#ifdef DMibPCanDo_uint16
+static_assert(cIsScalar<uint16>);
+#else
+static_assert(!cIsScalar<uint16>);
+#endif
+#ifdef DMibPCanDo_uint8
+static_assert(cIsScalar<uint8>);
+#else
+static_assert(!cIsScalar<uint8>);
+#endif
 
-DMibStaticCheck((	TCIsScalar<fp4096>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp2048>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp1024>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp512>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp256>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp128>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp80>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp64>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp32>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp16>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<fp8>::mc_Value	));
+static_assert(!cIsScalar<fp4096>);
+static_assert(!cIsScalar<fp2048>);
+static_assert(!cIsScalar<fp1024>);
+static_assert(!cIsScalar<fp512>);
+static_assert(!cIsScalar<fp256>);
+static_assert(!cIsScalar<fp128>);
+static_assert(!cIsScalar<fp80>);
+static_assert(!cIsScalar<fp64>);
+static_assert(!cIsScalar<fp32>);
+static_assert(!cIsScalar<fp16>);
+static_assert(!cIsScalar<fp8>);
 
-DMibStaticCheck((	TCIsScalar<const int8192>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int4096>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int2048>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int1024>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int512>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int256>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int160>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int128>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int80>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int64>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int32>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int16>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const int8>::mc_Value	));
+static_assert(!cIsScalar<const int8192>);
+static_assert(!cIsScalar<const int4096>);
+static_assert(!cIsScalar<const int2048>);
+static_assert(!cIsScalar<const int1024>);
+static_assert(!cIsScalar<const int512>);
+static_assert(!cIsScalar<const int256>);
+static_assert(!cIsScalar<const int160>);
+#ifdef DMibPCanDo_int128
+static_assert(cIsScalar<const int128>);
+#else
+static_assert(!cIsScalar<const int128>);
+#endif
+#ifdef DMibPCanDo_int80
+static_assert(cIsScalar<const int80>);
+#else
+static_assert(!cIsScalar<const int80>);
+#endif
+#ifdef DMibPCanDo_int64
+static_assert(cIsScalar<const int64>);
+#else
+static_assert(!cIsScalar<const int64>);
+#endif
+#ifdef DMibPCanDo_int32
+static_assert(cIsScalar<const int32>);
+#else
+static_assert(!cIsScalar<const int32>);
+#endif
+#ifdef DMibPCanDo_int16
+static_assert(cIsScalar<const int16>);
+#else
+static_assert(!cIsScalar<const int16>);
+#endif
+#ifdef DMibPCanDo_int8
+static_assert(cIsScalar<const int8>);
+#else
+static_assert(!cIsScalar<const int8>);
+#endif
 
-DMibStaticCheck((	TCIsScalar<const aint>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uaint>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const smint>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const mint>::mc_Value	));
+static_assert(cIsScalar<const aint>);
+static_assert(cIsScalar<const uaint>);
+static_assert(cIsScalar<const smint>);
+static_assert(cIsScalar<const mint>);
 
-DMibStaticCheck((	TCIsScalar<const uint8192>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint4096>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint2048>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint1024>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint512>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint256>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint160>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint128>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint80>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint64>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint32>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint16>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const uint8>::mc_Value	));
+static_assert(!cIsScalar<const uint8192>);
+static_assert(!cIsScalar<const uint4096>);
+static_assert(!cIsScalar<const uint2048>);
+static_assert(!cIsScalar<const uint1024>);
+static_assert(!cIsScalar<const uint512>);
+static_assert(!cIsScalar<const uint256>);
+static_assert(!cIsScalar<const uint160>);
+#ifdef DMibPCanDo_uint128
+static_assert(cIsScalar<const uint128>);
+#else
+static_assert(!cIsScalar<const uint128>);
+#endif
+#ifdef DMibPCanDo_uint80
+static_assert(cIsScalar<const uint80>);
+#else
+static_assert(!cIsScalar<const uint80>);
+#endif
+#ifdef DMibPCanDo_uint64
+static_assert(cIsScalar<const uint64>);
+#else
+static_assert(!cIsScalar<const uint64>);
+#endif
+#ifdef DMibPCanDo_uint32
+static_assert(cIsScalar<const uint32>);
+#else
+static_assert(!cIsScalar<const uint32>);
+#endif
+#ifdef DMibPCanDo_uint16
+static_assert(cIsScalar<const uint16>);
+#else
+static_assert(!cIsScalar<const uint16>);
+#endif
+#ifdef DMibPCanDo_uint8
+static_assert(cIsScalar<const uint8>);
+#else
+static_assert(!cIsScalar<const uint8>);
+#endif
 
-DMibStaticCheck((	TCIsScalar<const fp4096>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp2048>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp1024>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp512>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp256>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp128>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp80>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp64>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp32>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp16>::mc_Value	));
-DMibStaticCheck((	TCIsScalar<const fp8>::mc_Value	));
+static_assert(!cIsScalar<const fp4096>);
+static_assert(!cIsScalar<const fp2048>);
+static_assert(!cIsScalar<const fp1024>);
+static_assert(!cIsScalar<const fp512>);
+static_assert(!cIsScalar<const fp256>);
+static_assert(!cIsScalar<const fp128>);
+static_assert(!cIsScalar<const fp80>);
+static_assert(!cIsScalar<const fp64>);
+static_assert(!cIsScalar<const fp32>);
+static_assert(!cIsScalar<const fp16>);
+static_assert(!cIsScalar<const fp8>);
 
-DMibStaticCheck((	!TCIsScalar<CTestUnion>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestClass0>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestClass1>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestStruct0>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestStruct1>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<ETestEnum>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<CTestClass>::mc_Value				));
-DMibStaticCheck((	!TCIsScalar<CTestC>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<CTestPtr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<CTestCPtr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<CTestPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<CTestCPtrC>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestRef>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<CTestCRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestRRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestCRRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<PFFunc0>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<PFFunc1>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<PFFunc2>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<FFunc0Ref>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc1Ref>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc2Ref>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc0RRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc1RRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc2RRef>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FFunc0Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<FFunc1Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<FFunc2Ptr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<FFunc0PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FFunc1PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FFunc2PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc0Ptr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc1Ptr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc2Ptr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc0PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc1PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc2PtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc0CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc1CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc2CPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc0CPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc1CPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc2CPtrC>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<PFFunc0El>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<PFFunc1El>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<PFFunc2El>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<FFunc0ElRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc1ElRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc2ElRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc0ElRRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc1ElRRef>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<FFunc2ElRRef>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FFunc0ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<FFunc1ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<FFunc2ElPtr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<FFunc0ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FFunc1ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FFunc2ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc0ElPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc1ElPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc2ElPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc0ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc1ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc2ElPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc0ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc1ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc2ElCPtr>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc0ElCPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc1ElCPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<FMFunc2ElCPtrC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<CMPtr>::mc_Value				));
-DMibStaticCheck((	TCIsScalar<CMCPtr>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<CMPtrC>::mc_Value			));
-DMibStaticCheck((	TCIsScalar<CMCPtrC>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<CTestArray2>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestArray2C>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestArray>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTestArrayC>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTest2DArray2>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTest2DArray2C>::mc_Value	));
-DMibStaticCheck((	!TCIsScalar<CTest2DArray>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTest2DArrayC>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTest3DArray2>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTest3DArray2C>::mc_Value	));
-DMibStaticCheck((	!TCIsScalar<CTest3DArray>::mc_Value		));
-DMibStaticCheck((	!TCIsScalar<CTest3DArrayC>::mc_Value		));
-DMibStaticCheck((	TCIsScalar<void *>::mc_Value			));
-DMibStaticCheck((	!TCIsScalar<void>::mc_Value				));
+static_assert(!cIsScalar<CTestUnion>);
+static_assert(!cIsScalar<CTestClass0>);
+static_assert(!cIsScalar<CTestClass1>);
+static_assert(!cIsScalar<CTestStruct0>);
+static_assert(!cIsScalar<CTestStruct1>);
+static_assert(cIsScalar<ETestEnum>);
+static_assert(!cIsScalar<CTestClass>);
+static_assert(!cIsScalar<CTestC>);
+static_assert(cIsScalar<CTestPtr>);
+static_assert(cIsScalar<CTestCPtr>);
+static_assert(cIsScalar<CTestPtrC>);
+static_assert(cIsScalar<CTestCPtrC>);
+static_assert(!cIsScalar<CTestRef>);
+static_assert(!cIsScalar<CTestCRef>);
+static_assert(!cIsScalar<CTestRRef>);
+static_assert(!cIsScalar<CTestCRRef>);
+static_assert(!cIsScalar<PFFunc0>);
+static_assert(!cIsScalar<PFFunc1>);
+static_assert(!cIsScalar<PFFunc2>);
+static_assert(!cIsScalar<FFunc0Ref>);
+static_assert(!cIsScalar<FFunc1Ref>);
+static_assert(!cIsScalar<FFunc2Ref>);
+static_assert(!cIsScalar<FFunc0RRef>);
+static_assert(!cIsScalar<FFunc1RRef>);
+static_assert(!cIsScalar<FFunc2RRef>);
+static_assert(cIsScalar<FFunc0Ptr>);
+static_assert(cIsScalar<FFunc1Ptr>);
+static_assert(cIsScalar<FFunc2Ptr>);
+static_assert(cIsScalar<FFunc0PtrC>);
+static_assert(cIsScalar<FFunc1PtrC>);
+static_assert(cIsScalar<FFunc2PtrC>);
+static_assert(cIsScalar<FMFunc0Ptr>);
+static_assert(cIsScalar<FMFunc1Ptr>);
+static_assert(cIsScalar<FMFunc2Ptr>);
+static_assert(cIsScalar<FMFunc0PtrC>);
+static_assert(cIsScalar<FMFunc1PtrC>);
+static_assert(cIsScalar<FMFunc2PtrC>);
+static_assert(cIsScalar<FMFunc0CPtr>);
+static_assert(cIsScalar<FMFunc1CPtr>);
+static_assert(cIsScalar<FMFunc2CPtr>);
+static_assert(cIsScalar<FMFunc0CPtrC>);
+static_assert(cIsScalar<FMFunc1CPtrC>);
+static_assert(cIsScalar<FMFunc2CPtrC>);
+static_assert(!cIsScalar<PFFunc0El>);
+static_assert(!cIsScalar<PFFunc1El>);
+static_assert(!cIsScalar<PFFunc2El>);
+static_assert(!cIsScalar<FFunc0ElRef>);
+static_assert(!cIsScalar<FFunc1ElRef>);
+static_assert(!cIsScalar<FFunc2ElRef>);
+static_assert(!cIsScalar<FFunc0ElRRef>);
+static_assert(!cIsScalar<FFunc1ElRRef>);
+static_assert(!cIsScalar<FFunc2ElRRef>);
+static_assert(cIsScalar<FFunc0ElPtr>);
+static_assert(cIsScalar<FFunc1ElPtr>);
+static_assert(cIsScalar<FFunc2ElPtr>);
+static_assert(cIsScalar<FFunc0ElPtrC>);
+static_assert(cIsScalar<FFunc1ElPtrC>);
+static_assert(cIsScalar<FFunc2ElPtrC>);
+static_assert(cIsScalar<FMFunc0ElPtr>);
+static_assert(cIsScalar<FMFunc1ElPtr>);
+static_assert(cIsScalar<FMFunc2ElPtr>);
+static_assert(cIsScalar<FMFunc0ElPtrC>);
+static_assert(cIsScalar<FMFunc1ElPtrC>);
+static_assert(cIsScalar<FMFunc2ElPtrC>);
+static_assert(cIsScalar<FMFunc0ElCPtr>);
+static_assert(cIsScalar<FMFunc1ElCPtr>);
+static_assert(cIsScalar<FMFunc2ElCPtr>);
+static_assert(cIsScalar<FMFunc0ElCPtrC>);
+static_assert(cIsScalar<FMFunc1ElCPtrC>);
+static_assert(cIsScalar<FMFunc2ElCPtrC>);
+static_assert(cIsScalar<CMPtr>);
+static_assert(cIsScalar<CMCPtr>);
+static_assert(cIsScalar<CMPtrC>);
+static_assert(cIsScalar<CMCPtrC>);
+static_assert(!cIsScalar<CTestArray2>);
+static_assert(!cIsScalar<CTestArray2C>);
+static_assert(!cIsScalar<CTestArray>);
+static_assert(!cIsScalar<CTestArrayC>);
+static_assert(!cIsScalar<CTest2DArray2>);
+static_assert(!cIsScalar<CTest2DArray2C>);
+static_assert(!cIsScalar<CTest2DArray>);
+static_assert(!cIsScalar<CTest2DArrayC>);
+static_assert(!cIsScalar<CTest3DArray2>);
+static_assert(!cIsScalar<CTest3DArray2C>);
+static_assert(!cIsScalar<CTest3DArray>);
+static_assert(!cIsScalar<CTest3DArrayC>);
+static_assert(cIsScalar<void *>);
+static_assert(!cIsScalar<void>);
 
