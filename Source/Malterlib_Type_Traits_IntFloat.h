@@ -78,13 +78,13 @@ namespace NMib::NTraits
 		template <typename t_CType0, typename t_CType1>
 		struct TCLargestType
 		{
-			typedef TCConditional<(sizeof(t_CType0) >= sizeof(t_CType1)), t_CType0, t_CType1> CType;
+			using CType = TCConditional<(sizeof(t_CType0) >= sizeof(t_CType1)), t_CType0, t_CType1>;
 		};
 
 		template <typename t_CType0, typename t_CType1>
 		struct TCSmallestType
 		{
-			typedef TCConditional<(sizeof(t_CType0) <= sizeof(t_CType1)), t_CType0, t_CType1> CType;
+			using CType = TCConditional<(sizeof(t_CType0) <= sizeof(t_CType1)), t_CType0, t_CType1>;
 		};
 	}
 
@@ -268,14 +268,14 @@ namespace NMib::NTraits
 		class TCLargerType
 		{
 		public:
-			typedef t_CType CType; // Default to no larger type exists
+			using CType = t_CType; // Default to no larger type exists
 		};
 
 		template <typename t_CType>
 		class TCSmallerType
 		{
 		public:
-			typedef t_CType CType; // Default to no smaller type exists
+			using CType = t_CType; // Default to no smaller type exists
 		};
 	}
 
@@ -289,14 +289,14 @@ namespace NMib::NTraits
 		template <>	\
 		struct NMib::NTraits::NPrivate::TCSmallerType<_Larger> \
 		{\
-			typedef _Smaller CType; \
+			using CType = _Smaller; \
 		};
 
 #	define DMibTraitsImplementSizeLarger(_Smaller, _Larger) \
 		template <>	\
 		struct NMib::NTraits::NPrivate::TCLargerType<_Smaller> \
 		{\
-			typedef _Larger CType; \
+			using CType = _Larger; \
 		};
 
 
@@ -522,7 +522,7 @@ namespace NMib::NTraits
 		template <mint t_VariableSize>
 		struct TCFloatFromSize
 		{
-			typedef typename TCFloatFromSize<t_VariableSize + 1>::CType CType;
+			using CType = typename TCFloatFromSize<t_VariableSize + 1>::CType;
 		};
 	}
 

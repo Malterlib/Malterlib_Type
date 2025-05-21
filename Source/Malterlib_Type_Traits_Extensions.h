@@ -40,21 +40,21 @@ namespace NMib::NTraits
 		class TCRemoveReferenceStorableHelper
 		{
 		public:
-			typedef t_CType CType;
+			using CType = t_CType;
 		};
 
 		template <typename t_CType>
 		class TCRemoveReferenceStorableHelper<t_CType &>
 		{
 		public:
-			typedef TCConditional<NTraits::cIsFunction<t_CType>, t_CType &, t_CType> CType;
+			using CType = TCConditional<NTraits::cIsFunction<t_CType>, t_CType &, t_CType>;
 		};
 
 		template <typename t_CType>
 		class TCRemoveReferenceStorableHelper<t_CType &&>
 		{
 		public:
-			typedef TCConditional<NTraits::cIsFunction<t_CType>, t_CType &&, t_CType> CType;
+			using CType = TCConditional<NTraits::cIsFunction<t_CType>, t_CType &&, t_CType>;
 		};
 	}
 
@@ -77,7 +77,7 @@ namespace NMib::NTraits
 		template <typename t_CType>
 		struct TCGetBaseHelper
 		{
-			typedef decltype(NPrivate::fg_GetBaseType(&t_CType::f_GetBaseHelper)) CType;
+			using CType = decltype(NPrivate::fg_GetBaseType(&t_CType::f_GetBaseHelper));
 		};
 	}
 
@@ -95,16 +95,16 @@ namespace NMib::NTraits
 		class TCRemoveMemberObjectPointerHelper
 		{
 		public:
-			typedef t_COriginalType CType;
-			typedef void CClass;
+			using CType = t_COriginalType;
+			using CClass = void;
 		};
 
 		template <typename t_CType0, typename t_CType1, typename t_COriginalType>
 		class TCRemoveMemberObjectPointerHelper<t_CType0 t_CType1::*, t_COriginalType, false>
 		{
 		public:
-			typedef t_CType0 CType;
-			typedef t_CType1 CClass;
+			using CType = t_CType0;
+			using CClass = t_CType1;
 		};
 
 	}
@@ -133,14 +133,14 @@ namespace NMib::NTraits
 		class TCRemoveRValueReferenceHelper
 		{
 		public:
-			typedef t_CType CType;
+			using CType = t_CType;
 		};
 
 		template <typename t_CType>
 		class TCRemoveRValueReferenceHelper<t_CType &&>
 		{
 		public:
-			typedef t_CType CType;
+			using CType = t_CType;
 		};
 	}
 
@@ -156,14 +156,14 @@ namespace NMib::NTraits
 		class TCRemoveLValueReferenceHelper
 		{
 		public:
-			typedef t_CType CType;
+			using CType = t_CType;
 		};
 
 		template <typename t_CType>
 		class TCRemoveLValueReferenceHelper<t_CType &>
 		{
 		public:
-			typedef t_CType CType;
+			using CType = t_CType;
 		};
 	}
 

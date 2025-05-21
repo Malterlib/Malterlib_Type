@@ -15,7 +15,7 @@ namespace NMib::NTraits
 	>
 	struct TCCompileTimeConstant
 	{
-		typedef t_CType CType;
+		using CType = t_CType;
 
 		static constexpr t_CType mc_Value = t_Value;
 		operator bool ()
