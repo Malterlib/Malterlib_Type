@@ -5,6 +5,11 @@
 
 // Is Int
 
+#ifdef DMibPCanDo_int16384
+static_assert(cIsFundamental<int16384>);
+#else
+static_assert(!cIsFundamental<int16384>);
+#endif
 #ifdef DMibPCanDo_int8192
 static_assert(cIsFundamental<int8192>);
 #else
@@ -40,6 +45,11 @@ static_assert(cIsFundamental<int160>);
 #else
 static_assert(!cIsFundamental<int160>);
 #endif
+#ifdef DMibPCanDo_int192
+static_assert(cIsFundamental<int192>);
+#else
+static_assert(!cIsFundamental<int192>);
+#endif
 #ifdef DMibPCanDo_int128
 static_assert(cIsFundamental<int128>);
 #else
@@ -49,6 +59,11 @@ static_assert(!cIsFundamental<int128>);
 static_assert(cIsFundamental<int80>);
 #else
 static_assert(!cIsFundamental<int80>);
+#endif
+#ifdef DMibPCanDo_int96
+static_assert(cIsFundamental<int96>);
+#else
+static_assert(!cIsFundamental<int96>);
 #endif
 #ifdef DMibPCanDo_int64
 static_assert(cIsFundamental<int64>);
@@ -80,6 +95,11 @@ static_assert(cIsFundamental<mint>);
 static_assert(cIsFundamental<int>);
 static_assert(cIsFundamental<unsigned int>);
 
+#ifdef DMibPCanDo_uint16384
+static_assert(cIsFundamental<uint16384>);
+#else
+static_assert(!cIsFundamental<uint16384>);
+#endif
 #ifdef DMibPCanDo_uint8192
 static_assert(cIsFundamental<uint8192>);
 #else
@@ -115,6 +135,11 @@ static_assert(cIsFundamental<uint160>);
 #else
 static_assert(!cIsFundamental<uint160>);
 #endif
+#ifdef DMibPCanDo_uint192
+static_assert(cIsFundamental<uint192>);
+#else
+static_assert(!cIsFundamental<uint192>);
+#endif
 #ifdef DMibPCanDo_uint128
 static_assert(cIsFundamental<uint128>);
 #else
@@ -124,6 +149,11 @@ static_assert(!cIsFundamental<uint128>);
 static_assert(cIsFundamental<uint80>);
 #else
 static_assert(!cIsFundamental<uint80>);
+#endif
+#ifdef DMibPCanDo_uint96
+static_assert(cIsFundamental<uint96>);
+#else
+static_assert(!cIsFundamental<uint96>);
 #endif
 #ifdef DMibPCanDo_uint64
 static_assert(cIsFundamental<uint64>);
@@ -202,6 +232,11 @@ static_assert(cIsFundamental<pfp8>);
 static_assert(!cIsFundamental<fp8>);
 #endif
 
+#ifdef DMibPCanDo_int16384
+static_assert(cIsFundamental<const int16384>);
+#else
+static_assert(!cIsFundamental<const int16384>);
+#endif
 #ifdef DMibPCanDo_int8192
 static_assert(cIsFundamental<const int8192>);
 #else
@@ -237,6 +272,11 @@ static_assert(cIsFundamental<const int160>);
 #else
 static_assert(!cIsFundamental<const int160>);
 #endif
+#ifdef DMibPCanDo_int192
+static_assert(cIsFundamental<const int192>);
+#else
+static_assert(!cIsFundamental<const int192>);
+#endif
 #ifdef DMibPCanDo_int128
 static_assert(cIsFundamental<const int128>);
 #else
@@ -246,6 +286,11 @@ static_assert(!cIsFundamental<const int128>);
 static_assert(cIsFundamental<const int80>);
 #else
 static_assert(!cIsFundamental<const int80>);
+#endif
+#ifdef DMibPCanDo_int96
+static_assert(cIsFundamental<const int96>);
+#else
+static_assert(!cIsFundamental<const int96>);
 #endif
 #ifdef DMibPCanDo_int64
 static_assert(cIsFundamental<const int64>);
@@ -274,6 +319,11 @@ static_assert(cIsFundamental<const uaint>);
 static_assert(cIsFundamental<const smint>);
 static_assert(cIsFundamental<const mint>);
 
+#ifdef DMibPCanDo_uint16384
+static_assert(cIsFundamental<const uint16384>);
+#else
+static_assert(!cIsFundamental<const uint16384>);
+#endif
 #ifdef DMibPCanDo_uint8192
 static_assert(cIsFundamental<const uint8192>);
 #else
@@ -309,6 +359,11 @@ static_assert(cIsFundamental<const uint160>);
 #else
 static_assert(!cIsFundamental<const uint160>);
 #endif
+#ifdef DMibPCanDo_uint192
+static_assert(cIsFundamental<const uint192>);
+#else
+static_assert(!cIsFundamental<const uint192>);
+#endif
 #ifdef DMibPCanDo_uint128
 static_assert(cIsFundamental<const uint128>);
 #else
@@ -318,6 +373,11 @@ static_assert(!cIsFundamental<const uint128>);
 static_assert(cIsFundamental<const uint80>);
 #else
 static_assert(!cIsFundamental<const uint80>);
+#endif
+#ifdef DMibPCanDo_uint96
+static_assert(cIsFundamental<const uint96>);
+#else
+static_assert(!cIsFundamental<const uint96>);
 #endif
 #ifdef DMibPCanDo_uint64
 static_assert(cIsFundamental<const uint64>);

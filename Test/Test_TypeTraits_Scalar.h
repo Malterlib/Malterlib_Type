@@ -3,6 +3,7 @@
 
 #include "Test_TypeTraits_TestTypes.h"
 
+static_assert(!cIsScalar<int16384>);
 static_assert(!cIsScalar<int8192>);
 static_assert(!cIsScalar<int4096>);
 static_assert(!cIsScalar<int2048>);
@@ -10,6 +11,7 @@ static_assert(!cIsScalar<int1024>);
 static_assert(!cIsScalar<int512>);
 static_assert(!cIsScalar<int256>);
 static_assert(!cIsScalar<int160>);
+static_assert(!cIsScalar<int192>);
 #ifdef DMibPCanDo_int128
 static_assert(cIsScalar<int128>);
 #else
@@ -19,6 +21,11 @@ static_assert(!cIsScalar<int128>);
 static_assert(cIsScalar<int80>);
 #else
 static_assert(!cIsScalar<int80>);
+#endif
+#ifdef DMibPCanDo_int96
+static_assert(cIsScalar<int96>);
+#else
+static_assert(!cIsScalar<int96>);
 #endif
 #ifdef DMibPCanDo_int64
 static_assert(cIsScalar<int64>);
@@ -46,6 +53,7 @@ static_assert(cIsScalar<uaint>);
 static_assert(cIsScalar<smint>);
 static_assert(cIsScalar<mint>);
 
+static_assert(!cIsScalar<uint16384>);
 static_assert(!cIsScalar<uint8192>);
 static_assert(!cIsScalar<uint4096>);
 static_assert(!cIsScalar<uint2048>);
@@ -53,6 +61,7 @@ static_assert(!cIsScalar<uint1024>);
 static_assert(!cIsScalar<uint512>);
 static_assert(!cIsScalar<uint256>);
 static_assert(!cIsScalar<uint160>);
+static_assert(!cIsScalar<uint192>);
 #ifdef DMibPCanDo_uint128
 static_assert(cIsScalar<uint128>);
 #else
@@ -62,6 +71,11 @@ static_assert(!cIsScalar<uint128>);
 static_assert(cIsScalar<uint80>);
 #else
 static_assert(!cIsScalar<uint80>);
+#endif
+#ifdef DMibPCanDo_uint96
+static_assert(cIsScalar<uint96>);
+#else
+static_assert(!cIsScalar<uint96>);
 #endif
 #ifdef DMibPCanDo_uint64
 static_assert(cIsScalar<uint64>);
@@ -96,6 +110,7 @@ static_assert(!cIsScalar<fp32>);
 static_assert(!cIsScalar<fp16>);
 static_assert(!cIsScalar<fp8>);
 
+static_assert(!cIsScalar<const int16384>);
 static_assert(!cIsScalar<const int8192>);
 static_assert(!cIsScalar<const int4096>);
 static_assert(!cIsScalar<const int2048>);
@@ -103,6 +118,7 @@ static_assert(!cIsScalar<const int1024>);
 static_assert(!cIsScalar<const int512>);
 static_assert(!cIsScalar<const int256>);
 static_assert(!cIsScalar<const int160>);
+static_assert(!cIsScalar<const int192>);
 #ifdef DMibPCanDo_int128
 static_assert(cIsScalar<const int128>);
 #else
@@ -112,6 +128,11 @@ static_assert(!cIsScalar<const int128>);
 static_assert(cIsScalar<const int80>);
 #else
 static_assert(!cIsScalar<const int80>);
+#endif
+#ifdef DMibPCanDo_int96
+static_assert(cIsScalar<const int96>);
+#else
+static_assert(!cIsScalar<const int96>);
 #endif
 #ifdef DMibPCanDo_int64
 static_assert(cIsScalar<const int64>);
@@ -139,6 +160,7 @@ static_assert(cIsScalar<const uaint>);
 static_assert(cIsScalar<const smint>);
 static_assert(cIsScalar<const mint>);
 
+static_assert(!cIsScalar<const uint16384>);
 static_assert(!cIsScalar<const uint8192>);
 static_assert(!cIsScalar<const uint4096>);
 static_assert(!cIsScalar<const uint2048>);
@@ -146,6 +168,7 @@ static_assert(!cIsScalar<const uint1024>);
 static_assert(!cIsScalar<const uint512>);
 static_assert(!cIsScalar<const uint256>);
 static_assert(!cIsScalar<const uint160>);
+static_assert(!cIsScalar<const uint192>);
 #ifdef DMibPCanDo_uint128
 static_assert(cIsScalar<const uint128>);
 #else
@@ -155,6 +178,11 @@ static_assert(!cIsScalar<const uint128>);
 static_assert(cIsScalar<const uint80>);
 #else
 static_assert(!cIsScalar<const uint80>);
+#endif
+#ifdef DMibPCanDo_uint96
+static_assert(cIsScalar<const uint96>);
+#else
+static_assert(!cIsScalar<const uint96>);
 #endif
 #ifdef DMibPCanDo_uint64
 static_assert(cIsScalar<const uint64>);

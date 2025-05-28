@@ -5,6 +5,11 @@
 
 // Is Int
 
+#ifdef DMibPCanDo_int16384
+static_assert(!cIsCompound<int16384>);
+#else
+static_assert(cIsCompound<int16384>);
+#endif
 #ifdef DMibPCanDo_int8192
 static_assert(!cIsCompound<int8192>);
 #else
@@ -40,6 +45,11 @@ static_assert(!cIsCompound<int160>);
 #else
 static_assert(cIsCompound<int160>);
 #endif
+#ifdef DMibPCanDo_int192
+static_assert(!cIsCompound<int192>);
+#else
+static_assert(cIsCompound<int192>);
+#endif
 #ifdef DMibPCanDo_int128
 static_assert(!cIsCompound<int128>);
 #else
@@ -49,6 +59,11 @@ static_assert(cIsCompound<int128>);
 static_assert(!cIsCompound<int80>);
 #else
 static_assert(cIsCompound<int80>);
+#endif
+#ifdef DMibPCanDo_int96
+static_assert(!cIsCompound<int96>);
+#else
+static_assert(cIsCompound<int96>);
 #endif
 #ifdef DMibPCanDo_int64
 static_assert(!cIsCompound<int64>);
@@ -77,6 +92,11 @@ static_assert(!cIsCompound<uaint>);
 static_assert(!cIsCompound<smint>);
 static_assert(!cIsCompound<mint>);
 
+#ifdef DMibPCanDo_uint16384
+static_assert(!cIsCompound<uint16384>);
+#else
+static_assert(cIsCompound<uint16384>);
+#endif
 #ifdef DMibPCanDo_uint8192
 static_assert(!cIsCompound<uint8192>);
 #else
@@ -112,6 +132,11 @@ static_assert(!cIsCompound<uint160>);
 #else
 static_assert(cIsCompound<uint160>);
 #endif
+#ifdef DMibPCanDo_uint192
+static_assert(!cIsCompound<uint192>);
+#else
+static_assert(cIsCompound<uint192>);
+#endif
 #ifdef DMibPCanDo_uint128
 static_assert(!cIsCompound<uint128>);
 #else
@@ -121,6 +146,11 @@ static_assert(cIsCompound<uint128>);
 static_assert(!cIsCompound<uint80>);
 #else
 static_assert(cIsCompound<uint80>);
+#endif
+#ifdef DMibPCanDo_uint96
+static_assert(!cIsCompound<uint96>);
+#else
+static_assert(cIsCompound<uint96>);
 #endif
 #ifdef DMibPCanDo_uint64
 static_assert(!cIsCompound<uint64>);
@@ -199,6 +229,11 @@ static_assert(!cIsCompound<pfp8>);
 static_assert(cIsCompound<fp8>);
 #endif
 
+#ifdef DMibPCanDo_int16384
+static_assert(!cIsCompound<const int16384>);
+#else
+static_assert(cIsCompound<const int16384>);
+#endif
 #ifdef DMibPCanDo_int8192
 static_assert(!cIsCompound<const int8192>);
 #else
@@ -234,6 +269,11 @@ static_assert(!cIsCompound<const int160>);
 #else
 static_assert(cIsCompound<const int160>);
 #endif
+#ifdef DMibPCanDo_int192
+static_assert(!cIsCompound<const int192>);
+#else
+static_assert(cIsCompound<const int192>);
+#endif
 #ifdef DMibPCanDo_int128
 static_assert(!cIsCompound<const int128>);
 #else
@@ -243,6 +283,11 @@ static_assert(cIsCompound<const int128>);
 static_assert(!cIsCompound<const int80>);
 #else
 static_assert(cIsCompound<const int80>);
+#endif
+#ifdef DMibPCanDo_int96
+static_assert(!cIsCompound<const int96>);
+#else
+static_assert(cIsCompound<const int96>);
 #endif
 #ifdef DMibPCanDo_int64
 static_assert(!cIsCompound<const int64>);
@@ -271,6 +316,11 @@ static_assert(!cIsCompound<const uaint>);
 static_assert(!cIsCompound<const smint>);
 static_assert(!cIsCompound<const mint>);
 
+#ifdef DMibPCanDo_uint16384
+static_assert(!cIsCompound<const uint16384>);
+#else
+static_assert(cIsCompound<const uint16384>);
+#endif
 #ifdef DMibPCanDo_uint8192
 static_assert(!cIsCompound<const uint8192>);
 #else
@@ -306,6 +356,11 @@ static_assert(!cIsCompound<const uint160>);
 #else
 static_assert(cIsCompound<const uint160>);
 #endif
+#ifdef DMibPCanDo_uint192
+static_assert(!cIsCompound<const uint192>);
+#else
+static_assert(cIsCompound<const uint192>);
+#endif
 #ifdef DMibPCanDo_uint128
 static_assert(!cIsCompound<const uint128>);
 #else
@@ -315,6 +370,11 @@ static_assert(cIsCompound<const uint128>);
 static_assert(!cIsCompound<const uint80>);
 #else
 static_assert(cIsCompound<const uint80>);
+#endif
+#ifdef DMibPCanDo_uint96
+static_assert(!cIsCompound<const uint96>);
+#else
+static_assert(cIsCompound<const uint96>);
 #endif
 #ifdef DMibPCanDo_uint64
 static_assert(!cIsCompound<const uint64>);
