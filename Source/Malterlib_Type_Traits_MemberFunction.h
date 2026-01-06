@@ -1,4 +1,4 @@
-// Copyright © 2025 Unbroken AB 
+// Copyright © 2025 Unbroken AB
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #pragma once
@@ -305,5 +305,5 @@ namespace NMib::NTraits
 			typename NPrivate::TCMemberFunctionPointerTraitsHelper<TCRemoveQualifiers<t_CType>>::CFunctionType,
 			t_CType
 		>
-	;	
+	;
 }

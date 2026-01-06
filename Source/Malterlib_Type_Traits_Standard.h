@@ -1,4 +1,4 @@
-// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #pragma once
@@ -64,10 +64,10 @@ namespace NMib::NTraits
 
 	template <typename t_CType>
 	concept cIsUnion = std::is_union_v<t_CType>;
-	
+
 	template <typename t_CType>
 	concept cIsClass = std::is_class_v<t_CType>;
-	
+
 	// Is same
 
 	template <typename t_CType0, typename t_CType1>

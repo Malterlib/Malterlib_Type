@@ -1,4 +1,4 @@
-// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #pragma once
@@ -33,7 +33,7 @@ namespace NMib::NTraits
 
 	template <typename t_CType>
 	concept cIsComplete = NPrivate::TCIsCompleteHelper<t_CType>::mc_Value;
-	
+
 	namespace NPrivate
 	{
 		template <typename t_CType>
@@ -256,7 +256,7 @@ namespace NMib::NTraits
 	using TCRemoveQualifiersAndAddRValueReference = TCAddRValueReference<TCRemoveReferenceAndQualifiers<t_CType>>;
 
 	// Detect
-	
+
 	namespace NPrivate
 	{
 		template <typename t_CType, template <typename t_CType2> class t_TCDetector, typename = NPrivate::TCVoid<>>
@@ -282,7 +282,7 @@ namespace NMib::NTraits
 		&& cIsClass<t_CType>
 		&& cIsEmpty<t_CType>
 	;
-	
+
 	namespace NPrivate
 	{
 		template <typename t_CType>
