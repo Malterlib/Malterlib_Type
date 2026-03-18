@@ -18,7 +18,7 @@ public:
 struct CTesting
 {
 public:
-NMib::COrdering_Weak operator <=> (int) const
+NMib::COrdering_Weak operator <=> (int) const noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
@@ -43,20 +43,20 @@ public:
 	}
 };
 
-NMib::COrdering_Weak operator <=> (int ,const CTesting&)
+NMib::COrdering_Weak operator <=> (int ,const CTesting&) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
-NMib::COrdering_Weak operator <=> (float ,const CTesting&)
+NMib::COrdering_Weak operator <=> (float ,const CTesting&) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
-NMib::COrdering_Weak operator <=> (const CTesting&, float)
+NMib::COrdering_Weak operator <=> (const CTesting&, float) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
 /*
-COrdering_Weak operator <=> (const CTesting&, int)
+COrdering_Weak operator <=> (const CTesting&, int) noexcept
 {
 	return COrdering_Weak::equivalent;
 }*/
