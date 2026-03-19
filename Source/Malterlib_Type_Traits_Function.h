@@ -69,7 +69,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsFunction = false;
-			static constexpr mint mc_Arity = 0;
+			static constexpr umint mc_Arity = 0;
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExecpt = false;
 
@@ -82,7 +82,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsFunction = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = false;
 
@@ -94,7 +94,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsFunction = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = true;
 
@@ -107,7 +107,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsFunction = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = false;
 
@@ -119,7 +119,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsFunction = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = true;
 
@@ -134,7 +134,7 @@ namespace NMib::NTraits
 	public:
 	};
 
-	template <typename t_CFunction, mint t_Index>
+	template <typename t_CFunction, umint t_Index>
 	using TCFunctionTraits_ArgumentType = NMeta::TCTypeList_GetOrVoid<t_Index, typename TCFunctionTraits<t_CFunction>::CParams>;
 
 	// Callable With

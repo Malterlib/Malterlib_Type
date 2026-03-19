@@ -91,7 +91,7 @@ static_assert(!cIsFundamental<int8>);
 static_assert(cIsFundamental<aint>);
 static_assert(cIsFundamental<uaint>);
 static_assert(cIsFundamental<smint>);
-static_assert(cIsFundamental<mint>);
+static_assert(cIsFundamental<umint>);
 static_assert(cIsFundamental<int>);
 static_assert(cIsFundamental<unsigned int>);
 
@@ -317,7 +317,7 @@ static_assert(!cIsFundamental<const int8>);
 static_assert(cIsFundamental<const aint>);
 static_assert(cIsFundamental<const uaint>);
 static_assert(cIsFundamental<const smint>);
-static_assert(cIsFundamental<const mint>);
+static_assert(cIsFundamental<const umint>);
 
 #ifdef DMibPCanDo_uint16384
 static_assert(cIsFundamental<const uint16384>);

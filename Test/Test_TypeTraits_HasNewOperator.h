@@ -10,20 +10,20 @@ namespace NHasNewOperator
 	class CWithNew
 	{
 	public:
-		void * operator new(mint _Value);
+		void * operator new(umint _Value);
 	};
 
 	class CWithNewArray
 	{
 	public:
-		void * operator new [](mint _Value);
+		void * operator new [](umint _Value);
 	};
 
 	class CWithNewBoth
 	{
 	public:
-		void * operator new(mint _Value);
-		void * operator new [](mint _Value);
+		void * operator new(umint _Value);
+		void * operator new [](umint _Value);
 	};
 
 	class CWithNewDerived : public CWithNewBoth
@@ -61,20 +61,20 @@ namespace NHasNewOperator
 	class CWithSpecialNew
 	{
 	public:
-		void * operator new(mint _Value, CTestClass0 _Special);
+		void * operator new(umint _Value, CTestClass0 _Special);
 	};
 
 	class CWithSpecialNewArray
 	{
 	public:
-		void * operator new [](mint _Value, CTestClass0 _Special);
+		void * operator new [](umint _Value, CTestClass0 _Special);
 	};
 
 	class CWithSpecialNewBoth
 	{
 	public:
-		void * operator new(mint _Value, CTestClass0 _Special);
-		void * operator new [](mint _Value, CTestClass0 _Special);
+		void * operator new(umint _Value, CTestClass0 _Special);
+		void * operator new [](umint _Value, CTestClass0 _Special);
 	};
 
 	class CWithSpecialNewDerived : public CWithSpecialNewBoth
@@ -112,24 +112,24 @@ namespace NHasNewOperator
 	class CWithDualNew
 	{
 	public:
-		void * operator new(mint _Value, CTestClass0 _Special);
-		void * operator new(mint _Value);
+		void * operator new(umint _Value, CTestClass0 _Special);
+		void * operator new(umint _Value);
 	};
 
 	class CWithDualNewArray
 	{
 	public:
-		void * operator new [](mint _Value, CTestClass0 _Special);
-		void * operator new [](mint _Value);
+		void * operator new [](umint _Value, CTestClass0 _Special);
+		void * operator new [](umint _Value);
 	};
 
 	class CWithDualNewBoth
 	{
 	public:
-		void * operator new(mint _Value, CTestClass0 _Special);
-		void * operator new [](mint _Value, CTestClass0 _Special);
-		void * operator new(mint _Value);
-		void * operator new [](mint _Value);
+		void * operator new(umint _Value, CTestClass0 _Special);
+		void * operator new [](umint _Value, CTestClass0 _Special);
+		void * operator new(umint _Value);
+		void * operator new [](umint _Value);
 	};
 
 	class CWithDualNewDerived : public CWithDualNewBoth

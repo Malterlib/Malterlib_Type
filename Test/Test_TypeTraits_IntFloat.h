@@ -48,7 +48,7 @@ static_assert(cIsSigned<int8>);
 static_assert(cIsSigned<aint>);
 static_assert(!cIsSigned<uaint>);
 static_assert(cIsSigned<smint>);
-static_assert(!cIsSigned<mint>);
+static_assert(!cIsSigned<umint>);
 
 static_assert(!cIsSigned<uint4096>);
 static_assert(!cIsSigned<uint2048>);
@@ -233,7 +233,7 @@ static_assert(cIsSame<TCSigned<int8>, int8>);
 static_assert(cIsSame<TCSigned<aint>, aint>);
 static_assert(cIsSame<TCSigned<uaint>, aint>);
 static_assert(cIsSame<TCSigned<smint>, smint>);
-static_assert(cIsSame<TCSigned<mint>, smint>);
+static_assert(cIsSame<TCSigned<umint>, smint>);
 
 static_assert(cIsSame<TCSigned<uint16384>, int16384>);
 static_assert(cIsSame<TCSigned<uint8192>, int8192>);
@@ -419,8 +419,8 @@ static_assert(cIsSame<TCUnsigned<int8>, uint8>);
 
 static_assert(cIsSame<TCUnsigned<aint>, uaint>);
 static_assert(cIsSame<TCUnsigned<uaint>, uaint>);
-static_assert(cIsSame<TCUnsigned<smint>, mint>);
-static_assert(cIsSame<TCUnsigned<mint>, mint>);
+static_assert(cIsSame<TCUnsigned<smint>, umint>);
+static_assert(cIsSame<TCUnsigned<umint>, umint>);
 
 static_assert(cIsSame<TCUnsigned<uint4096>, uint4096>);
 static_assert(cIsSame<TCUnsigned<uint2048>, uint2048>);

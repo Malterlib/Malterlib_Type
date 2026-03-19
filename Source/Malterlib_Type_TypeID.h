@@ -17,7 +17,7 @@ DMibTypeID(uint64, DMibCurrentTypeID + 8);
 
 
 #ifdef DMibPUniqueType_mint
-DMibTypeID(mint, DMibCurrentTypeID + 9);
+DMibTypeID(umint, DMibCurrentTypeID + 9);
 #endif
 
 #ifdef DMibPUniqueType_smint

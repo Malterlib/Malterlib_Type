@@ -215,11 +215,11 @@ namespace NMib::NTraits
 #	endif
 
 #	ifdef DMibPUniqueType_mint
-		DMibTraitsImplementSigned(smint, mint);
+		DMibTraitsImplementSigned(smint, umint);
 #	endif
 
 #	ifdef DMibPUniqueType_smint
-		DMibTraitsImplementUnsigned(smint, mint);
+		DMibTraitsImplementUnsigned(smint, umint);
 		DMibTraitsImplementIsSigned(smint);
 #	endif
 
@@ -423,32 +423,32 @@ namespace NMib::NTraits
 
 	namespace NPrivate
 	{
-		template <mint t_VariableSize, bool t_bFundamental>
+		template <umint t_VariableSize, bool t_bFundamental>
 		struct TCIntFromSize
 		{
 			using CType = void;
 		};
 
-		template <mint t_VariableSize, bool t_bFundamental>
+		template <umint t_VariableSize, bool t_bFundamental>
 		struct TCIntFromSizeLarger
 		{
 			using CType = typename TCIntFromSizeLarger<t_VariableSize + 1, t_bFundamental>::CType;
 		};
 
-		template <mint t_VariableSize, bool t_bFundamental>
+		template <umint t_VariableSize, bool t_bFundamental>
 		struct TCIntFromSizeSmaller
 		{
 			using CType = typename TCIntFromSizeSmaller<t_VariableSize - 1, t_bFundamental>::CType;
 		};
 	}
 
-	template <mint t_VariableSize, bool t_bFundamental = false>
+	template <umint t_VariableSize, bool t_bFundamental = false>
 	using TCIntFromSize = typename NPrivate::TCIntFromSize<t_VariableSize, t_bFundamental>::CType;
 
-	template <mint t_VariableSize, bool t_bFundamental = false>
+	template <umint t_VariableSize, bool t_bFundamental = false>
 	using TCIntFromSizeLarger = typename NPrivate::TCIntFromSizeLarger<t_VariableSize, t_bFundamental>::CType;
 
-	template <mint t_VariableSize, bool t_bFundamental = false>
+	template <umint t_VariableSize, bool t_bFundamental = false>
 	using TCIntFromSizeSmaller = typename NPrivate::TCIntFromSizeSmaller<t_VariableSize, t_bFundamental>::CType;
 
 #	define DMibTraitsImplementIntegerFromSize(d_Type) \
@@ -560,14 +560,14 @@ namespace NMib::NTraits
 
 	namespace NPrivate
 	{
-		template <mint t_VariableSize>
+		template <umint t_VariableSize>
 		struct TCFloatFromSize
 		{
 			using CType = typename TCFloatFromSize<t_VariableSize + 1>::CType;
 		};
 	}
 
-	template <mint t_VariableSize>
+	template <umint t_VariableSize>
 	using TCFloatFromSize = typename NPrivate::TCFloatFromSize<t_VariableSize>::CType;
 
 #	define DMibTraitsImplementFloatFromSize(d_Type) \

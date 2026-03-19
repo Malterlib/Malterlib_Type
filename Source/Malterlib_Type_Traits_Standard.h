@@ -92,7 +92,7 @@ namespace NMib::NTraits
 	template <typename t_CType>
 	concept cIsUnboundedArray = std::is_unbounded_array_v<t_CType>;
 
-	template <typename t_CType, mint t_Dimension = 0>
+	template <typename t_CType, umint t_Dimension = 0>
 	inline constexpr size_t gc_ArrayExtent = std::extent_v<t_CType, t_Dimension>;
 
 	template <typename t_CType>

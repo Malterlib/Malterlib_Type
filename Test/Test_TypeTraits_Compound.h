@@ -90,7 +90,7 @@ static_assert(cIsCompound<int8>);
 static_assert(!cIsCompound<aint>);
 static_assert(!cIsCompound<uaint>);
 static_assert(!cIsCompound<smint>);
-static_assert(!cIsCompound<mint>);
+static_assert(!cIsCompound<umint>);
 
 #ifdef DMibPCanDo_uint16384
 static_assert(!cIsCompound<uint16384>);
@@ -314,7 +314,7 @@ static_assert(cIsCompound<const int8>);
 static_assert(!cIsCompound<const aint>);
 static_assert(!cIsCompound<const uaint>);
 static_assert(!cIsCompound<const smint>);
-static_assert(!cIsCompound<const mint>);
+static_assert(!cIsCompound<const umint>);
 
 #ifdef DMibPCanDo_uint16384
 static_assert(!cIsCompound<const uint16384>);

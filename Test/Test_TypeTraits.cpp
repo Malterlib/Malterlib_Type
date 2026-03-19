@@ -9,7 +9,7 @@ class TCHula
 	typedef typename t_CGod::CGot oeu;
 };
 
-template <mint t_Value>
+template <umint t_Value>
 class TCHelpeer
 {
 public:
@@ -69,15 +69,15 @@ COrdering_Weak operator <=> (const CTesting&, int) noexcept
 
 #ifdef DMibPUniqueType_uint
 	static_assert(!NMib::NTraits::cIsSame<unsigned int, uint32>);
-	static_assert(!NMib::NTraits::cIsSame<unsigned int, mint>);
+	static_assert(!NMib::NTraits::cIsSame<unsigned int, umint>);
 #else
-	static_assert(NMib::NTraits::cIsSame<unsigned int, uint32> || NMib::NTraits::cIsSame<unsigned int, mint>);
+	static_assert(NMib::NTraits::cIsSame<unsigned int, uint32> || NMib::NTraits::cIsSame<unsigned int, umint>);
 #endif
 
 #ifdef DMibPUniqueType_mint
-	static_assert(!NMib::NTraits::cIsSame<mint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
+	static_assert(!NMib::NTraits::cIsSame<umint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
 #else
-	static_assert(NMib::NTraits::cIsSame<mint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
+	static_assert(NMib::NTraits::cIsSame<umint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
 #endif
 
 #ifdef DMibPUniqueType_smint

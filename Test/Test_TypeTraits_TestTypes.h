@@ -450,7 +450,7 @@ typedef const CTestBase CTest3DArrayC [][3][2] ;
 
 struct CTestNoDefaultConstruct
 {
-	mint m_Value;
+	umint m_Value;
 	CTestNoDefaultConstruct(int &&_Value)
 		: m_Value(_Value)
 	{

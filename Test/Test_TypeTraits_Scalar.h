@@ -51,7 +51,7 @@ static_assert(!cIsScalar<int8>);
 static_assert(cIsScalar<aint>);
 static_assert(cIsScalar<uaint>);
 static_assert(cIsScalar<smint>);
-static_assert(cIsScalar<mint>);
+static_assert(cIsScalar<umint>);
 
 static_assert(!cIsScalar<uint16384>);
 static_assert(!cIsScalar<uint8192>);
@@ -158,7 +158,7 @@ static_assert(!cIsScalar<const int8>);
 static_assert(cIsScalar<const aint>);
 static_assert(cIsScalar<const uaint>);
 static_assert(cIsScalar<const smint>);
-static_assert(cIsScalar<const mint>);
+static_assert(cIsScalar<const umint>);
 
 static_assert(!cIsScalar<const uint16384>);
 static_assert(!cIsScalar<const uint8192>);

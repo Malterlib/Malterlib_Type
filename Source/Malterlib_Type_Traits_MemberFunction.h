@@ -16,7 +16,7 @@ namespace NMib::NTraits
 			using CClass = void;
 			using CParams = NMeta::TCTypeList<>;
 
-			static constexpr mint mc_Arity = 0;
+			static constexpr umint mc_Arity = 0;
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = false;
@@ -30,7 +30,7 @@ namespace NMib::NTraits
 		public:
 
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = false;
 			static constexpr bool mc_IsConst = false;
@@ -46,7 +46,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = true;
 			static constexpr bool mc_IsConst = false;
@@ -63,7 +63,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = false;
 			static constexpr bool mc_IsConst = true;
@@ -79,7 +79,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = true;
 			static constexpr bool mc_IsConst = true;
@@ -96,7 +96,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = false;
 			static constexpr bool mc_IsConst = false;
@@ -112,7 +112,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = true;
 			static constexpr bool mc_IsConst = false;
@@ -129,7 +129,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = false;
 			static constexpr bool mc_IsConst = true;
@@ -145,7 +145,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
 			static constexpr bool mc_IsNoExcept = true;
 			static constexpr bool mc_IsConst = true;
@@ -162,7 +162,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = false;
 			static constexpr bool mc_IsConst = false;
@@ -178,7 +178,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = true;
 			static constexpr bool mc_IsConst = false;
@@ -195,7 +195,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = false;
 			static constexpr bool mc_IsConst = true;
@@ -211,7 +211,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = true;
 			static constexpr bool c_IsConst = true;
@@ -228,7 +228,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = false;
 			static constexpr bool mc_IsConst = false;
@@ -244,7 +244,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = true;
 			static constexpr bool mc_IsConst = false;
@@ -261,7 +261,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = false;
 			static constexpr bool mc_IsConst = true;
@@ -277,7 +277,7 @@ namespace NMib::NTraits
 		{
 		public:
 			static constexpr bool mc_IsMemberFunctionPointer = true;
-			static constexpr mint mc_Arity = sizeof...(tp_CParams);
+			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = true;
 			static constexpr bool mc_IsConst = true;
@@ -295,7 +295,7 @@ namespace NMib::NTraits
 	{
 	};
 
-	template <typename t_CFunction, mint t_Index>
+	template <typename t_CFunction, umint t_Index>
 	using TCMemberFunctionPointerTraits_ArgumentType = NMeta::TCTypeList_GetOrVoid<t_Index, typename TCMemberFunctionPointerTraits<t_CFunction>::CParams>;
 
 	template <typename t_CType>

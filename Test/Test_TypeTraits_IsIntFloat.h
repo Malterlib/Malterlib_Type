@@ -26,7 +26,7 @@ static_assert(cIsInteger<int8>);
 static_assert(cIsInteger<aint>);
 static_assert(cIsInteger<uaint>);
 static_assert(cIsInteger<smint>);
-static_assert(cIsInteger<mint>);
+static_assert(cIsInteger<umint>);
 
 static_assert(cIsInteger<uint4096>);
 static_assert(cIsInteger<uint2048>);
@@ -211,7 +211,7 @@ static_assert(!cIsFloat<int8>);
 static_assert(!cIsFloat<aint>);
 static_assert(!cIsFloat<uaint>);
 static_assert(!cIsFloat<smint>);
-static_assert(!cIsFloat<mint>);
+static_assert(!cIsFloat<umint>);
 
 static_assert(!cIsFloat<uint4096>);
 static_assert(!cIsFloat<uint2048>);
@@ -398,7 +398,7 @@ static_assert(cIsArithmetic<int8>);
 static_assert(cIsArithmetic<aint>);
 static_assert(cIsArithmetic<uaint>);
 static_assert(cIsArithmetic<smint>);
-static_assert(cIsArithmetic<mint>);
+static_assert(cIsArithmetic<umint>);
 
 static_assert(cIsArithmetic<uint4096>);
 static_assert(cIsArithmetic<uint2048>);
