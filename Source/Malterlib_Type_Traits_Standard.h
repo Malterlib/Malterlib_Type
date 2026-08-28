@@ -211,73 +211,21 @@ namespace NMib::NTraits
 	template <typename t_CDerived, typename t_CBase>
 	concept cIsBaseOfOrSame = cIsBaseOf<t_CDerived, t_CBase> || cIsSame<t_CDerived, t_CBase>;
 
-#if defined(DCompiler_clang) && _LIBCPP_STD_VER >= 26
+#if defined(__has_builtin)
+#	if __has_builtin(__builtin_is_virtual_base_of)
+#		define DMibHasBuiltinIsVirtualBaseOf
+#	endif
+#endif
+
+#if defined(DMibHasBuiltinIsVirtualBaseOf)
+	// The compiler builtin also works for final classes, which the inheritance based fallback below cannot handle
+	template <typename t_CDerived, typename t_CBase>
+	concept cIsVirtualBaseOf = __builtin_is_virtual_base_of(t_CBase, t_CDerived);
+#elif defined(DCompiler_clang) && _LIBCPP_STD_VER >= 26
 	template <typename t_CDerived, typename t_CBase>
 	concept cIsVirtualBaseOf = std::is_virtual_base_of_v<t_CBase, t_CDerived>;
 #else
-	namespace NPrivate
-	{
-		template <typename t_CDerived, typename t_CBase, bool t_bEval>
-		struct TCIsVirtualBaseOfHelper
-		{
-			constexpr static bool mc_bValue = false;
-		};
-
-#ifdef DCompiler_GCC
-#pragma GCC system_header
-#endif
-#ifdef DCompiler_clang
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winaccessible-base"
-#endif
-#ifdef DCompiler_MSVC
-#pragma warning(push)
-#pragma warning(disable:4594)
-#pragma warning(disable:4250)
-#endif
-		template <typename t_CDerived, typename t_CBase>
-		struct TCIsVirtualBaseOfHelper<t_CDerived, t_CBase, true>
-		{
-			struct CVirtual : t_CDerived, virtual t_CBase
-			{
-			   CVirtual();
-			   CVirtual(const CVirtual&);
-			   CVirtual& operator=(const CVirtual&);
-			   ~CVirtual()throw();
-			};
-			struct CNonVirtual : private t_CDerived
-			{
-			   CNonVirtual();
-			   CNonVirtual(const CNonVirtual&);
-			   CNonVirtual& operator=(const CNonVirtual&);
-			   ~CNonVirtual()throw();
-			};
-
-			constexpr static bool mc_bValue = (sizeof(CVirtual)==sizeof(CNonVirtual));
-		};
-
-#ifdef DCompiler_MSVC
-#pragma warning(pop)
-#endif
-#ifdef DCompiler_clang
-#pragma clang diagnostic pop
-#endif
-		template <typename t_CDerived, typename t_CBase>
-		struct TCIsVirtualBaseOf
-		{
-			constexpr static bool mc_bValue = NPrivate::TCIsVirtualBaseOfHelper
-				<
-					t_CDerived,
-					t_CBase,
-					cIsBaseOf<t_CDerived, t_CBase>
-					&& !cIsSameUnqualified<t_CDerived, t_CBase>
-				>::mc_bValue
-			;
-		};
-	}
-
-	template <typename t_CDerived, typename t_CBase>
-	concept cIsVirtualBaseOf = NPrivate::TCIsVirtualBaseOf<t_CDerived, t_CBase>::mc_bValue;
+	#error "Not supported"
 #endif
 
 #ifdef DCompiler_clang
