@@ -203,6 +203,19 @@ namespace NMib::NTraits
 	template <typename t_CType>
 	concept cHasVirtualDestructor = TCHasVirtualDestructorOverride<t_CType>::mc_Value;
 
+	// The deleting destructor of a class compiled with
+	// -fmalterlib-sized-destructors returns the size and the address of the
+	// complete object, which __builtin_malterlib_destroy hands to the allocator
+	// that owns the memory. Unlike cHasVirtualDestructor it needs the complete
+	// type, so it answers for the type itself and not for an override.
+#if defined(__has_feature) && __has_feature(malterlib_sized_destructors)
+	template <typename t_CType>
+	concept cHasSizedDestructor = __has_malterlib_sized_destructor(t_CType);
+#else
+	template <typename t_CType>
+	concept cHasSizedDestructor = false;
+#endif
+
 	// Virtual classes
 
 	template <typename t_CDerived, typename t_CBase>
