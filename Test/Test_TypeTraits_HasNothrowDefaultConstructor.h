@@ -3,7 +3,6 @@
 
 #include "Test_TypeTraits_TestTypes.h"
 
-
 namespace NNothrow
 {
 	static_assert(cIsNothrowDefaultConstructible<CThrowsAssignment>);
@@ -36,10 +35,10 @@ static_assert(cIsNothrowDefaultConstructible<CTestClass0>);
 static_assert(cIsNothrowDefaultConstructible<CTestClass1>);
 static_assert(cIsNothrowDefaultConstructible<CTestStruct0>);
 static_assert(cIsNothrowDefaultConstructible<CTestStruct1>);
-static_assert(cIsNothrowDefaultConstructible<const CTestClass0>);
-static_assert(cIsNothrowDefaultConstructible<const CTestClass1>);
-static_assert(cIsNothrowDefaultConstructible<const CTestStruct0>);
-static_assert(cIsNothrowDefaultConstructible<const CTestStruct1>);
+static_assert(cIsNothrowDefaultConstructible<CTestClass0 const>);
+static_assert(cIsNothrowDefaultConstructible<CTestClass1 const>);
+static_assert(cIsNothrowDefaultConstructible<CTestStruct0 const>);
+static_assert(cIsNothrowDefaultConstructible<CTestStruct1 const>);
 static_assert(cIsNothrowDefaultConstructible<ETestEnum>);
 static_assert(cIsNothrowDefaultConstructible<int>);
 static_assert(cIsNothrowDefaultConstructible<CTestClass>);

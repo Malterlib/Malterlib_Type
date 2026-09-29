@@ -178,7 +178,7 @@ static_assert(cIsSame<TCAddLValueReference<CTest3DArray2>, CTest3DArray2 &>);
 static_assert(cIsSame<TCAddLValueReference<CTest3DArray2C>, CTest3DArray2C &>);
 static_assert(cIsSame<TCAddLValueReference<CTest3DArray>, CTest3DArray &>);
 static_assert(cIsSame<TCAddLValueReference<CTest3DArrayC>, CTest3DArrayC &>);
-static_assert(cIsSame<TCAddLValueReference<void *>, void *&>);
+static_assert(cIsSame<TCAddLValueReference<void *>, void * &>);
 static_assert(cIsSame<TCAddLValueReference<void>, void>);
 
 // Remove pointer
@@ -269,9 +269,8 @@ static_assert(cIsSame<TCRemoveReference<CTest3DArray2C>, CTest3DArray2C>);
 static_assert(cIsSame<TCRemoveReference<CTest3DArray>, CTest3DArray>);
 static_assert(cIsSame<TCRemoveReference<CTest3DArrayC>, CTest3DArrayC>);
 static_assert(cIsSame<TCRemoveReference<void *>, void *>);
-static_assert(cIsSame<TCRemoveReference<void *&>, void *>);
+static_assert(cIsSame<TCRemoveReference<void * &>, void *>);
 static_assert(cIsSame<TCRemoveReference<void>, void>);
-
 
 // Storable
 static_assert(cIsSame<TCRemoveReferenceStorable<CTestUnion>, CTestUnion>);
@@ -361,10 +360,8 @@ static_assert(cIsSame<TCRemoveReferenceStorable<CTest3DArray2C>, CTest3DArray2C>
 static_assert(cIsSame<TCRemoveReferenceStorable<CTest3DArray>, CTest3DArray>);
 static_assert(cIsSame<TCRemoveReferenceStorable<CTest3DArrayC>, CTest3DArrayC>);
 static_assert(cIsSame<TCRemoveReferenceStorable<void *>, void *>);
-static_assert(cIsSame<TCRemoveReferenceStorable<void *&>, void *>);
+static_assert(cIsSame<TCRemoveReferenceStorable<void * &>, void *>);
 static_assert(cIsSame<TCRemoveReferenceStorable<void>, void>);
-
-
 
 // Copy refernce
 
@@ -465,5 +462,5 @@ static_assert(cIsSame<TCCopyReference<CTest3DArray2C, int>, int>);
 static_assert(cIsSame<TCCopyReference<CTest3DArray, int>, int>);
 static_assert(cIsSame<TCCopyReference<CTest3DArrayC, int>, int>);
 static_assert(cIsSame<TCCopyReference<void *, int>, int>);
-static_assert(cIsSame<TCCopyReference<void *&, int>, int &>);
+static_assert(cIsSame<TCCopyReference<void * &, int>, int &>);
 static_assert(cIsSame<TCCopyReference<void, int>, int>);

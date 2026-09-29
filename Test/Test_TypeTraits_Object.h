@@ -3,7 +3,6 @@
 
 #include "Test_TypeTraits_TestTypes.h"
 
-
 // Object
 static_assert(cIsObject<CTestUnion>);
 static_assert(cIsObject<CTestClass0>);

@@ -9,17 +9,21 @@ namespace NIsBaseOf
 	{
 		virtual void f_Test() = 0;
 	};
+
 	class CInheritAbstract : private CAbstract
 	{
 	};
+
 	class CNonAbstract
 	{
 		virtual void f_Test();
 	};
+
 	class CNonVirtual
 	{
 		void f_Test();
 	};
+
 	class CInheritAbstractDual : private CAbstract, private CNonVirtual
 	{
 	};
@@ -50,10 +54,10 @@ static_assert(cIsBaseOf<CTestClass0, CTestClass0>);
 static_assert(!cIsBaseOf<CTestClass1, CTestClass0>);
 static_assert(!cIsBaseOf<CTestStruct0, CTestClass0>);
 static_assert(!cIsBaseOf<CTestStruct1, CTestClass0>);
-static_assert(cIsBaseOf<const CTestClass0, CTestClass0>);
-static_assert(!cIsBaseOf<const CTestClass1, CTestClass0>);
-static_assert(!cIsBaseOf<const CTestStruct0, CTestClass0>);
-static_assert(!cIsBaseOf<const CTestStruct1, CTestClass0>);
+static_assert(cIsBaseOf<CTestClass0 const, CTestClass0>);
+static_assert(!cIsBaseOf<CTestClass1 const, CTestClass0>);
+static_assert(!cIsBaseOf<CTestStruct0 const, CTestClass0>);
+static_assert(!cIsBaseOf<CTestStruct1 const, CTestClass0>);
 static_assert(!cIsBaseOf<ETestEnum, CTestClass0>);
 static_assert(!cIsBaseOf<int, CTestClass0>);
 static_assert(!cIsBaseOf<CTestClass, CTestClass0>);

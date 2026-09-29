@@ -61,9 +61,8 @@ namespace NMib::NTraits
 	template <typename t_CType>
 	using TCRemoveReferenceStorable = typename NPrivate::TCRemoveReferenceStorableHelper<t_CType>::CType;
 
-
-	template <typename t_CType, typename... tp_CParams>
-	concept cIsPlacementNewConstructibleWith = requires (void *_pMemory, tp_CParams && ... p_Params)
+	template <typename t_CType, typename ...tp_CParams>
+	concept cIsPlacementNewConstructibleWith = requires (void *_pMemory, tp_CParams && ...p_Params)
 		{
 			new(_pMemory) t_CType(static_cast<tp_CParams &&>(p_Params)...);
 		}
@@ -72,7 +71,7 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename tf_CType, typename tf_CReturn>
-		tf_CType fg_GetBaseType(tf_CReturn tf_CType::*);
+		tf_CType fg_GetBaseType(tf_CReturn tf_CType:: *);
 
 		template <typename t_CType>
 		struct TCGetBaseHelper
@@ -100,32 +99,19 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CType0, typename t_CType1, typename t_COriginalType>
-		class TCRemoveMemberObjectPointerHelper<t_CType0 t_CType1::*, t_COriginalType, false>
+		class TCRemoveMemberObjectPointerHelper<t_CType0 t_CType1:: *, t_COriginalType, false>
 		{
 		public:
 			using CType = t_CType0;
 			using CClass = t_CType1;
 		};
-
 	}
 
 	template <typename t_CType0>
-	using TCRemoveMemberObjectPointer = typename NPrivate::TCRemoveMemberObjectPointerHelper
-		<
-			TCRemoveQualifiers<t_CType0>
-			, t_CType0
-			, cIsMemberFunctionPointer<t_CType0>
-		>::CType
-	;
+	using TCRemoveMemberObjectPointer = typename NPrivate::TCRemoveMemberObjectPointerHelper<TCRemoveQualifiers<t_CType0>, t_CType0, cIsMemberFunctionPointer<t_CType0>>::CType;
 
 	template <typename t_CType0>
-	using TCMemberObjectPointerClass = typename NPrivate::TCRemoveMemberObjectPointerHelper
-		<
-			TCRemoveQualifiers<t_CType0>
-			, t_CType0
-			, cIsMemberFunctionPointer<t_CType0>
-		>::CClass
-	;
+	using TCMemberObjectPointerClass = typename NPrivate::TCRemoveMemberObjectPointerHelper<TCRemoveQualifiers<t_CType0>, t_CType0, cIsMemberFunctionPointer<t_CType0>>::CClass;
 
 	namespace NPrivate
 	{
@@ -170,49 +156,23 @@ namespace NMib::NTraits
 	template <typename t_CType0>
 	using TCRemoveLValueReference = typename NPrivate::TCRemoveLValueReferenceHelper<t_CType0>::CType;
 
-
 	template <typename t_CTypeFrom, typename t_CTypeTo>
 	using TCCopyReference = TCConditional
 		<
 			cIsLValueReference<t_CTypeFrom>
 			, TCAddLValueReference<t_CTypeTo>
-			, TCConditional
-			<
-				cIsRValueReference<t_CTypeFrom>
-				, TCAddRValueReference<t_CTypeTo>
-				, TCRemoveReference<t_CTypeTo>
-			>
+			, TCConditional<cIsRValueReference<t_CTypeFrom>, TCAddRValueReference<t_CTypeTo>, TCRemoveReference<t_CTypeTo>>
 		>
 	;
 
 	template <typename t_CTypeFrom, typename t_CTypeTo>
-	using TCCopyLValueReference = TCConditional
-		<
-			cIsReference<t_CTypeFrom>
-			, TCAddLValueReference<t_CTypeTo>
-			, TCRemoveReference<t_CTypeTo>
-		>
-	;
+	using TCCopyLValueReference = TCConditional<cIsReference<t_CTypeFrom>, TCAddLValueReference<t_CTypeTo>, TCRemoveReference<t_CTypeTo>>;
 
 	template <typename t_CCopyFrom, typename t_CCopyTo>
-	using TCCopyQualifiersAndReference = TCCopyReference
-		<
-			t_CCopyFrom
-			, TCCopyQualifiers
-			<
-				TCRemoveReference<t_CCopyFrom>
-				, TCRemoveReference<t_CCopyTo>
-			>
-		>
-	;
+	using TCCopyQualifiersAndReference = TCCopyReference<t_CCopyFrom, TCCopyQualifiers<TCRemoveReference<t_CCopyFrom>, TCRemoveReference<t_CCopyTo>>>;
 
 	template <typename t_CCopyFrom, typename t_CCopyTo>
-	using TCCopyQualifiersFromReference = TCCopyQualifiers
-		<
-			TCRemoveReference<t_CCopyFrom>
-			, t_CCopyTo
-		>
-	;
+	using TCCopyQualifiersFromReference = TCCopyQualifiers<TCRemoveReference<t_CCopyFrom>, t_CCopyTo>;
 
 	template <typename t_CCopyFrom, typename t_CCopyTo>
 	using TCPromoteQualifiersAndReference = TCConditional
@@ -221,14 +181,10 @@ namespace NMib::NTraits
 			, TCConditional
 			<
 				cIsRValueReference<t_CCopyFrom>
-				, t_CCopyTo										// If from is a RValue reference we return whatever reference is in to
+				, t_CCopyTo // If from is a RValue reference we return whatever reference is in to
 				, TCCopyLValueReference<t_CCopyFrom, t_CCopyTo> // Otherwise we can only safely return a LValue reference
 			>
-			, TCCopyReference
-			<
-				t_CCopyFrom
-				, TCAddQualifiersFrom<t_CCopyFrom, t_CCopyTo>
-			>
+			, TCCopyReference<t_CCopyFrom, TCAddQualifiersFrom<t_CCopyFrom, t_CCopyTo>>
 		>
 	;
 
@@ -236,17 +192,11 @@ namespace NMib::NTraits
 	using TCPromoteQualifiers = TCConditional
 		<
 			cIsRValueReference<t_CCopyTo>
-			, TCAddRValueReference
-			<
-				TCAddQualifiersFrom<TCRemoveReference<t_CCopyFrom>, TCRemoveReference<t_CCopyTo>>
-			>
+			, TCAddRValueReference<TCAddQualifiersFrom<TCRemoveReference<t_CCopyFrom>, TCRemoveReference<t_CCopyTo>>>
 			, TCConditional
 			<
 				cIsLValueReference<t_CCopyTo>
-				, TCAddLValueReference
-				<
-					TCAddQualifiersFrom<TCRemoveReference<t_CCopyFrom>, TCRemoveReference<t_CCopyTo>>
-				>
+				, TCAddLValueReference<TCAddQualifiersFrom<TCRemoveReference<t_CCopyFrom>, TCRemoveReference<t_CCopyTo>>>
 				, TCAddQualifiersFrom<TCRemoveReference<t_CCopyFrom>, t_CCopyTo>
 			>
 		>
@@ -276,11 +226,8 @@ namespace NMib::NTraits
 	// Stateless
 
 	template <typename t_CType>
-	concept cIsStateless = cIsTrivialllyDefaultConstructible<t_CType>
-		&& cIsTriviallyCopyConstructible<t_CType>
-		&& cIsTriviallyDestructible<t_CType>
-		&& cIsClass<t_CType>
-		&& cIsEmpty<t_CType>
+	concept cIsStateless
+		= cIsTrivialllyDefaultConstructible<t_CType> && cIsTriviallyCopyConstructible<t_CType> && cIsTriviallyDestructible<t_CType> && cIsClass<t_CType> && cIsEmpty<t_CType>
 	;
 
 	namespace NPrivate
@@ -288,37 +235,37 @@ namespace NMib::NTraits
 		template <typename t_CType>
 		struct TCIsStringHelper
 		{
-			constexpr static bool mc_bValue = false;
+			static constexpr bool mc_bValue = false;
 		};
 
-		template <>	struct TCIsStringHelper<const ch8 *>
+		template <> struct TCIsStringHelper<ch8 const *>
 		{
-			constexpr static bool mc_bValue = true;
+			static constexpr bool mc_bValue = true;
 		};
 
-		template <>	struct TCIsStringHelper<ch8 *>
+		template <> struct TCIsStringHelper<ch8 *>
 		{
-			constexpr static bool mc_bValue = true;
+			static constexpr bool mc_bValue = true;
 		};
 
-		template <>	struct TCIsStringHelper<const ch16 *>
+		template <> struct TCIsStringHelper<ch16 const *>
 		{
-			constexpr static bool mc_bValue = true;
+			static constexpr bool mc_bValue = true;
 		};
 
-		template <>	struct TCIsStringHelper<ch16 *>
+		template <> struct TCIsStringHelper<ch16 *>
 		{
-			constexpr static bool mc_bValue = true;
+			static constexpr bool mc_bValue = true;
 		};
 
-		template <>	struct TCIsStringHelper<const ch32 *>
+		template <> struct TCIsStringHelper<ch32 const *>
 		{
-			constexpr static bool mc_bValue = true;
+			static constexpr bool mc_bValue = true;
 		};
 
-		template <>	struct TCIsStringHelper<ch32 *>
+		template <> struct TCIsStringHelper<ch32 *>
 		{
-			constexpr static bool mc_bValue = true;
+			static constexpr bool mc_bValue = true;
 		};
 	}
 

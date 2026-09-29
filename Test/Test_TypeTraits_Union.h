@@ -93,4 +93,3 @@ static_assert(!cIsUnion<CTest3DArrayC>);
 static_assert(!cIsUnion<void *>);
 static_assert(!cIsUnion<void>);
 
-

@@ -72,6 +72,7 @@ struct CTestStruct7
 	{
 		return 0;
 	}
+
 	int m_Member(int)
 	{
 		return 1;
@@ -84,6 +85,7 @@ struct CTestStruct8
 	{
 		return 0;
 	}
+
 	static int m_Member(int)
 	{
 		return 1;
@@ -96,6 +98,7 @@ struct CTestStruct9
 	{
 		return 0;
 	}
+
 	static int m_Member(int)
 	{
 		return 1;
@@ -127,8 +130,8 @@ using namespace NMib::NTraits;
 
 enum ETestEnum
 {
-	ETestEnum_0,
-	ETestEnum_1,
+	ETestEnum_0
+	, ETestEnum_1
 };
 
 union CTestUnion
@@ -186,6 +189,7 @@ union CTestUnion7
 	{
 		return 1;
 	}
+
 	static int m_Member(int)
 	{
 		return 1;
@@ -243,11 +247,11 @@ class CTestClassWithCopyConstructor
 {
 public:
 	int m_Test;
-	CTestClassWithCopyConstructor(CTestClassWithCopyConstructor const &_Other) : m_Test(_Other.m_Test)
+	CTestClassWithCopyConstructor(CTestClassWithCopyConstructor const &_Other)
+		: m_Test(_Other.m_Test)
 	{
 	}
 };
-
 
 class CTestClassWithCopyConstructorNonTrivial
 {
@@ -263,7 +267,8 @@ class CTestClassWithMoveConstructor
 {
 public:
 	int m_Test;
-	CTestClassWithMoveConstructor(CTestClassWithCopyConstructor const &&_Other) : m_Test(_Other.m_Test)
+	CTestClassWithMoveConstructor(CTestClassWithCopyConstructor const &&_Other)
+		: m_Test(_Other.m_Test)
 	{
 	}
 };
@@ -283,6 +288,7 @@ class CTestClassWithPrivateConstructor
 	CTestClassWithPrivateConstructor()
 	{
 	}
+
 public:
 	int m_Test;
 };
@@ -292,6 +298,7 @@ class CTestClassWithPrivateDestructor
 	CTestClassWithPrivateDestructor()
 	{
 	}
+
 public:
 	int m_Test;
 };
@@ -312,11 +319,9 @@ class CTestClassWithPrivate
 {
 private:
 	ETestEnum m_Test;
+
 public:
 };
-
-
-
 
 struct CTestBase
 {
@@ -326,26 +331,27 @@ struct CTestBase
 typedef CTestBase CTestClass;
 typedef CTestBase const CTestC;
 
-typedef CTestBase * CTestPtr;
-typedef CTestBase const * CTestCPtr;
+typedef CTestBase *CTestPtr;
+typedef CTestBase const *CTestCPtr;
 
 typedef CTestBase * const CTestPtrC;
 typedef CTestBase const * const CTestCPtrC;
 
-typedef CTestBase & CTestRef;
-typedef CTestBase const & CTestCRef;
+typedef CTestBase &CTestRef;
+typedef CTestBase const &CTestCRef;
 
-typedef CTestBase && CTestRRef;
-typedef CTestBase const && CTestCRRef;
-
+typedef CTestBase &&CTestRRef;
+typedef CTestBase const &&CTestCRRef;
 
 [[maybe_unused]] static void fsg_FFunc0(void)
 {
 }
+
 [[maybe_unused]] static CTestBase fsg_FFunc1(void)
 {
 	return CTestBase();
 }
+
 [[maybe_unused]] static CTestBase fsg_FFunc2(int)
 {
 	return CTestBase();
@@ -354,16 +360,16 @@ typedef CTestBase const && CTestCRRef;
 typedef void (PFFunc0)(void);
 typedef CTestBase (PFFunc1)(void);
 typedef CTestBase (PFFunc2)(int);
-typedef PFFunc0 * FFunc0Ptr;
-typedef PFFunc1 * FFunc1Ptr;
-typedef PFFunc2 * FFunc2Ptr;
-typedef PFFunc0 & FFunc0Ref;
-typedef PFFunc1 & FFunc1Ref;
-typedef PFFunc2 & FFunc2Ref;
+typedef PFFunc0 *FFunc0Ptr;
+typedef PFFunc1 *FFunc1Ptr;
+typedef PFFunc2 *FFunc2Ptr;
+typedef PFFunc0 &FFunc0Ref;
+typedef PFFunc1 &FFunc1Ref;
+typedef PFFunc2 &FFunc2Ref;
 // Function rrefs shouldn't be possible?
-typedef PFFunc0 && FFunc0RRef;
-typedef PFFunc1 && FFunc1RRef;
-typedef PFFunc2 && FFunc2RRef;
+typedef PFFunc0 &&FFunc0RRef;
+typedef PFFunc1 &&FFunc1RRef;
+typedef PFFunc2 &&FFunc2RRef;
 typedef FFunc0Ptr const FFunc0PtrC;
 typedef FFunc1Ptr const FFunc1PtrC;
 typedef FFunc2Ptr const FFunc2PtrC;
@@ -371,10 +377,12 @@ typedef FFunc2Ptr const FFunc2PtrC;
 [[maybe_unused]] static void fsg_FFunc0El(...)
 {
 }
+
 [[maybe_unused]] static CTestBase fsg_FFunc1El(...)
 {
 	return CTestBase();
 }
+
 [[maybe_unused]] static CTestBase fsg_FFunc2El(CTestBase, ...)
 {
 	return CTestBase();
@@ -383,70 +391,70 @@ typedef FFunc2Ptr const FFunc2PtrC;
 typedef void (PFFunc0El)(...);
 typedef CTestBase (PFFunc1El)(...);
 typedef CTestBase (PFFunc2El)(CTestBase, ...);
-typedef PFFunc0El * FFunc0ElPtr;
-typedef PFFunc1El * FFunc1ElPtr;
-typedef PFFunc2El * FFunc2ElPtr;
-typedef PFFunc0El & FFunc0ElRef;
-typedef PFFunc1El & FFunc1ElRef;
-typedef PFFunc2El & FFunc2ElRef;
+typedef PFFunc0El *FFunc0ElPtr;
+typedef PFFunc1El *FFunc1ElPtr;
+typedef PFFunc2El *FFunc2ElPtr;
+typedef PFFunc0El &FFunc0ElRef;
+typedef PFFunc1El &FFunc1ElRef;
+typedef PFFunc2El &FFunc2ElRef;
 // Function rrefs shouldn't be possible?
-typedef PFFunc0El && FFunc0ElRRef;
-typedef PFFunc1El && FFunc1ElRRef;
-typedef PFFunc2El && FFunc2ElRRef;
+typedef PFFunc0El &&FFunc0ElRRef;
+typedef PFFunc1El &&FFunc1ElRRef;
+typedef PFFunc2El &&FFunc2ElRRef;
 typedef FFunc0ElPtr const FFunc0ElPtrC;
 typedef FFunc1ElPtr const FFunc1ElPtrC;
 typedef FFunc2ElPtr const FFunc2ElPtrC;
 
-typedef void (CTestClass0::* FMFunc0Ptr)(void);
-typedef CTestBase (CTestClass0::* FMFunc1Ptr)(void);
-typedef CTestBase (CTestClass0::* FMFunc2Ptr)(int);
+typedef void (CTestClass0:: *FMFunc0Ptr)(void);
+typedef CTestBase (CTestClass0:: *FMFunc1Ptr)(void);
+typedef CTestBase (CTestClass0:: *FMFunc2Ptr)(int);
 typedef FMFunc0Ptr const FMFunc0PtrC;
 typedef FMFunc1Ptr const FMFunc1PtrC;
 typedef FMFunc2Ptr const FMFunc2PtrC;
 
-typedef void (CTestClass0::* FMFunc0CPtr)(void) const;
-typedef CTestBase (CTestClass0::* FMFunc1CPtr)(void) const;
-typedef CTestBase (CTestClass0::* FMFunc2CPtr)(int) const;
+typedef void (CTestClass0:: *FMFunc0CPtr)(void) const;
+typedef CTestBase (CTestClass0:: *FMFunc1CPtr)(void) const;
+typedef CTestBase (CTestClass0:: *FMFunc2CPtr)(int) const;
 typedef FMFunc0CPtr const FMFunc0CPtrC;
 typedef FMFunc1CPtr const FMFunc1CPtrC;
 typedef FMFunc2CPtr const FMFunc2CPtrC;
 
-typedef void (CTestClass0::* FMFunc0ElPtr)(...);
-typedef CTestBase (CTestClass0::* FMFunc1ElPtr)(...);
-typedef CTestBase (CTestClass0::* FMFunc2ElPtr)(CTestBase, ...);
+typedef void (CTestClass0:: *FMFunc0ElPtr)(...);
+typedef CTestBase (CTestClass0:: *FMFunc1ElPtr)(...);
+typedef CTestBase (CTestClass0:: *FMFunc2ElPtr)(CTestBase, ...);
 typedef FMFunc0ElPtr const FMFunc0ElPtrC;
 typedef FMFunc1ElPtr const FMFunc1ElPtrC;
 typedef FMFunc2ElPtr const FMFunc2ElPtrC;
 
-typedef void (CTestClass0::* FMFunc0ElCPtr)(...) const;
-typedef CTestBase (CTestClass0::* FMFunc1ElCPtr)(...) const;
-typedef CTestBase (CTestClass0::* FMFunc2ElCPtr)(CTestBase, ...) const;
+typedef void (CTestClass0:: *FMFunc0ElCPtr)(...) const;
+typedef CTestBase (CTestClass0:: *FMFunc1ElCPtr)(...) const;
+typedef CTestBase (CTestClass0:: *FMFunc2ElCPtr)(CTestBase, ...) const;
 typedef FMFunc0ElCPtr const FMFunc0ElCPtrC;
 typedef FMFunc1ElCPtr const FMFunc1ElCPtrC;
 typedef FMFunc2ElCPtr const FMFunc2ElCPtrC;
 
-typedef CTestBase CTestClass0::* CMPtr;
-typedef CTestBase const CTestClass0::* CMCPtr;
+typedef CTestBase CTestClass0:: *CMPtr;
+typedef CTestBase const CTestClass0:: *CMCPtr;
 typedef CMPtr const CMPtrC;
 typedef CMCPtr const CMCPtrC;
 
-typedef CTestBase CTestArray2 [2] ;
-typedef const CTestBase CTestArray2C [2] ;
+typedef CTestBase CTestArray2 [2];
+typedef CTestBase const CTestArray2C [2];
 
-typedef CTestBase CTestArray [] ;
-typedef const CTestBase CTestArrayC [] ;
+typedef CTestBase CTestArray [];
+typedef CTestBase const CTestArrayC [];
 
-typedef CTestBase CTest2DArray2 [3][2] ;
-typedef const CTestBase CTest2DArray2C [3][2] ;
+typedef CTestBase CTest2DArray2 [3][2];
+typedef CTestBase const CTest2DArray2C [3][2];
 
-typedef CTestBase CTest2DArray [][2] ;
-typedef const CTestBase CTest2DArrayC [][2] ;
+typedef CTestBase CTest2DArray [][2];
+typedef CTestBase const CTest2DArrayC [][2];
 
-typedef CTestBase CTest3DArray2 [4][3][2] ;
-typedef const CTestBase CTest3DArray2C [4][3][2] ;
+typedef CTestBase CTest3DArray2 [4][3][2];
+typedef CTestBase const CTest3DArray2C [4][3][2];
 
-typedef CTestBase CTest3DArray [][3][2] ;
-typedef const CTestBase CTest3DArrayC [][3][2] ;
+typedef CTestBase CTest3DArray [][3][2];
+typedef CTestBase const CTest3DArrayC [][3][2];
 
 struct CTestNoDefaultConstruct
 {
@@ -454,9 +462,8 @@ struct CTestNoDefaultConstruct
 	CTestNoDefaultConstruct(int &&_Value)
 		: m_Value(_Value)
 	{
-
 	}
 };
 
-typedef CTestNoDefaultConstruct CTestArrayNoDefault [2] ;
+typedef CTestNoDefaultConstruct CTestArrayNoDefault [2];
 

@@ -7,54 +7,59 @@ namespace NTrivial
 {
 	class CNonTrivialAssignment
 	{
-		CNonTrivialAssignment &operator =(CNonTrivialAssignment const&_Abstract);
+		CNonTrivialAssignment &operator = (CNonTrivialAssignment const &_Abstract);
 	};
+
 	class CNonTrivialAssignmentInt
 	{
 		CNonTrivialAssignmentInt &operator = (int);
 	};
+
 	class CNonTrivialAssignmentBoth
 	{
-		CNonTrivialAssignmentBoth &operator =(CNonTrivialAssignmentBoth const&_Abstract);
+		CNonTrivialAssignmentBoth &operator = (CNonTrivialAssignmentBoth const &_Abstract);
 		CNonTrivialAssignmentBoth &operator = (int);
 	};
+
 	class CNonTrivialAssignmentDerived : public CNonTrivialAssignment
 	{
 	};
 
 	class CNonTrivialAssignmentDerivedOverride : public CNonTrivialAssignment
 	{
-		CNonTrivialAssignmentDerivedOverride &operator =(CNonTrivialAssignmentDerivedOverride const&_Abstract);
-
+		CNonTrivialAssignmentDerivedOverride &operator = (CNonTrivialAssignmentDerivedOverride const &_Abstract);
 	};
 
 	class CNonTrivialCopy
 	{
-		CNonTrivialCopy(CNonTrivialCopy const&_Abstract);
+		CNonTrivialCopy(CNonTrivialCopy const &_Abstract);
 	};
+
 	class CNonTrivialCopyInt
 	{
 		CNonTrivialCopyInt(int);
 	};
+
 	class CNonTrivialCopyBoth
 	{
-		CNonTrivialCopyBoth(CNonTrivialCopyBoth const&_Abstract);
+		CNonTrivialCopyBoth(CNonTrivialCopyBoth const &_Abstract);
 		CNonTrivialCopyBoth(int);
 	};
+
 	class CNonTrivialCopyDerived : public CNonTrivialCopy
 	{
 	};
 
 	class CNonTrivialCopyDerivedOverride : public CNonTrivialCopy
 	{
-		CNonTrivialCopyDerivedOverride(CNonTrivialCopyDerivedOverride const&_Abstract);
+		CNonTrivialCopyDerivedOverride(CNonTrivialCopyDerivedOverride const &_Abstract);
 	};
-
 
 	class CNonTrivialConstruct
 	{
 		CNonTrivialConstruct();
 	};
+
 	class CNonTrivialConstructDerived : public CNonTrivialConstruct
 	{
 	};
@@ -64,11 +69,9 @@ namespace NTrivial
 		CNonTrivialConstructDerivedOverride();
 	};
 
-
 	class CTrivial
 	{
 	};
-
 }
 /***************************************************************************************************\
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|

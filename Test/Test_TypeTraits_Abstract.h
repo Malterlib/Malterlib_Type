@@ -9,22 +9,25 @@ namespace NAbstract
 	{
 		virtual void f_Test() = 0;
 	};
+
 	class CInheritAbstract : private CAbstract
 	{
 	};
+
 	class CNonAbstract
 	{
 		virtual void f_Test();
 	};
+
 	class CNonVirtual
 	{
 		void f_Test();
 	};
+
 	static_assert(cIsAbstract<CAbstract>);
 	static_assert(cIsAbstract<CInheritAbstract>);
 	static_assert(!cIsAbstract<CNonAbstract>);
 	static_assert(!cIsAbstract<CNonVirtual>);
-
 }
 
 // Void
@@ -33,10 +36,10 @@ static_assert(!cIsAbstract<CTestClass0>);
 static_assert(!cIsAbstract<CTestClass1>);
 static_assert(!cIsAbstract<CTestStruct0>);
 static_assert(!cIsAbstract<CTestStruct1>);
-static_assert(!cIsAbstract<const CTestClass0>);
-static_assert(!cIsAbstract<const CTestClass1>);
-static_assert(!cIsAbstract<const CTestStruct0>);
-static_assert(!cIsAbstract<const CTestStruct1>);
+static_assert(!cIsAbstract<CTestClass0 const>);
+static_assert(!cIsAbstract<CTestClass1 const>);
+static_assert(!cIsAbstract<CTestStruct0 const>);
+static_assert(!cIsAbstract<CTestStruct1 const>);
 static_assert(!cIsAbstract<ETestEnum>);
 static_assert(!cIsAbstract<int>);
 static_assert(!cIsAbstract<CTestClass>);

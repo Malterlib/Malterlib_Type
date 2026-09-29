@@ -24,10 +24,10 @@ namespace NIsVirtualBaseOf
 		void f_Test();
 	};
 
-	#ifdef DCompiler_MSVC
-		#pragma warning(disable:4594)
-		#pragma warning(disable:4624)
-	#endif
+#ifdef DCompiler_MSVC
+#	pragma warning(disable:4594)
+#	pragma warning(disable:4624)
+#endif
 
 	class CInheritVirtualAbstract : private virtual CAbstract
 	{
@@ -56,10 +56,10 @@ static_assert(!cIsVirtualBaseOf<CTestClass0, CTestClass0>);
 static_assert(!cIsVirtualBaseOf<CTestClass1, CTestClass0>);
 static_assert(!cIsVirtualBaseOf<CTestStruct0, CTestClass0>);
 static_assert(!cIsVirtualBaseOf<CTestStruct1, CTestClass0>);
-static_assert(!cIsVirtualBaseOf<const CTestClass0, CTestClass0>);
-static_assert(!cIsVirtualBaseOf<const CTestClass1, CTestClass0>);
-static_assert(!cIsVirtualBaseOf<const CTestStruct0, CTestClass0>);
-static_assert(!cIsVirtualBaseOf<const CTestStruct1, CTestClass0>);
+static_assert(!cIsVirtualBaseOf<CTestClass0 const, CTestClass0>);
+static_assert(!cIsVirtualBaseOf<CTestClass1 const, CTestClass0>);
+static_assert(!cIsVirtualBaseOf<CTestStruct0 const, CTestClass0>);
+static_assert(!cIsVirtualBaseOf<CTestStruct1 const, CTestClass0>);
 static_assert(!cIsVirtualBaseOf<ETestEnum, CTestClass0>);
 static_assert(!cIsVirtualBaseOf<int, CTestClass0>);
 static_assert(!cIsVirtualBaseOf<CTestClass, CTestClass0>);

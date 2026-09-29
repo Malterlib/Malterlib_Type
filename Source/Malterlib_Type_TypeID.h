@@ -15,7 +15,6 @@ DMibTypeID(uint16, DMibCurrentTypeID + 6);
 DMibTypeID(uint32, DMibCurrentTypeID + 7);
 DMibTypeID(uint64, DMibCurrentTypeID + 8);
 
-
 #ifdef DMibPUniqueType_mint
 DMibTypeID(umint, DMibCurrentTypeID + 9);
 #endif
@@ -35,17 +34,17 @@ DMibTypeID(uaint, DMibCurrentTypeID + 12);
 #ifdef DMibPUniqueType_ch8
 DMibTypeID(ch8, DMibCurrentTypeID + 13);
 #endif
-DMibTypeID(const ch8 *, DMibCurrentTypeID + 14);
+DMibTypeID(ch8 const *, DMibCurrentTypeID + 14);
 
 #ifdef DMibPUniqueType_ch16
 DMibTypeID(ch16, DMibCurrentTypeID + 15);
 #endif
-DMibTypeID(const ch16 *, DMibCurrentTypeID + 16);
+DMibTypeID(ch16 const *, DMibCurrentTypeID + 16);
 
 #ifdef DMibPUniqueType_ch32
 DMibTypeID(ch32, DMibCurrentTypeID + 17);
 #endif
-DMibTypeID(const ch32 *, DMibCurrentTypeID + 18);
+DMibTypeID(ch32 const *, DMibCurrentTypeID + 18);
 
 DMibTypeID(fp32, DMibCurrentTypeID + 19);
 DMibTypeID(fp64, DMibCurrentTypeID + 20);

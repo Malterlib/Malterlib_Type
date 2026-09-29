@@ -10,20 +10,20 @@ namespace NHasNewOperator
 	class CWithNew
 	{
 	public:
-		void * operator new(umint _Value);
+		void *operator new (umint _Value);
 	};
 
 	class CWithNewArray
 	{
 	public:
-		void * operator new [](umint _Value);
+		void *operator new [] (umint _Value);
 	};
 
 	class CWithNewBoth
 	{
 	public:
-		void * operator new(umint _Value);
-		void * operator new [](umint _Value);
+		void *operator new (umint _Value);
+		void *operator new [] (umint _Value);
 	};
 
 	class CWithNewDerived : public CWithNewBoth
@@ -33,20 +33,20 @@ namespace NHasNewOperator
 	class CWithDelete
 	{
 	public:
-		void operator delete(void *);
+		void operator delete (void *);
 	};
 
 	class CWithDeleteArray
 	{
 	public:
-		void operator delete [](void *);
+		void operator delete [] (void *);
 	};
 
 	class CWithDeleteBoth
 	{
 	public:
-		void operator delete(void *);
-		void operator delete [](void *);
+		void operator delete (void *);
+		void operator delete [] (void *);
 	};
 
 	class CWithDeleteDerived : public CWithDeleteBoth
@@ -57,24 +57,23 @@ namespace NHasNewOperator
 	{
 	};
 
-
 	class CWithSpecialNew
 	{
 	public:
-		void * operator new(umint _Value, CTestClass0 _Special);
+		void *operator new (umint _Value, CTestClass0 _Special);
 	};
 
 	class CWithSpecialNewArray
 	{
 	public:
-		void * operator new [](umint _Value, CTestClass0 _Special);
+		void *operator new [] (umint _Value, CTestClass0 _Special);
 	};
 
 	class CWithSpecialNewBoth
 	{
 	public:
-		void * operator new(umint _Value, CTestClass0 _Special);
-		void * operator new [](umint _Value, CTestClass0 _Special);
+		void *operator new (umint _Value, CTestClass0 _Special);
+		void *operator new [] (umint _Value, CTestClass0 _Special);
 	};
 
 	class CWithSpecialNewDerived : public CWithSpecialNewBoth
@@ -84,20 +83,20 @@ namespace NHasNewOperator
 	class CWithSpecialDelete
 	{
 	public:
-		void operator delete(void *, CTestClass0 _Special);
+		void operator delete (void *, CTestClass0 _Special);
 	};
 
 	class CWithSpecialDeleteArray
 	{
 	public:
-		void operator delete [](void *, CTestClass0 _Special);
+		void operator delete [] (void *, CTestClass0 _Special);
 	};
 
 	class CWithSpecialDeleteBoth
 	{
 	public:
-		void operator delete(void *, CTestClass0 _Special);
-		void operator delete [](void *, CTestClass0 _Special);
+		void operator delete (void *, CTestClass0 _Special);
+		void operator delete [] (void *, CTestClass0 _Special);
 	};
 
 	class CWithSpecialDeleteDerived : public CWithSpecialDeleteBoth
@@ -108,28 +107,27 @@ namespace NHasNewOperator
 	{
 	};
 
-
 	class CWithDualNew
 	{
 	public:
-		void * operator new(umint _Value, CTestClass0 _Special);
-		void * operator new(umint _Value);
+		void *operator new (umint _Value, CTestClass0 _Special);
+		void *operator new (umint _Value);
 	};
 
 	class CWithDualNewArray
 	{
 	public:
-		void * operator new [](umint _Value, CTestClass0 _Special);
-		void * operator new [](umint _Value);
+		void *operator new [] (umint _Value, CTestClass0 _Special);
+		void *operator new [] (umint _Value);
 	};
 
 	class CWithDualNewBoth
 	{
 	public:
-		void * operator new(umint _Value, CTestClass0 _Special);
-		void * operator new [](umint _Value, CTestClass0 _Special);
-		void * operator new(umint _Value);
-		void * operator new [](umint _Value);
+		void *operator new (umint _Value, CTestClass0 _Special);
+		void *operator new [] (umint _Value, CTestClass0 _Special);
+		void *operator new (umint _Value);
+		void *operator new [] (umint _Value);
 	};
 
 	class CWithDualNewDerived : public CWithDualNewBoth
@@ -139,24 +137,24 @@ namespace NHasNewOperator
 	class CWithDualDelete
 	{
 	public:
-		void operator delete(void *, CTestClass0 _Special);
-		void operator delete(void *);
+		void operator delete (void *, CTestClass0 _Special);
+		void operator delete (void *);
 	};
 
 	class CWithDualDeleteArray
 	{
 	public:
-		void operator delete [](void *, CTestClass0 _Special);
-		void operator delete [](void *);
+		void operator delete [] (void *, CTestClass0 _Special);
+		void operator delete [] (void *);
 	};
 
 	class CWithDualDeleteBoth
 	{
 	public:
-		void operator delete(void *, CTestClass0 _Special);
-		void operator delete [](void *, CTestClass0 _Special);
-		void operator delete(void *);
-		void operator delete [](void *);
+		void operator delete (void *, CTestClass0 _Special);
+		void operator delete [] (void *, CTestClass0 _Special);
+		void operator delete (void *);
+		void operator delete [] (void *);
 	};
 
 	class CWithDualDeleteDerived : public CWithDualDeleteBoth
@@ -183,7 +181,6 @@ namespace NHasNewOperator
 	static_assert(!cHasOperatorNewAny<CWithDeleteDerived>);
 	static_assert(cHasOperatorNewAny<CWithBothDerived>);
 
-
 	static_assert(!cHasOperatorDeleteAny<CWithNew>);
 	static_assert(!cHasOperatorDeleteAny<CWithNewArray>);
 	static_assert(!cHasOperatorDeleteAny<CWithNewBoth>);
@@ -197,7 +194,6 @@ namespace NHasNewOperator
 	/////////////////
 	///////
 	/////////
-
 
 	static_assert(cHasOperatorNewAny<CWithSpecialNew>);
 	static_assert(cHasOperatorNewAny<CWithSpecialNewArray>);
@@ -242,7 +238,6 @@ namespace NHasNewOperator
 	static_assert(cHasOperatorDeleteAny<CWithDualDeleteBoth>);
 	static_assert(cHasOperatorDeleteAny<CWithDualDeleteDerived>);
 	static_assert(cHasOperatorDeleteAny<CWithDualBothDerived>);
-
 }
 
 // Void
@@ -252,10 +247,10 @@ static_assert(!cHasOperatorNewAny<CTestClass0>);
 static_assert(!cHasOperatorNewAny<CTestClass1>);
 static_assert(!cHasOperatorNewAny<CTestStruct0>);
 static_assert(!cHasOperatorNewAny<CTestStruct1>);
-static_assert(!cHasOperatorNewAny<const CTestClass0>);
-static_assert(!cHasOperatorNewAny<const CTestClass1>);
-static_assert(!cHasOperatorNewAny<const CTestStruct0>);
-static_assert(!cHasOperatorNewAny<const CTestStruct1>);
+static_assert(!cHasOperatorNewAny<CTestClass0 const>);
+static_assert(!cHasOperatorNewAny<CTestClass1 const>);
+static_assert(!cHasOperatorNewAny<CTestStruct0 const>);
+static_assert(!cHasOperatorNewAny<CTestStruct1 const>);
 static_assert(!cHasOperatorNewAny<ETestEnum>);
 static_assert(!cHasOperatorNewAny<int>);
 static_assert(!cHasOperatorNewAny<CTestClass>);
@@ -347,10 +342,10 @@ static_assert(!cHasOperatorDeleteAny<CTestClass0>);
 static_assert(!cHasOperatorDeleteAny<CTestClass1>);
 static_assert(!cHasOperatorDeleteAny<CTestStruct0>);
 static_assert(!cHasOperatorDeleteAny<CTestStruct1>);
-static_assert(!cHasOperatorDeleteAny<const CTestClass0>);
-static_assert(!cHasOperatorDeleteAny<const CTestClass1>);
-static_assert(!cHasOperatorDeleteAny<const CTestStruct0>);
-static_assert(!cHasOperatorDeleteAny<const CTestStruct1>);
+static_assert(!cHasOperatorDeleteAny<CTestClass0 const>);
+static_assert(!cHasOperatorDeleteAny<CTestClass1 const>);
+static_assert(!cHasOperatorDeleteAny<CTestStruct0 const>);
+static_assert(!cHasOperatorDeleteAny<CTestStruct1 const>);
 static_assert(!cHasOperatorDeleteAny<ETestEnum>);
 static_assert(!cHasOperatorDeleteAny<int>);
 static_assert(!cHasOperatorDeleteAny<CTestClass>);

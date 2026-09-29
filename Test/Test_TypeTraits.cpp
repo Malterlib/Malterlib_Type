@@ -18,10 +18,10 @@ public:
 struct CTesting
 {
 public:
-NMib::COrdering_Weak operator <=> (int) const noexcept
-{
-	return NMib::COrdering_Weak::equivalent;
-}
+	NMib::COrdering_Weak operator <=> (int) const noexcept
+	{
+		return NMib::COrdering_Weak::equivalent;
+	}
 };
 
 struct CTesting2
@@ -37,24 +37,27 @@ public:
 struct CTesting4
 {
 public:
-	operator int()
+	operator int ()
 	{
 		return 0;
 	}
 };
 
-NMib::COrdering_Weak operator <=> (int ,const CTesting&) noexcept
+NMib::COrdering_Weak operator <=> (int, CTesting const &) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
-NMib::COrdering_Weak operator <=> (float ,const CTesting&) noexcept
+
+NMib::COrdering_Weak operator <=> (float, CTesting const &) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
-NMib::COrdering_Weak operator <=> (const CTesting&, float) noexcept
+
+NMib::COrdering_Weak operator <=> (CTesting const &, float) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
+
 /*
 COrdering_Weak operator <=> (const CTesting&, int) noexcept
 {
@@ -62,56 +65,58 @@ COrdering_Weak operator <=> (const CTesting&, int) noexcept
 }*/
 
 #ifdef DMibPUniqueType_int
-	static_assert(!NMib::NTraits::cIsSame<int, int32>);
+static_assert(!NMib::NTraits::cIsSame<int, int32>);
 #else
-	static_assert(NMib::NTraits::cIsSame<int, int32> || NMib::NTraits::cIsSame<int, smint>);
+static_assert(NMib::NTraits::cIsSame<int, int32> || NMib::NTraits::cIsSame<int, smint>);
 #endif
 
 #ifdef DMibPUniqueType_uint
-	static_assert(!NMib::NTraits::cIsSame<unsigned int, uint32>);
-	static_assert(!NMib::NTraits::cIsSame<unsigned int, umint>);
+static_assert(!NMib::NTraits::cIsSame<unsigned int, uint32>);
+static_assert(!NMib::NTraits::cIsSame<unsigned int, umint>);
 #else
-	static_assert(NMib::NTraits::cIsSame<unsigned int, uint32> || NMib::NTraits::cIsSame<unsigned int, umint>);
+static_assert(NMib::NTraits::cIsSame<unsigned int, uint32> || NMib::NTraits::cIsSame<unsigned int, umint>);
 #endif
 
 #ifdef DMibPUniqueType_mint
-	static_assert(!NMib::NTraits::cIsSame<umint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
+static_assert(!NMib::NTraits::cIsSame<umint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
 #else
-	static_assert(NMib::NTraits::cIsSame<umint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
+static_assert(NMib::NTraits::cIsSame<umint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
 #endif
 
 #ifdef DMibPUniqueType_smint
-	static_assert(!NMib::NTraits::cIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>>);
+static_assert(!NMib::NTraits::cIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>>);
 #else
-	static_assert(NMib::NTraits::cIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>>);
+static_assert(NMib::NTraits::cIsSame<smint, NMib::NTraits::TCIntFromSize<sizeof(void *)>>);
 #endif
 
 #ifdef DMibPUniqueType_ch8
-	static_assert(!NMib::NTraits::cIsSame<ch8, int8>);
-	static_assert(!NMib::NTraits::cIsSame<ch8, uint8>);
+static_assert(!NMib::NTraits::cIsSame<ch8, int8>);
+static_assert(!NMib::NTraits::cIsSame<ch8, uint8>);
 #else
-	static_assert(NMib::NTraits::cIsSame<ch8, int8> || NMib::NTraits::cIsSame<ch8, uint8>);
+static_assert(NMib::NTraits::cIsSame<ch8, int8> || NMib::NTraits::cIsSame<ch8, uint8>);
 #endif
 
 #ifdef DMibPUniqueType_ch16
-	static_assert(!NMib::NTraits::cIsSame<ch16, int16>);
-	static_assert(!NMib::NTraits::cIsSame<ch16, uint16>);
+static_assert(!NMib::NTraits::cIsSame<ch16, int16>);
+static_assert(!NMib::NTraits::cIsSame<ch16, uint16>);
 #else
-	static_assert(NMib::NTraits::cIsSame<ch16, int16> || NMib::NTraits::cIsSame<ch16, uint16>);
+static_assert(NMib::NTraits::cIsSame<ch16, int16> || NMib::NTraits::cIsSame<ch16, uint16>);
 #endif
 
 #ifdef DMibPUniqueType_ch32
-	static_assert(!NMib::NTraits::cIsSame<ch32, int32>);
-	static_assert(!NMib::NTraits::cIsSame<ch32, uint32>);
+static_assert(!NMib::NTraits::cIsSame<ch32, int32>);
+static_assert(!NMib::NTraits::cIsSame<ch32, uint32>);
 #else
-	static_assert(NMib::NTraits::cIsSame<ch32, int32> || NMib::NTraits::cIsSame<ch32, uint32>);
+static_assert(NMib::NTraits::cIsSame<ch32, int32> || NMib::NTraits::cIsSame<ch32, uint32>);
 #endif
 
 template <typename t_CLeft, typename t_CRight>
 class cIsComparable
 {
 public:
-	class CDummy {};
+	class CDummy
+	{
+	};
 
 	template <typename t_CLeft2, typename t_CRight2>
 	static auto fg_Both(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(NMib::fg_Forward<t_CLeft2>(_Left) < NMib::fg_Forward<t_CRight2>(_Right));
@@ -130,10 +135,10 @@ public:
 	typedef decltype(fg_Both(fs_Left(), fs_Right())) CType;
 	enum
 	{
-		ms_Both = !cIsSame<CType, CDummy>
+		ms_Both     = !cIsSame<CType, CDummy>
 		, ms_Global = !cIsSame<decltype(fg_Global(fs_Left(), fs_Right())), CDummy>
-		, ms_Local = !cIsSame<decltype(fg_Local(fs_Left(), fs_Right())), CDummy>
-		, mc_Value = ms_Both
+		, ms_Local  = !cIsSame<decltype(fg_Local(fs_Left(), fs_Right())), CDummy>
+		, mc_Value  = ms_Both
 	};
 };
 #if 0
@@ -167,7 +172,6 @@ static_assert(!cIsComparable<CTesting3, double>);
 
 static_assert(cIsComparableLessThan<int, int>);
 
-
 static_assert(!cIsComparableLessThan<CTesting, CTesting>);
 static_assert(!cIsComparableLessThan<CTesting, CTesting2>);
 static_assert(!cIsComparableLessThan<CTesting2, CTesting>);
@@ -185,10 +189,8 @@ namespace
 	class CTypeTraits_Tests : public NMib::NTest::CTest
 	{
 	public:
-
 		void f_DoTests()
 		{
-
 //			cIsComparable<int, int>::CType Typeee;Typeee;
 	//		cIsComparable<float, char *>::CType Typeee5;Typeee5;
 		//	cIsComparable<CTesting, int>::CType Typeee6;Typeee6;
@@ -198,7 +200,6 @@ namespace
 		//	Dubble < Test3;
 			//0.0f < CTesting();
 			//0 < CTesting();
-
 		}
 	};
 

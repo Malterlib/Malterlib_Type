@@ -37,31 +37,31 @@ namespace NMib::NTraits
 		template <typename t_CType>
 		struct TCIsFunctionPointerHelper
 		{
-			constexpr static bool mc_Value = false;
+			static constexpr bool mc_Value = false;
 		};
 
-		template <typename t_CReturn, typename... tp_CParams>
+		template <typename t_CReturn, typename ...tp_CParams>
 		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams...)>
 		{
-			constexpr static bool mc_Value = true;
+			static constexpr bool mc_Value = true;
 		};
 
-		template <typename t_CReturn, typename... tp_CParams>
+		template <typename t_CReturn, typename ...tp_CParams>
 		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams...) noexcept>
 		{
-			constexpr static bool mc_Value = true;
+			static constexpr bool mc_Value = true;
 		};
 
-		template <typename t_CReturn, typename... tp_CParams>
+		template <typename t_CReturn, typename ...tp_CParams>
 		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams..., ...)>
 		{
-			constexpr static bool mc_Value = true;
+			static constexpr bool mc_Value = true;
 		};
 
-		template <typename t_CReturn, typename... tp_CParams>
+		template <typename t_CReturn, typename ...tp_CParams>
 		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams..., ...) noexcept>
 		{
-			constexpr static bool mc_Value = true;
+			static constexpr bool mc_Value = true;
 		};
 
 		template <typename t_CFunction, bool t_bIsFunction>
@@ -77,7 +77,7 @@ namespace NMib::NTraits
 			using CParams = NMeta::TCTypeList<>;
 		};
 
-		template <typename t_CReturn, typename... tp_CParams>
+		template <typename t_CReturn, typename ...tp_CParams>
 		class TCFunctionTraitsHelper<t_CReturn (tp_CParams...), true>
 		{
 		public:
@@ -89,7 +89,8 @@ namespace NMib::NTraits
 			using CReturn = t_CReturn;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
 		};
-		template <typename t_CReturn, typename... tp_CParams>
+
+		template <typename t_CReturn, typename ...tp_CParams>
 		class TCFunctionTraitsHelper<t_CReturn (tp_CParams...) noexcept, true>
 		{
 		public:
@@ -102,7 +103,7 @@ namespace NMib::NTraits
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
 		};
 
-		template <typename t_CReturn, typename... tp_CParams>
+		template <typename t_CReturn, typename ...tp_CParams>
 		class TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...), true>
 		{
 		public:
@@ -114,7 +115,8 @@ namespace NMib::NTraits
 			using CReturn = t_CReturn;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
 		};
-		template <typename t_CReturn, typename... tp_CParams>
+
+		template <typename t_CReturn, typename ...tp_CParams>
 		class TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...) noexcept, true>
 		{
 		public:
@@ -129,7 +131,12 @@ namespace NMib::NTraits
 	}
 
 	template <typename t_CFunction>
-	class TCFunctionTraits : public NPrivate::TCFunctionTraitsHelper<t_CFunction, NPrivate::TCIsFunctionPointerHelper<typename NPrivate::TCAddFunctionPointerHelper<TCRemoveQualifiers<t_CFunction>>::CType>::mc_Value>
+	class TCFunctionTraits
+		: public NPrivate::TCFunctionTraitsHelper
+		<
+			t_CFunction
+			, NPrivate::TCIsFunctionPointerHelper<typename NPrivate::TCAddFunctionPointerHelper<TCRemoveQualifiers<t_CFunction>>::CType>::mc_Value
+		>
 	{
 	public:
 	};
@@ -183,25 +190,25 @@ namespace NMib::NTraits
 			static constexpr bool mc_Value = false;
 		};
 
-		template <typename t_CType, typename t_CReturn, typename... tp_CParams>
+		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
 		struct TCIsNoExceptCallableWith<t_CType, t_CReturn (tp_CParams...)>
 		{
 			static constexpr bool mc_Value = std::is_nothrow_invocable_r_v<t_CReturn, t_CType, tp_CParams...>;
 		};
 
-		template <typename t_CType, typename... tp_CParams>
+		template <typename t_CType, typename ...tp_CParams>
 		struct TCIsNoExceptCallableWith<t_CType, void (tp_CParams...)>
 		{
 			static constexpr bool mc_Value = std::is_nothrow_invocable_v<t_CType, tp_CParams...>;
 		};
 
-		template <typename t_CType, typename t_CReturn, typename... tp_CParams>
+		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
 		struct TCIsNoExceptCallableWith<t_CType, t_CReturn (tp_CParams...) noexcept>
 		{
 			static constexpr bool mc_Value = std::is_nothrow_invocable_r_v<t_CReturn, t_CType, tp_CParams...>;
 		};
 
-		template <typename t_CType, typename... tp_CParams>
+		template <typename t_CType, typename ...tp_CParams>
 		struct TCIsNoExceptCallableWith<t_CType, void (tp_CParams...) noexcept>
 		{
 			static constexpr bool mc_Value = std::is_nothrow_invocable_v<t_CType, tp_CParams...>;

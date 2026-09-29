@@ -7,12 +7,12 @@
 #	define DMibNewVisibility _LIBCPP_OVERRIDABLE_FUNC_VIS
 #	include <stddef.h>
 
-	namespace std
-	{
-		using ::nullptr_t;
-		using ::ptrdiff_t _LIBCPP_USING_IF_EXISTS;
-		using ::size_t _LIBCPP_USING_IF_EXISTS;
-	}
+namespace std
+{
+	using ::nullptr_t;
+	using ::ptrdiff_t _LIBCPP_USING_IF_EXISTS;
+	using ::size_t _LIBCPP_USING_IF_EXISTS;
+}
 #	include <__new/align_val_t.h>
 #	include <__new/destroying_delete_t.h>
 #else
@@ -126,7 +126,6 @@ namespace NMib::NTraits
 	template <typename t_CType, typename t_COther>
 	concept cIsMoveAssignable = std::is_move_assignable_v<t_CType>;
 
-
 	template <typename t_CType, typename t_COther>
 	concept cIsNothrowAssignableWith = std::is_nothrow_assignable_v<t_CType, t_COther>;
 
@@ -135,7 +134,6 @@ namespace NMib::NTraits
 
 	template <typename t_CType>
 	concept cIsNothrowMoveAssignable = std::is_nothrow_move_assignable_v<t_CType>;
-
 
 	template <typename t_CType, typename t_COther>
 	concept cIsTriviallyAssignableWith = std::is_trivially_assignable_v<t_CType, t_COther>;
@@ -160,7 +158,6 @@ namespace NMib::NTraits
 	template <typename t_CType>
 	concept cIsDefaultConstructible = std::is_default_constructible_v<t_CType>;
 
-
 	template <typename t_CType, typename ...tp_CFunctionCallType>
 	concept cIsNothrowConstructibleWith = std::is_nothrow_constructible_v<t_CType, tp_CFunctionCallType...>;
 
@@ -172,7 +169,6 @@ namespace NMib::NTraits
 
 	template <typename t_CType>
 	concept cIsNothrowDefaultConstructible = std::is_nothrow_default_constructible_v<t_CType>;
-
 
 	template <typename t_CType, typename ...tp_COther>
 	concept cIsTriviallyConstructibleWith = std::is_trivially_constructible_v<t_CType, tp_COther...>;
@@ -197,7 +193,7 @@ namespace NMib::NTraits
 	template <typename t_CType>
 	struct TCHasVirtualDestructorOverride
 	{
-		constexpr static bool mc_Value = std::has_virtual_destructor_v<t_CType>;
+		static constexpr bool mc_Value = std::has_virtual_destructor_v<t_CType>;
 	};
 
 	template <typename t_CType>
@@ -239,16 +235,16 @@ namespace NMib::NTraits
 	concept cIsVirtualBaseOf = std::is_virtual_base_of_v<t_CBase, t_CDerived>;
 #else
 	// Windows builds use Clang; native MSVC is not a supported toolchain.
-	#error "Not supported"
+#	error "Not supported"
 #endif
 
 #ifdef DCompiler_clang
 
-#define DMibCanDetectVirtualMemberFunctions_Constexpr
+#	define DMibCanDetectVirtualMemberFunctions_Constexpr
 
 	template <auto t_pMemberFunctionPointer>
 	concept cIsNonVirtualMemberFunction =
-		requires()
+		requires ()
 		{
 			NTraits::TCCompileTimeConstant<bool, t_pMemberFunctionPointer == t_pMemberFunctionPointer>();
 		}

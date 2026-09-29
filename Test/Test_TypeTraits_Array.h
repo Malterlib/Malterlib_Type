@@ -92,7 +92,6 @@ static_assert(cIsArray<CTest3DArrayC>);
 static_assert(!cIsArray<void *>);
 static_assert(!cIsArray<void>);
 
-
 static_assert(!cIsUnboundedArray<CTestUnion>);
 static_assert(!cIsUnboundedArray<CTestClass0>);
 static_assert(!cIsUnboundedArray<CTestClass1>);
@@ -181,7 +180,6 @@ static_assert(cIsUnboundedArray<CTest3DArray>);
 static_assert(cIsUnboundedArray<CTest3DArrayC>);
 static_assert(!cIsUnboundedArray<void *>);
 static_assert(!cIsUnboundedArray<void>);
-
 
 static_assert(cIsSame<TCRemoveExtent<CTestUnion>, CTestUnion>);
 static_assert(cIsSame<TCRemoveExtent<CTestClass0>, CTestClass0>);
@@ -362,7 +360,6 @@ static_assert(cIsSame<TCRemoveAllExtents<CTest3DArrayC>, CTestBase const>);
 static_assert(cIsSame<TCRemoveAllExtents<void *>, void *>);
 static_assert(cIsSame<TCRemoveAllExtents<void>, void>);
 
-
 // Remove pointer
 static_assert(cIsSame<TCDecay<CTestUnion>, CTestUnion>);
 static_assert(cIsSame<TCDecay<CTestClass0>, CTestClass0>);
@@ -452,7 +449,6 @@ static_assert(cIsSame<TCDecay<CTest3DArray>, CTest2DArray2 *>);
 static_assert(cIsSame<TCDecay<CTest3DArrayC>, CTest2DArray2C *>);
 static_assert(cIsSame<TCDecay<void *>, void *>);
 static_assert(cIsSame<TCDecay<void>, void>);
-
 
 // Extent
 static_assert(gc_ArrayExtent<CTestUnion> == 0);
@@ -574,7 +570,6 @@ static_assert(gc_ArrayExtent<void, 1> == 0);
 static_assert(gc_ArrayExtent<void *, 1> == 0);
 static_assert(gc_ArrayExtent<void, 2> == 0);
 static_assert(gc_ArrayExtent<void *, 2> == 0);
-
 
 // Rank
 static_assert(gc_ArrayRank<CTestUnion> == 0);

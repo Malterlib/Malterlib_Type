@@ -7,43 +7,48 @@ namespace NNothrow
 {
 	struct CThrowsAssignment
 	{
-		CThrowsAssignment &operator =(CThrowsAssignment const&_Abstract);
+		CThrowsAssignment &operator = (CThrowsAssignment const &_Abstract);
 	};
+
 	struct CThrowsAssignmentInt
 	{
 		CThrowsAssignmentInt &operator = (int);
 	};
+
 	struct CThrowsAssignmentBoth
 	{
-		CThrowsAssignmentBoth &operator =(CThrowsAssignmentBoth const&_Abstract);
+		CThrowsAssignmentBoth &operator = (CThrowsAssignmentBoth const &_Abstract);
 		CThrowsAssignmentBoth &operator = (int);
 	};
+
 	struct CThrowsAssignmentDerived : public CThrowsAssignment
 	{
 	};
 
 	struct CThrowsAssignmentDerivedOverride : public CThrowsAssignment
 	{
-		CThrowsAssignmentDerivedOverride &operator =(CThrowsAssignmentDerivedOverride const&_Abstract) noexcept;
-
+		CThrowsAssignmentDerivedOverride &operator = (CThrowsAssignmentDerivedOverride const &_Abstract) noexcept;
 	};
 
 	struct CThrowsCopy
 	{
 		CThrowsCopy() noexcept;
-		CThrowsCopy(CThrowsCopy const&_Abstract);
+		CThrowsCopy(CThrowsCopy const &_Abstract);
 	};
+
 	struct CThrowsCopyInt
 	{
 		CThrowsCopyInt() noexcept;
 		CThrowsCopyInt(int);
 	};
+
 	struct CThrowsCopyBoth
 	{
 		CThrowsCopyBoth() noexcept;
-		CThrowsCopyBoth(CThrowsCopyBoth const&_Abstract);
+		CThrowsCopyBoth(CThrowsCopyBoth const &_Abstract);
 		CThrowsCopyBoth(int);
 	};
+
 	struct CThrowsCopyDerived : public CThrowsCopy
 	{
 	};
@@ -51,14 +56,14 @@ namespace NNothrow
 	struct CThrowsCopyDerivedOverride : public CThrowsCopy
 	{
 		CThrowsCopyDerivedOverride() noexcept;
-		CThrowsCopyDerivedOverride(CThrowsCopyDerivedOverride const&_Abstract) noexcept;
+		CThrowsCopyDerivedOverride(CThrowsCopyDerivedOverride const &_Abstract) noexcept;
 	};
-
 
 	struct CThrowsConstruct
 	{
 		CThrowsConstruct();
 	};
+
 	struct CThrowsConstructDerived : public CThrowsConstruct
 	{
 	};
@@ -68,7 +73,6 @@ namespace NNothrow
 		CThrowsConstructDerivedOverride() noexcept;
 	};
 
-
 	struct CNothrow
 	{
 	};
@@ -77,7 +81,6 @@ namespace NNothrow
 	{
 		CNothrowDefault() noexcept;
 	};
-
 }
 /***************************************************************************************************\
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|

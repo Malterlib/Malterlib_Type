@@ -4,7 +4,7 @@
 #include "Test_TypeTraits_TestTypes.h"
 
 #ifdef DMibCompiler_GCC
-#pragma GCC system_header
+#	pragma GCC system_header
 #endif
 
 class CTestInherit : public CTestClass
@@ -18,7 +18,7 @@ void blaha()
 	class CTestInherit : public CTestClass
 	{
 	public:
-	int m_Test;
+		int m_Test;
 	};
 
 	CTestInherit Test3;
@@ -37,28 +37,27 @@ static_assert(cIsConstructibleWith<CTestClass &&, CTestClass &&>);
 static_assert(!cIsConstructibleWith<CTestInherit &&, CTestClass &&>);
 static_assert(cIsConstructibleWith<CTestClass &&, CTestInherit &&>);
 #ifndef DCompiler_MSVC
-	static_assert(!cIsConstructibleWith<CTestClass &, CTestClass &&>);
+static_assert(!cIsConstructibleWith<CTestClass &, CTestClass &&>);
 #endif
 static_assert(!cIsConstructibleWith<CTestClass &&, CTestClass &>);
 static_assert(cIsConstructibleWith<CTestClass &&, CTestClass>);
 #ifndef DCompiler_MSVC
-	static_assert(!cIsConstructibleWith<CTestClass &, CTestClass>);
+static_assert(!cIsConstructibleWith<CTestClass &, CTestClass>);
 #endif
-static_assert(cIsConstructibleWith<CTestBase, CTestBase&&>);
+static_assert(cIsConstructibleWith<CTestBase, CTestBase &&>);
 static_assert(!cIsConstructibleWith<CTestNoDefaultConstruct>);
 static_assert(cIsConstructibleWith<CTestBase, int &>);
 static_assert(cIsConstructibleWith<CTestNoDefaultConstruct, int &&>);
-
 
 static_assert(cIsConstructibleWith<CTestUnion>);
 static_assert(cIsConstructibleWith<CTestClass0>);
 static_assert(cIsConstructibleWith<CTestClass1>);
 static_assert(cIsConstructibleWith<CTestStruct0>);
 static_assert(cIsConstructibleWith<CTestStruct1>);
-static_assert(cIsConstructibleWith<const CTestClass0>);
-static_assert(cIsConstructibleWith<const CTestClass1>);
-static_assert(cIsConstructibleWith<const CTestStruct0>);
-static_assert(cIsConstructibleWith<const CTestStruct1>);
+static_assert(cIsConstructibleWith<CTestClass0 const>);
+static_assert(cIsConstructibleWith<CTestClass1 const>);
+static_assert(cIsConstructibleWith<CTestStruct0 const>);
+static_assert(cIsConstructibleWith<CTestStruct1 const>);
 static_assert(cIsConstructibleWith<ETestEnum>);
 static_assert(cIsConstructibleWith<int>);
 static_assert(cIsConstructibleWith<CTestClass>);
@@ -144,21 +143,19 @@ static_assert(!cIsConstructibleWith<CTest3DArrayC>);
 static_assert(cIsConstructibleWith<void *>);
 static_assert(!cIsConstructibleWith<void>);
 
-
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
-
 
 static_assert(cIsConstructibleWith<CTestUnion, CTestUnion>);
 static_assert(cIsConstructibleWith<CTestClass0, CTestClass0>);
 static_assert(cIsConstructibleWith<CTestClass1, CTestClass1>);
 static_assert(cIsConstructibleWith<CTestStruct0, CTestStruct0>);
 static_assert(cIsConstructibleWith<CTestStruct1, CTestStruct1>);
-static_assert(cIsConstructibleWith<const CTestClass0, CTestClass0>);
-static_assert(cIsConstructibleWith<const CTestClass1, CTestClass1>);
-static_assert(cIsConstructibleWith<const CTestStruct0, CTestStruct0>);
-static_assert(cIsConstructibleWith<const CTestStruct1, CTestStruct1>);
+static_assert(cIsConstructibleWith<CTestClass0 const, CTestClass0>);
+static_assert(cIsConstructibleWith<CTestClass1 const, CTestClass1>);
+static_assert(cIsConstructibleWith<CTestStruct0 const, CTestStruct0>);
+static_assert(cIsConstructibleWith<CTestStruct1 const, CTestStruct1>);
 static_assert(cIsConstructibleWith<ETestEnum, ETestEnum>);
 static_assert(cIsConstructibleWith<int, int>);
 static_assert(cIsConstructibleWith<CTestClass, CTestClass>);
