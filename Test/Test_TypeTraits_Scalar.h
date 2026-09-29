@@ -110,112 +110,112 @@ static_assert(!cIsScalar<fp32>);
 static_assert(!cIsScalar<fp16>);
 static_assert(!cIsScalar<fp8>);
 
-static_assert(!cIsScalar<const int16384>);
-static_assert(!cIsScalar<const int8192>);
-static_assert(!cIsScalar<const int4096>);
-static_assert(!cIsScalar<const int2048>);
-static_assert(!cIsScalar<const int1024>);
-static_assert(!cIsScalar<const int512>);
-static_assert(!cIsScalar<const int256>);
-static_assert(!cIsScalar<const int160>);
-static_assert(!cIsScalar<const int192>);
+static_assert(!cIsScalar<int16384 const>);
+static_assert(!cIsScalar<int8192 const>);
+static_assert(!cIsScalar<int4096 const>);
+static_assert(!cIsScalar<int2048 const>);
+static_assert(!cIsScalar<int1024 const>);
+static_assert(!cIsScalar<int512 const>);
+static_assert(!cIsScalar<int256 const>);
+static_assert(!cIsScalar<int160 const>);
+static_assert(!cIsScalar<int192 const>);
 #ifdef DMibPCanDo_int128
-static_assert(cIsScalar<const int128>);
+static_assert(cIsScalar<int128 const>);
 #else
-static_assert(!cIsScalar<const int128>);
+static_assert(!cIsScalar<int128 const>);
 #endif
 #ifdef DMibPCanDo_int80
-static_assert(cIsScalar<const int80>);
+static_assert(cIsScalar<int80 const>);
 #else
-static_assert(!cIsScalar<const int80>);
+static_assert(!cIsScalar<int80 const>);
 #endif
 #ifdef DMibPCanDo_int96
-static_assert(cIsScalar<const int96>);
+static_assert(cIsScalar<int96 const>);
 #else
-static_assert(!cIsScalar<const int96>);
+static_assert(!cIsScalar<int96 const>);
 #endif
 #ifdef DMibPCanDo_int64
-static_assert(cIsScalar<const int64>);
+static_assert(cIsScalar<int64 const>);
 #else
-static_assert(!cIsScalar<const int64>);
+static_assert(!cIsScalar<int64 const>);
 #endif
 #ifdef DMibPCanDo_int32
-static_assert(cIsScalar<const int32>);
+static_assert(cIsScalar<int32 const>);
 #else
-static_assert(!cIsScalar<const int32>);
+static_assert(!cIsScalar<int32 const>);
 #endif
 #ifdef DMibPCanDo_int16
-static_assert(cIsScalar<const int16>);
+static_assert(cIsScalar<int16 const>);
 #else
-static_assert(!cIsScalar<const int16>);
+static_assert(!cIsScalar<int16 const>);
 #endif
 #ifdef DMibPCanDo_int8
-static_assert(cIsScalar<const int8>);
+static_assert(cIsScalar<int8 const>);
 #else
-static_assert(!cIsScalar<const int8>);
+static_assert(!cIsScalar<int8 const>);
 #endif
 
-static_assert(cIsScalar<const aint>);
-static_assert(cIsScalar<const uaint>);
-static_assert(cIsScalar<const smint>);
-static_assert(cIsScalar<const umint>);
+static_assert(cIsScalar<aint const>);
+static_assert(cIsScalar<uaint const>);
+static_assert(cIsScalar<smint const>);
+static_assert(cIsScalar<umint const>);
 
-static_assert(!cIsScalar<const uint16384>);
-static_assert(!cIsScalar<const uint8192>);
-static_assert(!cIsScalar<const uint4096>);
-static_assert(!cIsScalar<const uint2048>);
-static_assert(!cIsScalar<const uint1024>);
-static_assert(!cIsScalar<const uint512>);
-static_assert(!cIsScalar<const uint256>);
-static_assert(!cIsScalar<const uint160>);
-static_assert(!cIsScalar<const uint192>);
+static_assert(!cIsScalar<uint16384 const>);
+static_assert(!cIsScalar<uint8192 const>);
+static_assert(!cIsScalar<uint4096 const>);
+static_assert(!cIsScalar<uint2048 const>);
+static_assert(!cIsScalar<uint1024 const>);
+static_assert(!cIsScalar<uint512 const>);
+static_assert(!cIsScalar<uint256 const>);
+static_assert(!cIsScalar<uint160 const>);
+static_assert(!cIsScalar<uint192 const>);
 #ifdef DMibPCanDo_uint128
-static_assert(cIsScalar<const uint128>);
+static_assert(cIsScalar<uint128 const>);
 #else
-static_assert(!cIsScalar<const uint128>);
+static_assert(!cIsScalar<uint128 const>);
 #endif
 #ifdef DMibPCanDo_uint80
-static_assert(cIsScalar<const uint80>);
+static_assert(cIsScalar<uint80 const>);
 #else
-static_assert(!cIsScalar<const uint80>);
+static_assert(!cIsScalar<uint80 const>);
 #endif
 #ifdef DMibPCanDo_uint96
-static_assert(cIsScalar<const uint96>);
+static_assert(cIsScalar<uint96 const>);
 #else
-static_assert(!cIsScalar<const uint96>);
+static_assert(!cIsScalar<uint96 const>);
 #endif
 #ifdef DMibPCanDo_uint64
-static_assert(cIsScalar<const uint64>);
+static_assert(cIsScalar<uint64 const>);
 #else
-static_assert(!cIsScalar<const uint64>);
+static_assert(!cIsScalar<uint64 const>);
 #endif
 #ifdef DMibPCanDo_uint32
-static_assert(cIsScalar<const uint32>);
+static_assert(cIsScalar<uint32 const>);
 #else
-static_assert(!cIsScalar<const uint32>);
+static_assert(!cIsScalar<uint32 const>);
 #endif
 #ifdef DMibPCanDo_uint16
-static_assert(cIsScalar<const uint16>);
+static_assert(cIsScalar<uint16 const>);
 #else
-static_assert(!cIsScalar<const uint16>);
+static_assert(!cIsScalar<uint16 const>);
 #endif
 #ifdef DMibPCanDo_uint8
-static_assert(cIsScalar<const uint8>);
+static_assert(cIsScalar<uint8 const>);
 #else
-static_assert(!cIsScalar<const uint8>);
+static_assert(!cIsScalar<uint8 const>);
 #endif
 
-static_assert(!cIsScalar<const fp4096>);
-static_assert(!cIsScalar<const fp2048>);
-static_assert(!cIsScalar<const fp1024>);
-static_assert(!cIsScalar<const fp512>);
-static_assert(!cIsScalar<const fp256>);
-static_assert(!cIsScalar<const fp128>);
-static_assert(!cIsScalar<const fp80>);
-static_assert(!cIsScalar<const fp64>);
-static_assert(!cIsScalar<const fp32>);
-static_assert(!cIsScalar<const fp16>);
-static_assert(!cIsScalar<const fp8>);
+static_assert(!cIsScalar<fp4096 const>);
+static_assert(!cIsScalar<fp2048 const>);
+static_assert(!cIsScalar<fp1024 const>);
+static_assert(!cIsScalar<fp512 const>);
+static_assert(!cIsScalar<fp256 const>);
+static_assert(!cIsScalar<fp128 const>);
+static_assert(!cIsScalar<fp80 const>);
+static_assert(!cIsScalar<fp64 const>);
+static_assert(!cIsScalar<fp32 const>);
+static_assert(!cIsScalar<fp16 const>);
+static_assert(!cIsScalar<fp8 const>);
 
 static_assert(!cIsScalar<CTestUnion>);
 static_assert(!cIsScalar<CTestClass0>);

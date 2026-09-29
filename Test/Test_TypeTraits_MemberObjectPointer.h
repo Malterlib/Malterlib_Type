@@ -182,7 +182,6 @@ static_assert(cIsSame<TCRemoveMemberObjectPointer<CTest3DArrayC>, CTest3DArrayC>
 static_assert(cIsSame<TCRemoveMemberObjectPointer<void *>, void *>);
 static_assert(cIsSame<TCRemoveMemberObjectPointer<void>, void>);
 
-
 // Class
 static_assert(cIsSame<TCMemberObjectPointerClass<CTestUnion>, void>);
 static_assert(cIsSame<TCMemberObjectPointerClass<CTestClass0>, void>);

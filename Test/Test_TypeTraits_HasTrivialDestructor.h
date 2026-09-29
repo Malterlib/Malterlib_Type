@@ -28,17 +28,16 @@ namespace NTrivial
 	static_assert(!cIsTriviallyDestructible<CTestClassWithDestructor>);
 }
 
-
 // Void
 static_assert(cIsTriviallyDestructible<CTestUnion>);
 static_assert(cIsTriviallyDestructible<CTestClass0>);
 static_assert(cIsTriviallyDestructible<CTestClass1>);
 static_assert(cIsTriviallyDestructible<CTestStruct0>);
 static_assert(cIsTriviallyDestructible<CTestStruct1>);
-static_assert(cIsTriviallyDestructible<const CTestClass0>);
-static_assert(cIsTriviallyDestructible<const CTestClass1>);
-static_assert(cIsTriviallyDestructible<const CTestStruct0>);
-static_assert(cIsTriviallyDestructible<const CTestStruct1>);
+static_assert(cIsTriviallyDestructible<CTestClass0 const>);
+static_assert(cIsTriviallyDestructible<CTestClass1 const>);
+static_assert(cIsTriviallyDestructible<CTestStruct0 const>);
+static_assert(cIsTriviallyDestructible<CTestStruct1 const>);
 static_assert(cIsTriviallyDestructible<ETestEnum>);
 static_assert(cIsTriviallyDestructible<int>);
 static_assert(cIsTriviallyDestructible<CTestClass>);

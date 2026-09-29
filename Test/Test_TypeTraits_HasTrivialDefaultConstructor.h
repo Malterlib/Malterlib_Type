@@ -16,9 +16,9 @@ namespace NTrivial
 	static_assert(!cIsTrivialllyDefaultConstructible<CNonTrivialCopyInt>);
 	static_assert(!cIsTrivialllyDefaultConstructible<CNonTrivialCopyBoth>);
 
-	#ifndef DMibCompiler_GCC
+#ifndef DMibCompiler_GCC
 	static_assert(!cIsTrivialllyDefaultConstructible<CNonTrivialCopyDerived>);
-	#endif
+#endif
 	static_assert(!cIsTrivialllyDefaultConstructible<CNonTrivialCopyDerivedOverride>);
 	static_assert(cIsTrivialllyDefaultConstructible<CTrivial>);
 
@@ -36,10 +36,10 @@ static_assert(cIsTrivialllyDefaultConstructible<CTestClass0>);
 static_assert(cIsTrivialllyDefaultConstructible<CTestClass1>);
 static_assert(cIsTrivialllyDefaultConstructible<CTestStruct0>);
 static_assert(cIsTrivialllyDefaultConstructible<CTestStruct1>);
-static_assert(cIsTrivialllyDefaultConstructible<const CTestClass0>);
-static_assert(cIsTrivialllyDefaultConstructible<const CTestClass1>);
-static_assert(cIsTrivialllyDefaultConstructible<const CTestStruct0>);
-static_assert(cIsTrivialllyDefaultConstructible<const CTestStruct1>);
+static_assert(cIsTrivialllyDefaultConstructible<CTestClass0 const>);
+static_assert(cIsTrivialllyDefaultConstructible<CTestClass1 const>);
+static_assert(cIsTrivialllyDefaultConstructible<CTestStruct0 const>);
+static_assert(cIsTrivialllyDefaultConstructible<CTestStruct1 const>);
 static_assert(cIsTrivialllyDefaultConstructible<ETestEnum>);
 static_assert(cIsTrivialllyDefaultConstructible<int>);
 static_assert(cIsTrivialllyDefaultConstructible<CTestClass>);

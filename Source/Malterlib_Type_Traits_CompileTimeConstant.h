@@ -8,11 +8,7 @@
 
 namespace NMib::NTraits
 {
-	template
-	<
-		typename t_CType
-		, t_CType t_Value
-	>
+	template <typename t_CType, t_CType t_Value>
 	struct TCCompileTimeConstant
 	{
 		using CType = t_CType;
@@ -33,12 +29,14 @@ namespace NMib::NTraits
 	class CFalseBySize : public CCompileTimeFalse
 	{
 		uint8 m_Member[1];
+
 	public:
 	};
 
 	class CTrueBySize : public CCompileTimeTrue
 	{
 		uint8 m_Member[2];
+
 	public:
 	};
 }

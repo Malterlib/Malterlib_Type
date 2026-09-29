@@ -27,4 +27,3 @@
 
 #include "Test_TypeTraits_POD.h"
 
-

@@ -187,15 +187,11 @@ static_assert(!TCMemberFunctionPointerTraits<CTest3DArrayC>::mc_IsMemberFunction
 static_assert(!TCMemberFunctionPointerTraits<void *>::mc_IsMemberFunctionPointer);
 static_assert(!TCMemberFunctionPointerTraits<void>::mc_IsMemberFunctionPointer);
 
-
 /***************************************************************************************************\
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 | Arity
 |___________________________________________________________________________________________________|
 \***************************************************************************************************/
-
-
-
 
 static_assert(!TCFunctionTraits<CTestUnion>::mc_Arity);
 static_assert(!TCFunctionTraits<CTestClass0>::mc_Arity);
@@ -286,8 +282,6 @@ static_assert(!TCFunctionTraits<CTest3DArrayC>::mc_Arity);
 static_assert(!TCFunctionTraits<void *>::mc_Arity);
 static_assert(!TCFunctionTraits<void>::mc_Arity);
 
-
-
 static_assert(!TCMemberFunctionPointerTraits<CTestUnion>::mc_Arity);
 static_assert(!TCMemberFunctionPointerTraits<CTestClass0>::mc_Arity);
 static_assert(!TCMemberFunctionPointerTraits<CTestClass1>::mc_Arity);
@@ -377,15 +371,11 @@ static_assert(!TCMemberFunctionPointerTraits<CTest3DArrayC>::mc_Arity);
 static_assert(!TCMemberFunctionPointerTraits<void *>::mc_Arity);
 static_assert(!TCMemberFunctionPointerTraits<void>::mc_Arity);
 
-
-
 /***************************************************************************************************\
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 | Ellipsis
 |___________________________________________________________________________________________________|
 \***************************************************************************************************/
-
-
 
 static_assert(!TCFunctionTraits<CTestUnion>::mc_IsEllipsis);
 static_assert(!TCFunctionTraits<CTestClass0>::mc_IsEllipsis);
@@ -476,8 +466,6 @@ static_assert(!TCFunctionTraits<CTest3DArrayC>::mc_IsEllipsis);
 static_assert(!TCFunctionTraits<void *>::mc_IsEllipsis);
 static_assert(!TCFunctionTraits<void>::mc_IsEllipsis);
 
-
-
 static_assert(!TCMemberFunctionPointerTraits<CTestUnion>::mc_IsEllipsis);
 static_assert(!TCMemberFunctionPointerTraits<CTestClass0>::mc_IsEllipsis);
 static_assert(!TCMemberFunctionPointerTraits<CTestClass1>::mc_IsEllipsis);
@@ -566,7 +554,6 @@ static_assert(!TCMemberFunctionPointerTraits<CTest3DArray>::mc_IsEllipsis);
 static_assert(!TCMemberFunctionPointerTraits<CTest3DArrayC>::mc_IsEllipsis);
 static_assert(!TCMemberFunctionPointerTraits<void *>::mc_IsEllipsis);
 static_assert(!TCMemberFunctionPointerTraits<void>::mc_IsEllipsis);
-
 
 /***************************************************************************************************\
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
@@ -751,7 +738,6 @@ static_assert(cIsSame<TCMemberFunctionPointerTraits<CTest3DArray>::CReturn, void
 static_assert(cIsSame<TCMemberFunctionPointerTraits<CTest3DArrayC>::CReturn, void>);
 static_assert(cIsSame<TCMemberFunctionPointerTraits<void *>::CReturn, void>);
 static_assert(cIsSame<TCMemberFunctionPointerTraits<void>::CReturn, void>);
-
 
 /***************************************************************************************************\
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
@@ -1031,8 +1017,6 @@ static_assert(cIsSame<TCMemberFunctionPointerTraits<CTest3DArray>::CClass, void>
 static_assert(cIsSame<TCMemberFunctionPointerTraits<CTest3DArrayC>::CClass, void>);
 static_assert(cIsSame<TCMemberFunctionPointerTraits<void *>::CClass, void>);
 static_assert(cIsSame<TCMemberFunctionPointerTraits<void>::CClass, void>);
-
-
 
 /***************************************************************************************************\
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|

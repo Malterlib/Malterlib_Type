@@ -178,7 +178,7 @@ static_assert(cIsSame<TCAddLValueReference<CTest3DArray2>, CTest3DArray2 &>);
 static_assert(cIsSame<TCAddLValueReference<CTest3DArray2C>, CTest3DArray2C &>);
 static_assert(cIsSame<TCAddLValueReference<CTest3DArray>, CTest3DArray &>);
 static_assert(cIsSame<TCAddLValueReference<CTest3DArrayC>, CTest3DArrayC &>);
-static_assert(cIsSame<TCAddLValueReference<void *>, void *&>);
+static_assert(cIsSame<TCAddLValueReference<void *>, void * &>);
 static_assert(cIsSame<TCAddLValueReference<void>, void>);
 
 // Remove pointer
@@ -269,5 +269,5 @@ static_assert(cIsSame<TCRemoveLValueReference<CTest3DArray2C>, CTest3DArray2C>);
 static_assert(cIsSame<TCRemoveLValueReference<CTest3DArray>, CTest3DArray>);
 static_assert(cIsSame<TCRemoveLValueReference<CTest3DArrayC>, CTest3DArrayC>);
 static_assert(cIsSame<TCRemoveLValueReference<void *>, void *>);
-static_assert(cIsSame<TCRemoveLValueReference<void *&>, void *>);
+static_assert(cIsSame<TCRemoveLValueReference<void * &>, void *>);
 static_assert(cIsSame<TCRemoveLValueReference<void>, void>);
