@@ -86,7 +86,6 @@ static_assert(cIsFundamental<int8>);
 static_assert(!cIsFundamental<int8>);
 #endif
 
-
 // These must always be fundamental
 static_assert(cIsFundamental<aint>);
 static_assert(cIsFundamental<uaint>);
@@ -233,229 +232,228 @@ static_assert(!cIsFundamental<fp8>);
 #endif
 
 #ifdef DMibPCanDo_int16384
-static_assert(cIsFundamental<const int16384>);
+static_assert(cIsFundamental<int16384 const>);
 #else
-static_assert(!cIsFundamental<const int16384>);
+static_assert(!cIsFundamental<int16384 const>);
 #endif
 #ifdef DMibPCanDo_int8192
-static_assert(cIsFundamental<const int8192>);
+static_assert(cIsFundamental<int8192 const>);
 #else
-static_assert(!cIsFundamental<const int8192>);
+static_assert(!cIsFundamental<int8192 const>);
 #endif
 #ifdef DMibPCanDo_int4096
-static_assert(cIsFundamental<const int4096>);
+static_assert(cIsFundamental<int4096 const>);
 #else
-static_assert(!cIsFundamental<const int4096>);
+static_assert(!cIsFundamental<int4096 const>);
 #endif
 #ifdef DMibPCanDo_int2048
-static_assert(cIsFundamental<const int2048>);
+static_assert(cIsFundamental<int2048 const>);
 #else
-static_assert(!cIsFundamental<const int2048>);
+static_assert(!cIsFundamental<int2048 const>);
 #endif
 #ifdef DMibPCanDo_int1024
-static_assert(cIsFundamental<const int1024>);
+static_assert(cIsFundamental<int1024 const>);
 #else
-static_assert(!cIsFundamental<const int1024>);
+static_assert(!cIsFundamental<int1024 const>);
 #endif
 #ifdef DMibPCanDo_int512
-static_assert(cIsFundamental<const int512>);
+static_assert(cIsFundamental<int512 const>);
 #else
-static_assert(!cIsFundamental<const int512>);
+static_assert(!cIsFundamental<int512 const>);
 #endif
 #ifdef DMibPCanDo_int256
-static_assert(cIsFundamental<const int256>);
+static_assert(cIsFundamental<int256 const>);
 #else
-static_assert(!cIsFundamental<const int256>);
+static_assert(!cIsFundamental<int256 const>);
 #endif
 #ifdef DMibPCanDo_int160
-static_assert(cIsFundamental<const int160>);
+static_assert(cIsFundamental<int160 const>);
 #else
-static_assert(!cIsFundamental<const int160>);
+static_assert(!cIsFundamental<int160 const>);
 #endif
 #ifdef DMibPCanDo_int192
-static_assert(cIsFundamental<const int192>);
+static_assert(cIsFundamental<int192 const>);
 #else
-static_assert(!cIsFundamental<const int192>);
+static_assert(!cIsFundamental<int192 const>);
 #endif
 #ifdef DMibPCanDo_int128
-static_assert(cIsFundamental<const int128>);
+static_assert(cIsFundamental<int128 const>);
 #else
-static_assert(!cIsFundamental<const int128>);
+static_assert(!cIsFundamental<int128 const>);
 #endif
 #ifdef DMibPCanDo_int80
-static_assert(cIsFundamental<const int80>);
+static_assert(cIsFundamental<int80 const>);
 #else
-static_assert(!cIsFundamental<const int80>);
+static_assert(!cIsFundamental<int80 const>);
 #endif
 #ifdef DMibPCanDo_int96
-static_assert(cIsFundamental<const int96>);
+static_assert(cIsFundamental<int96 const>);
 #else
-static_assert(!cIsFundamental<const int96>);
+static_assert(!cIsFundamental<int96 const>);
 #endif
 #ifdef DMibPCanDo_int64
-static_assert(cIsFundamental<const int64>);
+static_assert(cIsFundamental<int64 const>);
 #else
-static_assert(!cIsFundamental<const int64>);
+static_assert(!cIsFundamental<int64 const>);
 #endif
 #ifdef DMibPCanDo_int32
-static_assert(cIsFundamental<const int32>);
+static_assert(cIsFundamental<int32 const>);
 #else
-static_assert(!cIsFundamental<const int32>);
+static_assert(!cIsFundamental<int32 const>);
 #endif
 #ifdef DMibPCanDo_int16
-static_assert(cIsFundamental<const int16>);
+static_assert(cIsFundamental<int16 const>);
 #else
-static_assert(!cIsFundamental<const int16>);
+static_assert(!cIsFundamental<int16 const>);
 #endif
 #ifdef DMibPCanDo_int8
-static_assert(cIsFundamental<const int8>);
+static_assert(cIsFundamental<int8 const>);
 #else
-static_assert(!cIsFundamental<const int8>);
+static_assert(!cIsFundamental<int8 const>);
 #endif
 
 // These must always be fundamental
-static_assert(cIsFundamental<const aint>);
-static_assert(cIsFundamental<const uaint>);
-static_assert(cIsFundamental<const smint>);
-static_assert(cIsFundamental<const umint>);
+static_assert(cIsFundamental<aint const>);
+static_assert(cIsFundamental<uaint const>);
+static_assert(cIsFundamental<smint const>);
+static_assert(cIsFundamental<umint const>);
 
 #ifdef DMibPCanDo_uint16384
-static_assert(cIsFundamental<const uint16384>);
+static_assert(cIsFundamental<uint16384 const>);
 #else
-static_assert(!cIsFundamental<const uint16384>);
+static_assert(!cIsFundamental<uint16384 const>);
 #endif
 #ifdef DMibPCanDo_uint8192
-static_assert(cIsFundamental<const uint8192>);
+static_assert(cIsFundamental<uint8192 const>);
 #else
-static_assert(!cIsFundamental<const uint8192>);
+static_assert(!cIsFundamental<uint8192 const>);
 #endif
 #ifdef DMibPCanDo_uint4096
-static_assert(cIsFundamental<const uint4096>);
+static_assert(cIsFundamental<uint4096 const>);
 #else
-static_assert(!cIsFundamental<const uint4096>);
+static_assert(!cIsFundamental<uint4096 const>);
 #endif
 #ifdef DMibPCanDo_uint2048
-static_assert(cIsFundamental<const uint2048>);
+static_assert(cIsFundamental<uint2048 const>);
 #else
-static_assert(!cIsFundamental<const uint2048>);
+static_assert(!cIsFundamental<uint2048 const>);
 #endif
 #ifdef DMibPCanDo_uint1024
-static_assert(cIsFundamental<const uint1024>);
+static_assert(cIsFundamental<uint1024 const>);
 #else
-static_assert(!cIsFundamental<const uint1024>);
+static_assert(!cIsFundamental<uint1024 const>);
 #endif
 #ifdef DMibPCanDo_uint512
-static_assert(cIsFundamental<const uint512>);
+static_assert(cIsFundamental<uint512 const>);
 #else
-static_assert(!cIsFundamental<const uint512>);
+static_assert(!cIsFundamental<uint512 const>);
 #endif
 #ifdef DMibPCanDo_uint256
-static_assert(cIsFundamental<const uint256>);
+static_assert(cIsFundamental<uint256 const>);
 #else
-static_assert(!cIsFundamental<const uint256>);
+static_assert(!cIsFundamental<uint256 const>);
 #endif
 #ifdef DMibPCanDo_uint160
-static_assert(cIsFundamental<const uint160>);
+static_assert(cIsFundamental<uint160 const>);
 #else
-static_assert(!cIsFundamental<const uint160>);
+static_assert(!cIsFundamental<uint160 const>);
 #endif
 #ifdef DMibPCanDo_uint192
-static_assert(cIsFundamental<const uint192>);
+static_assert(cIsFundamental<uint192 const>);
 #else
-static_assert(!cIsFundamental<const uint192>);
+static_assert(!cIsFundamental<uint192 const>);
 #endif
 #ifdef DMibPCanDo_uint128
-static_assert(cIsFundamental<const uint128>);
+static_assert(cIsFundamental<uint128 const>);
 #else
-static_assert(!cIsFundamental<const uint128>);
+static_assert(!cIsFundamental<uint128 const>);
 #endif
 #ifdef DMibPCanDo_uint80
-static_assert(cIsFundamental<const uint80>);
+static_assert(cIsFundamental<uint80 const>);
 #else
-static_assert(!cIsFundamental<const uint80>);
+static_assert(!cIsFundamental<uint80 const>);
 #endif
 #ifdef DMibPCanDo_uint96
-static_assert(cIsFundamental<const uint96>);
+static_assert(cIsFundamental<uint96 const>);
 #else
-static_assert(!cIsFundamental<const uint96>);
+static_assert(!cIsFundamental<uint96 const>);
 #endif
 #ifdef DMibPCanDo_uint64
-static_assert(cIsFundamental<const uint64>);
+static_assert(cIsFundamental<uint64 const>);
 #else
-static_assert(!cIsFundamental<const uint64>);
+static_assert(!cIsFundamental<uint64 const>);
 #endif
 #ifdef DMibPCanDo_uint32
-static_assert(cIsFundamental<const uint32>);
+static_assert(cIsFundamental<uint32 const>);
 #else
-static_assert(!cIsFundamental<const uint32>);
+static_assert(!cIsFundamental<uint32 const>);
 #endif
 #ifdef DMibPCanDo_uint16
-static_assert(cIsFundamental<const uint16>);
+static_assert(cIsFundamental<uint16 const>);
 #else
-static_assert(!cIsFundamental<const uint16>);
+static_assert(!cIsFundamental<uint16 const>);
 #endif
 #ifdef DMibPCanDo_uint8
-static_assert(cIsFundamental<const uint8>);
+static_assert(cIsFundamental<uint8 const>);
 #else
-static_assert(!cIsFundamental<const uint8>);
+static_assert(!cIsFundamental<uint8 const>);
 #endif
 
 #ifdef DMibPCanDo_fp4096
-static_assert(cIsFundamental<const pfp4096>);
+static_assert(cIsFundamental<pfp4096 const>);
 #else
-static_assert(!cIsFundamental<const fp4096>);
+static_assert(!cIsFundamental<fp4096 const>);
 #endif
 #ifdef DMibPCanDo_fp2048
-static_assert(cIsFundamental<const pfp2048>);
+static_assert(cIsFundamental<pfp2048 const>);
 #else
-static_assert(!cIsFundamental<const fp2048>);
+static_assert(!cIsFundamental<fp2048 const>);
 #endif
 #ifdef DMibPCanDo_fp1024
-static_assert(cIsFundamental<const pfp1024>);
+static_assert(cIsFundamental<pfp1024 const>);
 #else
-static_assert(!cIsFundamental<const fp1024>);
+static_assert(!cIsFundamental<fp1024 const>);
 #endif
 #ifdef DMibPCanDo_fp512
-static_assert(cIsFundamental<const pfp512>);
+static_assert(cIsFundamental<pfp512 const>);
 #else
-static_assert(!cIsFundamental<const fp512>);
+static_assert(!cIsFundamental<fp512 const>);
 #endif
 #ifdef DMibPCanDo_fp256
-static_assert(cIsFundamental<const pfp256>);
+static_assert(cIsFundamental<pfp256 const>);
 #else
-static_assert(!cIsFundamental<const fp256>);
+static_assert(!cIsFundamental<fp256 const>);
 #endif
 #ifdef DMibPCanDo_fp128
-static_assert(cIsFundamental<const pfp128>);
+static_assert(cIsFundamental<pfp128 const>);
 #else
-static_assert(!cIsFundamental<const fp128>);
+static_assert(!cIsFundamental<fp128 const>);
 #endif
 #ifdef DMibPCanDo_fp80
-static_assert(cIsFundamental<const pfp80>);
+static_assert(cIsFundamental<pfp80 const>);
 #else
-static_assert(!cIsFundamental<const fp80>);
+static_assert(!cIsFundamental<fp80 const>);
 #endif
 #ifdef DMibPCanDo_fp64
-static_assert(cIsFundamental<const pfp64>);
+static_assert(cIsFundamental<pfp64 const>);
 #else
-static_assert(!cIsFundamental<const fp64>);
+static_assert(!cIsFundamental<fp64 const>);
 #endif
 #ifdef DMibPCanDo_fp32
-static_assert(cIsFundamental<const pfp32>);
+static_assert(cIsFundamental<pfp32 const>);
 #else
-static_assert(!cIsFundamental<const fp32>);
+static_assert(!cIsFundamental<fp32 const>);
 #endif
 #ifdef DMibPCanDo_fp16
-static_assert(cIsFundamental<const pfp16>);
+static_assert(cIsFundamental<pfp16 const>);
 #else
-static_assert(!cIsFundamental<const fp16>);
+static_assert(!cIsFundamental<fp16 const>);
 #endif
 #ifdef DMibPCanDo_fp8
-static_assert(cIsFundamental<const pfp8>);
+static_assert(cIsFundamental<pfp8 const>);
 #else
-static_assert(!cIsFundamental<const fp8>);
+static_assert(!cIsFundamental<fp8 const>);
 #endif
-
 
 static_assert(!cIsFundamental<CTestUnion>);
 static_assert(!cIsFundamental<CTestClass0>);

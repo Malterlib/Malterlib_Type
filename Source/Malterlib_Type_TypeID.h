@@ -15,7 +15,6 @@ DMibTypeID(uint16, DMibCurrentTypeID + 6);
 DMibTypeID(uint32, DMibCurrentTypeID + 7);
 DMibTypeID(uint64, DMibCurrentTypeID + 8);
 
-
 #ifdef DMibPUniqueType_mint
 DMibTypeID(umint, DMibCurrentTypeID + 9);
 #endif

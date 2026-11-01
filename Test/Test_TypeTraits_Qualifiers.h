@@ -47,7 +47,6 @@ static_assert(cIsSame<TCAddConst<CTestPtrC>, CTestPtrC>);
 static_assert(cIsSame<TCAddConst<CTestCPtr>, CTestCPtrC>);
 static_assert(cIsSame<TCAddConst<CTestCPtrC>, CTestCPtrC>);
 
-
 static_assert(cIsSame<TCSetConst<CTestClass, 1>, CTestC>);
 static_assert(cIsSame<TCSetConst<CTestC, 1>, CTestC>);
 
@@ -72,7 +71,6 @@ static_assert(cIsSame<TCSetConst<CTestPtr, 0>, CTestPtr>);
 static_assert(cIsSame<TCSetConst<CTestPtrC, 0>, CTestPtr>);
 static_assert(cIsSame<TCSetConst<CTestCPtr, 0>, CTestCPtr>);
 static_assert(cIsSame<TCSetConst<CTestCPtrC, 0>, CTestCPtr>);
-
 
 static_assert(cIsSame<TCCopyConst<CTestClass, CTestClass>, CTestClass>);
 static_assert(cIsSame<TCCopyConst<CTestC, CTestClass>, CTestC>);
@@ -184,7 +182,6 @@ static_assert(cIsSame<TCRemoveQualifiers<CTestPtr>, CTestPtr>);
 static_assert(cIsSame<TCRemoveQualifiers<CTestPtrC>, CTestPtr>);
 static_assert(cIsSame<TCRemoveQualifiers<CTestCPtr>, CTestCPtr>);
 static_assert(cIsSame<TCRemoveQualifiers<CTestCPtrC>, CTestCPtr>);
-
 
 static_assert(cIsSame<TCRemoveQualifiers<PFFunc0>, PFFunc0>);
 static_assert(cIsSame<TCRemoveQualifiers<PFFunc1>, PFFunc1>);

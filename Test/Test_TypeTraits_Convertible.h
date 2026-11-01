@@ -48,10 +48,10 @@ static_assert(!cIsConvertible<CTestClass0, int>);
 static_assert(!cIsConvertible<CTestClass1, int>);
 static_assert(!cIsConvertible<CTestStruct0, int>);
 static_assert(!cIsConvertible<CTestStruct1, int>);
-static_assert(!cIsConvertible<const CTestClass0, int>);
-static_assert(!cIsConvertible<const CTestClass1, int>);
-static_assert(!cIsConvertible<const CTestStruct0, int>);
-static_assert(!cIsConvertible<const CTestStruct1, int>);
+static_assert(!cIsConvertible<CTestClass0 const, int>);
+static_assert(!cIsConvertible<CTestClass1 const, int>);
+static_assert(!cIsConvertible<CTestStruct0 const, int>);
+static_assert(!cIsConvertible<CTestStruct1 const, int>);
 static_assert(cIsConvertible<ETestEnum, int>);
 static_assert(cIsConvertible<int, int>);
 static_assert(!cIsConvertible<CTestClass, int>);
@@ -137,16 +137,15 @@ static_assert(!cIsConvertible<CTest3DArrayC, int>);
 static_assert(!cIsConvertible<void *, int>);
 static_assert(!cIsConvertible<void, int>);
 
-
 static_assert(cIsConvertible<CTestUnion, CTestUnion>);
 static_assert(cIsConvertible<CTestClass0, CTestClass0>);
 static_assert(cIsConvertible<CTestClass1, CTestClass1>);
 static_assert(cIsConvertible<CTestStruct0, CTestStruct0>);
 static_assert(cIsConvertible<CTestStruct1, CTestStruct1>);
-static_assert(cIsConvertible<const CTestClass0, const CTestClass0>);
-static_assert(cIsConvertible<const CTestClass1, const CTestClass1>);
-static_assert(cIsConvertible<const CTestStruct0, const CTestStruct0>);
-static_assert(cIsConvertible<const CTestStruct1, const CTestStruct1>);
+static_assert(cIsConvertible<CTestClass0 const, CTestClass0 const>);
+static_assert(cIsConvertible<CTestClass1 const, CTestClass1 const>);
+static_assert(cIsConvertible<CTestStruct0 const, CTestStruct0 const>);
+static_assert(cIsConvertible<CTestStruct1 const, CTestStruct1 const>);
 static_assert(cIsConvertible<ETestEnum, ETestEnum>);
 static_assert(cIsConvertible<int, int>);
 static_assert(cIsConvertible<CTestClass, CTestClass>);
@@ -245,7 +244,6 @@ static_assert(cIsConvertible<CTest3DArray2, TCDecay<CTest3DArray2>>);
 static_assert(cIsConvertible<CTest3DArray2C, TCDecay<CTest3DArray2C>>);
 static_assert(cIsConvertible<CTest3DArray, TCDecay<CTest3DArray>>);
 static_assert(cIsConvertible<CTest3DArrayC, TCDecay<CTest3DArrayC>>);
-
 
 static_assert(!cIsConvertible<CTestArray2, CTestArray2>);
 static_assert(!cIsConvertible<CTestArray2C, CTestArray2C>);

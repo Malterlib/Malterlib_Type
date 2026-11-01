@@ -21,6 +21,6 @@ namespace NMib
 #include "Malterlib_Type_Traits_Extensions.h"
 
 #ifndef DMibPNoShortCuts
-	using namespace NMib::NTraits;
+using namespace NMib::NTraits;
 #endif
 

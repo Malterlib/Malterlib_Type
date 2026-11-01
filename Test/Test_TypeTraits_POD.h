@@ -22,16 +22,15 @@ static_assert(cIsPod<CTestClassWithEnum>);
 static_assert(cIsPod<CTestClassWithPrivate>);
 static_assert(!cIsPod<CTestClassWithBase>);
 
-
 static_assert(cIsPod<CTestUnion>);
 static_assert(cIsPod<CTestClass0>);
 static_assert(cIsPod<CTestClass1>);
 static_assert(cIsPod<CTestStruct0>);
 static_assert(cIsPod<CTestStruct1>);
-static_assert(cIsPod<const CTestClass0>);
-static_assert(cIsPod<const CTestClass1>);
-static_assert(cIsPod<const CTestStruct0>);
-static_assert(cIsPod<const CTestStruct1>);
+static_assert(cIsPod<CTestClass0 const>);
+static_assert(cIsPod<CTestClass1 const>);
+static_assert(cIsPod<CTestStruct0 const>);
+static_assert(cIsPod<CTestStruct1 const>);
 static_assert(cIsPod<ETestEnum>);
 static_assert(cIsPod<int>);
 static_assert(cIsPod<CTestClass>);
