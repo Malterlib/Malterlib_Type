@@ -77,7 +77,7 @@ static_assert(!NMib::NTraits::cIsSame<unsigned int, umint>);
 static_assert(NMib::NTraits::cIsSame<unsigned int, uint32> || NMib::NTraits::cIsSame<unsigned int, umint>);
 #endif
 
-#ifdef DMibPUniqueType_mint
+#ifdef DMibPUniqueType_umint
 static_assert(!NMib::NTraits::cIsSame<umint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);
 #else
 static_assert(NMib::NTraits::cIsSame<umint, NMib::NTraits::TCUnsigned<NMib::NTraits::TCIntFromSize<sizeof(void *)>>>);

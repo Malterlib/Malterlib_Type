@@ -214,7 +214,7 @@ namespace NMib::NTraits
 	DMibTraitsImplementUnsigned(bool, uint8);
 #endif
 
-#ifdef DMibPUniqueType_mint
+#ifdef DMibPUniqueType_umint
 	DMibTraitsImplementSigned(smint, umint);
 #endif
 
@@ -297,21 +297,21 @@ namespace NMib::NTraits
 	template <typename t_CType>
 	using TCSmallerType = TCCopyQualifiers<t_CType, typename NPrivate::TCSmallerType<TCRemoveQualifiers<t_CType>>::CType>;
 
-#define DMibTraitsImplementSizeSmaller(_Smaller, _Larger) \
+#define DMibTraitsImplementSizeSmaller(d_Smaller, d_Larger) \
 	template <>	\
-	struct NMib::NTraits::NPrivate::TCSmallerType<_Larger> \
+	struct NMib::NTraits::NPrivate::TCSmallerType<d_Larger> \
 	{\
-		using CType = _Smaller; \
+		using CType = d_Smaller; \
 	};
 
-#define DMibTraitsImplementSizeLarger(_Smaller, _Larger) \
+#define DMibTraitsImplementSizeLarger(d_Smaller, d_Larger) \
 	template <>	\
-	struct NMib::NTraits::NPrivate::TCLargerType<_Smaller> \
+	struct NMib::NTraits::NPrivate::TCLargerType<d_Smaller> \
 	{\
-		using CType = _Larger; \
+		using CType = d_Larger; \
 	};
 
-#define DMibTraitsImplementSizePair(_Smaller, _Larger)  DMibTraitsImplementSizeSmaller(_Smaller, _Larger) DMibTraitsImplementSizeLarger(_Smaller, _Larger)
+#define DMibTraitsImplementSizePair(d_Smaller, d_Larger)  DMibTraitsImplementSizeSmaller(d_Smaller, d_Larger) DMibTraitsImplementSizeLarger(d_Smaller, d_Larger)
 
 #if defined(DMibPCanDo_uint8) && defined(DMibPCanDo_uint16)
 	DMibTraitsImplementSizePair(uint8, uint16);
