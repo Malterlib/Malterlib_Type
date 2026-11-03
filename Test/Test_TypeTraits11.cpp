@@ -12,13 +12,13 @@ namespace NNothrow
 
 	struct CThrowsAssignmentInt
 	{
-		CThrowsAssignmentInt &operator = (int);
+		CThrowsAssignmentInt &operator = (int _Value);
 	};
 
 	struct CThrowsAssignmentBoth
 	{
 		CThrowsAssignmentBoth &operator = (CThrowsAssignmentBoth const &_Abstract);
-		CThrowsAssignmentBoth &operator = (int);
+		CThrowsAssignmentBoth &operator = (int _Value);
 	};
 
 	struct CThrowsAssignmentDerived : public CThrowsAssignment
@@ -39,14 +39,14 @@ namespace NNothrow
 	struct CThrowsCopyInt
 	{
 		CThrowsCopyInt() noexcept;
-		CThrowsCopyInt(int);
+		CThrowsCopyInt(int _Value);
 	};
 
 	struct CThrowsCopyBoth
 	{
 		CThrowsCopyBoth() noexcept;
 		CThrowsCopyBoth(CThrowsCopyBoth const &_Abstract);
-		CThrowsCopyBoth(int);
+		CThrowsCopyBoth(int _Value);
 	};
 
 	struct CThrowsCopyDerived : public CThrowsCopy

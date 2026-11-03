@@ -43,7 +43,7 @@ struct CTestStruct3
 
 struct CTestStruct4
 {
-	int f_Member(int)
+	int f_Member(int _Value)
 	{
 		return 1;
 	}
@@ -59,7 +59,7 @@ struct CTestStruct5
 
 struct CTestStruct6
 {
-	static int fs_Member(int)
+	static int fs_Member(int _Value)
 	{
 		return 1;
 	}
@@ -72,7 +72,7 @@ struct CTestStruct7
 		return 0;
 	}
 
-	int f_Member(int)
+	int f_Member(int _Value)
 	{
 		return 1;
 	}
@@ -85,7 +85,7 @@ struct CTestStruct8
 		return 0;
 	}
 
-	static int fs_Member(int)
+	static int fs_Member(int _Value)
 	{
 		return 1;
 	}
@@ -98,7 +98,7 @@ struct CTestStruct9
 		return 0;
 	}
 
-	static int fs_Member(int)
+	static int fs_Member(int _Value)
 	{
 		return 1;
 	}
@@ -160,7 +160,7 @@ union CTestUnion3
 
 union CTestUnion4
 {
-	int f_Member(int)
+	int f_Member(int _Value)
 	{
 		return 1;
 	}
@@ -176,7 +176,7 @@ union CTestUnion5
 
 union CTestUnion6
 {
-	static int fs_Member(int)
+	static int fs_Member(int _Value)
 	{
 		return 1;
 	}
@@ -189,7 +189,7 @@ union CTestUnion7
 		return 1;
 	}
 
-	static int fs_Member(int)
+	static int fs_Member(int _Value)
 	{
 		return 1;
 	}
@@ -338,14 +338,14 @@ typedef CTestBase const &&CTestCRRef;
 	return CTestBase();
 }
 
-[[maybe_unused]] static CTestBase fsg_FFunc2(int)
+[[maybe_unused]] static CTestBase fsg_FFunc2(int _Value)
 {
 	return CTestBase();
 }
 
 typedef void (FFunc0)(void);
 typedef CTestBase (FFunc1)(void);
-typedef CTestBase (FFunc2)(int);
+typedef CTestBase (FFunc2)(int _Value);
 typedef FFunc0 *FFunc0Ptr;
 typedef FFunc1 *FFunc1Ptr;
 typedef FFunc2 *FFunc2Ptr;
@@ -369,14 +369,14 @@ typedef FFunc2Ptr const FFunc2PtrC;
 	return CTestBase();
 }
 
-[[maybe_unused]] static CTestBase fsg_FFunc2El(CTestBase, ...)
+[[maybe_unused]] static CTestBase fsg_FFunc2El(CTestBase _Base, ...)
 {
 	return CTestBase();
 }
 
 typedef void (FFunc0El)(...);
 typedef CTestBase (FFunc1El)(...);
-typedef CTestBase (FFunc2El)(CTestBase, ...);
+typedef CTestBase (FFunc2El)(CTestBase _Base, ...);
 typedef FFunc0El *FFunc0ElPtr;
 typedef FFunc1El *FFunc1ElPtr;
 typedef FFunc2El *FFunc2ElPtr;
@@ -393,28 +393,28 @@ typedef FFunc2ElPtr const FFunc2ElPtrC;
 
 typedef void (CTestClass0:: *FMFunc0Ptr)(void);
 typedef CTestBase (CTestClass0:: *FMFunc1Ptr)(void);
-typedef CTestBase (CTestClass0:: *FMFunc2Ptr)(int);
+typedef CTestBase (CTestClass0:: *FMFunc2Ptr)(int _Value);
 typedef FMFunc0Ptr const FMFunc0PtrC;
 typedef FMFunc1Ptr const FMFunc1PtrC;
 typedef FMFunc2Ptr const FMFunc2PtrC;
 
 typedef void (CTestClass0:: *FMFunc0CPtr)(void) const;
 typedef CTestBase (CTestClass0:: *FMFunc1CPtr)(void) const;
-typedef CTestBase (CTestClass0:: *FMFunc2CPtr)(int) const;
+typedef CTestBase (CTestClass0:: *FMFunc2CPtr)(int _Value) const;
 typedef FMFunc0CPtr const FMFunc0CPtrC;
 typedef FMFunc1CPtr const FMFunc1CPtrC;
 typedef FMFunc2CPtr const FMFunc2CPtrC;
 
 typedef void (CTestClass0:: *FMFunc0ElPtr)(...);
 typedef CTestBase (CTestClass0:: *FMFunc1ElPtr)(...);
-typedef CTestBase (CTestClass0:: *FMFunc2ElPtr)(CTestBase, ...);
+typedef CTestBase (CTestClass0:: *FMFunc2ElPtr)(CTestBase _Base, ...);
 typedef FMFunc0ElPtr const FMFunc0ElPtrC;
 typedef FMFunc1ElPtr const FMFunc1ElPtrC;
 typedef FMFunc2ElPtr const FMFunc2ElPtrC;
 
 typedef void (CTestClass0:: *FMFunc0ElCPtr)(...) const;
 typedef CTestBase (CTestClass0:: *FMFunc1ElCPtr)(...) const;
-typedef CTestBase (CTestClass0:: *FMFunc2ElCPtr)(CTestBase, ...) const;
+typedef CTestBase (CTestClass0:: *FMFunc2ElCPtr)(CTestBase _Base, ...) const;
 typedef FMFunc0ElCPtr const FMFunc0ElCPtrC;
 typedef FMFunc1ElCPtr const FMFunc1ElCPtrC;
 typedef FMFunc2ElCPtr const FMFunc2ElCPtrC;

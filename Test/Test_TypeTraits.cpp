@@ -17,7 +17,7 @@ struct TCHelpeer
 
 struct CTesting
 {
-	NMib::COrdering_Weak operator <=> (int) const noexcept
+	NMib::COrdering_Weak operator <=> (int _Value) const noexcept
 	{
 		return NMib::COrdering_Weak::equivalent;
 	}
@@ -39,17 +39,17 @@ struct CTesting4
 	}
 };
 
-NMib::COrdering_Weak operator <=> (int, CTesting const &) noexcept
+NMib::COrdering_Weak operator <=> (int _Left, CTesting const &_Right) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
 
-NMib::COrdering_Weak operator <=> (float, CTesting const &) noexcept
+NMib::COrdering_Weak operator <=> (float _Left, CTesting const &_Right) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
 
-NMib::COrdering_Weak operator <=> (CTesting const &, float) noexcept
+NMib::COrdering_Weak operator <=> (CTesting const &_Left, float _Right) noexcept
 {
 	return NMib::COrdering_Weak::equivalent;
 }
@@ -113,15 +113,15 @@ struct TCIsComparable
 	{
 	};
 
-	template <typename t_CLeft2, typename t_CRight2>
-	static auto fs_Both(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(NMib::fg_Forward<t_CLeft2>(_Left) < NMib::fg_Forward<t_CRight2>(_Right));
+	template <typename tf_CLeft2, typename tf_CRight2>
+	static auto fs_Both(tf_CLeft2 &&_Left, tf_CRight2 &&_Right) -> decltype(NMib::fg_Forward<tf_CLeft2>(_Left) < NMib::fg_Forward<tf_CRight2>(_Right));
 	static CDummy fs_Both(...);
 
-	template <typename t_CLeft2, typename t_CRight2>
-	static auto fs_Global(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(operator < (NMib::fg_Forward<t_CLeft2>(_Left), NMib::fg_Forward<t_CRight2>(_Right)));
+	template <typename tf_CLeft2, typename tf_CRight2>
+	static auto fs_Global(tf_CLeft2 &&_Left, tf_CRight2 &&_Right) -> decltype(operator < (NMib::fg_Forward<tf_CLeft2>(_Left), NMib::fg_Forward<tf_CRight2>(_Right)));
 	static CDummy fs_Global(...);
-	template <typename t_CLeft2, typename t_CRight2>
-	static auto fs_Local(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(NMib::fg_Forward<t_CLeft2>(_Left).operator < (NMib::fg_Forward<t_CRight2>(_Right)));
+	template <typename tf_CLeft2, typename tf_CRight2>
+	static auto fs_Local(tf_CLeft2 &&_Left, tf_CRight2 &&_Right) -> decltype(NMib::fg_Forward<tf_CLeft2>(_Left).operator < (NMib::fg_Forward<tf_CRight2>(_Right)));
 	static CDummy fs_Local(...);
 
 	static t_CLeft fs_Left();

@@ -38,25 +38,25 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams...)>
+		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams ...p_Params)>
 		{
 			static constexpr bool mc_Value = true;
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams...) noexcept>
+		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams ...p_Params) noexcept>
 		{
 			static constexpr bool mc_Value = true;
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams..., ...)>
+		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams ...p_Params, ...)>
 		{
 			static constexpr bool mc_Value = true;
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams..., ...) noexcept>
+		struct TCIsFunctionPointerHelper<t_CReturn (*)(tp_CParams ...p_Params, ...) noexcept>
 		{
 			static constexpr bool mc_Value = true;
 		};
@@ -74,7 +74,7 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams...), true>
+		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams ...p_Params), true>
 		{
 			static constexpr bool mc_IsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
@@ -86,7 +86,7 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams...) noexcept, true>
+		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams ...p_Params) noexcept, true>
 		{
 			static constexpr bool mc_IsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
@@ -98,7 +98,7 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...), true>
+		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams ...p_Params, ...), true>
 		{
 			static constexpr bool mc_IsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
@@ -110,7 +110,7 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...) noexcept, true>
+		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams ...p_Params, ...) noexcept, true>
 		{
 			static constexpr bool mc_IsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
@@ -146,25 +146,25 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
-		struct TCIsCallableWith<t_CType, t_CReturn (tp_CParams...)>
+		struct TCIsCallableWith<t_CType, t_CReturn (tp_CParams ...p_Params)>
 		{
 			static constexpr bool mc_Value = std::is_invocable_r_v<t_CReturn, t_CType, tp_CParams...>;
 		};
 
 		template <typename t_CType, typename ...tp_CParams>
-		struct TCIsCallableWith<t_CType, void (tp_CParams...)>
+		struct TCIsCallableWith<t_CType, void (tp_CParams ...p_Params)>
 		{
 			static constexpr bool mc_Value = std::is_invocable_v<t_CType, tp_CParams...>;
 		};
 
 		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
-		struct TCIsCallableWith<t_CType, t_CReturn (tp_CParams...) noexcept>
+		struct TCIsCallableWith<t_CType, t_CReturn (tp_CParams ...p_Params) noexcept>
 		{
 			static constexpr bool mc_Value = std::is_invocable_r_v<t_CReturn, t_CType, tp_CParams...>;
 		};
 
 		template <typename t_CType, typename ...tp_CParams>
-		struct TCIsCallableWith<t_CType, void (tp_CParams...) noexcept>
+		struct TCIsCallableWith<t_CType, void (tp_CParams ...p_Params) noexcept>
 		{
 			static constexpr bool mc_Value = std::is_invocable_v<t_CType, tp_CParams...>;
 		};
@@ -182,25 +182,25 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
-		struct TCIsNoExceptCallableWith<t_CType, t_CReturn (tp_CParams...)>
+		struct TCIsNoExceptCallableWith<t_CType, t_CReturn (tp_CParams ...p_Params)>
 		{
 			static constexpr bool mc_Value = std::is_nothrow_invocable_r_v<t_CReturn, t_CType, tp_CParams...>;
 		};
 
 		template <typename t_CType, typename ...tp_CParams>
-		struct TCIsNoExceptCallableWith<t_CType, void (tp_CParams...)>
+		struct TCIsNoExceptCallableWith<t_CType, void (tp_CParams ...p_Params)>
 		{
 			static constexpr bool mc_Value = std::is_nothrow_invocable_v<t_CType, tp_CParams...>;
 		};
 
 		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
-		struct TCIsNoExceptCallableWith<t_CType, t_CReturn (tp_CParams...) noexcept>
+		struct TCIsNoExceptCallableWith<t_CType, t_CReturn (tp_CParams ...p_Params) noexcept>
 		{
 			static constexpr bool mc_Value = std::is_nothrow_invocable_r_v<t_CReturn, t_CType, tp_CParams...>;
 		};
 
 		template <typename t_CType, typename ...tp_CParams>
-		struct TCIsNoExceptCallableWith<t_CType, void (tp_CParams...) noexcept>
+		struct TCIsNoExceptCallableWith<t_CType, void (tp_CParams ...p_Params) noexcept>
 		{
 			static constexpr bool mc_Value = std::is_nothrow_invocable_v<t_CType, tp_CParams...>;
 		};
@@ -227,25 +227,25 @@ namespace NMib::NTraits
 		struct TCCallableReturnTypeForImp;
 
 		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
-		struct TCCallableReturnTypeForImp<t_CType, t_CReturn (tp_CParams...)>
+		struct TCCallableReturnTypeForImp<t_CType, t_CReturn (tp_CParams ...p_Params)>
 		{
 			using CType = typename TCGetCallableReturnType<std::is_invocable_r_v<t_CReturn, t_CType, tp_CParams...>, t_CType, tp_CParams...>::CType;
 		};
 
 		template <typename t_CType, typename ...tp_CParams>
-		struct TCCallableReturnTypeForImp<t_CType, void (tp_CParams...)>
+		struct TCCallableReturnTypeForImp<t_CType, void (tp_CParams ...p_Params)>
 		{
 			using CType = typename TCGetCallableReturnType<std::is_invocable_v<t_CType, tp_CParams...>, t_CType, tp_CParams...>::CType;
 		};
 
 		template <typename t_CType, typename t_CReturn, typename ...tp_CParams>
-		struct TCCallableReturnTypeForImp<t_CType, t_CReturn (tp_CParams...) noexcept>
+		struct TCCallableReturnTypeForImp<t_CType, t_CReturn (tp_CParams ...p_Params) noexcept>
 		{
 			using CType = typename TCGetCallableReturnType<std::is_invocable_r_v<t_CReturn, t_CType, tp_CParams...>, t_CType, tp_CParams...>::CType;
 		};
 
 		template <typename t_CType, typename ...tp_CParams>
-		struct TCCallableReturnTypeForImp<t_CType, void (tp_CParams...) noexcept>
+		struct TCCallableReturnTypeForImp<t_CType, void (tp_CParams ...p_Params) noexcept>
 		{
 			using CType = typename TCGetCallableReturnType<std::is_invocable_v<t_CType, tp_CParams...>, t_CType, tp_CParams...>::CType;
 		};

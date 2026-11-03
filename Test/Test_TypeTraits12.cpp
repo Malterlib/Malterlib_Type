@@ -14,14 +14,14 @@ namespace NTrivial
 	struct CNonTrivialAssignmentInt
 	{
 	private:
-		CNonTrivialAssignmentInt &operator = (int);
+		CNonTrivialAssignmentInt &operator = (int _Value);
 	};
 
 	struct CNonTrivialAssignmentBoth
 	{
 	private:
 		CNonTrivialAssignmentBoth &operator = (CNonTrivialAssignmentBoth const &_Abstract);
-		CNonTrivialAssignmentBoth &operator = (int);
+		CNonTrivialAssignmentBoth &operator = (int _Value);
 	};
 
 	struct CNonTrivialAssignmentDerived : public CNonTrivialAssignment
@@ -43,14 +43,14 @@ namespace NTrivial
 	struct CNonTrivialCopyInt
 	{
 	private:
-		CNonTrivialCopyInt(int);
+		CNonTrivialCopyInt(int _Value);
 	};
 
 	struct CNonTrivialCopyBoth
 	{
 	private:
 		CNonTrivialCopyBoth(CNonTrivialCopyBoth const &_Abstract);
-		CNonTrivialCopyBoth(int);
+		CNonTrivialCopyBoth(int _Value);
 	};
 
 	struct CNonTrivialCopyDerived : public CNonTrivialCopy

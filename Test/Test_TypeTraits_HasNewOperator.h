@@ -29,18 +29,18 @@ namespace NHasNewOperator
 
 	struct CWithDelete
 	{
-		void operator delete (void *);
+		void operator delete (void *_pMemory);
 	};
 
 	struct CWithDeleteArray
 	{
-		void operator delete [] (void *);
+		void operator delete [] (void *_pMemory);
 	};
 
 	struct CWithDeleteBoth
 	{
-		void operator delete (void *);
-		void operator delete [] (void *);
+		void operator delete (void *_pMemory);
+		void operator delete [] (void *_pMemory);
 	};
 
 	struct CWithDeleteDerived : public CWithDeleteBoth
@@ -73,18 +73,18 @@ namespace NHasNewOperator
 
 	struct CWithSpecialDelete
 	{
-		void operator delete (void *, CTestClass0 _Special);
+		void operator delete (void *_pMemory, CTestClass0 _Special);
 	};
 
 	struct CWithSpecialDeleteArray
 	{
-		void operator delete [] (void *, CTestClass0 _Special);
+		void operator delete [] (void *_pMemory, CTestClass0 _Special);
 	};
 
 	struct CWithSpecialDeleteBoth
 	{
-		void operator delete (void *, CTestClass0 _Special);
-		void operator delete [] (void *, CTestClass0 _Special);
+		void operator delete (void *_pMemory, CTestClass0 _Special);
+		void operator delete [] (void *_pMemory, CTestClass0 _Special);
 	};
 
 	struct CWithSpecialDeleteDerived : public CWithSpecialDeleteBoth
@@ -121,22 +121,22 @@ namespace NHasNewOperator
 
 	struct CWithDualDelete
 	{
-		void operator delete (void *, CTestClass0 _Special);
-		void operator delete (void *);
+		void operator delete (void *_pMemory, CTestClass0 _Special);
+		void operator delete (void *_pMemory);
 	};
 
 	struct CWithDualDeleteArray
 	{
-		void operator delete [] (void *, CTestClass0 _Special);
-		void operator delete [] (void *);
+		void operator delete [] (void *_pMemory, CTestClass0 _Special);
+		void operator delete [] (void *_pMemory);
 	};
 
 	struct CWithDualDeleteBoth
 	{
-		void operator delete (void *, CTestClass0 _Special);
-		void operator delete [] (void *, CTestClass0 _Special);
-		void operator delete (void *);
-		void operator delete [] (void *);
+		void operator delete (void *_pMemory, CTestClass0 _Special);
+		void operator delete [] (void *_pMemory, CTestClass0 _Special);
+		void operator delete (void *_pMemory);
+		void operator delete [] (void *_pMemory);
 	};
 
 	struct CWithDualDeleteDerived : public CWithDualDeleteBoth

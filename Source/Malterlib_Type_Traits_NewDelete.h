@@ -69,13 +69,13 @@ namespace NMib::NTraits
 			}
 		;
 		template <typename t_CType>
-		concept cHasOperator_Delete_2 = requires (t_CType *_pMemory, std::destroying_delete_t)
+		concept cHasOperator_Delete_2 = requires (t_CType *_pMemory, std::destroying_delete_t _DestroyingDelete)
 			{
 				t_CType::operator delete (_pMemory, std::destroying_delete);
 			}
 		;
 		template <typename t_CType>
-		concept cHasOperator_Delete_3 = requires (t_CType *_pMemory, std::destroying_delete_t, std::size_t _Size)
+		concept cHasOperator_Delete_3 = requires (t_CType *_pMemory, std::destroying_delete_t _DestroyingDelete, std::size_t _Size)
 			{
 				t_CType::operator delete (_pMemory, std::destroying_delete, _Size);
 			}

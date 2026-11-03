@@ -68,7 +68,7 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename tf_CType, typename tf_CReturn>
-		tf_CType fg_GetBaseType(tf_CReturn tf_CType:: *);
+		tf_CType fg_GetBaseType(tf_CReturn tf_CType:: *_pMember);
 
 		template <typename t_CType>
 		struct TCGetBaseHelper

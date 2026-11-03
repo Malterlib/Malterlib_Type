@@ -9,7 +9,7 @@ namespace NConvertible
 
 	struct CTestConvert
 	{
-		CTestConvert(int);
+		CTestConvert(int _Value);
 		operator int ();
 	};
 
