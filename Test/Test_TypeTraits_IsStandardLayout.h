@@ -56,9 +56,9 @@ static_assert(!cIsStandardLayout<CTestCRef>);
 static_assert(!cIsStandardLayout<CTestRRef>);
 static_assert(!cIsStandardLayout<CTestCRRef>);
 #ifndef DCompiler_MSVC_Workaround
-static_assert(!cIsStandardLayout<PFFunc0>);
-static_assert(!cIsStandardLayout<PFFunc1>);
-static_assert(!cIsStandardLayout<PFFunc2>);
+static_assert(!cIsStandardLayout<FFunc0>);
+static_assert(!cIsStandardLayout<FFunc1>);
+static_assert(!cIsStandardLayout<FFunc2>);
 #endif
 static_assert(!cIsStandardLayout<FFunc0Ref>);
 static_assert(!cIsStandardLayout<FFunc1Ref>);
@@ -85,9 +85,9 @@ static_assert(cIsStandardLayout<FMFunc0CPtrC>);
 static_assert(cIsStandardLayout<FMFunc1CPtrC>);
 static_assert(cIsStandardLayout<FMFunc2CPtrC>);
 #ifndef DCompiler_MSVC_Workaround
-static_assert(!cIsStandardLayout<PFFunc0El>);
-static_assert(!cIsStandardLayout<PFFunc1El>);
-static_assert(!cIsStandardLayout<PFFunc2El>);
+static_assert(!cIsStandardLayout<FFunc0El>);
+static_assert(!cIsStandardLayout<FFunc1El>);
+static_assert(!cIsStandardLayout<FFunc2El>);
 #endif
 static_assert(!cIsStandardLayout<FFunc0ElRef>);
 static_assert(!cIsStandardLayout<FFunc1ElRef>);

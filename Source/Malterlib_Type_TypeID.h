@@ -3,7 +3,7 @@
 
 #pragma once
 
-#define DMibCurrentTypeIDType(d_Type) NMib::NMisc::TCTypeID<d_Type>::ETypeID + 1
+#define DMibCurrentTypeIDType(d_Type) NMib::NMisc::TCTypeID<d_Type>::mc_TypeID + 1
 #define DMibCurrentTypeID 0
 
 DMibTypeID(int8, DMibCurrentTypeID + 1);

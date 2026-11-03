@@ -10,7 +10,7 @@ namespace NMib::NTraits
 		template <typename t_CType>
 		struct TCMemberFunctionPointerTraitsHelper
 		{
-			using CFunctionType = void;
+			using FFunctionType = void; // NOLINT(malterlib-type-naming): what isn't a function gets void
 			using CReturn = void;
 			using CClass = void;
 			using CParams = NMeta::TCTypeList<>;
@@ -33,7 +33,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = false;
 
-			using CFunctionType = t_CReturn (tp_CParams...);
+			using FFunctionType = t_CReturn (tp_CParams...);
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
@@ -49,7 +49,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = false;
 
-			using CFunctionType = t_CReturn (tp_CParams...) noexcept;
+			using FFunctionType = t_CReturn (tp_CParams...) noexcept;
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
@@ -65,7 +65,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = true;
 			static constexpr bool mc_IsVolatile = false;
 
-			using CFunctionType = t_CReturn (tp_CParams...);
+			using FFunctionType = t_CReturn (tp_CParams...);
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
@@ -81,7 +81,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = true;
 			static constexpr bool mc_IsVolatile = false;
 
-			using CFunctionType = t_CReturn (tp_CParams...) noexcept;
+			using FFunctionType = t_CReturn (tp_CParams...) noexcept;
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
@@ -97,7 +97,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = true;
 
-			using CFunctionType = t_CReturn (tp_CParams...);
+			using FFunctionType = t_CReturn (tp_CParams...);
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
@@ -113,7 +113,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = true;
 
-			using CFunctionType = t_CReturn (tp_CParams...) noexcept;
+			using FFunctionType = t_CReturn (tp_CParams...) noexcept;
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
@@ -129,7 +129,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = true;
 			static constexpr bool mc_IsVolatile = true;
 
-			using CFunctionType = t_CReturn (tp_CParams...);
+			using FFunctionType = t_CReturn (tp_CParams...);
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
@@ -145,7 +145,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = true;
 			static constexpr bool mc_IsVolatile = true;
 
-			using CFunctionType = t_CReturn (tp_CParams...) noexcept;
+			using FFunctionType = t_CReturn (tp_CParams...) noexcept;
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams...>;
@@ -161,7 +161,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = false;
 
-			using CFunctionType = t_CReturn (tp_CParams..., ...);
+			using FFunctionType = t_CReturn (tp_CParams..., ...);
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
@@ -177,7 +177,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = false;
 
-			using CFunctionType = t_CReturn (tp_CParams..., ...) noexcept;
+			using FFunctionType = t_CReturn (tp_CParams..., ...) noexcept;
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
@@ -193,7 +193,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = true;
 			static constexpr bool mc_IsVolatile = false;
 
-			using CFunctionType = t_CReturn (tp_CParams..., ...);
+			using FFunctionType = t_CReturn (tp_CParams..., ...);
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
@@ -209,7 +209,7 @@ namespace NMib::NTraits
 			static constexpr bool c_IsConst = true;
 			static constexpr bool mc_IsVolatile = false;
 
-			using CFunctionType = t_CReturn (tp_CParams..., ...) noexcept;
+			using FFunctionType = t_CReturn (tp_CParams..., ...) noexcept;
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
@@ -225,7 +225,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = true;
 
-			using CFunctionType = t_CReturn (tp_CParams..., ...);
+			using FFunctionType = t_CReturn (tp_CParams..., ...);
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
@@ -241,7 +241,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = false;
 			static constexpr bool mc_IsVolatile = true;
 
-			using CFunctionType = t_CReturn (tp_CParams..., ...) noexcept;
+			using FFunctionType = t_CReturn (tp_CParams..., ...) noexcept;
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
@@ -257,7 +257,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = true;
 			static constexpr bool mc_IsVolatile = true;
 
-			using CFunctionType = t_CReturn (tp_CParams..., ...);
+			using FFunctionType = t_CReturn (tp_CParams..., ...);
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
@@ -273,7 +273,7 @@ namespace NMib::NTraits
 			static constexpr bool mc_IsConst = true;
 			static constexpr bool mc_IsVolatile = true;
 
-			using CFunctionType = t_CReturn (tp_CParams..., ...) noexcept;
+			using FFunctionType = t_CReturn (tp_CParams..., ...) noexcept;
 			using CReturn = t_CReturn;
 			using CClass = t_CClass;
 			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
@@ -292,7 +292,7 @@ namespace NMib::NTraits
 	using TCRemoveMemberFunctionPointer = TCConditional
 		<
 			cIsMemberFunctionPointer<t_CType>
-			, typename NPrivate::TCMemberFunctionPointerTraitsHelper<TCRemoveQualifiers<t_CType>>::CFunctionType
+			, typename NPrivate::TCMemberFunctionPointerTraitsHelper<TCRemoveQualifiers<t_CType>>::FFunctionType
 			, t_CType
 		>
 	;

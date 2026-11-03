@@ -343,19 +343,19 @@ typedef CTestBase const &&CTestCRRef;
 	return CTestBase();
 }
 
-typedef void (PFFunc0)(void);
-typedef CTestBase (PFFunc1)(void);
-typedef CTestBase (PFFunc2)(int);
-typedef PFFunc0 *FFunc0Ptr;
-typedef PFFunc1 *FFunc1Ptr;
-typedef PFFunc2 *FFunc2Ptr;
-typedef PFFunc0 &FFunc0Ref;
-typedef PFFunc1 &FFunc1Ref;
-typedef PFFunc2 &FFunc2Ref;
+typedef void (FFunc0)(void);
+typedef CTestBase (FFunc1)(void);
+typedef CTestBase (FFunc2)(int);
+typedef FFunc0 *FFunc0Ptr;
+typedef FFunc1 *FFunc1Ptr;
+typedef FFunc2 *FFunc2Ptr;
+typedef FFunc0 &FFunc0Ref;
+typedef FFunc1 &FFunc1Ref;
+typedef FFunc2 &FFunc2Ref;
 // Function rrefs shouldn't be possible?
-typedef PFFunc0 &&FFunc0RRef;
-typedef PFFunc1 &&FFunc1RRef;
-typedef PFFunc2 &&FFunc2RRef;
+typedef FFunc0 &&FFunc0RRef;
+typedef FFunc1 &&FFunc1RRef;
+typedef FFunc2 &&FFunc2RRef;
 typedef FFunc0Ptr const FFunc0PtrC;
 typedef FFunc1Ptr const FFunc1PtrC;
 typedef FFunc2Ptr const FFunc2PtrC;
@@ -374,19 +374,19 @@ typedef FFunc2Ptr const FFunc2PtrC;
 	return CTestBase();
 }
 
-typedef void (PFFunc0El)(...);
-typedef CTestBase (PFFunc1El)(...);
-typedef CTestBase (PFFunc2El)(CTestBase, ...);
-typedef PFFunc0El *FFunc0ElPtr;
-typedef PFFunc1El *FFunc1ElPtr;
-typedef PFFunc2El *FFunc2ElPtr;
-typedef PFFunc0El &FFunc0ElRef;
-typedef PFFunc1El &FFunc1ElRef;
-typedef PFFunc2El &FFunc2ElRef;
+typedef void (FFunc0El)(...);
+typedef CTestBase (FFunc1El)(...);
+typedef CTestBase (FFunc2El)(CTestBase, ...);
+typedef FFunc0El *FFunc0ElPtr;
+typedef FFunc1El *FFunc1ElPtr;
+typedef FFunc2El *FFunc2ElPtr;
+typedef FFunc0El &FFunc0ElRef;
+typedef FFunc1El &FFunc1ElRef;
+typedef FFunc2El &FFunc2ElRef;
 // Function rrefs shouldn't be possible?
-typedef PFFunc0El &&FFunc0ElRRef;
-typedef PFFunc1El &&FFunc1ElRRef;
-typedef PFFunc2El &&FFunc2ElRRef;
+typedef FFunc0El &&FFunc0ElRRef;
+typedef FFunc1El &&FFunc1ElRRef;
+typedef FFunc2El &&FFunc2ElRRef;
 typedef FFunc0ElPtr const FFunc0ElPtrC;
 typedef FFunc1ElPtr const FFunc1ElPtrC;
 typedef FFunc2ElPtr const FFunc2ElPtrC;

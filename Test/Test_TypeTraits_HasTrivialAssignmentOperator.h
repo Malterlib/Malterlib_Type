@@ -55,9 +55,9 @@ static_assert(cIsTriviallyCopyAssignable<CTestRRef>);
 static_assert(!cIsTriviallyCopyAssignable<CTestCRRef>);
 #ifndef DCompiler_MSVC
 #endif
-static_assert(!cIsTriviallyCopyAssignable<PFFunc0>);
-static_assert(!cIsTriviallyCopyAssignable<PFFunc1>);
-static_assert(!cIsTriviallyCopyAssignable<PFFunc2>);
+static_assert(!cIsTriviallyCopyAssignable<FFunc0>);
+static_assert(!cIsTriviallyCopyAssignable<FFunc1>);
+static_assert(!cIsTriviallyCopyAssignable<FFunc2>);
 static_assert(!cIsTriviallyCopyAssignable<FFunc0Ref>);
 static_assert(!cIsTriviallyCopyAssignable<FFunc1Ref>);
 static_assert(!cIsTriviallyCopyAssignable<FFunc2Ref>);
@@ -82,9 +82,9 @@ static_assert(cIsTriviallyCopyAssignable<FMFunc2CPtr>);
 static_assert(!cIsTriviallyCopyAssignable<FMFunc0CPtrC>);
 static_assert(!cIsTriviallyCopyAssignable<FMFunc1CPtrC>);
 static_assert(!cIsTriviallyCopyAssignable<FMFunc2CPtrC>);
-static_assert(!cIsTriviallyCopyAssignable<PFFunc0El>);
-static_assert(!cIsTriviallyCopyAssignable<PFFunc1El>);
-static_assert(!cIsTriviallyCopyAssignable<PFFunc2El>);
+static_assert(!cIsTriviallyCopyAssignable<FFunc0El>);
+static_assert(!cIsTriviallyCopyAssignable<FFunc1El>);
+static_assert(!cIsTriviallyCopyAssignable<FFunc2El>);
 static_assert(!cIsTriviallyCopyAssignable<FFunc0ElRef>);
 static_assert(!cIsTriviallyCopyAssignable<FFunc1ElRef>);
 static_assert(!cIsTriviallyCopyAssignable<FFunc2ElRef>);

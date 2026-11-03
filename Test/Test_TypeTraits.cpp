@@ -7,7 +7,7 @@ template <typename t_CGod>
 struct TCHula
 {
 private:
-	typedef typename t_CGod::CGot oeu;
+	typedef typename t_CGod::CGot COeu;
 };
 
 template <umint t_Value>
@@ -107,7 +107,7 @@ static_assert(NMib::NTraits::cIsSame<ch32, int32> || NMib::NTraits::cIsSame<ch32
 #endif
 
 template <typename t_CLeft, typename t_CRight>
-struct cIsComparable
+struct TCIsComparable
 {
 	struct CDummy
 	{
@@ -128,42 +128,39 @@ struct cIsComparable
 	static t_CRight fs_Right();
 
 	typedef decltype(fg_Both(fs_Left(), fs_Right())) CType;
-	enum
-	{
-		ms_Both     = !cIsSame<CType, CDummy>
-		, ms_Global = !cIsSame<decltype(fg_Global(fs_Left(), fs_Right())), CDummy>
-		, ms_Local  = !cIsSame<decltype(fg_Local(fs_Left(), fs_Right())), CDummy>
-		, mc_Value  = ms_Both
-	};
+	static constexpr bool mc_bBoth = !cIsSame<CType, CDummy>;
+	static constexpr bool mc_bGlobal = !cIsSame<decltype(fg_Global(fs_Left(), fs_Right())), CDummy>;
+	static constexpr bool mc_bLocal = !cIsSame<decltype(fg_Local(fs_Left(), fs_Right())), CDummy>;
+	static constexpr bool mc_Value = mc_bBoth;
 };
 #if 0
-static_assert(!cIsComparable<CTesting, CTesting>);
-static_assert(!cIsComparable<CTesting, CTesting2>);
-static_assert(!cIsComparable<CTesting2, CTesting>);
-static_assert(cIsComparable<CTesting, int>);
-static_assert(cIsComparable<CTesting, int>::ms_Local);
-static_assert(cIsComparable<CTesting, int>::ms_Both);
-static_assert(cIsComparable<CTesting, int>::ms_Global);
-static_assert(cIsComparable<int, CTesting>);
-static_assert(cIsComparable<CTesting, float>);
-static_assert(cIsComparable<float, CTesting>);
-static_assert(cIsComparable<CTesting, float>);
-static_assert(!cIsComparable<double, CTesting>);
+static_assert(!TCIsComparable<CTesting, CTesting>);
+static_assert(!TCIsComparable<CTesting, CTesting2>);
+static_assert(!TCIsComparable<CTesting2, CTesting>);
+static_assert(TCIsComparable<CTesting, int>);
+static_assert(TCIsComparable<CTesting, int>::mc_bLocal);
+static_assert(TCIsComparable<CTesting, int>::mc_bBoth);
+static_assert(TCIsComparable<CTesting, int>::mc_bGlobal);
+static_assert(TCIsComparable<int, CTesting>);
+static_assert(TCIsComparable<CTesting, float>);
+static_assert(TCIsComparable<float, CTesting>);
+static_assert(TCIsComparable<CTesting, float>);
+static_assert(!TCIsComparable<double, CTesting>);
 
-static_assert(cIsComparable<int, CTesting4>);
-static_assert(cIsComparable<CTesting4, int>);
-static_assert(cIsComparable<CTesting4, float>);
-static_assert(cIsComparable<float, CTesting4>);
+static_assert(TCIsComparable<int, CTesting4>);
+static_assert(TCIsComparable<CTesting4, int>);
+static_assert(TCIsComparable<CTesting4, float>);
+static_assert(TCIsComparable<float, CTesting4>);
 
 //static_assert(cIsComparableLessThan<int, CTesting4>);
 //static_assert(cIsComparableLessThan<CTesting4, int>);
 //static_assert(cIsComparableLessThan<CTesting4, float>);
 //static_assert(cIsComparableLessThan<float, CTesting4>);
 
-static_assert(cIsComparable<int, CTesting3>);
-static_assert(cIsComparable<CTesting3, int>);
-static_assert(cIsComparable<int, int>);
-static_assert(!cIsComparable<CTesting3, double>);
+static_assert(TCIsComparable<int, CTesting3>);
+static_assert(TCIsComparable<CTesting3, int>);
+static_assert(TCIsComparable<int, int>);
+static_assert(!TCIsComparable<CTesting3, double>);
 
 static_assert(cIsComparableLessThan<int, int>);
 
@@ -185,9 +182,9 @@ namespace
 	{
 		void f_DoTests()
 		{
-			// cIsComparable<int, int>::CType Typeee;Typeee;
-			// cIsComparable<float, char *>::CType Typeee5;Typeee5;
-			// cIsComparable<CTesting, int>::CType Typeee6;Typeee6;
+			// TCIsComparable<int, int>::CType Typeee;Typeee;
+			// TCIsComparable<float, char *>::CType Typeee5;Typeee5;
+			// TCIsComparable<CTesting, int>::CType Typeee6;Typeee6;
 			// auto Test = operator < (0, 0);
 			// int x = 0;
 			// DMibPDebugBreak;
