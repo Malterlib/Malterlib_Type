@@ -16,22 +16,22 @@ namespace NMib::NTraits
 			using CParams = NMeta::TCTypeList<>;
 
 			static constexpr umint mc_Arity = 0;
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = false;
-			static constexpr bool mc_IsNoExecpt = false;
-			static constexpr bool mc_IsMemberFunctionPointer = false;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = false;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsMemberFunctionPointer = false;
 		};
 
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params)>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsNoExcept = false;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = false;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params);
 			using CReturn = t_CReturn;
@@ -42,12 +42,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params) noexcept>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = false;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsNoExcept = true;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params) noexcept;
 			using CReturn = t_CReturn;
@@ -58,12 +58,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params) const>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsNoExcept = false;
-			static constexpr bool mc_IsConst = true;
-			static constexpr bool mc_IsVolatile = false;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsConst = true;
+			static constexpr bool mc_bIsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params);
 			using CReturn = t_CReturn;
@@ -74,12 +74,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params) const noexcept>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool mc_IsConst = true;
-			static constexpr bool mc_IsVolatile = false;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsNoExcept = true;
+			static constexpr bool mc_bIsConst = true;
+			static constexpr bool mc_bIsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params) noexcept;
 			using CReturn = t_CReturn;
@@ -90,12 +90,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params) volatile>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsNoExcept = false;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = true;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = true;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params);
 			using CReturn = t_CReturn;
@@ -106,12 +106,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params) volatile noexcept>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = true;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsNoExcept = true;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = true;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params) noexcept;
 			using CReturn = t_CReturn;
@@ -122,12 +122,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params) const volatile>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsNoExcept = false;
-			static constexpr bool mc_IsConst = true;
-			static constexpr bool mc_IsVolatile = true;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsConst = true;
+			static constexpr bool mc_bIsVolatile = true;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params);
 			using CReturn = t_CReturn;
@@ -138,12 +138,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params) const volatile noexcept>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = false;
-			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool mc_IsConst = true;
-			static constexpr bool mc_IsVolatile = true;
+			static constexpr bool mc_bIsEllipsis = false;
+			static constexpr bool mc_bIsNoExcept = true;
+			static constexpr bool mc_bIsConst = true;
+			static constexpr bool mc_bIsVolatile = true;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params) noexcept;
 			using CReturn = t_CReturn;
@@ -154,12 +154,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params, ...)>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = true;
-			static constexpr bool mc_IsNoExcept = false;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = false;
+			static constexpr bool mc_bIsEllipsis = true;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...);
 			using CReturn = t_CReturn;
@@ -170,12 +170,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params, ...) noexcept>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = true;
-			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = false;
+			static constexpr bool mc_bIsEllipsis = true;
+			static constexpr bool mc_bIsNoExcept = true;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...) noexcept;
 			using CReturn = t_CReturn;
@@ -186,12 +186,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params, ...) const>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = true;
-			static constexpr bool mc_IsNoExcept = false;
-			static constexpr bool mc_IsConst = true;
-			static constexpr bool mc_IsVolatile = false;
+			static constexpr bool mc_bIsEllipsis = true;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsConst = true;
+			static constexpr bool mc_bIsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...);
 			using CReturn = t_CReturn;
@@ -202,12 +202,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params, ...) const noexcept>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = true;
-			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool mc_IsConst = true;
-			static constexpr bool mc_IsVolatile = false;
+			static constexpr bool mc_bIsEllipsis = true;
+			static constexpr bool mc_bIsNoExcept = true;
+			static constexpr bool mc_bIsConst = true;
+			static constexpr bool mc_bIsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...) noexcept;
 			using CReturn = t_CReturn;
@@ -218,12 +218,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params, ...) volatile>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = true;
-			static constexpr bool mc_IsNoExcept = false;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = true;
+			static constexpr bool mc_bIsEllipsis = true;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = true;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...);
 			using CReturn = t_CReturn;
@@ -234,12 +234,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params, ...) volatile noexcept>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = true;
-			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool mc_IsConst = false;
-			static constexpr bool mc_IsVolatile = true;
+			static constexpr bool mc_bIsEllipsis = true;
+			static constexpr bool mc_bIsNoExcept = true;
+			static constexpr bool mc_bIsConst = false;
+			static constexpr bool mc_bIsVolatile = true;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...) noexcept;
 			using CReturn = t_CReturn;
@@ -250,12 +250,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params, ...) const volatile>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = true;
-			static constexpr bool mc_IsNoExcept = false;
-			static constexpr bool mc_IsConst = true;
-			static constexpr bool mc_IsVolatile = true;
+			static constexpr bool mc_bIsEllipsis = true;
+			static constexpr bool mc_bIsNoExcept = false;
+			static constexpr bool mc_bIsConst = true;
+			static constexpr bool mc_bIsVolatile = true;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...);
 			using CReturn = t_CReturn;
@@ -266,12 +266,12 @@ namespace NMib::NTraits
 		template <typename t_CReturn, typename t_CClass, typename ...tp_CParams>
 		struct TCMemberFunctionPointerTraitsHelper<t_CReturn (t_CClass:: *)(tp_CParams ...p_Params, ...) const volatile noexcept>
 		{
-			static constexpr bool mc_IsMemberFunctionPointer = true;
+			static constexpr bool mc_bIsMemberFunctionPointer = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
-			static constexpr bool mc_IsEllipsis = true;
-			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool mc_IsConst = true;
-			static constexpr bool mc_IsVolatile = true;
+			static constexpr bool mc_bIsEllipsis = true;
+			static constexpr bool mc_bIsNoExcept = true;
+			static constexpr bool mc_bIsConst = true;
+			static constexpr bool mc_bIsVolatile = true;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...) noexcept;
 			using CReturn = t_CReturn;
