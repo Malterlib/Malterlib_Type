@@ -206,7 +206,7 @@ namespace NMib::NTraits
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
 			static constexpr bool mc_IsNoExcept = true;
-			static constexpr bool c_IsConst = true;
+			static constexpr bool mc_IsConst = true;
 			static constexpr bool mc_IsVolatile = false;
 
 			using FFunctionType = t_CReturn (tp_CParams ...p_Params, ...) noexcept;

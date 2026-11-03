@@ -106,7 +106,7 @@ struct CTestStruct9
 
 struct CTestStruct10
 {
-	static int m_Member;
+	static int ms_Member;
 };
 
 struct CTestStruct11 : public CTestStruct10
@@ -306,7 +306,7 @@ struct CTestClassWithBase : public CTestClass1
 struct CTestClassWithPrivate
 {
 private:
-	ETestEnum m_Test;
+	ETestEnum mp_Test;
 };
 
 struct CTestBase

@@ -29,12 +29,12 @@ namespace NMib::NTraits
 	struct CFalseBySize : public CCompileTimeFalse
 	{
 	private:
-		uint8 m_Member[1];
+		uint8 mp_Member[1];
 	};
 
 	struct CTrueBySize : public CCompileTimeTrue
 	{
 	private:
-		uint8 m_Member[2];
+		uint8 mp_Member[2];
 	};
 }
