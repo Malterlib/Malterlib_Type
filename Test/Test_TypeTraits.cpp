@@ -114,23 +114,23 @@ struct TCIsComparable
 	};
 
 	template <typename t_CLeft2, typename t_CRight2>
-	static auto fg_Both(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(NMib::fg_Forward<t_CLeft2>(_Left) < NMib::fg_Forward<t_CRight2>(_Right));
-	static CDummy fg_Both(...);
+	static auto fs_Both(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(NMib::fg_Forward<t_CLeft2>(_Left) < NMib::fg_Forward<t_CRight2>(_Right));
+	static CDummy fs_Both(...);
 
 	template <typename t_CLeft2, typename t_CRight2>
-	static auto fg_Global(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(operator < (NMib::fg_Forward<t_CLeft2>(_Left), NMib::fg_Forward<t_CRight2>(_Right)));
-	static CDummy fg_Global(...);
+	static auto fs_Global(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(operator < (NMib::fg_Forward<t_CLeft2>(_Left), NMib::fg_Forward<t_CRight2>(_Right)));
+	static CDummy fs_Global(...);
 	template <typename t_CLeft2, typename t_CRight2>
-	static auto fg_Local(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(NMib::fg_Forward<t_CLeft2>(_Left).operator < (NMib::fg_Forward<t_CRight2>(_Right)));
-	static CDummy fg_Local(...);
+	static auto fs_Local(t_CLeft2 &&_Left, t_CRight2 &&_Right) -> decltype(NMib::fg_Forward<t_CLeft2>(_Left).operator < (NMib::fg_Forward<t_CRight2>(_Right)));
+	static CDummy fs_Local(...);
 
 	static t_CLeft fs_Left();
 	static t_CRight fs_Right();
 
-	typedef decltype(fg_Both(fs_Left(), fs_Right())) CType;
+	typedef decltype(fs_Both(fs_Left(), fs_Right())) CType;
 	static constexpr bool mc_bBoth = !cIsSame<CType, CDummy>;
-	static constexpr bool mc_bGlobal = !cIsSame<decltype(fg_Global(fs_Left(), fs_Right())), CDummy>;
-	static constexpr bool mc_bLocal = !cIsSame<decltype(fg_Local(fs_Left(), fs_Right())), CDummy>;
+	static constexpr bool mc_bGlobal = !cIsSame<decltype(fs_Global(fs_Left(), fs_Right())), CDummy>;
+	static constexpr bool mc_bLocal = !cIsSame<decltype(fs_Local(fs_Left(), fs_Right())), CDummy>;
 	static constexpr bool mc_Value = mc_bBoth;
 };
 #if 0

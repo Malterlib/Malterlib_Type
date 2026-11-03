@@ -147,7 +147,7 @@ namespace NHasNewOperator
 	{
 	};
 
-	void Testing()
+	void fg_Testing()
 	{
 		//void *pTest = CWithNew::operator new(5);
 		//CWithDelete::operator delete(pTest);

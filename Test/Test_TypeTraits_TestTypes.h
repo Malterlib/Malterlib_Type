@@ -35,7 +35,7 @@ struct CTestStruct2
 
 struct CTestStruct3
 {
-	int m_Member()
+	int f_Member()
 	{
 		return 0;
 	}
@@ -43,7 +43,7 @@ struct CTestStruct3
 
 struct CTestStruct4
 {
-	int m_Member(int)
+	int f_Member(int)
 	{
 		return 1;
 	}
@@ -51,7 +51,7 @@ struct CTestStruct4
 
 struct CTestStruct5
 {
-	static int m_Member()
+	static int fs_Member()
 	{
 		return 0;
 	}
@@ -59,7 +59,7 @@ struct CTestStruct5
 
 struct CTestStruct6
 {
-	static int m_Member(int)
+	static int fs_Member(int)
 	{
 		return 1;
 	}
@@ -67,12 +67,12 @@ struct CTestStruct6
 
 struct CTestStruct7
 {
-	int m_Member()
+	int f_Member()
 	{
 		return 0;
 	}
 
-	int m_Member(int)
+	int f_Member(int)
 	{
 		return 1;
 	}
@@ -80,12 +80,12 @@ struct CTestStruct7
 
 struct CTestStruct8
 {
-	static int m_Member()
+	static int fs_Member()
 	{
 		return 0;
 	}
 
-	static int m_Member(int)
+	static int fs_Member(int)
 	{
 		return 1;
 	}
@@ -93,12 +93,12 @@ struct CTestStruct8
 
 struct CTestStruct9
 {
-	int m_Member()
+	int f_Member()
 	{
 		return 0;
 	}
 
-	static int m_Member(int)
+	static int fs_Member(int)
 	{
 		return 1;
 	}
@@ -152,7 +152,7 @@ union CTestUnion2
 
 union CTestUnion3
 {
-	int m_Member()
+	int f_Member()
 	{
 		return 0;
 	}
@@ -160,7 +160,7 @@ union CTestUnion3
 
 union CTestUnion4
 {
-	int m_Member(int)
+	int f_Member(int)
 	{
 		return 1;
 	}
@@ -168,7 +168,7 @@ union CTestUnion4
 
 union CTestUnion5
 {
-	static int m_Member()
+	static int fs_Member()
 	{
 		return 0;
 	}
@@ -176,7 +176,7 @@ union CTestUnion5
 
 union CTestUnion6
 {
-	static int m_Member(int)
+	static int fs_Member(int)
 	{
 		return 1;
 	}
@@ -184,12 +184,12 @@ union CTestUnion6
 
 union CTestUnion7
 {
-	int m_Member()
+	int f_Member()
 	{
 		return 1;
 	}
 
-	static int m_Member(int)
+	static int fs_Member(int)
 	{
 		return 1;
 	}

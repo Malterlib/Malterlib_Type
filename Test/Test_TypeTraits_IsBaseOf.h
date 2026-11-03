@@ -8,7 +8,7 @@ namespace NIsBaseOf
 	struct CAbstract
 	{
 	private:
-		virtual void f_Test() = 0;
+		virtual void fp_Test() = 0;
 	};
 
 	struct CInheritAbstract : private CAbstract
@@ -18,13 +18,13 @@ namespace NIsBaseOf
 	struct CNonAbstract
 	{
 	private:
-		virtual void f_Test();
+		virtual void fp_Test();
 	};
 
 	struct CNonVirtual
 	{
 	private:
-		void f_Test();
+		void fp_Test();
 	};
 
 	struct CInheritAbstractDual : private CAbstract, private CNonVirtual

@@ -12,7 +12,7 @@ struct CTestInherit : public CTestClass
 	int m_Test;
 };
 
-void blaha()
+void fg_Blaha()
 {
 	struct CTestInherit : public CTestClass
 	{
