@@ -5,22 +5,25 @@
 
 namespace NIsVirtualBaseOf
 {
-	class CAbstract
+	struct CAbstract
 	{
+	private:
 		virtual void f_Test() = 0;
 	};
 
-	class CInheritAbstract : private CAbstract
+	struct CInheritAbstract : private CAbstract
 	{
 	};
 
-	class CNonAbstract
+	struct CNonAbstract
 	{
+	private:
 		virtual void f_Test();
 	};
 
-	class CNonVirtual
+	struct CNonVirtual
 	{
+	private:
 		void f_Test();
 	};
 
@@ -29,15 +32,15 @@ namespace NIsVirtualBaseOf
 #	pragma warning(disable:4624)
 #endif
 
-	class CInheritVirtualAbstract : private virtual CAbstract
+	struct CInheritVirtualAbstract : private virtual CAbstract
 	{
 	};
 
-	class CInheritVirtualAbstract2 : private virtual CAbstract
+	struct CInheritVirtualAbstract2 : private virtual CAbstract
 	{
 	};
 
-	class CInheritVirtualAbstractCombined : CInheritVirtualAbstract, CInheritVirtualAbstract2
+	struct CInheritVirtualAbstractCombined : private CInheritVirtualAbstract, private CInheritVirtualAbstract2
 	{
 	};
 

@@ -14,23 +14,20 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename t_CType>
-		class TCAddFunctionPointerHelper
+		struct TCAddFunctionPointerHelper
 		{
-		public:
 			using CType = t_CType *;
 		};
 
 		template <typename t_CType>
-		class TCAddFunctionPointerHelper<t_CType &>
+		struct TCAddFunctionPointerHelper<t_CType &>
 		{
-		public:
 			using CType = t_CType;
 		};
 
 		template <typename t_CType>
-		class TCAddFunctionPointerHelper<t_CType &&>
+		struct TCAddFunctionPointerHelper<t_CType &&>
 		{
-		public:
 			using CType = t_CType;
 		};
 
@@ -65,9 +62,8 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CFunction, bool t_bIsFunction>
-		class TCFunctionTraitsHelper
+		struct TCFunctionTraitsHelper
 		{
-		public:
 			static constexpr bool mc_IsFunction = false;
 			static constexpr umint mc_Arity = 0;
 			static constexpr bool mc_IsEllipsis = false;
@@ -78,9 +74,8 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		class TCFunctionTraitsHelper<t_CReturn (tp_CParams...), true>
+		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams...), true>
 		{
-		public:
 			static constexpr bool mc_IsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
@@ -91,9 +86,8 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		class TCFunctionTraitsHelper<t_CReturn (tp_CParams...) noexcept, true>
+		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams...) noexcept, true>
 		{
-		public:
 			static constexpr bool mc_IsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = false;
@@ -104,9 +98,8 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		class TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...), true>
+		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...), true>
 		{
-		public:
 			static constexpr bool mc_IsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
@@ -117,9 +110,8 @@ namespace NMib::NTraits
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
-		class TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...) noexcept, true>
+		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams..., ...) noexcept, true>
 		{
-		public:
 			static constexpr bool mc_IsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_IsEllipsis = true;
@@ -131,14 +123,13 @@ namespace NMib::NTraits
 	}
 
 	template <typename t_CFunction>
-	class TCFunctionTraits
+	struct TCFunctionTraits
 		: public NPrivate::TCFunctionTraitsHelper
 		<
 			t_CFunction
 			, NPrivate::TCIsFunctionPointerHelper<typename NPrivate::TCAddFunctionPointerHelper<TCRemoveQualifiers<t_CFunction>>::CType>::mc_Value
 		>
 	{
-	public:
 	};
 
 	template <typename t_CFunction, umint t_Index>

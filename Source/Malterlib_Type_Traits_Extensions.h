@@ -37,23 +37,20 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename t_CType>
-		class TCRemoveReferenceStorableHelper
+		struct TCRemoveReferenceStorableHelper
 		{
-		public:
 			using CType = t_CType;
 		};
 
 		template <typename t_CType>
-		class TCRemoveReferenceStorableHelper<t_CType &>
+		struct TCRemoveReferenceStorableHelper<t_CType &>
 		{
-		public:
 			using CType = TCConditional<NTraits::cIsFunction<t_CType>, t_CType &, t_CType>;
 		};
 
 		template <typename t_CType>
-		class TCRemoveReferenceStorableHelper<t_CType &&>
+		struct TCRemoveReferenceStorableHelper<t_CType &&>
 		{
-		public:
 			using CType = TCConditional<NTraits::cIsFunction<t_CType>, t_CType &&, t_CType>;
 		};
 	}
@@ -91,17 +88,15 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename t_CType, typename t_COriginalType, bool t_bMemberFunctionPtr>
-		class TCRemoveMemberObjectPointerHelper
+		struct TCRemoveMemberObjectPointerHelper
 		{
-		public:
 			using CType = t_COriginalType;
 			using CClass = void;
 		};
 
 		template <typename t_CType0, typename t_CType1, typename t_COriginalType>
-		class TCRemoveMemberObjectPointerHelper<t_CType0 t_CType1:: *, t_COriginalType, false>
+		struct TCRemoveMemberObjectPointerHelper<t_CType0 t_CType1:: *, t_COriginalType, false>
 		{
-		public:
 			using CType = t_CType0;
 			using CClass = t_CType1;
 		};
@@ -116,16 +111,14 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename t_CType>
-		class TCRemoveRValueReferenceHelper
+		struct TCRemoveRValueReferenceHelper
 		{
-		public:
 			using CType = t_CType;
 		};
 
 		template <typename t_CType>
-		class TCRemoveRValueReferenceHelper<t_CType &&>
+		struct TCRemoveRValueReferenceHelper<t_CType &&>
 		{
-		public:
 			using CType = t_CType;
 		};
 	}
@@ -139,16 +132,14 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename t_CType>
-		class TCRemoveLValueReferenceHelper
+		struct TCRemoveLValueReferenceHelper
 		{
-		public:
 			using CType = t_CType;
 		};
 
 		template <typename t_CType>
-		class TCRemoveLValueReferenceHelper<t_CType &>
+		struct TCRemoveLValueReferenceHelper<t_CType &>
 		{
-		public:
 			using CType = t_CType;
 		};
 	}

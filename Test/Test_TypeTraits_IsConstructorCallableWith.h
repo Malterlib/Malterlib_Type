@@ -7,17 +7,15 @@
 #	pragma GCC system_header
 #endif
 
-class CTestInherit : public CTestClass
+struct CTestInherit : public CTestClass
 {
-public:
 	int m_Test;
 };
 
 void blaha()
 {
-	class CTestInherit : public CTestClass
+	struct CTestInherit : public CTestClass
 	{
-	public:
 		int m_Test;
 	};
 

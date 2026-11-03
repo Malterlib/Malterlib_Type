@@ -7,161 +7,143 @@
 
 namespace NHasNewOperator
 {
-	class CWithNew
+	struct CWithNew
 	{
-	public:
 		void *operator new (umint _Value);
 	};
 
-	class CWithNewArray
+	struct CWithNewArray
 	{
-	public:
 		void *operator new [] (umint _Value);
 	};
 
-	class CWithNewBoth
+	struct CWithNewBoth
 	{
-	public:
 		void *operator new (umint _Value);
 		void *operator new [] (umint _Value);
 	};
 
-	class CWithNewDerived : public CWithNewBoth
+	struct CWithNewDerived : public CWithNewBoth
 	{
 	};
 
-	class CWithDelete
+	struct CWithDelete
 	{
-	public:
 		void operator delete (void *);
 	};
 
-	class CWithDeleteArray
+	struct CWithDeleteArray
 	{
-	public:
 		void operator delete [] (void *);
 	};
 
-	class CWithDeleteBoth
+	struct CWithDeleteBoth
 	{
-	public:
 		void operator delete (void *);
 		void operator delete [] (void *);
 	};
 
-	class CWithDeleteDerived : public CWithDeleteBoth
+	struct CWithDeleteDerived : public CWithDeleteBoth
 	{
 	};
 
-	class CWithBothDerived : public CWithDeleteBoth, public CWithNewBoth
+	struct CWithBothDerived : public CWithDeleteBoth, public CWithNewBoth
 	{
 	};
 
-	class CWithSpecialNew
+	struct CWithSpecialNew
 	{
-	public:
 		void *operator new (umint _Value, CTestClass0 _Special);
 	};
 
-	class CWithSpecialNewArray
+	struct CWithSpecialNewArray
 	{
-	public:
 		void *operator new [] (umint _Value, CTestClass0 _Special);
 	};
 
-	class CWithSpecialNewBoth
+	struct CWithSpecialNewBoth
 	{
-	public:
 		void *operator new (umint _Value, CTestClass0 _Special);
 		void *operator new [] (umint _Value, CTestClass0 _Special);
 	};
 
-	class CWithSpecialNewDerived : public CWithSpecialNewBoth
+	struct CWithSpecialNewDerived : public CWithSpecialNewBoth
 	{
 	};
 
-	class CWithSpecialDelete
+	struct CWithSpecialDelete
 	{
-	public:
 		void operator delete (void *, CTestClass0 _Special);
 	};
 
-	class CWithSpecialDeleteArray
+	struct CWithSpecialDeleteArray
 	{
-	public:
 		void operator delete [] (void *, CTestClass0 _Special);
 	};
 
-	class CWithSpecialDeleteBoth
+	struct CWithSpecialDeleteBoth
 	{
-	public:
 		void operator delete (void *, CTestClass0 _Special);
 		void operator delete [] (void *, CTestClass0 _Special);
 	};
 
-	class CWithSpecialDeleteDerived : public CWithSpecialDeleteBoth
+	struct CWithSpecialDeleteDerived : public CWithSpecialDeleteBoth
 	{
 	};
 
-	class CWithSpecialBothDerived : public CWithSpecialDeleteBoth, public CWithSpecialNewBoth
+	struct CWithSpecialBothDerived : public CWithSpecialDeleteBoth, public CWithSpecialNewBoth
 	{
 	};
 
-	class CWithDualNew
+	struct CWithDualNew
 	{
-	public:
 		void *operator new (umint _Value, CTestClass0 _Special);
 		void *operator new (umint _Value);
 	};
 
-	class CWithDualNewArray
+	struct CWithDualNewArray
 	{
-	public:
 		void *operator new [] (umint _Value, CTestClass0 _Special);
 		void *operator new [] (umint _Value);
 	};
 
-	class CWithDualNewBoth
+	struct CWithDualNewBoth
 	{
-	public:
 		void *operator new (umint _Value, CTestClass0 _Special);
 		void *operator new [] (umint _Value, CTestClass0 _Special);
 		void *operator new (umint _Value);
 		void *operator new [] (umint _Value);
 	};
 
-	class CWithDualNewDerived : public CWithDualNewBoth
+	struct CWithDualNewDerived : public CWithDualNewBoth
 	{
 	};
 
-	class CWithDualDelete
+	struct CWithDualDelete
 	{
-	public:
 		void operator delete (void *, CTestClass0 _Special);
 		void operator delete (void *);
 	};
 
-	class CWithDualDeleteArray
+	struct CWithDualDeleteArray
 	{
-	public:
 		void operator delete [] (void *, CTestClass0 _Special);
 		void operator delete [] (void *);
 	};
 
-	class CWithDualDeleteBoth
+	struct CWithDualDeleteBoth
 	{
-	public:
 		void operator delete (void *, CTestClass0 _Special);
 		void operator delete [] (void *, CTestClass0 _Special);
 		void operator delete (void *);
 		void operator delete [] (void *);
 	};
 
-	class CWithDualDeleteDerived : public CWithDualDeleteBoth
+	struct CWithDualDeleteDerived : public CWithDualDeleteBoth
 	{
 	};
 
-	class CWithDualBothDerived : public CWithDualDeleteBoth, public CWithDualNewBoth
+	struct CWithDualBothDerived : public CWithDualDeleteBoth, public CWithDualNewBoth
 	{
 	};
 

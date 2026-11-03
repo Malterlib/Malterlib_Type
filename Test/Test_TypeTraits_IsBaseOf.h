@@ -5,34 +5,37 @@
 
 namespace NIsBaseOf
 {
-	class CAbstract
+	struct CAbstract
 	{
+	private:
 		virtual void f_Test() = 0;
 	};
 
-	class CInheritAbstract : private CAbstract
+	struct CInheritAbstract : private CAbstract
 	{
 	};
 
-	class CNonAbstract
+	struct CNonAbstract
 	{
+	private:
 		virtual void f_Test();
 	};
 
-	class CNonVirtual
+	struct CNonVirtual
 	{
+	private:
 		void f_Test();
 	};
 
-	class CInheritAbstractDual : private CAbstract, private CNonVirtual
+	struct CInheritAbstractDual : private CAbstract, private CNonVirtual
 	{
 	};
 
-	class CInheritAbstractDual2 : private CAbstract, private CNonVirtual
+	struct CInheritAbstractDual2 : private CAbstract, private CNonVirtual
 	{
 	};
 
-	class CInheritAbstractDualCombined : private CInheritAbstractDual, private CInheritAbstractDual2
+	struct CInheritAbstractDualCombined : private CInheritAbstractDual, private CInheritAbstractDual2
 	{
 	};
 

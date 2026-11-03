@@ -5,22 +5,25 @@
 
 namespace NStandardLayout
 {
-	class CAbstract
+	struct CAbstract
 	{
+	private:
 		virtual void f_Test() = 0;
 	};
 
-	class CInheritAbstract : private CAbstract
+	struct CInheritAbstract : private CAbstract
 	{
 	};
 
-	class CNonAbstract
+	struct CNonAbstract
 	{
+	private:
 		virtual void f_Test();
 	};
 
-	class CNonVirtual
+	struct CNonVirtual
 	{
+	private:
 		void f_Test();
 	};
 

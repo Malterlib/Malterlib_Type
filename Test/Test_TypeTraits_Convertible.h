@@ -7,22 +7,19 @@ namespace NConvertible
 {
 	static_assert(cIsConvertible<int, float>);
 
-	class CTestConvert
+	struct CTestConvert
 	{
-	public:
 		CTestConvert(int);
 		operator int ();
 	};
 
-	class CTestConvert2
+	struct CTestConvert2
 	{
-	public:
 		operator CTestConvert ();
 	};
 
-	class CTestInherit : public CTestClass
+	struct CTestInherit : public CTestClass
 	{
-	public:
 		int m_Test;
 	};
 

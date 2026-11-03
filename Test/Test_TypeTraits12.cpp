@@ -5,71 +5,81 @@
 
 namespace NTrivial
 {
-	class CNonTrivialAssignment
+	struct CNonTrivialAssignment
 	{
+	private:
 		CNonTrivialAssignment &operator = (CNonTrivialAssignment const &_Abstract);
 	};
 
-	class CNonTrivialAssignmentInt
+	struct CNonTrivialAssignmentInt
 	{
+	private:
 		CNonTrivialAssignmentInt &operator = (int);
 	};
 
-	class CNonTrivialAssignmentBoth
+	struct CNonTrivialAssignmentBoth
 	{
+	private:
 		CNonTrivialAssignmentBoth &operator = (CNonTrivialAssignmentBoth const &_Abstract);
 		CNonTrivialAssignmentBoth &operator = (int);
 	};
 
-	class CNonTrivialAssignmentDerived : public CNonTrivialAssignment
+	struct CNonTrivialAssignmentDerived : public CNonTrivialAssignment
 	{
 	};
 
-	class CNonTrivialAssignmentDerivedOverride : public CNonTrivialAssignment
+	struct CNonTrivialAssignmentDerivedOverride : public CNonTrivialAssignment
 	{
+	private:
 		CNonTrivialAssignmentDerivedOverride &operator = (CNonTrivialAssignmentDerivedOverride const &_Abstract);
 	};
 
-	class CNonTrivialCopy
+	struct CNonTrivialCopy
 	{
+	private:
 		CNonTrivialCopy(CNonTrivialCopy const &_Abstract);
 	};
 
-	class CNonTrivialCopyInt
+	struct CNonTrivialCopyInt
 	{
+	private:
 		CNonTrivialCopyInt(int);
 	};
 
-	class CNonTrivialCopyBoth
+	struct CNonTrivialCopyBoth
 	{
+	private:
 		CNonTrivialCopyBoth(CNonTrivialCopyBoth const &_Abstract);
 		CNonTrivialCopyBoth(int);
 	};
 
-	class CNonTrivialCopyDerived : public CNonTrivialCopy
+	struct CNonTrivialCopyDerived : public CNonTrivialCopy
 	{
 	};
 
-	class CNonTrivialCopyDerivedOverride : public CNonTrivialCopy
+	struct CNonTrivialCopyDerivedOverride : public CNonTrivialCopy
 	{
+	private:
 		CNonTrivialCopyDerivedOverride(CNonTrivialCopyDerivedOverride const &_Abstract);
 	};
 
-	class CNonTrivialConstruct
+	struct CNonTrivialConstruct
 	{
+	private:
 		CNonTrivialConstruct();
 	};
 
-	class CNonTrivialConstructDerived : public CNonTrivialConstruct
+	struct CNonTrivialConstructDerived : public CNonTrivialConstruct
 	{
 	};
 
-	class CNonTrivialConstructDerivedOverride : public CNonTrivialConstruct
+	struct CNonTrivialConstructDerivedOverride : public CNonTrivialConstruct
 	{
+	private:
 		CNonTrivialConstructDerivedOverride();
 	};
 
-	class CTrivial
+	struct CTrivial
 	{
 	};
 }

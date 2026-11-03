@@ -8,15 +8,14 @@
 #include <Mib/Numeric/fp4096>
 #include <Mib/Numeric/ufp4096>
 
-class CTestClass0
+struct CTestClass0
 {
 };
 
 typedef CTestClass0 CTypedeffedClass0;
 
-class CTestClass1
+struct CTestClass1
 {
-public:
 	int m_Member;
 };
 
@@ -196,27 +195,24 @@ union CTestUnion7
 	}
 };
 
-class CTestClassVirtual
+struct CTestClassVirtual
 {
-public:
 	int m_Test;
 	virtual void f_Test()
 	{
 	}
 };
 
-class CTestClassWithDestructor
+struct CTestClassWithDestructor
 {
-public:
 	int m_Test;
 	~CTestClassWithDestructor()
 	{
 	}
 };
 
-class CTestClassWithDestructorNonTrivial
+struct CTestClassWithDestructorNonTrivial
 {
-public:
 	int m_Test;
 	~CTestClassWithDestructorNonTrivial()
 	{
@@ -224,18 +220,16 @@ public:
 	}
 };
 
-class CTestClassWithConstructor
+struct CTestClassWithConstructor
 {
-public:
 	int m_Test;
 	CTestClassWithConstructor()
 	{
 	}
 };
 
-class CTestClassWithConstructorNonTrivial
+struct CTestClassWithConstructorNonTrivial
 {
-public:
 	int m_Test;
 	CTestClassWithConstructorNonTrivial()
 	{
@@ -243,9 +237,8 @@ public:
 	}
 };
 
-class CTestClassWithCopyConstructor
+struct CTestClassWithCopyConstructor
 {
-public:
 	int m_Test;
 	CTestClassWithCopyConstructor(CTestClassWithCopyConstructor const &_Other)
 		: m_Test(_Other.m_Test)
@@ -253,9 +246,8 @@ public:
 	}
 };
 
-class CTestClassWithCopyConstructorNonTrivial
+struct CTestClassWithCopyConstructorNonTrivial
 {
-public:
 	int m_Test;
 	CTestClassWithCopyConstructorNonTrivial(CTestClassWithCopyConstructorNonTrivial const &_Other)
 	{
@@ -263,9 +255,8 @@ public:
 	}
 };
 
-class CTestClassWithMoveConstructor
+struct CTestClassWithMoveConstructor
 {
-public:
 	int m_Test;
 	CTestClassWithMoveConstructor(CTestClassWithCopyConstructor const &&_Other)
 		: m_Test(_Other.m_Test)
@@ -273,9 +264,8 @@ public:
 	}
 };
 
-class CTestClassWithMoveConstructorNonTrivial
+struct CTestClassWithMoveConstructorNonTrivial
 {
-public:
 	int m_Test;
 	CTestClassWithMoveConstructorNonTrivial(CTestClassWithMoveConstructorNonTrivial const &&_Other)
 	{
@@ -283,44 +273,40 @@ public:
 	}
 };
 
-class CTestClassWithPrivateConstructor
+struct CTestClassWithPrivateConstructor
 {
+	int m_Test;
+
+private:
 	CTestClassWithPrivateConstructor()
 	{
 	}
-
-public:
-	int m_Test;
 };
 
-class CTestClassWithPrivateDestructor
+struct CTestClassWithPrivateDestructor
 {
+	int m_Test;
+
+private:
 	CTestClassWithPrivateDestructor()
 	{
 	}
-
-public:
-	int m_Test;
 };
 
-class CTestClassWithEnum
+struct CTestClassWithEnum
 {
-public:
 	ETestEnum m_Test;
 };
 
-class CTestClassWithBase : public CTestClass1
+struct CTestClassWithBase : public CTestClass1
 {
-public:
 	int m_Test;
 };
 
-class CTestClassWithPrivate
+struct CTestClassWithPrivate
 {
 private:
 	ETestEnum m_Test;
-
-public:
 };
 
 struct CTestBase

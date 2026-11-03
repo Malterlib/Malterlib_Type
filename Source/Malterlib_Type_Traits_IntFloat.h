@@ -277,16 +277,14 @@ namespace NMib::NTraits
 	namespace NPrivate
 	{
 		template <typename t_CType>
-		class TCLargerType
+		struct TCLargerType
 		{
-		public:
 			using CType = t_CType; // Default to no larger type exists
 		};
 
 		template <typename t_CType>
-		class TCSmallerType
+		struct TCSmallerType
 		{
-		public:
 			using CType = t_CType; // Default to no smaller type exists
 		};
 	}

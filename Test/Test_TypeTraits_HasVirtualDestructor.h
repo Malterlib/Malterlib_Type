@@ -5,17 +5,15 @@
 
 namespace NHasVirtualDestrutor
 {
-	class CTestClassWithVirtualDestructor
+	struct CTestClassWithVirtualDestructor
 	{
-	public:
 		virtual ~CTestClassWithVirtualDestructor()
 		{
 		}
 	};
 
-	class CTestClassWithVirtualDestructorDerived : public CTestClassWithVirtualDestructor
+	struct CTestClassWithVirtualDestructorDerived : public CTestClassWithVirtualDestructor
 	{
-	public:
 	};
 
 	static_assert(!cHasVirtualDestructor<CTestClassVirtual>);

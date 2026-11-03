@@ -4,20 +4,19 @@
 #include "Test_TypeTraits_TestTypes.h"
 
 template <typename t_CGod>
-class TCHula
+struct TCHula
 {
+private:
 	typedef typename t_CGod::CGot oeu;
 };
 
 template <umint t_Value>
-class TCHelpeer
+struct TCHelpeer
 {
-public:
 };
 
 struct CTesting
 {
-public:
 	NMib::COrdering_Weak operator <=> (int) const noexcept
 	{
 		return NMib::COrdering_Weak::equivalent;
@@ -26,17 +25,14 @@ public:
 
 struct CTesting2
 {
-public:
 };
 
 struct CTesting3 : public CTesting
 {
-public:
 };
 
 struct CTesting4
 {
-public:
 	operator int ()
 	{
 		return 0;
@@ -111,10 +107,9 @@ static_assert(NMib::NTraits::cIsSame<ch32, int32> || NMib::NTraits::cIsSame<ch32
 #endif
 
 template <typename t_CLeft, typename t_CRight>
-class cIsComparable
+struct cIsComparable
 {
-public:
-	class CDummy
+	struct CDummy
 	{
 	};
 
@@ -186,9 +181,8 @@ static_assert(!cIsComparableLessThan<double, CTesting>);
 
 namespace
 {
-	class CTypeTraits_Tests : public NMib::NTest::CTest
+	struct CTypeTraits_Tests : public NMib::NTest::CTest
 	{
-	public:
 		void f_DoTests()
 		{
 			// cIsComparable<int, int>::CType Typeee;Typeee;

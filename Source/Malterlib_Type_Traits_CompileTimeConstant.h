@@ -26,17 +26,15 @@ namespace NMib::NTraits
 	using CCompileTimeTrue = TCCompileTimeTrue<true>;
 	using CCompileTimeFalse = TCCompileTimeTrue<false>;
 
-	class CFalseBySize : public CCompileTimeFalse
+	struct CFalseBySize : public CCompileTimeFalse
 	{
+	private:
 		uint8 m_Member[1];
-
-	public:
 	};
 
-	class CTrueBySize : public CCompileTimeTrue
+	struct CTrueBySize : public CCompileTimeTrue
 	{
+	private:
 		uint8 m_Member[2];
-
-	public:
 	};
 }
