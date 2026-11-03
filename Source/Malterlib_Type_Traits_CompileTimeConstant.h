@@ -14,10 +14,7 @@ namespace NMib::NTraits
 		using CType = t_CType;
 
 		static constexpr t_CType mc_Value = t_Value;
-		operator bool ()
-		{
-			return mc_Value != 0;
-		}
+		operator bool ();
 	};
 
 	template <bool t_bTrue>
@@ -38,3 +35,5 @@ namespace NMib::NTraits
 		uint8 mp_Member[2];
 	};
 }
+
+#include "Malterlib_Type_Traits_CompileTimeConstant.hpp"

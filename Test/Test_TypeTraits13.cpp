@@ -19,3 +19,18 @@
 
 #include "Test_TypeTraits_HasNewOperator.h"
 
+namespace NHasVirtualDestrutor
+{
+	CTestClassWithVirtualDestructor::~CTestClassWithVirtualDestructor()
+	{
+	}
+}
+
+namespace NHasNewOperator
+{
+	void fg_Testing()
+	{
+		//void *pTest = CWithNew::operator new(5);
+		//CWithDelete::operator delete(pTest);
+	}
+}

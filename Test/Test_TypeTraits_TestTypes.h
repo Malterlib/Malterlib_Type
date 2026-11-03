@@ -35,73 +35,40 @@ struct CTestStruct2
 
 struct CTestStruct3
 {
-	int f_Member()
-	{
-		return 0;
-	}
+	int f_Member();
 };
 
 struct CTestStruct4
 {
-	int f_Member(int _Value)
-	{
-		return 1;
-	}
+	int f_Member(int _Value);
 };
 
 struct CTestStruct5
 {
-	static int fs_Member()
-	{
-		return 0;
-	}
+	static int fs_Member();
 };
 
 struct CTestStruct6
 {
-	static int fs_Member(int _Value)
-	{
-		return 1;
-	}
+	static int fs_Member(int _Value);
 };
 
 struct CTestStruct7
 {
-	int f_Member()
-	{
-		return 0;
-	}
-
-	int f_Member(int _Value)
-	{
-		return 1;
-	}
+	int f_Member();
+	int f_Member(int _Value);
 };
 
 struct CTestStruct8
 {
-	static int fs_Member()
-	{
-		return 0;
-	}
-
-	static int fs_Member(int _Value)
-	{
-		return 1;
-	}
+	static int fs_Member();
+	static int fs_Member(int _Value);
 };
 
 struct CTestStruct9
 {
-	int f_Member()
-	{
-		return 0;
-	}
-
-	static int fs_Member(int _Value)
-	{
-		return 1;
-	}
+	int f_Member();
+	static int fs_Member(int _Value);
 };
 
 struct CTestStruct10
@@ -152,125 +119,82 @@ union CTestUnion2
 
 union CTestUnion3
 {
-	int f_Member()
-	{
-		return 0;
-	}
+	int f_Member();
 };
 
 union CTestUnion4
 {
-	int f_Member(int _Value)
-	{
-		return 1;
-	}
+	int f_Member(int _Value);
 };
 
 union CTestUnion5
 {
-	static int fs_Member()
-	{
-		return 0;
-	}
+	static int fs_Member();
 };
 
 union CTestUnion6
 {
-	static int fs_Member(int _Value)
-	{
-		return 1;
-	}
+	static int fs_Member(int _Value);
 };
 
 union CTestUnion7
 {
-	int f_Member()
-	{
-		return 1;
-	}
-
-	static int fs_Member(int _Value)
-	{
-		return 1;
-	}
+	int f_Member();
+	static int fs_Member(int _Value);
 };
 
 struct CTestClassVirtual
 {
 	int m_Test;
-	virtual void f_Test()
-	{
-	}
+	virtual void f_Test();
 };
 
 struct CTestClassWithDestructor
 {
 	int m_Test;
-	~CTestClassWithDestructor()
-	{
-	}
+	~CTestClassWithDestructor();
 };
 
 struct CTestClassWithDestructorNonTrivial
 {
 	int m_Test;
-	~CTestClassWithDestructorNonTrivial()
-	{
-		m_Test = 2;
-	}
+	~CTestClassWithDestructorNonTrivial();
 };
 
 struct CTestClassWithConstructor
 {
 	int m_Test;
-	CTestClassWithConstructor()
-	{
-	}
+	CTestClassWithConstructor();
 };
 
 struct CTestClassWithConstructorNonTrivial
 {
 	int m_Test;
-	CTestClassWithConstructorNonTrivial()
-	{
-		m_Test = 3;
-	}
+	CTestClassWithConstructorNonTrivial();
 };
 
 struct CTestClassWithCopyConstructor
 {
 	int m_Test;
-	CTestClassWithCopyConstructor(CTestClassWithCopyConstructor const &_Other)
-		: m_Test(_Other.m_Test)
-	{
-	}
+	CTestClassWithCopyConstructor(CTestClassWithCopyConstructor const &_Other);
 };
 
 struct CTestClassWithCopyConstructorNonTrivial
 {
 	int m_Test;
-	CTestClassWithCopyConstructorNonTrivial(CTestClassWithCopyConstructorNonTrivial const &_Other)
-	{
-		m_Test = _Other.m_Test + 1;
-	}
+	CTestClassWithCopyConstructorNonTrivial(CTestClassWithCopyConstructorNonTrivial const &_Other);
 };
 
 struct CTestClassWithMoveConstructor
 {
 	int m_Test;
-	CTestClassWithMoveConstructor(CTestClassWithCopyConstructor const &&_Other)
-		: m_Test(_Other.m_Test)
-	{
-	}
+	CTestClassWithMoveConstructor(CTestClassWithCopyConstructor const &&_Other);
 };
 
 struct CTestClassWithMoveConstructorNonTrivial
 {
 	int m_Test;
-	CTestClassWithMoveConstructorNonTrivial(CTestClassWithMoveConstructorNonTrivial const &&_Other)
-	{
-		m_Test = _Other.m_Test + 1;
-	}
+	CTestClassWithMoveConstructorNonTrivial(CTestClassWithMoveConstructorNonTrivial const &&_Other);
 };
 
 struct CTestClassWithPrivateConstructor
@@ -278,9 +202,7 @@ struct CTestClassWithPrivateConstructor
 	int m_Test;
 
 private:
-	CTestClassWithPrivateConstructor()
-	{
-	}
+	CTestClassWithPrivateConstructor();
 };
 
 struct CTestClassWithPrivateDestructor
@@ -288,9 +210,7 @@ struct CTestClassWithPrivateDestructor
 	int m_Test;
 
 private:
-	CTestClassWithPrivateDestructor()
-	{
-	}
+	CTestClassWithPrivateDestructor();
 };
 
 struct CTestClassWithEnum
@@ -329,19 +249,9 @@ typedef CTestBase const &CTestCRef;
 typedef CTestBase &&CTestRRef;
 typedef CTestBase const &&CTestCRRef;
 
-[[maybe_unused]] static void fsg_FFunc0(void)
-{
-}
-
-[[maybe_unused]] static CTestBase fsg_FFunc1(void)
-{
-	return CTestBase();
-}
-
-[[maybe_unused]] static CTestBase fsg_FFunc2(int _Value)
-{
-	return CTestBase();
-}
+[[maybe_unused]] static void fsg_FFunc0(void);
+[[maybe_unused]] static CTestBase fsg_FFunc1(void);
+[[maybe_unused]] static CTestBase fsg_FFunc2(int _Value);
 
 typedef void (FFunc0)(void);
 typedef CTestBase (FFunc1)(void);
@@ -360,19 +270,9 @@ typedef FFunc0Ptr const FFunc0PtrC;
 typedef FFunc1Ptr const FFunc1PtrC;
 typedef FFunc2Ptr const FFunc2PtrC;
 
-[[maybe_unused]] static void fsg_FFunc0El(...)
-{
-}
-
-[[maybe_unused]] static CTestBase fsg_FFunc1El(...)
-{
-	return CTestBase();
-}
-
-[[maybe_unused]] static CTestBase fsg_FFunc2El(CTestBase _Base, ...)
-{
-	return CTestBase();
-}
+[[maybe_unused]] static void fsg_FFunc0El(...);
+[[maybe_unused]] static CTestBase fsg_FFunc1El(...);
+[[maybe_unused]] static CTestBase fsg_FFunc2El(CTestBase _Base, ...);
 
 typedef void (FFunc0El)(...);
 typedef CTestBase (FFunc1El)(...);
@@ -445,11 +345,9 @@ typedef CTestBase const CTest3DArrayC [][3][2];
 struct CTestNoDefaultConstruct
 {
 	umint m_Value;
-	CTestNoDefaultConstruct(int &&_Value)
-		: m_Value(_Value)
-	{
-	}
+	CTestNoDefaultConstruct(int &&_Value);
 };
 
 typedef CTestNoDefaultConstruct CTestArrayNoDefault [2];
 
+#include "Test_TypeTraits_TestTypes.hpp"

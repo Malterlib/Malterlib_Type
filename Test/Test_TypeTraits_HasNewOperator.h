@@ -147,11 +147,7 @@ namespace NHasNewOperator
 	{
 	};
 
-	void fg_Testing()
-	{
-		//void *pTest = CWithNew::operator new(5);
-		//CWithDelete::operator delete(pTest);
-	}
+	void fg_Testing();
 
 	static_assert(cHasOperatorNewAny<CWithNew>);
 	static_assert(cHasOperatorNewAny<CWithNewArray>);

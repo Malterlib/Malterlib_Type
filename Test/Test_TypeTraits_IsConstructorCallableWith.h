@@ -12,18 +12,7 @@ struct CTestInherit : public CTestClass
 	int m_Test;
 };
 
-void fg_Blaha()
-{
-	struct CTestInherit : public CTestClass
-	{
-		int m_Test;
-	};
-
-	CTestInherit Test3;
-	//CTestClass &Test2 = NMib::fg_Move(Test3);
-	[[maybe_unused]] CTestClass &Test4 = Test3;
-	[[maybe_unused]] CTestClass &&Test5 = NMib::fg_Move(Test3);
-}
+void fg_Blaha();
 
 #include <type_traits>
 

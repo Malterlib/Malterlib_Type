@@ -7,9 +7,7 @@ namespace NHasVirtualDestrutor
 {
 	struct CTestClassWithVirtualDestructor
 	{
-		virtual ~CTestClassWithVirtualDestructor()
-		{
-		}
+		virtual ~CTestClassWithVirtualDestructor();
 	};
 
 	struct CTestClassWithVirtualDestructorDerived : public CTestClassWithVirtualDestructor
