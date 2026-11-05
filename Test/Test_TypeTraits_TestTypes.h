@@ -145,56 +145,65 @@ union CTestUnion7
 
 struct CTestClassVirtual
 {
-	int m_Test;
 	virtual void f_Test();
+
+	int m_Test;
 };
 
 struct CTestClassWithDestructor
 {
-	int m_Test;
 	~CTestClassWithDestructor();
+
+	int m_Test;
 };
 
 struct CTestClassWithDestructorNonTrivial
 {
-	int m_Test;
 	~CTestClassWithDestructorNonTrivial();
+
+	int m_Test;
 };
 
 struct CTestClassWithConstructor
 {
-	int m_Test;
 	CTestClassWithConstructor();
+
+	int m_Test;
 };
 
 struct CTestClassWithConstructorNonTrivial
 {
-	int m_Test;
 	CTestClassWithConstructorNonTrivial();
+
+	int m_Test;
 };
 
 struct CTestClassWithCopyConstructor
 {
-	int m_Test;
 	CTestClassWithCopyConstructor(CTestClassWithCopyConstructor const &_Other);
+
+	int m_Test;
 };
 
 struct CTestClassWithCopyConstructorNonTrivial
 {
-	int m_Test;
 	CTestClassWithCopyConstructorNonTrivial(CTestClassWithCopyConstructorNonTrivial const &_Other);
+
+	int m_Test;
 };
 
 struct CTestClassWithMoveConstructor
 {
-	int m_Test;
 	CTestClassWithMoveConstructor(CTestClassWithCopyConstructor const &&_Other);
+
+	int m_Test;
 };
 
 struct CTestClassWithMoveConstructorNonTrivial
 {
-	int m_Test;
 	CTestClassWithMoveConstructorNonTrivial(CTestClassWithMoveConstructorNonTrivial const &&_Other);
+
+	int m_Test;
 };
 
 struct CTestClassWithPrivateConstructor
@@ -344,8 +353,9 @@ typedef CTestBase const CTest3DArrayC [][3][2];
 
 struct CTestNoDefaultConstruct
 {
-	umint m_Value;
 	CTestNoDefaultConstruct(int &&_Value);
+
+	umint m_Value;
 };
 
 typedef CTestNoDefaultConstruct CTestArrayNoDefault [2];

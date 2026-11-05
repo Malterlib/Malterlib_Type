@@ -17,11 +17,13 @@ struct TCHelpeer
 
 struct CTesting
 {
-	NMib::COrdering_Weak operator <=> (int _Value) const noexcept
-	{
-		return NMib::COrdering_Weak::equivalent;
-	}
+	NMib::COrdering_Weak operator <=> (int _Value) const noexcept;
 };
+
+NMib::COrdering_Weak CTesting::operator <=> (int _Value) const noexcept
+{
+	return NMib::COrdering_Weak::equivalent;
+}
 
 struct CTesting2
 {
@@ -33,11 +35,13 @@ struct CTesting3 : public CTesting
 
 struct CTesting4
 {
-	operator int ()
-	{
-		return 0;
-	}
+	operator int ();
 };
+
+CTesting4::operator int ()
+{
+	return 0;
+}
 
 NMib::COrdering_Weak operator <=> (int _Left, CTesting const &_Right) noexcept
 {
@@ -127,7 +131,7 @@ struct TCIsComparable
 	static t_CLeft fs_Left();
 	static t_CRight fs_Right();
 
-	typedef decltype(fs_Both(fs_Left(), fs_Right())) CType;
+	typedef decltype(fs_Both(fs_Left(), fs_Right())) CType; // NOLINT(malterlib-member-order): the decltype uses fs_Both, fs_Left and fs_Right, and the constants use CType
 	static constexpr bool mc_bBoth = !cIsSame<CType, CDummy>;
 	static constexpr bool mc_bGlobal = !cIsSame<decltype(fs_Global(fs_Left(), fs_Right())), CDummy>;
 	static constexpr bool mc_bLocal = !cIsSame<decltype(fs_Local(fs_Left(), fs_Right())), CDummy>;
@@ -180,19 +184,21 @@ namespace
 {
 	struct CTypeTraits_Tests : public NMib::NTest::CTest
 	{
-		void f_DoTests()
-		{
-			// TCIsComparable<int, int>::CType Typeee;Typeee;
-			// TCIsComparable<float, char *>::CType Typeee5;Typeee5;
-			// TCIsComparable<CTesting, int>::CType Typeee6;Typeee6;
-			// auto Test = operator < (0, 0);
-			// int x = 0;
-			// DMibPDebugBreak;
-			// Dubble < Test3;
-			// 0.0f < CTesting();
-			// 0 < CTesting();
-		}
+		void f_DoTests();
 	};
+
+	void CTypeTraits_Tests::f_DoTests()
+	{
+		// TCIsComparable<int, int>::CType Typeee;Typeee;
+		// TCIsComparable<float, char *>::CType Typeee5;Typeee5;
+		// TCIsComparable<CTesting, int>::CType Typeee6;Typeee6;
+		// auto Test = operator < (0, 0);
+		// int x = 0;
+		// DMibPDebugBreak;
+		// Dubble < Test3;
+		// 0.0f < CTesting();
+		// 0 < CTesting();
+	}
 
 	DMibTestRegister(CTypeTraits_Tests, Malterlib::TypeTraits);
 }

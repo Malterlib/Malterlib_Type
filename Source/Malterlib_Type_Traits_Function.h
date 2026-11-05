@@ -64,61 +64,61 @@ namespace NMib::NTraits
 		template <typename t_CFunction, bool t_bIsFunction>
 		struct TCFunctionTraitsHelper
 		{
+			using CReturn = void;
+			using CParams = NMeta::TCTypeList<>;
+
 			static constexpr bool mc_bIsFunction = false;
 			static constexpr umint mc_Arity = 0;
 			static constexpr bool mc_bIsEllipsis = false;
 			static constexpr bool mc_bIsNoExcept = false;
-
-			using CReturn = void;
-			using CParams = NMeta::TCTypeList<>;
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
 		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams ...p_Params), true>
 		{
+			using CReturn = t_CReturn;
+			using CParams = NMeta::TCTypeList<tp_CParams...>;
+
 			static constexpr bool mc_bIsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_bIsEllipsis = false;
 			static constexpr bool mc_bIsNoExcept = false;
-
-			using CReturn = t_CReturn;
-			using CParams = NMeta::TCTypeList<tp_CParams...>;
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
 		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams ...p_Params) noexcept, true>
 		{
+			using CReturn = t_CReturn;
+			using CParams = NMeta::TCTypeList<tp_CParams...>;
+
 			static constexpr bool mc_bIsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_bIsEllipsis = false;
 			static constexpr bool mc_bIsNoExcept = true;
-
-			using CReturn = t_CReturn;
-			using CParams = NMeta::TCTypeList<tp_CParams...>;
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
 		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams ...p_Params, ...), true>
 		{
+			using CReturn = t_CReturn;
+			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
+
 			static constexpr bool mc_bIsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_bIsEllipsis = true;
 			static constexpr bool mc_bIsNoExcept = false;
-
-			using CReturn = t_CReturn;
-			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
 		};
 
 		template <typename t_CReturn, typename ...tp_CParams>
 		struct TCFunctionTraitsHelper<t_CReturn (tp_CParams ...p_Params, ...) noexcept, true>
 		{
+			using CReturn = t_CReturn;
+			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
+
 			static constexpr bool mc_bIsFunction = true;
 			static constexpr umint mc_Arity = sizeof...(tp_CParams);
 			static constexpr bool mc_bIsEllipsis = true;
 			static constexpr bool mc_bIsNoExcept = true;
-
-			using CReturn = t_CReturn;
-			using CParams = NMeta::TCTypeList<tp_CParams..., CFunctionTraitTag_Ellipsis>;
 		};
 	}
 
